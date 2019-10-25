@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nitro assistant</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="nav">        
+        <svg class="logo" viewBox="0 0 625 225" >
+            <path d="M74 0L0 124H74V0Z"/>
+            <path d="M46 225L120 101L46 101L46 225Z"/>
+            <path d="M307.117 151H287.703L260.018 84.623L248.465 151H228.436L245.73 51.4688H265.076L292.83 117.982L304.383 51.4688H324.344L307.117 151ZM346.424 151H326.395L343.621 51.4688H363.65L346.424 151ZM450.535 68.0801H421.004L406.648 151H386.619L400.975 68.0801H371.785L374.725 51.4688H453.475L450.535 68.0801ZM490.799 114.564H474.529L468.172 151H448.143L465.438 51.4688L498.387 51.5371C509.415 51.5371 517.892 54.1348 523.816 59.3301C529.786 64.5254 532.43 71.7487 531.746 81C530.789 94.6719 523.497 104.174 509.871 109.506L523.885 149.906V151H502.557L490.799 114.564ZM477.4 97.9531L492.303 98.0898C497.589 97.9987 501.941 96.5859 505.359 93.8516C508.823 91.0716 510.896 87.3118 511.58 82.5723C512.218 78.1517 511.512 74.6882 509.461 72.1816C507.41 69.6751 504.152 68.3307 499.686 68.1484L482.596 68.0801L477.4 97.9531ZM575.496 152.367C568.888 152.23 563.055 150.681 557.996 147.719C552.983 144.711 548.995 140.404 546.033 134.799C543.117 129.148 541.43 122.676 540.975 115.385C540.473 107.911 541.271 99.9355 543.367 91.459C545.464 82.9824 548.836 75.5312 553.484 69.1055C558.133 62.6797 563.579 57.8717 569.822 54.6816C576.111 51.4915 582.902 49.9648 590.193 50.1016C596.893 50.2383 602.749 51.8333 607.762 54.8867C612.775 57.8945 616.717 62.2467 619.588 67.9434C622.459 73.5944 624.1 80.0202 624.51 87.2207C624.965 95.2415 624.1 103.49 621.912 111.967C619.725 120.443 616.329 127.781 611.727 133.979C607.124 140.176 601.723 144.825 595.525 147.924C589.373 151.023 582.697 152.504 575.496 152.367ZM603.865 98.5L604.412 92.0059C604.868 83.8939 603.774 77.7415 601.131 73.5488C598.533 69.3561 594.568 67.1686 589.236 66.9863C580.896 66.7129 574.266 70.4043 569.344 78.0605C564.467 85.7168 561.71 96.4264 561.072 110.189C560.617 118.256 561.688 124.477 564.285 128.852C566.883 133.181 570.916 135.437 576.385 135.619C583.54 135.938 589.464 133.158 594.158 127.279C598.852 121.355 601.928 112.992 603.387 102.191L603.865 98.5Z"/>
+            <line x1="227" y1="186" x2="621" y2="186" stroke-width="10"/>
+        </svg>
+            
+		<div class="search">
+			<svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+			<input type="search" autocomplete="false" placeholder='search "hostname"'>
+		</div>
+
+        <div class="right">
+            <div class="network">
+                <svg class="load" viewBox="0 0 24 24"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>
+				<h4>connecting...</h4>
+				<p>load</p>
+				<div class="progress-bar"><div style="width: 0%;"></div></div>
+            </div>
+
+            <svg class="more" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </div>
+    </div>
+
+    <div id="side">
+        <a class="selected home">
+            <svg viewBox="0 0 24 24"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z"/></svg>
+            <p>Accueil</p>
+            <span>Chargement ...</span>
+        </a>
+
+        <a class="messages">
+            <svg viewBox="0 0 24 24"><path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
+            <p>Messages</p>
+            <span>aucun nouveau message</span>
+		</a>
+		
+		<a class="drive">
+            <svg viewBox="0 0 24 24"><path d="M9.17 6l2 2H20v10H4V6h5.17M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+            <p>Drive</p>
+            <span>80% utilisés</span>
+        </a>
+
+        <a class="agenda">
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zm0-12H5V5h14v2zM7 11h5v5H7z"/></svg>
+            <p>Agenda</p>
+            <span>aucun évènement aujourd'hui</span>
+        </a>
+    </div>
+
+    <div id="weather">
+        <img src="blank.png">
+        <div class="right">
+            <p>Aujourd'hui à <a target="blank"></a></p>
+            <h1>00°</h1>
+            <h4>loading ...</h4>
+        </div>
+
+        <div class="infos">
+            <h4><p>Informations</p> <span>à propos de la météo</span></h4>
+
+            <div class="humidity">
+                <svg viewBox="0 0 24 24"><path d="M17 16.99c-1.35 0-2.2.42-2.95.8-.65.33-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.17.6-2.05.6v1.95c1.35 0 2.2-.42 2.95-.8.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.42 2.95-.8c.65-.33 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.58.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.75-.38-1.6-.8-2.95-.8zm0-4.45c-1.35 0-2.2.43-2.95.8-.65.32-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.32-1.17.6-2.05.6v1.95c1.35 0 2.2-.43 2.95-.8.65-.35 1.15-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.35 1.15-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.58.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.75-.38-1.6-.8-2.95-.8zm2.95-8.08c-.75-.38-1.58-.8-2.95-.8s-2.2.42-2.95.8c-.65.32-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.37-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.17.6-2.05.6v1.93c1.35 0 2.2-.43 2.95-.8.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.32 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.58.8 2.95.8V5.04c-.9 0-1.4-.25-2.05-.58zM17 8.09c-1.35 0-2.2.43-2.95.8-.65.35-1.15.6-2.05.6s-1.4-.25-2.05-.6c-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.35-1.15.6-2.05.6v1.95c1.35 0 2.2-.43 2.95-.8.65-.32 1.18-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.32 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.58.8 2.95.8V9.49c-.9 0-1.4-.25-2.05-.6-.75-.38-1.6-.8-2.95-.8z"/></svg>
+                <p>Humidité: <span>--</span>%</p>
+            </div>
+
+            <div class="pressure">
+                <svg viewBox="0 0 24 24"><path d="M17 16.99c-1.35 0-2.2.42-2.95.8-.65.33-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.17.6-2.05.6v1.95c1.35 0 2.2-.42 2.95-.8.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.42 2.95-.8c.65-.33 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.58.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.75-.38-1.6-.8-2.95-.8zm0-4.45c-1.35 0-2.2.43-2.95.8-.65.32-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.32-1.17.6-2.05.6v1.95c1.35 0 2.2-.43 2.95-.8.65-.35 1.15-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.35 1.15-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.58.8 2.95.8v-1.95c-.9 0-1.4-.25-2.05-.6-.75-.38-1.6-.8-2.95-.8zm2.95-8.08c-.75-.38-1.58-.8-2.95-.8s-2.2.42-2.95.8c-.65.32-1.18.6-2.05.6-.9 0-1.4-.25-2.05-.6-.75-.37-1.57-.8-2.95-.8s-2.2.42-2.95.8c-.65.33-1.17.6-2.05.6v1.93c1.35 0 2.2-.43 2.95-.8.65-.33 1.17-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.32 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.58.8 2.95.8V5.04c-.9 0-1.4-.25-2.05-.58zM17 8.09c-1.35 0-2.2.43-2.95.8-.65.35-1.15.6-2.05.6s-1.4-.25-2.05-.6c-.75-.38-1.57-.8-2.95-.8s-2.2.43-2.95.8c-.65.35-1.15.6-2.05.6v1.95c1.35 0 2.2-.43 2.95-.8.65-.32 1.18-.6 2.05-.6s1.4.25 2.05.6c.75.38 1.57.8 2.95.8s2.2-.43 2.95-.8c.65-.32 1.18-.6 2.05-.6.9 0 1.4.25 2.05.6.75.38 1.58.8 2.95.8V9.49c-.9 0-1.4-.25-2.05-.6-.75-.38-1.6-.8-2.95-.8z"/></svg>
+                <p>Pression: <span>----</span> hPa</p>
+            </div>
+
+            <div class="wind-dir">
+                <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+                <p>Direction du vent: <span>---</span> deg</p>
+            </div>
+
+            <div class="wind-speed">
+                <svg viewBox="0 0 24 24"><path d="M20.38 8.57l-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44zm-9.79 6.84a2 2 0 0 0 2.83 0l5.66-8.49-8.49 5.66a2 2 0 0 0 0 2.83z"/></svg>
+                <p>Vitesse du vent: <span>--</span> m/s</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel">
+        <h4>Dernières activités</h4>
+
+        <div class="download hidden">
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            <p class="name">Chargement<span>...</span></p>
+            <span class="size">du fichier</span>
+            <div class="progress-bar"><div></div></div>
+        </div>
+
+        <div class="agenda">
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+			<h4>Aujourd'hui</h4>
+			<p>un évènement</p>
+
+            <div class="events">
+                <div>
+                    <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+                    <h4>On mange des ravioli</h4>
+                    <p>Ce soir</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="feeds">
+        <h1>Vos flux RSS</h1>
+        <p>Actualisé <span class="date"></span> · <span class="items"></span></p>
+
+        <div></div>
+    </div>
+
+<div id="modal" class="hidden" style="display: none;">
+    <div class="feeds hidden" style="display: none;">
+        <svg viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+		<h4>Gestion des flux RSS</h4>
+        <p><span>Chargement des </span> flux</p>
+
+		<div class="input url">
+			<svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+			<input type="url" autocomplete="false" placeholder="Entrez un lien RSS pour l'ajouter">
+		</div>
+
+        <div class="list"></div>
+    </div>
+
+    <div class="rename hidden" style="display: none;">
+        <svg viewBox="0 0 24 24"><defs><path id="a" d="M24 24H0V0h24v24z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><path clip-path="url(#b)" d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>
+        <h4>Renommer un fichier</h4>
+        <p>Chargement ...</p>
+
+        <div class="input text">
+			<svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+			<input type="text" autocomplete="false" placeholder="Choisissez un nouveau nom">
+		</div>
+    </div>
+
+    <div class="drive hidden" style="display: none;">
+		<div class="left">
+			<svg viewBox="0 0 24 24"><path d="M9.17 6l2 2H20v10H4V6h5.17M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+			<h4>Drive</h4>
+			<p>Chargement du drive</p>
+		</div>
+
+        <div class="right">
+            <div class="disk">
+				<svg viewBox="0 0 24 24"><path d="M18 2h-8L4.02 8 4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 6h-2V4h2v4zm3 0h-2V4h2v4zm3 0h-2V4h2v4z"/></svg>
+            	<p>Utilisation du stockage</p>
+                <div class="progress-bar"><div style="width: 35%;"></div></div>
+            </div>
+        </div>
+        
+        <div class="path" onmousedown="return false;">
+            <a class="root" onclick="socket.emit('drive.content', '')">
+				<svg viewBox="0 0 24 24"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/></svg>
+				<span class="insert-device"></span>
+			</a>
+			
+			<div></div>
+        </div>
+
+        <div class="folders"></div>
+
+        <div class="title">
+            <p class="name selected">
+                <span>Nom</span>
+                <svg onclick="displayDriveFiles(currentDrivePanel.files, 'name', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+            </p>
+
+            <p class="mtime">
+                <span>Dernière modification</span>
+                <svg onclick="displayDriveFiles(currentDrivePanel.files, 'mtime', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+            </p>
+
+            <p class="size">
+                <span>Taille</span>
+                <svg onclick="displayDriveFiles(currentDrivePanel.files, 'size', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
+            </p>
+        </div>
+
+        <div class="files"></div>
+    </div>
+
+    <div class="download hidden" style="display: none;">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+		<h4>Télécharger un fichier</h4>
+		<p>Depuis votre <span class="insert-device"></span></p>
+
+		<div class="input url">
+			<svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+			<input type="url" autocomplete="false" placeholder="Entrez l'url du fichier à télécharger">
+		</div>
+
+        <h5>Le fichier se téléchargera <span>immédiatement</span>.</h5>
+        <a onmousedown="return false" class="btn start">Démarrer</a>
+    </div>
+</div>
+
+<div id="ctx" class="hidden" style="display: none;">
+    <h4>Actions <span></span></h4>
+
+    <a class="open" target="blank">
+        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        <span>Ouvrir</span>
+    </a>
+
+    <a class="download" download target="blank">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <span>Télécharger</span>
+    </a>
+
+    <a class="feed hidden" target="blank">
+        <svg viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+        <span>Accéder à la page</span>
+    </a>
+
+    <a class="send">
+        <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z"/></svg>
+        <span>Copier</span>
+    </a>
+
+    <a class="rename br">
+        <svg viewBox="0 0 24 24"><defs><path id="a" d="M24 24H0V0h24v24z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><path clip-path="url(#b)" d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>
+        <span>Renommer</span>
+    </a>
+
+    <a class="delete">
+        <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+        <span>Supprimer</span>
+    </a>
+</div>
+
+<div id="menu" onmousedown="return false" class="hidden" style="display: none;">
+    <h4 class="insert-device">Loading ...</h4>
+
+    <a class="rss" onclick="modal.show('feeds')">
+        <svg viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+		<p>Gérer les flux RSS</p>
+		<span><b>--</b> flux</span>
+	</a>
+
+    <a class="download" onclick="modal.show('download')">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+		<p>Télécharger un fichier</p>
+		<span>depuis votre <span class="insert-device"></span></span>
+	</a>
+
+	<a class="reboot">
+        <svg viewBox="0 0 24 24"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>
+		<p>Redémarrer</p>
+		<span>le <span class="insert-device"></span></span>
+	</a>
+</div>
+
+<div id="quickhover" class="hidden">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+    <span>drive</span>
+</div>
+    
+	<script src="scripts/socket.js"></script>
+	<script src="scripts/fancy.js"></script>
+	<script src="scripts/prizm.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

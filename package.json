@@ -1,0 +1,25 @@
+{
+  "name": "nitro",
+  "version": "1.0.0",
+  "description": "the free home assistant for Raspberry Pi.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "theotimefumex@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "detect-ssid": "^1.0.3",
+    "diskusage": "^1.1.3",
+    "express": "^4.17.1",
+    "mime-types": "^2.1.24",
+    "mmmagic": "^0.5.3",
+    "request": "^2.88.0",
+    "request-progress": "^3.0.0",
+    "serve-static": "^1.14.1",
+    "snap-db": "^1.1.6",
+    "socket.io": "^2.3.0",
+    "xml2js": "^0.4.22"
+  }
+}
