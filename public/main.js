@@ -1,73 +1,6 @@
-let socket = io();
-
 function caps(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1); 
 }
-
-// latency
-
-(function() {
-	let latency = 0,
-		max = 50,
-		firstTime = new Date().getTime(),
-		word = "load ...";
-
-	setInterval(function() {
-		socket.emit("network.ping");
-		firstTime = new Date().getTime();
-	}, 2000);
-
-	socket.on("network.ping", () => {
-		latency = new Date().getTime() - firstTime;
-
-		if (latency > max) {
-			latency = max;
-		}
-
-		if (latency > 80/100*max) {
-			word = "bad";
-		} else if (latency > 50/100*max) {
-			word = "okay";
-		} else if (latency > 25/100*max) {
-			word = "good";
-		} else if (latency > 10/100*max) {
-			word = "very good";
-		} else if (latency < 10/100*max) {
-			word = "excellent";
-		}
-
-		$("#nav .network p").html(word).attr("title", "ping: "+latency+"ms");
-		$("#nav .network .progress-bar div").css("width", ((max-latency) / max * 100)+"%");
-	});
-})();
-
-let icons = {
-	ethernet: 'M7.77 6.76L6.23 5.48.82 12l5.41 6.52 1.54-1.28L3.42 12l4.35-5.24zM7 13h2v-2H7v2zm10-2h-2v2h2v-2zm-6 2h2v-2h-2v2zm6.77-7.52l-1.54 1.28L20.58 12l-4.35 5.24 1.54 1.28L23.18 12l-5.41-6.52z',
-	wifi: 'M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 2c0-3.31-2.69-6-6-6s-6 2.69-6 6c0 2.22 1.21 4.15 3 5.19l1-1.74c-1.19-.7-2-1.97-2-3.45 0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.48-.81 2.75-2 3.45l1 1.74c1.79-1.04 3-2.97 3-5.19zM12 3C6.48 3 2 7.48 2 13c0 3.7 2.01 6.92 4.99 8.65l1-1.73C5.61 18.53 4 15.96 4 13c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.96-1.61 5.53-4 6.92l1 1.73c2.99-1.73 5-4.95 5-8.65 0-5.52-4.48-10-10-10z',
-	download: 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z',
-	close: 'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
-};
-
-socket.on("network.config", data => {
-	$("#nav .network h4, #side .home span").html(data.wifi ? caps(data.ssid) : "Home");
-	$("#nav .network p").html("connected");
-	$("#nav .network .progress-bar div").css("width", "100%");
-	
-	$("#nav .network svg").removeClass("load");
-	$("#nav .network svg path").attr("d", data.wifi ? icons.wifi :  icons.ethernet);
-});
-
-let system = {};
-
-socket.on("system.config", data => {
-	system = data;
-
-	$(".insert-device").html(data.device);
-
-	if (!system.isSetup) {
-		location.href = "/setup";
-	}
-});
 
 // Weather
 socket.on("weather", data => {
@@ -121,6 +54,7 @@ socket.on("download.progress", (state) => {
 		$(base).removeClass("hidden");
 		$(".size", base).html(fancyTime(state.time.remaining));
 		$(".progress-bar > div", base).css("width", state.percent*100+"%");
+		$("#side .downloads svg path").attr("d", "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h"+state.percent*14+"v-2H5z");
 	}
 });
 
@@ -181,31 +115,6 @@ $("#modal .download a.start").on("click", function() {
 	}
 });
 
-const menu = {
-	show() {
-		$("#menu").css("display", "block");
-
-		setTimeout(function () {
-			$("#menu").removeClass("hidden");
-		}, 50);
-	},
-
-	hide() {
-		$("#menu").addClass("hidden");
-
-		setTimeout(function () {
-			$("#menu").css("display", "none");
-		}, 200);
-	}
-};
-
-$("#nav .more").on("click", menu.show);
-$("#nav .more").on("contextmenu", ev => {
-	ev.preventDefault();
-
-	menu.show();
-});
-
 const modal = {
 	show(className) {
 		if (!$("#modal").hasClass("hidden")) {
@@ -231,10 +140,19 @@ const modal = {
 
 		setTimeout(() => {
 			$("#modal > div."+className).removeClass("hidden");
+
+			if ($("#modal > div."+className+" input").first()) {
+				$("#modal > div."+className+" input").first().focus();
+			}
 		}, 200);
 	},
 
 	hide() {
+		if (!$("#modal > .drive").hasClass("hidden")) {
+			$("#side > .drive").removeClass("selected");
+			$("#side > .home").addClass("selected");
+		}
+
 		$("#modal > div").addClass("hidden");
 
 		setTimeout(() => {
@@ -248,7 +166,7 @@ const modal = {
 };
 
 $(window).on("click", function() {
-	if (!$("#modal div, #menu, #side, #ctx").is(":hover")) {
+	if (!$("#modal div, #menu, #side, #ctx, #weather .graph, #notif").is(":hover")) {
 		modal.hide();
 	}
 
@@ -282,276 +200,6 @@ socket.on("download.add", status => {
 		case 200: modal.hide(); break;
 	}
 });
-
-// Drive
-let currentDrivePanel = {
-	folders: [],
-	files: [],
-	path: "/"
-},
-currentDrivesortType = "";
-
-$("#side .drive").on("click", function() {
-	modal.show("drive");
-});
-
-function displayDrivePath(path) {
-	if (path.startsWith("/")) {
-		path = path.replace("/", "");
-	}
-
-	path = path.split("/");
-
-	
-	$("#modal .drive .path div").html("");
-
-	let i = 0;
-
-	path.forEach(el => {
-		i++;
-
-		let localPath = path.slice(0, i).join("/");
-
-		if (el != "") {
-			$("#modal .drive .path div").append(`<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg><a onclick="socket.emit('drive.content', '${localPath}')">${el}</a>`);
-		}
-	});
-}
-
-socket.on("drive.content", data => {
-	currentDrivePanel.folders = data.content.folders;
-	currentDrivePanel.files = data.content.files;
-	currentDrivePanel.path = data.path;
-
-	ctx.hide();
-
-	displayDrivePath(data.path);
-	
-	$("#modal .drive .left p").html("<span>"+data.totalFiles+"</span> fichier"+(data.totalFiles > 1 ? "s" : ""));
-
-	if (data.content.folders.length > 0) {
-		$("#modal .drive .folders").html("").removeClass("empty");
-	} else {
-		$("#modal .drive .folders").html("").addClass("empty");
-	}
-
-	data.content.folders.forEach(el => {
-		$("#modal .drive .folders").append(`<div onmousedown="return false" ondblclick="socket.emit('drive.content', '${currentDrivePanel.path+"/"+el.name}')">
-		<svg class="icon" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-		<h4 onclick="socket.emit('drive.content', '${currentDrivePanel.path+"/"+el.name}')">${el.name}</h4>
-		<p>${el.length == 0 ? "Aucun " : el.length} fichier${el.length > 1 ? "s" : ""}</p>
-		<svg onclick="socket.emit('drive.content', '${currentDrivePanel.path+"/"+el.name}')" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg>
-		<h5>${fancyDate(el.mtime)}</h5></div>`);
-	});
-
-	displayDriveFiles(data.content.files, "name", false, true);
-});
-
-function displayDriveFiles(files, factor, reverse, auto) {
-	if (!["name", "mtime", "size"].includes(factor)) {
-		return false;
-	}
-
-	if (currentDrivesortType == factor && !auto) {
-		reverse = !reverse;
-	}
-	
-	$("#modal .drive .title p").removeClass(["selected", "reversed"]);
-	$("#modal .drive .title p."+factor).addClass("selected");
-	$("#modal .drive .title ."+factor+" svg").attr("onclick", "displayDriveFiles(currentDrivePanel.files, '"+factor+"', "+reverse+")");
-
-	if (reverse) {
-		$("#modal .drive .title p."+factor).addClass("reversed");
-	} else {
-		$("#modal .drive .title p."+factor).removeClass("reversed");
-	}
-
-	currentDrivesortType = factor;
-	$("#modal .drive .files").html("");
-
-	sortDrive(files, factor, reverse).forEach(el => {
-		let fileName, extension = "";
-
-		if (el.name.includes(".")) {
-			fileName = el.name.split(".");
-			extension = "."+fileName[fileName.length -1];
-			fileName.pop();
-			fileName = fileName.join(".");
-		} else {
-			fileName = el.name;
-		}
-		
-		$("#modal .drive .files").append(`<a target="blank" href="drive${(currentDrivePanel.path+"/"+fileName+extension).replace(/\/{2,}/g, "/")}">
-		<h4 class="name">${(fileName+extension).length >= 40 ? (fileName).substring(0, 32)+"... <span>"+(extension.length > 10 ? extension.substring(0, 7)+"..." : extension)+"</span>" : fileName+"<span>"+extension+"</span>"}</h4><p class="mtime">${fancyDate(el.mtime)}</p><p class="size">${fancySize(el.size)}</p></a>`);
-	});
-
-	$("#modal .drive .files a").on("contextmenu", function(ev) {
-		ev.preventDefault();
-
-		console.log(this);
-
-		let extension = $("h4.name span", this).first() ? $("h4.name span", this).html().replace(".", "") : "",
-			fileName = $("h4.name", this).html().replace(/<span>|<\/span>/g, "");
-			
-		if (extension == "xml") {
-			$("#ctx .feed").removeClass("hidden");
-
-			let url = this.href;
-
-			$.ajax({
-				url: url,
-				async: true,
-				success(text) {
-					let parser = new DOMParser(),
-						xml = parser.parseFromString(text, "text/xml"),
-						title = xml.querySelector("channel").querySelector("title").innerHTML,
-						link = xml.querySelector("channel").querySelector("link").innerHTML;
-
-					$("#ctx .feed").attr("href", link);
-					$("#ctx .feed span").html(title);
-				}
-			});
-		} else {
-			$("#ctx .feed").addClass("hidden");
-		}
-
-		$("#ctx .open, #ctx .download").attr("href", this.href);
-		$("#ctx .delete").attr("onclick", `socket.emit("drive.delete", "${$(this).attr("href").replace("drive", "")}")`);
-		ctx.currentFilePath = $(this).attr("href");
-
-		$("#ctx .rename").off();
-
-		$("#ctx .rename").on("click", function() {
-			$('#modal .rename p').html(fileName);
-			ctx.hide();
-			modal.show('rename');
-		});
-
-		ctx.show({
-			x: ev.clientX,
-			y: ev.clientY
-		}, fileName);
-	});
-
-	if (files.length == 0) {
-		$("#modal .drive .files").html("<h2>Aucun fichier dans <span>"+(ltrim(currentDrivePanel.path.replace(/\/{2,}/g, "")).replace(/\//g, '<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>') || " /")+"</span></h2>");
-	}
-}
-
-$("#modal .rename input").on("keydown", function(e) {
-	setTimeout(() => {
-		let val = this.value;
-
-		if (/^[-\w^&'@{}[\],$=!#().éîôèêâàù\:ç%+~ ]+$/.test(val)) {
-			$(this.parentNode).removeClass("invalid");
-		} else {
-			$(this.parentNode).addClass("invalid");
-		}
-
-		if (e.keyCode == 13) {
-			if (/^[-\w^&'@{}[\],$=!#().éîôèêâàù\:ç%+~ ]+$/.test(val)) {
-				if (ctx.currentFilePath) {
-					let oldPath = ctx.currentFilePath.replace("drive", "");
-	
-					socket.emit("drive.rename", oldPath, val);
-					modal.show("drive");
-				} else {
-					alert("no file selected");
-				}
-			} else {
-				alert("not valid filename");
-			}
-		}
-	});
-});
-
-function ltrim(str) {
-	return str.replace(/^\/+/,"");
-}
-
-let ctx = {
-	currentFilePath: "",
-	
-	show(pos, subTitle) {
-		let ctxHeight = $("#ctx").first().clientHeight,
-			winHeight = window.innerHeight;
-
-		if (ctxHeight+pos.y > winHeight) {
-			pos.y = pos.y-ctxHeight;
-		}
-
-		if (subTitle) {
-			$("#ctx > h4 span").html(subTitle.length >= 15 ? subTitle.substring(0, 12)+"..." : subTitle);
-		}
-
-		$("#ctx").css({
-			display: "block",
-			top: pos.y+"px",
-			left: pos.x+"px"
-		});
-
-		setTimeout(function() {
-			$("#ctx").removeClass("hidden");
-		}, 100);
-	},
-
-	hide() {
-		$("#ctx").addClass("hidden");
-
-		setTimeout(function() {
-			$("#ctx").css("display", "none");
-		}, 300);
-	}
-};
-
-window.onresize = ctx.hide;
-
-socket.on("drive.disk", info => {
-	info.used = info.total - info.available;
-
-	$("#modal .drive .disk p").html(fancySize(info.used)+" utilisés sur "+fancySize(info.total));
-	$("#modal .drive .disk .progress-bar div").css("width", info.used/info.total*100+"%");
-});
-
-function sortDrive(files, factor, reverse) {
-	let out = [],
-		pushedIDS = [];
-
-	files.forEach(el => {
-		el.id = Math.floor(Math.random()*99999999999);
-	});
-
-	switch (factor) {
-		case "name":
-			files.sort((a,b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : ((b.name.toLowerCase() > a.name.toLowerCase()) ? -1 : 0)); 
-
-			if (reverse) {
-				files.reverse();
-			}
-		break;
-
-		case "mtime":
-			files.sort(function(a, b) {
-				return new Date(a.mtime)-new Date(b.mtime);
-			});
-
-			if (!reverse) {
-				files.reverse();
-			}
-		break;
-
-		case "size":
-			files.sort(function(a, b) {
-				return a.size-b.size;
-			});
-
-			if (!reverse) {
-				files.reverse();
-			}
-	}
-
-	return files;
-}
 
 $("#modal .feeds .input input").on("keydown", function(ev) {
 	if (ev.keyCode == 13) {
@@ -597,7 +245,7 @@ socket.on("feeds.update", (feeds, lastUpdateDate) => {
 	feeds.forEach(feed => {
 		$("#modal > .feeds > .list").append(`<div>
 		<img src="${feed.image || "blank.png"}" alt="">
-		<a target="blank" href="${feed.link}">${feed.title.length > 35 ? feed.title.substring(0, 32)+"..." : feed.title}</a>	
+		<a title="${feed.title}" target="blank" href="${feed.link}">${feed.title.length > 35 ? feed.title.substring(0, 32)+"..." : feed.title}</a>	
 		<p>${feed.description.length > 50 ? feed.description.substring(0, 47)+"..." : feed.description}</p>
 
 		<svg onclick="socket.emit('feeds.delete', ${iter})" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
@@ -639,11 +287,64 @@ socket.on("feeds.update", (feeds, lastUpdateDate) => {
 
 		$("#feeds > div").append(`<div>
 			<img src="${feed.image || "blank.png"}">
-			<a target="blank" href="${item.link}" class="title">${item.title.length > 65 ? item.title.substring(0, 62)+"..." : item.title}</a>
-			<p>${fancyDate(item.date)} · <a target="blank" class="feed" href="${feed.link}">${feed.title.length > 40 ? feed.title.substring(0, 37)+"..." : feed.title}</a></p>
+			<a title="${item.title}" ${item.content ? "onclick=\"player.play('"+item.content+"', $(this).attr(\'title\'), event)\" " : " "} title="${item.title.replace(/\'/g, "\\\'")}" target="blank" href="${item.link}" class="title">${item.title.length > 65 ? item.title.substring(0, 62)+"..." : item.title}</a>
+			<p>${fancyDate(item.date)} ·${item.contentLength ? " "+fancySize(item.contentLength)+" ·" : ""} <a target="blank" title="${feed.title}" class="feed" href="${feed.link}">${feed.title.length > 40 ? feed.title.substring(0, 37)+"..." : feed.title}</a></p>
 		</div>`);
 	});
 });
+
+// Adapted from @ref http://www.techtricky.com/javascript-code-to-scrolling-page-title/
+let titleInterval = null;
+
+function titleScroll(msg) {
+	let speed = 150,
+		endChar = " // ",
+		pos = 0;
+
+		clearInterval(titleInterval);
+
+	titleInterval = setInterval(function() {
+		var ml = msg.length;
+			
+		title = msg.substr(pos,ml) + endChar + msg.substr(0,pos);
+	  	document.title = title;
+		
+		pos++;
+
+		if (pos > ml) pos = 0;
+	}, speed);
+}
+
+const player = {
+	play(url, title, ev) {
+		ev.preventDefault();
+
+		$("#player").css("display", "block");
+		$("#player audio").attr("src", url);
+		$("#player audio").first().play();
+
+		setTimeout(function() {
+			$("#player").removeClass("hidden");
+		}, 50);
+
+		titleScroll('Lecture de "'+title+'" - Nitro');
+
+		$(ev.target.parentNode).addClass("playing");
+	},
+
+	stop() {
+		$("#player audio").first().pause();
+		$("#feeds div div").removeClass("playing");
+		$("#player").addClass("hidden");
+
+		setTimeout(function() {
+			$("#player").css("display", "none");
+		}, 200);
+
+		clearInterval(titleInterval);
+		document.title = "Nitro assistant";
+	}
+};
 
 function sortFeedsItems(items) {
 	items.sort(function(a, b) {
@@ -674,6 +375,10 @@ const quickhover = {
 				className = "drive";
 				icon = "M18 2h-8L4.02 8 4 20c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 6h-2V4h2v4zm3 0h-2V4h2v4zm3 0h-2V4h2v4z";
 			}
+		} else if (data.player) {
+			icon = "M8 5v14l11-7z";
+			className = "drive";
+			text = 'Lire "'+(data.title.length > 30 ? data.title.replace(/\\/g, "").substring(0, 27)+"..." : data.title.replace(/\\/g, ""))+'"';
 		}
 
 		$("#quickhover span").html(decodeURIComponent(text));
@@ -697,14 +402,279 @@ const quickhover = {
 	}
 };
 
+$(window).on("scroll", quickhover.hide);
+
 $(window).on("mousemove", function(ev) {
-	if ($("a[href]").is(":hover")) {
+	let nodes = $("a[href]:not([noQuickhover])");
+
+	if (nodes.is(":hover")) {
+		let node = $(nodes.filter(":hover"));
+
+		if ($("#side a").is(":hover")) {
+			return false;
+		}
+
 		quickhover.show({
 			x: ev.clientX,
 			y: ev.clientY,
-			url: $($("a[href]").filter(":hover")).prop("href")
+			url: node.prop("href"),
+			player: node.attr("onclick") && node.attr("onclick").startsWith("player.play"),
+			title: node.attr("title")
 		});
 	} else {
 		quickhover.hide();
 	}
 });
+
+(function() {
+	var ctx = document.getElementById('weather-analytics').getContext('2d');
+	var chart = new Chart(ctx, {
+		// The type of chart we want to create
+		type: 'line',
+	
+		// The data for our dataset
+		data: {
+			labels: [],
+			datasets: [{
+				label: 'Température',
+				borderColor: '#4a94ff',
+				backgroundColor: "#bfd9ff",
+				data: []
+			}]
+		},
+
+		// Configuration options go here
+		options: {
+			hover: {
+            	animationDuration: 150 // duration of animations when hovering an item
+        	},
+		}
+	});
+
+	socket.on("weather.analytics", lastWeek => {
+		lastWeek.forEach(day => {
+			addData(fancyDate(day.time), day.value);
+		});
+	});
+
+	function addData(label, data) {
+		chart.data.labels.push(label);
+		chart.data.datasets.forEach((dataset) => {
+			dataset.data.push(data);
+		});
+		chart.update();
+	}
+})();
+
+function restart() {
+	for (let i = 0; i<$("#side > a").selector.length; i++) {
+		setTimeout(function() {
+			$($("#side > a").selector[i]).addClass("hidden");
+		}, i*50+25);
+	}
+
+	$("#panel, #feeds, #weather").addClass("hidden");
+
+	menu.hide();
+
+	$("#reboot").css("display", "flex");
+
+	setTimeout(function() {
+		$("#reboot > div").removeClass("hidden");
+	}, 100);
+}
+
+socket.on("system.restarted", function() {
+	for (let i = 0; i<$("#side > a").selector.length; i++) {
+		setTimeout(() => {
+			$($("#side > a").selector[i]).removeClass("hidden");
+		}, i*50+25);
+	}
+
+	$("#panel, #feeds, #weather").removeClass("hidden");
+
+	menu.hide();
+
+	$("#reboot > div").addClass("hidden");
+
+	setTimeout(function() {
+		$("#reboot").css("display", "none");
+	}, 400);
+});
+
+socket.on("system.restart", function() {
+	restart();
+	$("#reboot .progress-bar div").css("width", "33%");
+});
+
+function blobToFile(theBlob, fileName){
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
+}
+
+(function() {
+	let theCoolWord = "Hey",
+		hours = new Date().getHours();
+
+	if (hours > 4 && hours <= 9) {
+		theCoolWord = "Bon réveil";
+	} if (hours > 9 && hours <= 11) {
+		theCoolWord = "Bonjour";
+	} else if (hours > 11  && hours <= 13) {
+		theCoolWord = "Bon appétit";
+	} else if (hours > 13 && hours <= 19) {
+		theCoolWord = "Bon après-midi";
+	} else if (hours > 19 && hours <= 22) {
+		theCoolWord = "Bonsoir";
+	} else if (hours > 22 || hours <= 4) {
+		theCoolWord = "Bonne nuit";
+	}
+
+	$("#hi h1 b").html(theCoolWord);
+})();
+
+connect.callbacks.push(function(user) {
+	if (user) {
+		$("#hi h1 span").html(user.name.split(" ")[0]+" ").addClass("filled");
+
+		if (user.avatar.toLowerCase().endsWith("jpg") || user.avatar.toLowerCase().endsWith("jpeg")) {
+			pathToBlob(user.avatar, blob => {
+				orientation(blobToFile(blob), function(url, value){
+					console.log(ORIENT_TRANSFORMS[value]);
+				});
+			});
+		}
+	}
+});
+
+function _arrayBufferToBase64( buffer ) {
+	var binary = '';
+	var bytes = new Uint8Array( buffer );
+	var len = bytes.byteLength;
+	for (var i = 0; i < len; i++) {
+	  binary += String.fromCharCode( bytes[ i ] );
+	}
+	return window.btoa( binary );
+  }
+  var orientation = function(file, callback) {
+	var fileReader = new FileReader();
+	fileReader.onloadend = function() {
+	  var base64img = "data:"+file.type+";base64," + _arrayBufferToBase64(fileReader.result);
+	  var scanner = new DataView(fileReader.result);
+	  var idx = 0;
+	  var value = 1; // Non-rotated is the default
+	  if(fileReader.result.length < 2 || scanner.getUint16(idx) != 0xFFD8) {
+		// Not a JPEG
+		if(callback) {
+		  callback(base64img, value);
+		}
+		return;
+	  }
+	  idx += 2;
+	  var maxBytes = scanner.byteLength;
+	  while(idx < maxBytes - 2) {
+		var uint16 = scanner.getUint16(idx);
+		idx += 2;
+		switch(uint16) {
+		  case 0xFFE1: // Start of EXIF
+			var exifLength = scanner.getUint16(idx);
+			maxBytes = exifLength - idx;
+			idx += 2;
+			break;
+		  case 0x0112: // Orientation tag
+			// Read the value, its 6 bytes further out
+			// See page 102 at the following URL
+			// http://www.kodak.com/global/plugins/acrobat/en/service/digCam/exifStandard2.pdf
+			value = scanner.getUint16(idx + 6, false);
+			maxBytes = 0; // Stop scanning
+			break;
+		}
+	  }
+	  if(callback) {
+		callback(base64img, value);
+	  }
+	};
+	fileReader.readAsArrayBuffer(file);
+  };
+
+const ORIENT_TRANSFORMS = {
+    1: '',
+    2: 'rotateY(180deg)',
+    3: 'rotate(180deg)',
+    4: 'rotate(180deg) rotateY(180deg)',
+    5: 'rotate(270deg) rotateY(180deg)',
+    6: 'rotate(90deg)',
+    7: 'rotate(90deg) rotateY(180deg)',
+    8: 'rotate(270deg)'
+};
+
+function pathToBlob(path, cb) {
+	fetch(path)
+	.then(function(response) {
+	  return response.blob();
+	})
+	.then(function(myBlob) {
+		cb(myBlob);
+	});
+}
+
+/*
+ * http://stackoverflow.com/a/32490603
+ */
+function getOrientation( file ) {
+    return new Promise( ( resolve, reject ) => {
+        const reader = new FileReader();
+
+        reader.onerror = reject;
+        
+        reader.onload = ( { target } ) => {
+            try {
+                const view = new DataView( target.result ),
+                      length = view.byteLength;
+                let offset = 2;
+
+                if( view.getUint16(0, false) != 0xFFD8 ) {
+                    return reject( new Error( 'File is not a .jpeg'));
+                }
+
+                while( offset < length ) {
+                    const marker = view.getUint16( offset, false );
+                    offset += 2;
+
+                    if (marker == 0xFFE1) {
+                        if( view.getUint32( offset += 2, false ) != 0x45786966 ) {
+                            return resolve();
+                        }
+
+                        const little = view.getUint16(offset += 6, false) == 0x4949;
+                        offset += view.getUint32(offset + 4, little);
+
+                        const tags = view.getUint16(offset, little);
+                        offset += 2;
+
+                        for( var i = 0; i < tags; i++ ) {
+                            if( view.getUint16( offset + ( i * 12 ), little ) == 0x0112 ) {
+                                return resolve( view.getUint16( offset + ( i * 12 ) + 8, little ) );
+                            }
+                        }
+
+                    } else if( ( marker & 0xFF00 ) != 0xFF00 ) {
+                        break;
+                    } else {
+                        offset += view.getUint16( offset, false );
+                    }
+                }
+
+                return resolve();
+            } catch( err ) {
+                return reject( err );
+            }
+        };
+        
+        reader.readAsArrayBuffer( file.slice( 0, 64 * 1024 ) );
+    });
+}
+
+connect.login();

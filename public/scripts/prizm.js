@@ -9,7 +9,7 @@ __________________________________________________
 --- Prizm Framework © CC BY SA 2019 theotime.me ---
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-  > core($) | ajax
+  > core($) | ajax | get | cookies
 
     http://pzm.rf.gd/c/gY
 
@@ -24,5 +24,11 @@ function Prizm(e,t){if(!(this instanceof Prizm))return new Prizm(e,t);if("functi
 // ajax package | http://pkg.rf.gd/ajax
 Prizm.ajax=({url:e,method:t,data:s,async:n,headers:a,success:o,error:r,progress:p,parse:l})=>{t=null!=t?t.toUpperCase():"GET",n=n||!1,l=void 0===l||l;var d=new XMLHttpRequest;if(d.open(t,e,n),d.onload=function(){4===d.readyState&&(200===d.status?o&&(null!=d.getResponseHeader("content-type")&&d.getResponseHeader("content-type").startsWith("application/json")&&1==l?o(JSON.parse(d.response)):d.getResponseHeader("content-type")?o(d.response,d.getResponseHeader("content-type")):o(d.response,null)):r&&r(d.status))},d.onerror=function(){r(d.status)},p&&d.addEventListener("progress",(function(e){e.lengthComputable&&p(e.loaded/e.total*100)})),null!=a&&Object.keys(a).forEach(e=>{d.setRequestHeader(e,a[e])}),"POST"==t&&null!=s){var u=new FormData;Object.keys(s).forEach(e=>{u.append(e,s[e])}),d.send(u)}else d.send(null)};
 
+// get package | http://pkg.rf.gd/get
+Prizm.get=e=>{var i={};return window.location.href.replace(location.hash,"").replace(/[?&]+([^=&]+)=?([^&]*)?/gi,(function(e,n,o){i[n]=void 0!==o?o:""})),e?i[e]?i[e]:null:i};
+
+// cookies package | http://pkg.rf.gd/cookies
+Prizm.setCookie=(e,t,i)=>{var o="";if(i){var r=new Date;r.setTime(r.getTime()+24*i*60*60*1e3),o="; expires="+r.toUTCString()}document.cookie=e+"="+(t||"")+o+"; path=/"},Prizm.getCookie=e=>{let t=e+"=",i=decodeURIComponent(document.cookie).split(";");for(let e=0;e<i.length;e++){let o=i[e];for(;" "==o.charAt(0);)o=o.substring(1);if(0==o.indexOf(t))return o.substring(t.length,o.length)}return""};
+
 // PRIZM metadata
-Prizm.packages=['ajax'];Prizm.alias='$';Prizm.config='http://pzm.rf.gd/c/gY';window['$'] = Prizm;
+Prizm.packages=['ajax','get','cookies'];Prizm.alias='$';Prizm.config='http://pzm.rf.gd/c/gY';window['$'] = Prizm;

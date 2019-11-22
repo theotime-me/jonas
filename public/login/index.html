@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connexion à Nitro</title>
+    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/medias/favicon.svg" type="image/svg">
+</head>
+<body>
+    <div id="side">
+        <svg class="logo" viewBox="0 0 120 225">
+            <path d="M74 0L0 124H74V0Z"/>
+            <path d="M46 225L120 101L46 101L46 225Z"/>
+        </svg>
+
+        <a class="selected login">
+            <p>Connexion</p>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        </a>
+
+        <a class="signup">
+            <p>Inscription</p>
+            <svg viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+		</a>
+		
+		<a class="settings">
+            <p>Réglages</p>
+            <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </a>
+    </div>
+
+    <div id="wrapper">
+        <div class="box">
+            <h4>Connexion</h4>
+
+            <div class="input username">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78C15.57 19.36 13.86 20 12 20s-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33C4.62 15.49 4 13.82 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"/></svg>
+                <img src="" class="hidden">
+                <input type="text" placeholder="Nom d'utilisateur" autocomplete="off">
+            </div>
+
+            <div class="autocomplete hidden"></div>
+
+            <div class="input password">
+                <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                <input type="text" placeholder="Mot de passe" autocomplete="off">
+            </div>
+
+            <a onclick="sendLogin()" onmousedown="return false;">
+                <p>Continuez</p>
+                <span>avec votre compte</span>
+                <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+            </a>
+        </div>
+    </div>
+    
+    <script src="../scripts/fancy.js"></script>
+    <script src="../scripts/socket.js"></script>
+    <script src="../scripts/prizm.js"></script>
+    <script src="../scripts/connect.js"></script>
+    <script src="../scripts/ui.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

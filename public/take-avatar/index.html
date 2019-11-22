@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Take avatar - Nitro assistant</title>
+    <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../medias/favicon.svg" type="image/svg">
+</head>
+<body>
+    <svg class="logo" viewBox="0 0 120 225">
+        <path d="M74 0L0 124H74V0Z"/>
+        <path d="M46 225L120 101L46 101L46 225Z"/>
+    </svg>
+
+    <form class="send" action="fileupload" method="post" enctype="multipart/form-data">
+        <div class="top left"></div>
+        <div class="top right"></div>
+        <div class="bottom right"></div>
+        <div class="bottom left"></div>
+
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+        <img class="hidden" src="../blank.png" alt="">
+        <p>Prendre votre nouvelle photo de profil.</p>
+        <input type="file" id="input" accept="image/*"></input>
+        <label for="input"></label>
+    </form>
+    
+    
+    <script src="../scripts/delivery.js"></script>
+	<script src="../scripts/socket.js"></script>
+	<script src="../scripts/fancy.js"></script>
+	<script src="../scripts/prizm.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

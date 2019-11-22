@@ -6,7 +6,12 @@
     "system": {
         "device": "Raspberry-Pi",
         "icon": "",
-        "isSetup": false
+        "lang": "fr",
+        "isSetup": true,
+        "wifi": false
+    },
+    "interface": {
+        "color": "yellow"
     },
     "downloads": {
         "folder": "Téléchargements",
@@ -16,8 +21,8 @@
         "list": [
             "http://radiofrance-podcast.net/podcast09/rss_14312.xml",
             "https://www.arteradio.com/xml_sound_emission?emissionname=%22D%C3%89P%C3%8ACHE%20!%22",
-            "http://radiofrance-podcast.net/podcast09/rss_11673.xml",
-            "http://radiofrance-podcast.net/podcast09/rss_11673.xml"
+            "https://www.lefigaro.fr/rss/figaro_actualites.xml",
+            "https://feeds.mozilla-podcasts.org/irl"
         ]
     }
 }

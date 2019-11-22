@@ -1,5 +1,5 @@
 function upCase(str) {
-    return str.substring(0, 1).toUpperCase()+str.substring(1);
+    return str.substring(0, 1).toUpperCase()+str.substring(1).toLowerCase();
 }
 
 function fancySize(bytes) {
@@ -26,17 +26,18 @@ function fancyTime(seconds) {
     }
 }
 
-function fancyDate(date) {
+function fancyDate(date, notExact) {
     if (!date) {
         return false;
     }
 
-    let d = new Date(date).getTime(),
+        date = new Date(date);
+    let d = date.getTime(),
         diff = new Date().getTime() - d,
-        day = new Date(date).getDay(),
-        dateInMonth = new Date(date).getDate(),
-        month = new Date(date).getMonth(),
-        year = new Date(date).getFullYear(),
+        day = date.getDay(),
+        dateInMonth = date.getDate(),
+        month = date.getMonth(),
+        year = date.getFullYear(),
         out = "";
 
     day = [
@@ -50,18 +51,18 @@ function fancyDate(date) {
     ][day];
 
     month = [
-        "Janvier",
-        "Février",
+        "Jan.",
+        "Fév.",
         "Mars",
-        "Avril",
+        "Avr.",
         "Mai",
         "Juin",
-        "Juillet",
+        "Juil.",
         "Août",
-        "Septembre",
-        "Octobre",
-        "Novembre",
-        "Decembre"
+        "Sept.",
+        "Oct.",
+        "Nov.",
+        "Déc."
     ][month];
 
     if (diff < 86400000) {
@@ -75,9 +76,9 @@ function fancyDate(date) {
             out = "Il y a "+Math.floor(diff/3600000)+" heure"+(Math.floor(diff/3600000) > 1 ? "s" : "");
         }
     } else if (diff < 172800000) {
-        out = "Hier";
+        out = "Hier"+(!notExact ? (", "+(date.getHours() < 10 ? "0"+date.getHours() : date.getHours())+":"+(date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes())) : "");
     } else if (diff < 604800000) {
-        out = upCase(day);
+        out = upCase(day)+", "+(date.getHours() < 10 ? "0"+date.getHours() : date.getHours())+":"+(date.getMinutes() < 10 ? "0"+date.getMinutes() : date.getMinutes());
     } else {
         out = dateInMonth+" "+(month.length > 4 ? month.substring(0, 4)+"." : month)+" "+year;
     }
