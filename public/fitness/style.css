@@ -1,0 +1,453 @@
+html {
+    overflow-y: scroll;
+}
+
+#wrapper {
+    font-family: "Roboto", sans-serif;
+    margin-left: 140px;
+    margin-top: 50px;
+}
+
+#wrapper .intro {
+    width: 50%;
+    margin-bottom: 50px;
+}
+
+#wrapper .intro h1 {
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+#wrapper .intro h1 span {
+    color: #fc1b75;
+    border-bottom: 5px solid #fc1b75;
+}
+
+#wrapper .intro svg {
+    width: 38px;
+    margin-right: 20px;
+    margin-top: 20px;
+    float: left;
+    animation: beat .8s ease infinite;
+    -webkit-animation: beat .8s ease infinite;
+}
+
+@keyframes beat {
+    30% { transform: scale(1); -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); }
+    40% { transform: scale(1.15); -webkit-transform: scale(1.15); -moz-transform: scale(1.15); -ms-transform: scale(1.15); -o-transform: scale(1.15); }
+    50% { transform: scale(1); -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); }
+}
+
+#wrapper .intro p {
+    margin-top: 33px;
+}
+
+#wrapper .intro p span {
+    opacity: .4;
+}
+
+#wrapper .intro .progress {
+    width: 250px;
+    height: 15px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-top: 3px;
+    float: left;
+}
+
+#wrapper .intro .progress > div {
+    height: 100%;
+    background-color: #fc1b75;
+    border-right: 3px solid #fff;
+    float: left;
+}
+
+#wrapper .intro .progress > div:first-of-type {
+    border-radius: 5px 0px 0px 5px;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    -ms-border-radius: 5px 0px 0px 5px;
+    -o-border-radius: 5px 0px 0px 5px;
+}
+
+#wrapper .daily {
+    width: 450px;
+    height: 150px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#wrapper .daily.hidden {
+    opacity: 0;
+    transform: translateX(-200px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+}
+
+#wrapper .daily .img {
+    width: 150px;
+    height: 100%;
+    margin-right: 25px;
+    background-color: #eee;
+    background-size: cover;
+    border-radius: 10px 0px 0px 10px;
+    -webkit-border-radius: 10px 0px 0px 10px;
+    -moz-border-radius: 10px 0px 0px 10px;
+    -ms-border-radius: 10px 0px 0px 10px;
+    -o-border-radius: 10px 0px 0px 10px;
+    float: left;
+}
+
+#wrapper .daily p {
+    font-size: 16px;
+    color: #444;
+    display: block;
+    padding-top: 17px;
+    margin-bottom: 15px;
+}
+
+#wrapper .daily h4 {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+#wrapper .daily .time {
+    margin-right: 15px;
+    float: left;
+}
+
+#wrapper .daily .time svg {
+    width: 22px;
+    margin-right: 5px;
+    float: left;
+}
+
+#wrapper .daily .btn {
+    font-family: "Lexend Deca", sans-serif;
+    margin-right: 5px;
+    padding: 2px 10px;
+    padding-right: 20px;
+    margin-top: -2px;
+    display: block;
+    fill: #dd1d6a;
+    color: #dd1d6a;
+    border-left: 2px solid rgba(0, 0, 0, .3);
+    float: left;
+    cursor: pointer;
+    transition: .15s ease;
+    -webkit-transition: .15s ease;
+    -moz-transition: .15s ease;
+    -ms-transition: .15s ease;
+    -o-transition: .15s ease;
+}
+
+#wrapper .daily .btn svg {
+    width: 24px;
+    margin-right: 8px;
+    float: left;
+}
+
+#wrapper .daily .btn span {
+    display: block;
+    margin-top: 2px;
+    float: left;
+}
+
+#wrapper .daily .btn:hover {
+    background-color: #fc1b75;
+    border-left: 2px solid transparent;
+    padding: 4px 10px;
+    padding-right: 20px;
+    margin-top: -4px;
+    fill: #fff;
+    color: #fff;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#editing {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .8);
+    left: 0;
+    top: 0;
+    z-index: 10;
+    perspective: 700px;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#editing.hidden {
+    opacity: 0;
+}
+
+#editing .alternated {
+    width: 350px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, .3);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#editing .alternated .type {
+    height: 30px;
+}
+
+#editing .alternated .type * {
+    float: left;
+}
+
+#editing .alternated .type p {
+    margin-right: 20px;
+}
+
+#editing div {
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -ms-transition: .3s ease;
+    -o-transition: .3s ease;
+}
+
+#editing div.hidden {
+    opacity: 0;
+    transform: rotateY(-90deg) translateX(-200px) scale(.8);
+    -webkit-transform: rotateY(-90deg) translateX(-200px) scale(.8);
+    -moz-transform: rotateY(-90deg) translateX(-200px) scale(.8);
+    -ms-transform: rotateY(-90deg) translateX(-200px) scale(.8);
+    -o-transform: rotateY(-90deg) translateX(-200px) scale(.8);
+}
+
+#editing div .title {
+    margin-top: 10px;
+}
+
+#editing div .title svg {
+    width: 32px;
+    margin-right: 10px;
+    float: left;
+}
+
+#editing div .title h4 {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 18px;
+    padding-top: 5px;
+}
+
+#editing div .select {
+    padding: 5px;
+    height: 24px;
+    width: 130px;
+    background-color: rgba(0, 0, 0, .15);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#editing div .select select {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 18px;
+    color: #222;
+    width: 100px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background-color: transparent;
+    float: left;
+}
+
+#editing div .select svg {
+    width: 24px;
+    float: left;
+}
+
+#editing > div > div {
+    padding-left: 20px;
+}
+
+#editing > div > div:not(.title):not(.finish):not(.progress) {
+    padding: 15px 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+}
+
+#editing > div > div p {
+    margin-bottom: 10px;
+}
+
+#editing div .input {
+    height: 40px;
+    width: 230px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: default;
+    transition: .1s ease;
+    -webkit-transition: .1s ease;
+    -moz-transition: .1s ease;
+    -ms-transition: .1s ease;
+    -o-transition: .1s ease;
+}
+
+#editing div .input:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+#editing div .input:hover svg {
+    opacity: 1;
+    background-color: #fff;
+}
+
+#editing div .input:hover p {
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    border-right: 2px solid rgba(0, 0, 0, .1);
+}
+
+#editing div .input p {
+    padding: 0px 15px;
+    margin: 0px 15px;
+    width: 100px;
+    border-left: 2px solid rgba(0, 0, 0, .3);
+    border-right: 2px solid rgba(0, 0, 0, .3);
+}
+
+#editing div .input svg {
+    padding: 4px;
+    width: 20px;
+    opacity: .2;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    transition: .1s ease;
+    -webkit-transition: .1s ease;
+    -moz-transition: .1s ease;
+    -ms-transition: .1s ease;
+    -o-transition: .1s ease;
+}
+
+#editing div .input svg:active {
+    opacity: .5;
+}
+
+#editing div .finish {
+    padding-top: 15px;
+}
+
+#editing div .finish p {
+    width: 80%;
+}
+
+#editing div .finish svg {
+    width: 24px;
+    fill: #333;
+    margin-right: 10px;
+    float: left;
+}
+
+#editing div .progress {
+    width: calc(100% - 50px);
+    height: 15px;
+    margin-top: 20px;
+    margin-left: 25px;
+    padding-left: 0px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#editing div .progress div:first-of-type {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#editing div .progress div:last-of-type {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#editing div .progress div {
+    height: 100%;
+    float: left;
+}
+
+#editing div .progress .action { background-color: #FF4136; }
+#editing div .progress .sleep { background-color: #4aabff; }
+
+#editing div .start {
+    font-family: "Lexend Deca", sans-serif;
+    padding: 10px;
+    background-color: #1a94ff;
+    fill: #fff;
+    color: #fff;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 0px 5px 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -ms-border-radius: 0px 0px 5px 5px;
+    -o-border-radius: 0px 0px 5px 5px;
+    cursor: pointer;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#editing div .start:hover {
+    background-color: #0b71ca;
+}
+
+#editing div .start svg {
+    width: 30px;
+    margin-right: 10px;
+}
+
+#editing div .start span {
+    opacity: .65;
+}

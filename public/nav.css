@@ -7,8 +7,18 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     --accent: #ffdd00;
     --accent-dark: #665800;
     --accent-shadow: rgba(102, 88, 0, .6);
+    --player-color: #ffdd00;
 
     --red: #FF4136;
+}
+
+#nav.loading {
+    opacity: 0;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
 }
 
 #nav {
@@ -16,12 +26,16 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    transition: opacity .3s ease, transform .3s ease;
+    -webkit-transition: opacity .3s ease, transform .3s ease;
+    -moz-transition: opacity .3s ease, transform .3s ease;
+    -ms-transition: opacity .3s ease, transform .3s ease;
+    -o-transition: opacity .3s ease, transform .3s ease;
 }
 
 #nav .logo {
-    height: 45px;
-    width: 80px;
-    margin-top: 10px;
+    height: 30px;
+    margin-top: 15px;
     margin-left: calc(80px + 48px);
     padding-right: 5px;
     float: left;
@@ -41,9 +55,9 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
 }
 
 #nav .search {
-    width: 50%;
+    width: calc(100% - 700px);
     height: 48px;
-    margin-left: 96px;
+    margin-left: 50px;
     background-color: rgba(0, 0, 0, .07);
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -52,6 +66,18 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     -o-border-radius: 10px;
     box-sizing: border-box;
     display: inline-block;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#nav .search.focus {
+    background-color: #fff;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, .2);
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 #nav .search svg {
@@ -75,6 +101,7 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
 }
 
 #nav .right {
+    margin-top: 5px;
     float: right;
 }
 
@@ -132,10 +159,9 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     margin-top: 4px;
 }
 
-#nav .right .more {
+#nav .right .more, #nav .right .messages {
     width: 30px;
     margin-right: 20px;
-    margin-left: 20px;
     padding: 2px;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -144,7 +170,12 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     -o-border-radius: 5px;
 }
 
-#nav .right .more:hover {
+#nav .right .messages {
+    padding: 5px;
+    width: 24px;
+}
+
+#nav .right .more:hover, #nav .right .messages:hover {
     background-color: rgba(0, 0, 0, .05);
 }
 
@@ -1117,6 +1148,18 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     white-space: normal;
     word-break: normal;
     padding: 0px 20px;
+
+    scrollbar-color: rgba(0, 0, 0, .3) #fff;
+    scrollbar-width: thin;
+}
+
+#messages .dialog .messages::-webkit-scrollbar {
+    background-color: #fff;
+    width: 6px;
+}
+
+#messages .dialog .messages::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .3);
 }
 
 #messages .separator {
@@ -1336,4 +1379,89 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
+}
+
+#search {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, .2);
+    border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -ms-border-radius: 0px 0px 10px 10px;
+    -o-border-radius: 0px 0px 10px 10px;
+    background-color: #fff;
+    max-height: 400px;
+    overflow: hidden;
+    transition: max-height .2s ease;
+    z-index: 5;
+    position: absolute;
+    -webkit-transition: max-height .2s ease;
+    -moz-transition: max-height .2s ease;
+    -ms-transition: max-height .2s ease;
+    -o-transition: max-height .2s ease;
+}
+
+#search > div {
+    transition: transform .2s ease-out, opacity .2s ease;
+    -webkit-transition: transform .2s ease-out, opacity .2s ease;
+    -moz-transition: transform .2s ease-out, opacity .2s ease;
+    -ms-transition: transform .2s ease-out, opacity .2s ease;
+    -o-transition: transform .2s ease-out, opacity .2s ease;
+}
+
+#search > div.nothing {
+    opacity: .5;
+}
+#search > div.launched {
+    opacity: 0;
+    transform: translateX(450px);
+    -webkit-transform: translateX(450px);
+    -moz-transform: translateX(450px);
+    -ms-transform: translateX(450px);
+    -o-transform: translateX(450px);
+}
+
+#search > div.nothing:hover, #search > div.noHover:hover {
+    background-color: transparent;
+}
+
+#search.hidden {
+    max-height: 0px;
+    box-shadow: 0px 5px 5px transparent;
+}
+
+#search > div {
+    font-family: "Roboto", sans-serif;
+    padding: 10px 20px;
+    cursor: default;
+}
+
+#search > div:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+#search > div h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#search > div span {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .7);
+}
+
+#search > div svg, #search > div img {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    margin-top: 8px;
+    float: left;
+}
+
+#search > div img {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
 }

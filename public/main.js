@@ -11,7 +11,7 @@ socket.on("weather", data => {
 	let json = JSON.parse(data);
 
 	$("#weather img").attr("src", "https://openweathermap.org/img/wn/"+json.weather[0].icon+"@2x.png");
-	$("#weather h1").html(Math.floor(json.main.temp)+"°");
+	$("#weather h1").html(Math.floor(json.main.temp*10)/10+"°");
 	$("#weather .right p a").html(json.name).attr("href", "https://www.google.com/maps/place/"+json.name);
 	$("#weather .right h4").html(caps(json.weather[0].description)).attr("href", "https://www.google.com/maps/place/"+json.name);
 
@@ -172,10 +172,6 @@ $(window).on("click", function() {
 
 	if (!$("#menu, #nav .more").is(":hover")) {
 		menu.hide();
-	}
-
-	if (!$("#ctx").is(":hover")) {
-		ctx.hide();
 	}
 });
 
@@ -514,27 +510,6 @@ function blobToFile(theBlob, fileName){
     return theBlob;
 }
 
-(function() {
-	let theCoolWord = "Hey",
-		hours = new Date().getHours();
-
-	if (hours > 4 && hours <= 9) {
-		theCoolWord = "Bon réveil";
-	} if (hours > 9 && hours <= 11) {
-		theCoolWord = "Bonjour";
-	} else if (hours > 11  && hours <= 13) {
-		theCoolWord = "Bon appétit";
-	} else if (hours > 13 && hours <= 19) {
-		theCoolWord = "Bon après-midi";
-	} else if (hours > 19 && hours <= 22) {
-		theCoolWord = "Bonsoir";
-	} else if (hours > 22 || hours <= 4) {
-		theCoolWord = "Bonne nuit";
-	}
-
-	$("#hi h1 b").html(theCoolWord);
-})();
-
 connect.callbacks.push(function(user) {
 	if (user) {
 		$("#hi h1 span").html(user.name.split(" ")[0]+" ").addClass("filled");
@@ -547,6 +522,26 @@ connect.callbacks.push(function(user) {
 			});
 		}
 	}
+
+	let theCoolWord = "Hey",
+	hours = new Date().getHours();
+
+	if (hours > 4 && hours <= 9) {
+		theCoolWord = upCase(translation["good wake up"]);
+	} if (hours > 9 && hours <= 11) {
+		theCoolWord = upCase(translation["good morning"]);
+	} else if (hours > 11  && hours <= 13) {
+		theCoolWord = upCase(translation["good appetite"]);
+	} else if (hours > 13 && hours <= 19) {
+		theCoolWord = upCase(translation["good afternoon"]);
+	} else if (hours > 19 && hours <= 22) {
+		theCoolWord = upCase(translation["good evening"]);
+	} else if (hours > 22 || hours <= 4) {
+		theCoolWord = upCase(translation["good night"]);
+	}
+
+	$("#hi h1 b").html(theCoolWord);
+	$("#hi p").html(translation["home sentence"]);
 });
 
 function _arrayBufferToBase64( buffer ) {

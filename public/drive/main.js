@@ -1,51 +1,4 @@
-let filesIcons = {
-    texture: 'M19.51 3.08L3.08 19.51c.09.34.27.65.51.9.25.24.56.42.9.51L20.93 4.49c-.19-.69-.73-1.23-1.42-1.41zM11.88 3L3 11.88v2.83L14.71 3h-2.83zM5 3c-1.1 0-2 .9-2 2v2l4-4H5zm14 18c.55 0 1.05-.22 1.41-.59.37-.36.59-.86.59-1.41v-2l-4 4h2zm-9.71 0h2.83L21 12.12V9.29L9.29 21z',
-    code: 'M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z',
-    default: 'M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z',
-    text: 'M14 17H4v2h10v-2zm6-8H4v2h16V9zM4 15h16v-2H4v2zM4 5v2h16V5H4z',
-    picture: 'M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z',
-    music: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z',
-    video: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z',
-    archive: 'M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM12 17.5L6.5 12H10v-2h4v2h3.5L12 17.5zM5.12 5l.81-1h12l.94 1H5.12z',
-    gif: 'M11.5 9H13v6h-1.5zM9 9H6c-.6 0-1 .5-1 1v4c0 .5.4 1 1 1h3c.6 0 1-.5 1-1v-2H8.5v1.5h-2v-3H10V10c0-.5-.4-1-1-1zm10 1.5V9h-4.5v6H16v-2h2v-1.5h-2v-1z',
-},
-
-extToIcon = {
-    svg: "texture",
-    html: "code",
-    css: "code",
-    js: "code",
-    png: "picture",
-    jpg: "picture",
-    jpeg: "picture",
-    tiff: "picture",
-    gif: "gif",
-    zip: "archive",
-    rar: "archive",
-    gz: "archive",
-    mp4: "video",
-    mkv: "video",
-    ogg: "video",
-    mp3: "music",
-    wav: "music",
-};
-
-function getIconFromExt(ext) {
-    if (ext.startsWith(".")) {
-        ext = ext.replace(".", "");
-    }
-
-    ext = ext.trim();
-
-    if (Object.keys(extToIcon).includes(ext)) {
-        return filesIcons[extToIcon[ext]];
-    } else {
-        return filesIcons.default;
-    }
-}
-
 socket = io("/drive");
-
 
 // Drive
 let currentDrivePanel = {
@@ -54,6 +7,80 @@ let currentDrivePanel = {
 	path: "/"
 },
 currentDrivesortType = "";
+
+const viewer = {
+	accepted: ["json", "mp4", "ogg", "mp3", "webm", "gif", "jpeg", "jpg", "png", "pdf", "html"],
+
+	view(path) {
+		let ext = path.split(".");
+			ext = ext[ext.length -1].toLowerCase();
+
+		let	name = path.split("/");
+			name = name[name.length -1].split(".");
+			name.pop();
+			name = decodeURIComponent(name.join(".")).replace("/", "");
+
+		if (!this.accepted.includes(ext)) {
+			var link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+    			link.href = path;
+    			link.target = '_blank';
+    			var event = new MouseEvent('click', {
+    			    'view': window,
+    			    'bubbles': false,
+    			    'cancelable': true
+				});
+
+				link.dispatchEvent(event);
+
+			return false;
+		}
+
+		this.launch(path, ext, name);
+
+		$("#viewer").css("display", "");
+
+		setTimeout(() => {
+			$("#viewer").removeClass("hidden");
+		}, 50);
+	},
+
+	launch(path, ext, name) {
+		$("#viewer .header h4").html(name);
+		$("#viewer .header .icon path").attr("d", getIconFromExt(ext));
+		$("#viewer .header .icon").css("fill", getColorFromExt(ext));
+
+		$("#viewer .view, #viewer .plyr--video, #viewer .plyr--audio").addClass("hidden");
+
+		if (["mp4", "webm"].includes(ext)) {
+			$("#viewer video").attr("src", path);
+			$("#viewer .plyr--video").removeClass("hidden");
+		} else if (["png", "gif", "jpg", "jpeg"].includes(ext)) {
+			$("#viewer img").attr("src", path).removeClass("hidden");
+		} else if (["ogg", "mp3"].includes(ext)) {
+			$("#viewer audio").attr("src", path);
+			$("#viewer .plyr--audio").removeClass("hidden");
+		} else if (["pdf", "html", "json"].includes(ext)) {
+			$("#viewer iframe").attr("src", path).removeClass("hidden");
+		}
+	},
+
+	hide() {
+		$("#viewer audio, #viewer video").each(media => {
+			media.pause();
+		});
+
+		$("#viewer iframe, #viewer video, #viewer audio, #viewer img").removeAttr("src");
+
+		$("#viewer").addClass("hidden");
+
+		setTimeout(() => {
+			$("#viewer").css("display", "none");
+		}, 200);
+	}
+};
+
+new Plyr('#viewer audio');
+new Plyr('#viewer video');
 
 function displayDrivePath(path) {
 	if (path.startsWith("/")) {
@@ -89,7 +116,8 @@ function displayDriveContent(data) {
 
 	ctx.hide();
 
-    displayDrivePath(data.path);
+	displayDrivePath(data.path);
+	connect.socket.emit("drive.files");
 
 	if (data.content.folders.length > 0) {
 		$("#wrapper .files .folders").html("").removeClass("empty");
@@ -109,8 +137,10 @@ function displayDriveContent(data) {
 	displayDriveFiles(data.content.files, "name", false, true);
 }
 
+let currentRenamedFile;
+
 function displayDriveFiles(files, factor, reverse, auto) {
-	if (!["name", "mtime", "size"].includes(factor)) {
+	if (!["name", "mtime", "size", "ext"].includes(factor)) {
 		return false;
 	}
 
@@ -132,34 +162,81 @@ function displayDriveFiles(files, factor, reverse, auto) {
 	$("#wrapper .files .list").html("");
 
 	sortDrive(files, factor, reverse).forEach(el => {
-		let fileName, extension = "";
+		let fileName, extension = "", extName = "";
 
 		if (el.name.includes(".")) {
 			fileName = el.name.split(".");
-			extension = "."+fileName[fileName.length -1];
+			extension = "."+fileName[fileName.length -1].toLowerCase();
+			extName = getExtName(extension);
 			fileName.pop();
 			fileName = fileName.join(".");
 		} else {
 			fileName = el.name;
 		}
 
-		let path = (currentDrivePanel.path+"/"+fileName+extension).replace(/\/{2,}/g, "/");
-		
-        $("#wrapper .files .list").append(`<a target="blank" href="/drive/file/${connect.user.id}/${encodeURIComponent(path)}" data-path="${path}">
-        <svg viewbox="0 0 24 24"><path d="${getIconFromExt(extension)}"></svg>
-		<h4 class="name">${(fileName+extension).length >= 40 ? (fileName).substring(0, 32)+"... <span>"+(extension.length > 10 ? extension.substring(0, 7)+"..." : extension)+"</span>" : fileName+"<span>"+extension+"</span>"}</h4><p class="mtime">${fancyDate(el.mtime)}</p><p class="size">${fancySize(el.size)}</p></a>`);
+		let path = (currentDrivePanel.path+"/"+fileName+extension).replace(/\/{2,}/g, "/"),
+			icon = `<svg viewbox="0 0 24 24" fill="${getColorFromExt(extension)}"><path d="${getIconFromExt(extension)}"></svg>`,
+			fileNameToDisplay = fileName.length >= 35 ? fileName.substring(0, 32)+"..." : fileName,
+			extensionToDisplay = extName.length > 10 ? extName.substring(0, 7)+"..." : extName,
+			converting = ["mov", "avi", "mkv", "flv", "dvd", "mpeg"].includes(extension.replace(".", "")) ? "converting" : "";
+
+		if (["jpg", "jpeg", "png"].includes(extension.replace(".", '').trim().toLowerCase())) {
+			icon = `<div class="img" style="background-image: url(/drive/file/${connect.user.id}/${encodeURIComponent(path).replace("'", "\\'").replace('"', '\\"')});"></div>`;
+		}
+
+		$("#wrapper .files .list").append(`
+		<a class="${converting}" data-ext="extension" data-href="/drive/file/${connect.user.id}/${encodeURIComponent(path)}" data-path="${path}">
+		${icon}
+		<input onmousedown="return false;" class="name" value="${fileNameToDisplay}">
+		<p class="size" data-size="${el.size}">${fancySize(el.size)}</p>
+		<p class="mtime">${fancyDate(el.mtime)}</p>
+		<p class="ext">${converting ? translation.converting : (getNameFromExt(extension)+" "+extensionToDisplay.toLowerCase().trim().replace(".", ""))}</p></a>`);
+	});
+
+	$("#wrapper .files .list a").on("click", function() {
+		if ($(this).hasClass("converting")) {
+			return false;
+		}
+
+		let hasClass = $(this).hasClass("selected");
+		$("#wrapper .files .list a").removeClass("selected");
+
+		if (hasClass) {
+			$(this).removeClass("selected");
+		} else {
+			$(this).addClass("selected");
+		}
+	});
+
+	$("#wrapper .files .list a").on("dblclick", function(ev) {
+		if ($(this).hasClass("converting")) {
+			return false;
+		}
+
+		if ($(this).hasClass("shadow") && ev.target.nodeName == "INPUT") {
+			return false;
+		}
+
+		viewer.view($(this).data("href"));
 	});
 
 	$("#wrapper .files .list a").on("contextmenu", function(ev) {
 		ev.preventDefault();
 
-		let extension = $("h4.name span", this).first() ? $("h4.name span", this).html().replace(".", "") : "",
-			fileName = $("h4.name", this).html().replace(/<span>|<\/span>/g, "");
+		if ($(this).hasClass("converting")) {
+			return false;
+		}
+
+		$("#wrapper .files .list a").removeClass("selected");
+		$(this).addClass("selected");
+
+		let extension = $(this).data("ext").replace(".", ""),
+			fileName = $("input.name", this).html().replace(/<span>|<\/span>/g, "");
 			
 		if (extension == "xml") {
 			$("#ctx .feed").removeClass("hidden");
 
-			let url = this.href;
+			let url = $(this).data("href");
 
 			$.ajax({
 				url: url,
@@ -178,7 +255,7 @@ function displayDriveFiles(files, factor, reverse, auto) {
 			$("#ctx .feed").addClass("hidden");
 		}
 
-		let path = decodeURIComponent(this.href);
+		let path = decodeURIComponent($(this).data("href"));
 			path = path.split(connect.user.id);
 			path.shift();
 			path = path.join(connect.user.id);
@@ -191,22 +268,25 @@ function displayDriveFiles(files, factor, reverse, auto) {
 
 		ctx.currentFilePath = path;
 
-		$("#ctx .open, #ctx .download").attr("href", this.href);
+		$("#ctx .open, #ctx .download").attr("href", $(this).data("href"));
 		$("#ctx .delete").attr("onclick", `ctx.hide(); fileToDelete = "${path}"; socket.emit("drive.delete", "${path}");`);
 
 		$("#ctx .rename").off();
 
-		$("#ctx .rename").on("click", function() {
-			$('#modal .rename p').html(fileName);
+		$("#ctx .rename").on("click", () => {
+			let input = $("input", this).first();
+
 			ctx.hide();
-			rename.show(fil);
+			input.focus();
+			input.setSelectionRange(0, input.value.length);
 
-			setTimeout(function() {
-				let fn = fileName.split(".");
-					fn.pop();
+			$("#wrapper .files .list a").addClass("hidden");
+			$(this).addClass("shadow").removeClass("hidden");
+			$("#wrapper .files a.shadow input").removeAttr("onmousedown").attr("ondblclick", "return false;");
 
-				$('#modal .rename input').val(fn.join("."));
-			}, 500);
+			setTimeout(() => {
+				currentRenamedFile = decodeURIComponent($(this).data("href").split("/")[$(this).data("href").split("/").length -1]);
+			}, 50);
 		});
 
 		ctx.show({
@@ -231,6 +311,7 @@ socket.on("drive.delete", success => {
 
 					setTimeout(() => {
 						$(el).remove();
+						socket.emit("drive.content", '/');
 					}, 200);
 				}
 			});
@@ -271,13 +352,15 @@ function ltrim(str) {
 
 let ctx = {
 	currentFilePath: "",
-	
+
 	show(pos, subTitle, recursive) {
 		let ctxHeight = $("#ctx").first().clientHeight,
 			winHeight = window.innerHeight;
 
 		if (ctxHeight+pos.y > winHeight) {
 			pos.y = pos.y-ctxHeight;
+		} else if (ctxHeight == 0) {
+			pos.y = pos.y-200;
 		}
 
 		if (subTitle) {
@@ -293,12 +376,6 @@ let ctx = {
 		setTimeout(function() {
 			$("#ctx").removeClass("hidden");
 		}, 100);
-
-		if (!recursive) {
-			setTimeout(function() {
-				ctx.show(pos, subTitle, true);
-			}, 300);
-		}
 	},
 
 	hide() {
@@ -313,6 +390,58 @@ let ctx = {
 $(window).on("scroll", ctx.hide);
 $(window).on("resize", ctx.hide);
 
+let leaveTimeout = null;
+
+$("html").on("leave", () => {
+	leaveTimeout = setTimeout(ctx.hide, 300);
+});
+
+$("html").on("enter", () => {
+	clearTimeout(leaveTimeout);
+});
+
+$(window).on("click", () => {
+	if (!$("#ctx").is(":hover")) {
+		ctx.hide();
+	}
+
+	if (!$("#wrapper .files").is(":hover")) {
+		$("#wrapper .files a").removeClass("selected");
+	}
+
+	if (currentRenamedFile && !$("#wrapper .files .list a.shadow").is(":hover")) {
+		socket.emit("drive.rename", currentRenamedFile, $("#wrapper .files .list a.shadow input").val());
+	}
+});
+
+$(window).on("keydown", ev => {
+	if ([13, 27].includes(ev.keyCode) && currentRenamedFile) {
+		socket.emit("drive.rename", currentRenamedFile, $("#wrapper .files .list a.shadow input").val());
+	}
+
+	if (ev.keyCode == 27) {
+		viewer.hide();
+	}
+});
+
+socket.on("drive.rename", path => {
+	currentRenamedFile = null;
+
+	$("#wrapper .files a.shadow").data("href", path);
+	$("#wrapper .files a.shadow input").removeAttr("ondblclick").attr("onmousedown", "return false;").first().blur();
+
+	$("#wrapper .files a").removeClass(["hidden", "shadow"]);
+	setTimeout(() => {
+		socket.emit("drive.content", currentDrivePanel.path);
+	}, 300);
+});
+
+$("#viewer").on("click", ev => {
+	if (!$(".plyr").is(":hover")) {
+		viewer.hide();
+	}
+});
+
 socket.on("drive.disk", (disks, totalSize, used) => {
     $("#wrapper .intro .progress").html('');
 
@@ -325,7 +454,7 @@ socket.on("drive.disk", (disks, totalSize, used) => {
             percent = 2;
         }
 
-        $("#wrapper .intro .progress").append('<div class="'+(disk.uid == connect.user.id ? "me" : "other")+'" style="width: '+percent+'%;"></div>');
+        $("#wrapper .intro .progress").append('<div class="'+(disk.uid == connect.user.id ? "me" : "other")+'" flow="down" tooltip="'+(disk.uid == connect.user.id ? "Moi" : "Autre utilisateur")+'" style="width: '+percent+'%;"></div>');
 
         if (disk.uid == connect.user.id) {
             $("#wrapper .intro p").html(fancySize(disk.size)+" utilisés par moi <span>sur "+fancySize(totalSize)+"</span>");
@@ -334,20 +463,33 @@ socket.on("drive.disk", (disks, totalSize, used) => {
         allDriveSize += disk.size;
     });
 
-    $("#wrapper .intro .progress").prepend('<div class="blocked" style="width: '+((used-allDriveSize)/totalSize*100)+'%;"></div>');
+    $("#wrapper .intro .progress").prepend('<div class="blocked" tooltip="Nitro system" flow="down" style="width: '+((used-allDriveSize)/totalSize*100)+'%;"></div>');
 });
 
 function sortDrive(files, factor, reverse) {
-	let out = [],
-		pushedIDS = [];
-
-	files.forEach(el => {
-		el.id = Math.floor(Math.random()*99999999999);
-	});
-
 	switch (factor) {
 		case "name":
 			files.sort((a,b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : ((b.name.toLowerCase() > a.name.toLowerCase()) ? -1 : 0)); 
+
+			if (reverse) {
+				files.reverse();
+			}
+		break;
+
+		case "ext":
+				console.log("bitext");
+			files.sort((a,b) => {
+				let nmA = a.name.split("."),
+					extA = nmA[nmA.length -1],
+					nmB = b.name.split("."),
+					extB = nmB[nmB.length -1];
+				
+				if (extA.toLowerCase() > extB.toLowerCase()) {
+					return 1;
+				} else {
+					return -1;
+				}
+			}); 
 
 			if (reverse) {
 				files.reverse();
@@ -376,12 +518,6 @@ function sortDrive(files, factor, reverse) {
 
 	return files;
 }
-
-$(window).on("click", function() {
-    if (!$("#ctx").is(":hover")) {
-		ctx.hide();
-	}
-});
 
 let filesDone = 0,
 	filesToDo = 0,
@@ -431,14 +567,25 @@ function handleFiles(files) {
 		return false;
 	} else if (files.length == 1) {
 		let name = files[0].name;
-		$("#wrapper .dropzone h4").html(name.length >= 20 ? name.substring(0, 17)+"..." : name.length);
+		$("#wrapper .dropzone h4").html(name.length >= 20 ? name.substring(0, 17)+"..." : name);
+	} else {
+		$("#wrapper .dropzone h4").html(files.length+" fichiers ...");
 	}
 
+	let ext = files[0].name.split(".");
+		ext = ext[ext.length -1];
+
 	initializeProgress(files.length);
+
+	if (files.length == 1) {
+		$("#wrapper .dropzone > svg > path").attr("d", getIconFromExt(ext));
+	}
 
 	for (let i = 0; i<files.length; i++) {
 		uploadFile(files[i], i);
 	}
+
+	console.log(files);
 }
 
 function initializeProgress(numFiles) {
@@ -446,9 +593,14 @@ function initializeProgress(numFiles) {
 	filesToDo = 0;
 	$(progressBar).html("").removeClass("hidden");
 	$("#wrapper .dropzone p").addClass("hidden");
+	$("#wrapper .dropzone label").css("display", "none");
 
 	uploadProgress = [];
-  
+
+	if (numFiles == 1) {
+		$("#wrapper .dropzone > svg > path").attr("d", "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z");
+	}
+
 	for(let i = numFiles; i > 0; i--) {
 		uploadProgress.push(0);
 		$(progressBar).append('<div style="width: 0%" class="hidden" data-number="'+i+'"></div>');
@@ -460,20 +612,44 @@ function progressDone(fileNumber) {
 	$("div[data-number='"+(fileNumber+1)+"']", progressBar).addClass("done");
 
 	if (filesDone == uploadProgress.length) {
+		let message = "Vo"+(uploadProgress.length == 1 ? "tre " : "s "+uploadProgress.length)+" fichier"+(uploadProgress.length == 1 ? "" : "s")+" "+(uploadProgress.length == 1 ? "a" : "ont")+" été importé"+(uploadProgress.length == 1 ? "" : "s")+".";
+		
+		$("#wrapper .dropzone h4").html("Terminé !");
+		socket.emit("drive.content", "/");
+		$(progressBar).html("").addClass("hidden");
+		$("#wrapper .dropzone p").html(message).removeClass("hidden");
+		$("#wrapper .dropzone h5").addClass("hidden");
+
+		setTimeout(() => {
+			$("#wrapper .dropzone h4").html("Importer un fichier");
+			$("#wrapper .dropzone p").addClass("hidden");
+			$("#wrapper .dropzone > svg > path").attr("d", "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z");
+
+			setTimeout(function() {
+				$("#wrapper .dropzone p").html("a la vitesse de la lumière").removeClass("hidden");
+			}, 200);
+		}, 1500);
+
+		$("#wrapper .dropzone label").css("display", "block");
+	
 		filesDone = 0;
 		filesToDo = 0;
-		$(progressBar).html("").addClass("hidden");
-		$("#wrapper .dropzone p").removeClass("hidden");
-		$("#wrapper .dropzone h4").html("n");
-	
 		uploadProgress = [];
 	}
 }
 
-function updateProgress(fileNumber, percent) {
+function updateProgress(fileNumber, percent, loadedSize, totalSize) {
+	let allPercents = 0;
+
+	uploadProgress.forEach(percent => allPercents += percent);
+	allPercents = Math.floor(allPercents / uploadProgress.length);
+
 	uploadProgress[fileNumber] = percent;
 	let total = percent / uploadProgress.length;
 	$("div[data-number='"+(fileNumber+1)+"']", progressBar).removeClass("hidden").css("width", total+"%");
+	$("#wrapper .dropzone h5").removeClass("hidden");
+	$("#wrapper .dropzone h5 .percent").html(allPercents+"%");
+	$("#wrapper .dropzone h5 .loaded").html("- "+fancySize(loadedSize)+" envoyés");
 
 	if (percent == 100) {
 		progressDone(fileNumber);
@@ -484,16 +660,15 @@ function uploadFile(file, i) {
 	let xhr = new XMLHttpRequest(), // new XHR object
 		formData = new FormData(); // new virtual form
 
-	xhr.open('POST', '/drive/upload/'+connect.user.id, true); // open new request
+	xhr.open('POST', '/drive/upload/'+connect.user.id+"/"+encodeURIComponent(currentDrivePanel.path), true); // open new request
 
 	// on progress
 	xhr.upload.addEventListener("progress", function(e) {
-		updateProgress(i, (e.loaded * 100.0 / e.total) || 100); // display the progress
+		updateProgress(i, (e.loaded * 100 / e.total) || 100, e.loaded, e.total); // display the progress
 	});
 
 	// on finished
 	xhr.onloadend = function(e) {
-		console.log(xhr);
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			let a = document.createElement("a");
 				//a.className = "hidden";

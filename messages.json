@@ -7,7 +7,7 @@
                 "5678"
             ],
             "viewedBy": [
-                "1234"
+                "5678"
             ],
             "messages": [
                 {
@@ -129,6 +129,30 @@
                     "type": "msg",
                     "content": "mdr",
                     "author": "1234"
+                },
+                {
+                    "date": "2019-11-23T16:05:37.837Z",
+                    "type": "msg",
+                    "content": "loul",
+                    "author": "1234"
+                },
+                {
+                    "date": "2019-11-23T16:24:48.695Z",
+                    "type": "msg",
+                    "content": "cc",
+                    "author": "1234"
+                },
+                {
+                    "date": "2019-11-23T16:33:02.163Z",
+                    "type": "msg",
+                    "content": "cv ?",
+                    "author": "1234"
+                },
+                {
+                    "date": "2019-11-30T09:41:11.998Z",
+                    "type": "msg",
+                    "content": "cool",
+                    "author": "5678"
                 }
             ]
         }

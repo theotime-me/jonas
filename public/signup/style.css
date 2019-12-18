@@ -1,0 +1,308 @@
+html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
+    margin: 0px;
+    padding: 0px;
+}
+
+:root {
+    --accent: rgba(0, 0, 0, .1);
+    --accent-dark: #222;
+    --accent-shadow: rgba(102, 88, 0, .6);
+
+    --red: #FF4136;
+}
+
+#side {
+    z-index: 10;
+}
+
+#wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 700px;
+}
+
+.box {
+    font-family: "Lexend Deca", sans-serif;
+    width: 400px;
+    border: 5px solid var(--accent);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+.box.hidden {
+    opacity: 0;
+    transform: translateX(150px) rotateY(75deg);
+    -webkit-transform: translateX(150px) rotateY(75deg);
+    -moz-transform: translateX(150px) rotateY(75deg);
+    -ms-transform: translateX(150px) rotateY(75deg);
+    -o-transform: translateX(150px) rotateY(75deg);
+}
+
+.box.left {
+    opacity: 0;
+    transform: translateX(-150px) rotateY(-45deg);
+    -webkit-transform: translateX(-150px) rotateY(-45deg);
+    -moz-transform: translateX(-150px) rotateY(-45deg);
+    -ms-transform: translateX(-150px) rotateY(-45deg);
+    -o-transform: translateX(-150px) rotateY(-45deg);
+}
+
+.box h4 {
+    text-align: left;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.box > p > span {
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+    border-bottom: 2px solid currentColor;
+}
+
+.input {
+    height: 40px;
+    width: 280px;
+    display: flex;
+    align-items: center;
+    background-color: #e9e9e9;
+    margin-top: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border: 2px solid transparent;
+    transition: border-radius .2s ease;
+    -webkit-transition: border-radius .2s ease;
+    -moz-transition: border-radius .2s ease;
+    -ms-transition: border-radius .2s ease;
+    -o-transition: border-radius .2s ease;
+}
+
+.input.first, .input.last {
+    width: 170px;
+    margin-right: 10px;
+    float: left;
+}
+
+.input.incorrect {
+    border: 2px solid #FF4136;
+    fill: #e0372e;
+}
+
+.input.incorrect input {
+    color: #FF4136;
+}
+
+.input.disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+.input svg {
+    width: 24px;
+    margin-left: 10px;
+    margin-right: 5px;
+    float: left;
+}
+
+.input svg.hidden {
+    display: none;
+}
+
+.input img {
+    width: 24px;
+    margin-left: 10px;
+    margin-right: 5px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.input img.hidden {
+    display: none;
+}
+
+.input input {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 16px;
+    color: #333;
+    text-indent: 5px;
+    height: 100%;
+    width: calc(100% - 40px);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    float: left;
+}
+
+.box > a {
+    text-align: left;
+    display: block;
+    margin-top: 15px;
+    background-color: #0074D9;
+    color: #b2dbff;
+    padding: 10px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 80%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+    border: 3px solid transparent;
+    float: left;
+}
+
+.box > a.disabled {
+    background-color: #fff;
+    border: 3px solid #FF4136;
+    color: #e0372e;
+    cursor: default;
+}
+
+.box > a.disabled:hover {
+    background-color: #fff;
+}
+
+.box > a.disabled p {
+    color: #FF4136;
+}
+
+.box > a.disabled svg {
+    fill: #e0372e;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+
+.box > a.disabled:hover svg {
+    margin-right: 10px;
+    margin-top: -22px;
+}
+
+.box > a:hover {
+    background-color: rgb(0, 86, 161);
+}
+
+.box > a svg {
+    fill: #b2dbff;
+    width: 35px;
+    margin-top: -18px;
+    margin-right: 10px;
+    float: right;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+.box > a:hover svg {
+    margin-right: 5px;
+}
+
+.box > a p {
+    font-size: 18px;
+    color: #dff0ff;
+}
+
+.box > a span {
+    font-size: 15px;
+    opacity: .85;
+}
+
+.box .strength-bottom {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin-bottom: 0px;
+}
+
+.box .strength {
+    width: 70%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, .15);
+    border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -ms-border-radius: 0px 0px 10px 10px;
+    -o-border-radius: 0px 0px 10px 10px;
+}
+
+.box .strength div {
+    height: 100%;
+    border-bottom-left-radius: 10px;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+.box .strength[data-level="excellent"] div {
+    width: 100%;
+    background-color: #44ce80;
+}
+
+.box .strength[data-level="very-good"] div {
+    width: 80%;
+    background-color: #70ce44;
+}
+
+.box .strength[data-level="good"] div {
+    width: 60%;
+    background-color: #a9ce44;
+}
+
+.box .strength[data-level="medium"] div {
+    width: 40%;
+    background-color: #ffe240;
+}
+
+.box .strength[data-level="bad"] div {
+    width: 10%;
+    background-color: #ff5d40;
+}
+
+.box .strength[data-level="null"] div {
+    width: 100%;
+    background-color: #ff2600;
+}
+
+.box[data-id="loading"] {
+    border: none;
+    text-align: center;
+}
+
+.box svg.loading {
+    margin: 40px;
+    opacity: .5;
+}

@@ -5,32 +5,14 @@
             "avatar": "adorable",
             "password": "6c4aae2016da7306691f2c45b544a0872ae573c1456302bb3cc3589c2225f261822bc423bc9762369b6aadce8f27d1192f57f5e869578ef2abb3feed1e469ae4",
             "devices": [
-                "7ABB2915C4"
+                "PxLpi9juoY",
+                "8EC2629981"
             ],
-            "drive": "driveDeThéotime",
-            "id": "1234",
+            "drive": "WdWghzU9oC9ZWiwPCGUKqY1M-VDBlwv5Bimkt_tUR28VRqk2",
+            "id": "eM2mOFs39lD_SHW6nGbpHnab",
             "status": "offline",
-            "lastConnection": "2019-11-22T17:02:08.782Z",
-            "dialogs": [
-                "5678"
-            ]
-        },
-        {
-            "name": "Noémie FUMEX",
-            "avatar": "adorable",
-            "password": "6c4aae2016da7306691f2c45b544a0872ae573c1456302bb3cc3589c2225f261822bc423bc9762369b6aadce8f27d1192f57f5e869578ef2abb3feed1e469ae4",
-            "devices": [
-                "B6556A8BBB",
-                "1006862755",
-                "169B3A91C4"
-            ],
-            "drive": "driveDeNoémie",
-            "id": "5678",
-            "status": "offline",
-            "lastConnection": "2019-11-22T17:11:10.416Z",
-            "dialogs": [
-                "1234"
-            ]
+            "lastConnection": "2019-12-18T17:17:20.811Z",
+            "dialogs": []
         }
     ]
 }

@@ -18,7 +18,7 @@ function fancyTime(seconds) {
     if (seconds < 60) {
         return Math.floor(seconds)+" secondes";
     } else if (seconds < 3600) { // < 1 minute
-        return Math.floor(seconds / 60)+" minutes "+Math.floor(seconds%60)+" secondes";
+        return Math.floor(seconds / 60)+"min "+Math.floor(seconds%60)+"s";
     } else if (seconds < 86400) { // < 1 heure
         return Math.floor(seconds / 3600)+" heures "+Math.floor(seconds%3600 / 60)+" minutes";
     } else { // > 1 heure

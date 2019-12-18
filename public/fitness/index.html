@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../nav.css">
     <link rel="stylesheet" href="../scripts/tooltips.css">
     <link rel="shortcut icon" href="../medias/favicon.svg" type="image/svg">
-    <link rel="stylesheet" href="/plyr.css" />
 </head>
 <body>
 
@@ -32,7 +31,7 @@
         <div id="search" class="hidden" style="display: none;"></div>
 
         <div class="right">
-            <div class="network" style="display: none">
+            <div class="network" style="display: none;">
                 <svg class="load" viewBox="0 0 24 24"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"/></svg>
 				<h4>connecting...</h4>
 				<p>load</p>
@@ -147,97 +146,105 @@
 
     <div id="wrapper" class="loading">
         <div class="intro">
-            <h1>Mon drive</h1>
-            <svg viewBox="0 0 24 24"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></svg>
-            <p>Chargement <span>des données ...</span></p>
-            <div class="progress"></div>
+            <h1>Mon suivi <span>fitness</span></h1>
+            <svg viewBox="0 0 24 24"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>
+            <p>Niveau suivant <span>dans</span> 14 séances</p>
+            <div class="progress"><div style="width: 40%;"></div></div>
         </div>
 
-        <div class="dropzone">
-            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-            <h4>Importer <span>un fichier</span></h4>
-            <p>à la vitesse de la lumière</p>
-            <div class="progress hidden"></div>
-            <h5 class="hidden"><span class="percent">Préparation</span> <span class="loaded">de l'envoi ...</span></h5>
+        <div class="daily hidden">
+            <div class="img" style="background-image: url(graphics/plank.jpg);"></div>
+            <p>Exercice quotidien</p>
+            <h4>...</h4>
 
-            <input multiple id="drop-file" type="file">
-            <label for="drop-file"></label>
-        </div>
-
-        <div class="path" onmousedown="return false;">
-            <a class="root" onclick="socket.emit('drive.content', '/')">
-				<svg viewBox="0 0 24 24"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/></svg>
-				<span class="insert-device"></span>
-			</a>
-			
-			<div></div>
-        </div>
-
-        <div class="files">
-            <div class="title">
-                <p class="name selected">
-                    <span>Nom</span>
-                    <svg onclick="displayDriveFiles(currentDrivePanel.files, 'name', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
-                </p>
-
-                <p class="size">
-                    <span>Taille</span>
-                    <svg onclick="displayDriveFiles(currentDrivePanel.files, 'size', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
-                </p>
-    
-                <p class="mtime">
-                    <span>Dernière modification</span>
-                    <svg onclick="displayDriveFiles(currentDrivePanel.files, 'mtime', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
-                </p>
-    
-                <p class="ext">
-                    <span>Type de fichier</span>
-                    <svg onclick="displayDriveFiles(currentDrivePanel.files, 'ext', false)" viewBox="0 0 24 24"><path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>
-                </p>
+            <div class="time">
+                <svg viewBox="0 0 24 24"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+                <span>loading</span>
             </div>
 
-            <div class="folders empty"></div>
-    
-            <div class="list"></div>
+            <a class="btn">
+                <svg viewBox="0 0 24 24"><path d="M10 8.64L15.27 12 10 15.36V8.64M8 5v14l11-7L8 5z"/></svg>
+                <span>Démarrer</span>
+            </a>
         </div>
     </div>
 
-<!-- Context menu / #ctx
-=========================== -->
+    <div id="editing" style="display: none;" class="hidden">
+        <div class="alternated hidden" style="display: none;">
+			<div class="title">
+				<svg viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+					<polygon points="15.5,5 11,5 16,12 11,19 15.5,19 20.5,12 		"/>
+					<polygon points="8.5,5 4,5 9,12 4,19 8.5,19 13.5,12 		"/>
+				</svg>
+				   
+				<h4>Préparation d'exercice</h4>
+			</div>
 
-<div id="ctx" class="hidden" style="display: none;">
-    <h4>Actions <span></span></h4>
+			<div class="type">
+				<p>Type d'activité:</p>
 
-    <a class="open" target="blank">
-        <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
-        <span>Ouvrir</span>
-    </a>
+				<div class="select">
+					<select>
+						<option value="plank">Planche</option>
+					</select>
+	
+					<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+				</div>
+			</div>
 
-    <a class="download" download target="blank">
-        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-        <span>Télécharger</span>
-    </a>
+            <div class="action">
+                <p>Durée d'effort</p>
 
-    <a class="feed hidden" target="blank">
-        <svg viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
-        <span>Accéder à la page</span>
-    </a>
+                <div class="input">
+                    <svg viewBox="0 0 24 24"><path d="M4 11v2h8v-2H4zm15 7h-2V7.38L14 8.4V6.7L18.7 5h.3v13z"/></svg>
+                    <p onmousedown="return false;"><span>30</span> secondes</p>
+                    <svg viewBox="0 0 24 24"><path d="M10 7H8v4H4v2h4v4h2v-4h4v-2h-4V7zm10 11h-2V7.38L15 8.4V6.7L19.7 5h.3v13z"/></svg>
+                </div>
+            </div>
 
-    <a class="send next-feature">
-        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-        <span>Partager</span>
-    </a>
+            <div class="sleep">
+                <p>Temps de repos</p>
 
-    <a class="rename br">
-        <svg viewBox="0 0 24 24"><defs><path id="a" d="M24 24H0V0h24v24z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><path clip-path="url(#b)" d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>
-        <span>Renommer</span>
-    </a>
+                <div class="input">
+                    <svg viewBox="0 0 24 24"><path d="M4 11v2h8v-2H4zm15 7h-2V7.38L14 8.4V6.7L18.7 5h.3v13z"/></svg>
+					<p onmousedown="return false;"><span>10</span> secondes</p>
+                    <svg viewBox="0 0 24 24"><path d="M10 7H8v4H4v2h4v4h2v-4h4v-2h-4V7zm10 11h-2V7.38L15 8.4V6.7L19.7 5h.3v13z"/></svg>
+                </div>
+            </div>
 
-    <a class="delete">
-        <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-        <span>Supprimer</span>
-    </a>
-</div>
+            <div class="loop">
+                <p>Nombre d'efforts</p>
+
+                <div class="input">
+                    <svg viewBox="0 0 24 24"><path d="M4 11v2h8v-2H4zm15 7h-2V7.38L14 8.4V6.7L18.7 5h.3v13z"/></svg>
+                    <p onmousedown="return false;"><span>3</span> efforts</p>
+                    <svg viewBox="0 0 24 24"><path d="M10 7H8v4H4v2h4v4h2v-4h4v-2h-4V7zm10 11h-2V7.38L15 8.4V6.7L19.7 5h.3v13z"/></svg>
+                </div>
+			</div>
+			
+			<div class="finish">
+				<svg viewBox="0 0 24 24"><path d="M19 15l-6 6-1.42-1.42L15.17 16H4V4h2v10h9.17l-3.59-3.58L13 9l6 6z"/></svg>
+				<p>Planche avec 3 efforts de 30s séparés par 10s de repos.</p>
+			</div>
+
+			<div class="progress">
+				<div class="action" style="width: 25%;"></div>
+				<div class="sleep" style="width: 12.5%;"></div>
+				<div class="action" style="width: 25%;"></div>
+				<div class="sleep" style="width: 12.5%;"></div>
+				<div class="action" style="width: 25%;"></div>
+			</div>
+
+			<a class="start">
+				<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+				<p>Je suis prêt, <span>commencer l'exercice</span></p>
+			</a>
+        </div>
+    </div>
+
+    <div id="wait">
+        
+    </div>
 
     <!-- Messages
     ================= -->
@@ -274,19 +281,6 @@
         </div>
     </div>
 
-    <div id="viewer" class="hidden" style="display: none;">
-        <div class="header">
-            <svg class="back" onclick="viewer.hide()" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-            <svg class="icon" viewBox="0 0 24 24"><path d=""/></svg>
-            <h4>Chargement ...</h4>
-        </div>
-
-        <audio></audio>
-        <video></video>
-        <img class="view" alt="loading ...">
-        <iframe class="view" frameBorder="0"></iframe>
-    </div>
-
 	<div id="notif" class="hidden" onmousedown="return false;">
         <img>
         <svg viewBox="0 0 24 24"><path></path></svg>
@@ -301,9 +295,7 @@
 	<script src="../scripts/fancy.js"></script>
 	<script src="../scripts/prizm.js"></script>
     <script src="../scripts/connect.js"></script>
-    <script src="../scripts/ui.js"></script>
-    <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
-    
+	<script src="../scripts/ui.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
