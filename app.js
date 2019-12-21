@@ -1,7 +1,9 @@
 #!/usr/local/bin/node
 
 var app = require("express")(),
-	ghdownload = require('github-download'),
+	cliProgress = require('cli-progress'),
+	unpack = require('tar-pack').unpack,
+	ncp = require('ncp').ncp,
 	package = require('./package.json'),
 	lastVersion,
 	busboy = require("connect-busboy"),
@@ -29,10 +31,6 @@ var app = require("express")(),
 	messages = require("./messages.json"),
 	translations = require("./translations.json"),
 	hbjs = require("handbrake-js"),
-	readline = require('readline').createInterface({
-		input: process.stdin,
-		output: process.stdout
-	}),
 
 	weather = {},
 	feeds = [];
@@ -1283,9 +1281,6 @@ function logError(socketName, param) {
 	console.log(chalk.bgRed.white(" Nitro: ")+" Error, invalid "+chalk.keyword("orange")(param)+" param"+" at socket "+chalk.underline(socketName));
 }
 
-const cliProgress = require('cli-progress'),
-	  unpack = require('tar-pack').unpack;
-
 request("https://raw.githubusercontent.com/theotime-me/nitro/master/package.json", (err, response, body) => {
 	if (err) console.error(err);
 
@@ -1299,9 +1294,9 @@ request("https://raw.githubusercontent.com/theotime-me/nitro/master/package.json
 				"visit "+chalk.underline.blue("http://nitro.local/update")+" to follow progressing"+
 				chalk.dim("\n\n===================================================================\n")
 			);
-		}
 
-		update.download();
+			update.download();
+		}
 });
 
 const update = {
@@ -1356,12 +1351,14 @@ const update = {
 				}
 			});
 		});
-
-
 	},
 
 	install() {
-		require("child-process").exec("sudo mv ./temp-update ./");
+		ncp("./temp-update", "./", function (err) {
+			if (err) return console.error(err);
+
+			console.log('done!');
+		});
 	}
 };
 
