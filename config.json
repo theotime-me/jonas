@@ -5,7 +5,7 @@
     },
     "system": {
         "device": "Raspberry-Pi",
-        "lang": "fr",
+        "lang": "en",
         "isSetup": true
     },
     "interface": {

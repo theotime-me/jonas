@@ -1,10 +1,10 @@
 {
   "name": "nitro",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Nitro assistant, the fastest daily help",
   "main": "app.js",
   "author": "theotimefumex@gmail.com",
-  "license": "cc-by-nc-nd",
+  "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "nitro",
     "assistant",
@@ -20,10 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/theotime-me/nitro.git"
+    "url": "https://github.com/theotime-me/nitro"
   },
   "dependencies": {
     "chalk": "^2.4.2",
+    "cli-progress": "^3.4.0",
     "connect-busboy": "0.0.2",
     "delivery": "0.0.6",
     "detect-ssid": "^1.0.3",
@@ -32,6 +33,7 @@
     "exif-rotate": "0.0.3",
     "express": "^4.17.1",
     "get-folder-size": "^2.0.1",
+    "github-download": "^0.5.0",
     "handbrake-js": "^5.0.0",
     "jpeg-autorotate": "^5.0.2",
     "md5": "^2.2.1",
@@ -51,6 +53,7 @@
     "socket.io-stream": "^0.9.1",
     "stream-body-parser": "0.0.1",
     "stream-transcoder": "0.0.5",
+    "tar-pack": "^3.4.1",
     "whirlpool-js": "^1.0.0",
     "wifi-control": "^2.0.1",
     "xml2js": "^0.4.22"

@@ -1,7 +1,9 @@
 #!/usr/local/bin/node
 
 var app = require("express")(),
+	ghdownload = require('github-download'),
 	package = require('./package.json'),
+	lastVersion,
 	busboy = require("connect-busboy"),
 	server = require('http').createServer(app),
 	config = require("./config.json"),
@@ -27,6 +29,10 @@ var app = require("express")(),
 	messages = require("./messages.json"),
 	translations = require("./translations.json"),
 	hbjs = require("handbrake-js"),
+	readline = require('readline').createInterface({
+		input: process.stdin,
+		output: process.stdout
+	}),
 
 	weather = {},
 	feeds = [];
@@ -158,7 +164,9 @@ function getWeather() {
 			value: JSON.parse(weather).main.temp
 		});
 
-		console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
+		if (lastVersion == package.version) {
+			console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
+		}
 
 		fs.writeFileSync("./weather.json", JSON.stringify(weatherAnalyticsFile, null, 4));
 	});
@@ -981,6 +989,16 @@ app.get("/check", (req, res) => {
 	}));
 });
 
+app.get("/update", (req, res) => {
+	res.setHeader("Content-Type", "application/json; charset=utf-8");
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.end(JSON.stringify({
+		device: config.system.device,
+		version: package.version,
+		lang: config.system.lang
+	}));
+});
+
 /* 01 / Reading File
 ======================== */
 app.get("/drive/file/:uid/:path", (req, res) => {
@@ -1265,5 +1283,111 @@ function logError(socketName, param) {
 	console.log(chalk.bgRed.white(" Nitro: ")+" Error, invalid "+chalk.keyword("orange")(param)+" param"+" at socket "+chalk.underline(socketName));
 }
 
+const cliProgress = require('cli-progress'),
+	  unpack = require('tar-pack').unpack;
+
+request("https://raw.githubusercontent.com/theotime-me/nitro/master/package.json", (err, response, body) => {
+	if (err) console.error(err);
+
+	let json = JSON.parse(body);
+		lastVersion = json.version;
+
+		if (lastVersion != package.version) {
+			console.log(
+				chalk.dim("===================================================================\n\n")+
+				chalk.blue("Nitro update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" is available\n               "+
+				"visit "+chalk.underline.blue("http://nitro.local/update")+" to follow progressing"+
+				chalk.dim("\n\n===================================================================\n")
+			);
+		}
+
+		update.download();
+});
+
+const update = {
+	percent: 0,
+	download() {
+		console.log("\n");
+
+		// create new progress bar
+		const b1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+ 
+		b1.start(100, 0);
+ 
+		progress(request(package.repository.url+"/archive/master.tar.gz"))
+		.on("progress", state => {
+			this.percent = Math.floor(state.percent*100);
+			b1.update(this.percent);
+		}).on("end", () => {
+			b1.stop();
+			this.dpkg();
+		}).pipe(fs.createWriteStream("./update-v"+lastVersion+".tar.gz"));
+	},
+
+	dpkg() {
+		if (!fs.existsSync("./update-v"+lastVersion+".tar.gz")) return false;
+
+		fs.createReadStream("./update-v"+lastVersion+".tar.gz").pipe(unpack("./temp-update", err => {
+			if (err) console.error(err.stack);
+
+			this.clean();
+		}));
+	},
+
+	clean() {
+		let toDelete = [
+			"drive",
+			"README.md",
+			"users.json",
+			"weather.json",
+			"messages.json",
+			"devices.json",
+			"config.json"
+		];
+
+		fs.readdirSync("./temp-update").forEach(name => {
+			toDelete.forEach(test => {
+				if (name == test) {
+					if (name.includes(".")) {
+						fs.unlinkSync("./temp-update/"+name);
+					} else {
+						unlinkFolder("./temp-update/"+name);
+					}
+				}
+			});
+		});
+
+
+	},
+
+	install() {
+		require("child-process").exec("sudo mv ./temp-update ./");
+	}
+};
+
 console.log("Access "+chalk[config.interface.color]("Nitro")+" at http://"+os.hostname()+".local or http://"+ip+"\n---");
 console.log(chalk[config.interface.color]("Nitro: ")+" The wireless interface is "+chalk.black.bgGreen(" "+wlIface+" "));
+
+process.stdin.resume();//so the program will not close instantly
+
+function exitHandler(options) {
+	fs.readdirSync("./").forEach(fileName => {
+		if (fileName.startsWith("update")) {
+			console.log("\n\n"+chalk.blue("Nitro update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" was canceled");
+
+			fs.unlinkSync("./"+fileName);
+		}
+	});
+
+	if (fs.existsSync("./temp-update")) {
+		unlinkFolder("./temp-update");
+	}
+
+    if (options.exit) process.exit();
+}
+
+process.on('exit', exitHandler.bind(null,{cleanup:true})); //do something when app is closing
+process.on('SIGINT', exitHandler.bind(null, {exit:true})); //catches ctrl+c event
+process.on('SIGUSR1', exitHandler.bind(null, {exit:true})); // catches "kill pid"
+process.on('SIGUSR2', exitHandler.bind(null, {exit:true})); // catches "kill pid"
+process.on('uncaughtException', exitHandler.bind(null, {exit:true})); //catches uncaught exceptions
