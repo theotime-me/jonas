@@ -1,0 +1,279 @@
+html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#nav .icon {
+    width: 24px;
+    margin-top: 20px;
+    margin-left: 50px;
+    float: left;
+}
+
+#nav .logo {
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+/* Wrapper
+=========== */
+#wrapper {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Done
+=========== */
+
+#done {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #444;
+    display: flex;
+    max-height: 800px;
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .4s ease;
+    -webkit-transition: .4s ease;
+    -moz-transition: .4s ease;
+    -ms-transition: .4s ease;
+    -o-transition: .4s ease;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+
+#done.hidden {
+    opacity: 0;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+#done svg {
+    width: 150px;
+    margin-right: -35px;
+    fill: #777777;
+}
+
+#done h4 {
+    white-space: nowrap;
+}
+
+#done p {
+    color: #a0a0b1;
+}
+
+#done p span {
+    color: #667;
+}
+
+/* Update needed
+==================== */
+
+#update {
+    min-width: 680px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    transition: .4s ease;
+    -webkit-transition: .4s ease;
+    -moz-transition: .4s ease;
+    -ms-transition: .4s ease;
+    -o-transition: .4s ease;
+}
+
+#update.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    -webkit-transform: translateY(50px);
+    -moz-transform: translateY(50px);
+    -ms-transform: translateY(50px);
+    -o-transform: translateY(50px);
+}
+
+#update .center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#update .center svg {
+    width: 48px;
+}
+
+#update .center a {
+    font-family: "Roboto", sans-serif;
+    padding: 10px;
+    width: 160px;
+    margin: 20px 150px;
+    color: #fff;
+    fill: #fff;
+    background-color: #0074D9;
+    box-shadow: 0px 1px 5px rgba(0, 116, 217, .5);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    transition: .15s ease;
+    -webkit-transition: .15s ease;
+    -moz-transition: .15s ease;
+    -ms-transition: .15s ease;
+    -o-transition: .15s ease;
+}
+
+#update .center a:hover {
+    box-shadow: 0px 3px 10px rgba(0, 116, 217, .5);
+    background-color: #0088ff;
+    color: rgba(255, 255, 255, .8);
+    fill: rgba(255, 255, 255, .9);
+}
+
+#update .center a span {
+    display: block;
+    margin-top: 2px;
+    margin-left: 10px;
+    float: left;
+}
+
+#update .center a svg {
+    width: 24px;
+    float: left;
+}
+
+#update div:not(.center) {
+    align-items: center;
+    padding: 50px 60px;
+    margin: 25px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+    cursor: default;
+}
+
+#update div:not(.center):hover {
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, .35);
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+}
+
+#update div.current {
+    fill: #667;
+    color: #777;
+}
+
+#update div.last {
+    fill: #333;
+    color: #222;
+}
+
+#update div:not(.center) svg {
+    width: 48px;
+}
+
+#update div p {
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 16px;
+    margin-top: 15px;
+    padding-right: 10px;
+}
+
+#update .current {
+    float: left;
+}
+
+#update .last {
+    float: right;
+}
+
+/* Progress
+==================== */
+
+#progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -ms-transition: .3s ease;
+    -o-transition: .3s ease;
+}
+
+#progress.hidden {
+    opacity: 0;
+    transform: skewX(200px);
+    -webkit-transform: skewX(200px);
+    -moz-transform: skewX(200px);
+    -ms-transform: skewX(200px);
+    -o-transform: skewX(200px);
+}
+
+#progress > svg {
+    width: 48px;
+    fill: #444;
+}
+
+#progress .bar-wrapper {
+    margin: 0px 40px;
+    width: 480px;
+}
+
+#progress .bar-wrapper .titles {
+    margin-bottom: 10px;
+}
+
+#progress .bar-wrapper .titles p {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+    float: left;
+}
+
+#progress .bar-wrapper .titles p:first-of-type {
+    border-right: 2px solid rgba(0, 0, 0, .3);
+}
+
+#progress .bar-wrapper .bar {
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#progress .bar-wrapper .bar div {
+    background-color: #000;
+    height: 100%;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
