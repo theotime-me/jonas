@@ -9,11 +9,19 @@ socket.on("checking", state => {
         $(".last p", el).html(state.version.last);
     }
 
+    // show el
     $(el).css("display", "");
     setTimeout(() => {
         $(el).removeClass("hidden");
     }, 300);
 
+    // hide #progress
+    $("#progress").addClass("hidden");
+    setTimeout(() => {
+        $("#progress").css("display", "none");
+    }, 300);
+
+    // show nav icon+logo
     $("#nav, #wrapper").css("display", "");
     setTimeout(() => {
         $("#nav, #wrapper").removeClass("loading");
@@ -31,10 +39,7 @@ socket.on("progress", state => {
     $("#progress .bar div").css("width", percent+"%");
 
     if (percent == 100) {
-        $("#progress").addClass("hidden");
-        setTimeout(() => {
-            $("#progress").css("display", "none");
-        }, 300);
+
 
         return false;
     }
