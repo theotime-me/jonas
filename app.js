@@ -2,6 +2,7 @@
 
 var app = require("express")(),
 	cliProgress = require('cli-progress'),
+	exec = require('child_process').exec,
 	unpack = require('tar-pack').unpack,
 	ncp = require('ncp').ncp,
 	package = require('./package.json'),
@@ -70,7 +71,7 @@ io.sockets.on("connection", function(socket) {
 
 	socket.on("network.ping", () => socket.emit("network.ping"));
 
-	require('child_process').exec('iwgetid', (err, ssidName) => {
+	exec('iwgetid', (err, ssidName) => {
 		let wifi = !!ssidName,
 			eth = !!err;
 
@@ -91,7 +92,7 @@ io.sockets.on("connection", function(socket) {
 
 	socket.on("system.restart", () => {
 		socket.emit("system.restart");
-		require("child_process").exec("sudo npm start", (err, out) => {
+		exec("sudo npm start", (err, out) => {
 			if (err) throw err;
 
 			setTimeout(function() {
@@ -675,6 +676,10 @@ io.of("/connect").on("connection", socket => {
 		});
 
 	socket.on("drive.files", () => {
+		if (!fs.existsSync("./drive/"+socket.user.drive)) {
+			fs.mkdirSync("./drive/"+socket.user.drive);
+		}
+
 		let files = drive.getFolderRecursively("./drive/"+socket.user.drive, true);
 
 		files.forEach(file => {
@@ -1281,28 +1286,45 @@ function logError(socketName, param) {
 	console.log(chalk.bgRed.white(" Nitro: ")+" Error, invalid "+chalk.keyword("orange")(param)+" param"+" at socket "+chalk.underline(socketName));
 }
 
-request("https://raw.githubusercontent.com/theotime-me/nitro/master/package.json", (err, response, body) => {
-	if (err) console.error(err);
-
-	let json = JSON.parse(body);
-		lastVersion = json.version;
-
-		if (lastVersion != package.version) {
-			console.log(
-				chalk.dim("===================================================================\n\n")+
-				chalk.blue("Nitro update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" is available\n               "+
-				"visit "+chalk.underline.blue("http://nitro.local/update")+" to follow progressing"+
-				chalk.dim("\n\n===================================================================\n")
-			);
-
-			update.download();
-		}
-});
-
 const update = {
+	check(ctx, socket) {
+		request("https://raw.githubusercontent.com/theotime-me/nitro/master/package.json", (err, response, body) => {
+			if (err) console.error(err);
+
+		let json = JSON.parse(body);
+			lastVersion = json.version;
+
+			// outdated version
+			if (lastVersion != package.version && !this.updateProcessing) {
+				if (ctx == "starting") { // is launched in starting
+					console.log(
+						chalk.dim("===================================================================\n\n")+
+						chalk.blue("Nitro update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" is available\n               "+
+						"visit "+chalk.underline.blue("http://"+os.hostname()+".local/update")+" to follow progressing"+
+						chalk.dim("\n\n===================================================================\n")
+					);
+				}
+			}
+
+			io.of("/update").emit("checking", {
+				updated: lastVersion == package.version,
+				updateProcessing: this.updateProcessing,
+				version: {
+					current: package.version,
+					last: lastVersion
+				}
+			});
+		});
+	},
+
 	percent: 0,
+	size: 0,
+	updateProcessing: false,
 	download() {
+		if (package.version == lastVersion || this.updateProcessing) return false;
+
 		console.log("\n");
+		this.updateProcessing = true;
 
 		// create new progress bar
 		const b1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
@@ -1313,7 +1335,21 @@ const update = {
 		.on("progress", state => {
 			this.percent = Math.floor(state.percent*100);
 			b1.update(this.percent);
+			io.of("/update").emit("progress", {
+				download: this.percent,
+				dpkg: false,
+				installed: false
+			});
 		}).on("end", () => {
+			this.percent = 100;
+
+			b1.update(this.percent);
+			io.of("/update").emit("progress", {
+				download: this.percent,
+				dpkg: false,
+				installed: false
+			});
+
 			b1.stop();
 			this.dpkg();
 		}).pipe(fs.createWriteStream("./update-v"+lastVersion+".tar.gz"));
@@ -1324,6 +1360,12 @@ const update = {
 
 		fs.createReadStream("./update-v"+lastVersion+".tar.gz").pipe(unpack("./temp-update", err => {
 			if (err) console.error(err.stack);
+
+			io.of("/update").emit("progress", {
+				download: this.percent,
+				dpkg: true,
+				installed: false
+			});
 
 			this.clean();
 		}));
@@ -1351,21 +1393,68 @@ const update = {
 				}
 			});
 		});
+
+		this.install();
 	},
 
 	install() {
-		ncp("./temp-update", "./", function (err) {
+		io.of("/update").emit("progress", {
+			download: this.percent,
+			dpkg: true,
+			installed: true
+		});
+
+		fs.unlink("./update-v"+lastVersion+".tar.gz", err => {
+			if (err) throw err;
+
+		    process.on("exit", function () {
+		        require("child_process").spawn(process.argv.shift(), process.argv, {
+		            cwd: process.cwd(),
+		            detached : true,
+		            stdio: "inherit"
+		        });
+		    });
+		    process.exit();
+		});
+
+		/*ncp("./temp-update", "./", function (err) {
 			if (err) return console.error(err);
 
-			console.log('done!');
-		});
+			console.log('done, running `npm install`');
+			exec("sudo npm install");
+		});*/
 	}
 };
+
+update.check("starting");
+
+io.of("/update").on("connection", socket => {
+	if (lastVersion) {
+		socket.emit("checking", {
+			updated: lastVersion == package.version,
+			updateProcessing: this.updateProcessing,
+			version: {
+				current: package.version,
+				last: lastVersion
+			}
+		});
+	}
+
+	socket.on("install", () => {
+		update.download();
+
+		socket.emit("progress", {
+			download: this.percent,
+			dpkg: true,
+			installed: true
+		});
+	});
+});
 
 console.log("Access "+chalk[config.interface.color]("Nitro")+" at http://"+os.hostname()+".local or http://"+ip+"\n---");
 console.log(chalk[config.interface.color]("Nitro: ")+" The wireless interface is "+chalk.black.bgGreen(" "+wlIface+" "));
 
-process.stdin.resume();//so the program will not close instantly
+//process.stdin.resume();//so the program will not close instantly
 
 function exitHandler(options) {
 	fs.readdirSync("./").forEach(fileName => {
@@ -1383,8 +1472,10 @@ function exitHandler(options) {
     if (options.exit) process.exit();
 }
 
+if (!config.system.devMode) {
 process.on('exit', exitHandler.bind(null,{cleanup:true})); //do something when app is closing
 process.on('SIGINT', exitHandler.bind(null, {exit:true})); //catches ctrl+c event
 process.on('SIGUSR1', exitHandler.bind(null, {exit:true})); // catches "kill pid"
 process.on('SIGUSR2', exitHandler.bind(null, {exit:true})); // catches "kill pid"
 process.on('uncaughtException', exitHandler.bind(null, {exit:true})); //catches uncaught exceptions
+}
