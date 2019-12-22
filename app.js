@@ -1407,22 +1407,25 @@ const update = {
 		fs.unlink("./update-v"+lastVersion+".tar.gz", err => {
 			if (err) throw err;
 
-		    process.on("exit", function () {
-		        require("child_process").spawn(process.argv.shift(), process.argv, {
-		            cwd: process.cwd(),
-		            detached : true,
-		            stdio: "inherit"
-		        });
-		    });
-		    process.exit();
+			ncp("./temp-update", "./", function (err) {
+				if (err) return console.error(err);
+	
+				console.log('done, running `npm install`');
+	
+				exec("sudo npm install", err => {
+					if (err) throw err;
+					
+					process.on("exit", function () {
+						require("child_process").spawn(process.argv.shift(), process.argv, {
+							cwd: process.cwd(),
+							detached : true,
+							stdio: "inherit"
+						});
+					});
+					process.exit();
+				});
+			});
 		});
-
-		/*ncp("./temp-update", "./", function (err) {
-			if (err) return console.error(err);
-
-			console.log('done, running `npm install`');
-			exec("sudo npm install");
-		});*/
 	}
 };
 
