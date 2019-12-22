@@ -40,6 +40,7 @@
     "mime-types": "^2.1.24",
     "mmmagic": "^0.5.3",
     "multer": "^1.4.2",
+    "ncp": "^2.0.0",
     "node-hotspot": "^0.1.7",
     "node-wifi": "^2.0.12",
     "node-wifi-scanner": "^1.1.2-np",
