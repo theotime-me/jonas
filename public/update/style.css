@@ -281,8 +281,8 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
 #progress.loading .bar-wrapper .bar div {
     width: 20%;
     background-color: #222;
-    animation: progressBar 2s ease;
-    -webkit-animation: progressBar 2s ease;
+    animation: progressBar 2s ease infinite;
+    -webkit-animation: progressBar 2s ease infinite;
 }
 
 @keyframes progressBar {
