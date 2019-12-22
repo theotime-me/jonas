@@ -1,6 +1,6 @@
 {
   "name": "nitro",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Nitro assistant, the fastest daily help",
   "main": "app.js",
   "author": "theotimefumex@gmail.com",
