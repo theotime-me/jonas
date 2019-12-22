@@ -39,7 +39,7 @@ socket.on("progress", state => {
     $("#progress .bar div").css("width", percent+"%");
 
     if (percent == 100) {
-
+        $("#progress").addClass("loading");
 
         return false;
     }
