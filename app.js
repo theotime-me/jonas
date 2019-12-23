@@ -1334,12 +1334,14 @@ const update = {
 		progress(request(package.repository.url+"/archive/master.tar.gz"))
 		.on("progress", state => {
 			this.percent = Math.floor(state.percent*100);
-			b1.update(this.percent);
+
 			io.of("/update").emit("progress", {
 				download: this.percent,
 				dpkg: false,
 				installed: false
 			});
+			console.log(this.percent);
+			b1.update(this.percent);
 		}).on("end", () => {
 			this.percent = 100;
 
