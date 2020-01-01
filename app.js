@@ -42,6 +42,12 @@ app.use(busboy({ // Insert the busboy middle-ware
     highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
 }));
 
+users.users.forEach(user => {
+	if (!fs.existsSync("./drive/"+user.drive)) {
+		fs.mkdirSync("./drive/"+user.drive);
+	}
+});
+
 function validURL(str) {
 	let validsChars = "-A-z0-9\\d%_.~+éàèïëöôî;ê\!$#=ù:";
 
@@ -1528,8 +1534,6 @@ io.of("/update").on("connection", socket => {
 
 console.log("Access "+chalk[config.interface.color]("Nitro")+" at http://"+os.hostname()+".local or http://"+ip+"\n---");
 console.log(chalk[config.interface.color]("Nitro: ")+" The wireless interface is "+chalk.black.bgGreen(" "+wlIface+" "));
-
-//process.stdin.resume();//so the program will not close instantly
 
 function exitHandler(options) {
 	fs.readdirSync("./").forEach(fileName => {
