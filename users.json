@@ -2,16 +2,29 @@
     "users": [
         {
             "name": "Théotime FUMEX",
-            "avatar": "adorable",
+            "avatar": "Iy6rYsNAF_mq_fPpZkJworzITZ3zTWJf1rsGnY4ZqqDCf.JPG",
             "password": "6c4aae2016da7306691f2c45b544a0872ae573c1456302bb3cc3589c2225f261822bc423bc9762369b6aadce8f27d1192f57f5e869578ef2abb3feed1e469ae4",
             "devices": [
-                "PxLpi9juoY",
-                "8EC2629981"
+                "8EC2629981",
+                "_kEuNlG8hn"
             ],
             "drive": "WdWghzU9oC9ZWiwPCGUKqY1M-VDBlwv5Bimkt_tUR28VRqk2",
             "id": "eM2mOFs39lD_SHW6nGbpHnab",
+            "status": "offline",
+            "lastConnection": "2020-01-01T17:39:19.028Z",
+            "dialogs": []
+        },
+        {
+            "name": "Noémie FUMEX",
+            "avatar": "adorable",
+            "password": "c9fe2ec9de33806b3899ca13531ebdefd6fb351c08b797a4405b6aa1c6a5b7061b21fb0437349874a3b70039bf230b8c6c4f324281d87fa65376b0c94341ec06",
+            "devices": [
+                "PxLpi9juoY"
+            ],
+            "drive": "MHBRws6yKT65AvLjp1iCWsq30XaA7sMtcaoBICAJPFRqofhg",
+            "id": "JfaGVZFSg-5-oza8tRzclJ6E",
             "status": "online",
-            "lastConnection": "2019-12-21T14:53:04.831Z",
+            "lastConnection": "2020-01-01T17:42:08.585Z",
             "dialogs": []
         }
     ]

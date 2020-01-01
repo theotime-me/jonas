@@ -296,7 +296,7 @@ function displayDriveFiles(files, factor, reverse, auto) {
 	});
 
 	if (files.length == 0) {
-		$("#wrapper .files .list").html("<h2>Aucun fichier dans <span>"+(ltrim(currentDrivePanel.path.replace(/\/{2,}/g, "")).replace(/\//g, '<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>') || " /")+"</span></h2>");
+		$("#wrapper .files .list").html("<h2>Aucun fichier dans <span>"+(ltrim(currentDrivePanel.path.replace(/\/{2,}/g, "")).replace(/\//g, '<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>') || " Mon Drive")+"</span></h2>");
 	}
 }
 

@@ -3,6 +3,78 @@ let testLogin = {
 		password: ""
 	}, loginSocket = io("/login");
 
+
+	let sideTooltipTimeout = null;
+
+	$("#side a").on("enter", function(ev) {
+		let className = this.className.split(" ")[0];
+	
+		if ($(this).hasClass("selected") || className == "settings") {
+			$("#tooltip").addClass("hidden");
+			$(".bg").addClass("hidden");
+	
+			setTimeout(function() {
+				$("#tooltip").css("display", "none");
+			}, 1000);
+			return false;
+		}
+	
+		$(".bg").css("top", this.offsetTop+"px").removeClass(["hidden", "soon"]);
+	
+		if ($(this).hasClass("soon")) {
+			$(".bg").addClass("soon");
+		}
+	
+		let title = $(this).data("title");
+		clearTimeout(sideTooltipTimeout);
+	
+		$("#tooltip").css("display", "none");
+	
+		setTimeout(() => {
+			$("#tooltip").addClass("changing").removeClass("hidden").css("top", this.offsetTop+"px");
+		}, 50);
+		
+		sideTooltipTimeout = setTimeout(function() {
+			$("#tooltip h4").html(title);
+	
+			let message = "Erreur";
+	
+			switch (className) {
+				case "home":
+					message = "Tout va bien";
+				break;
+	
+				case "drive":
+					message = "Aucun nouveau fichier";
+				break;
+	
+				case "messages":
+					message = "Aucun nouveau message";
+				break;
+	
+				case "agenda":
+					message = "Rien à venir pour la semaine";
+				break;
+	
+				case "fitness":
+					message = "Exercices quotidiens pas encore effectués";
+				break;
+	
+				case "downloads":
+					message = "Aucun téléchargement en cours";
+				break;
+			}
+	
+			$("#tooltip p").css("width", message.length*8+"px").html(message);
+			$("#tooltip").removeClass("changing");
+		}, 200);
+	});
+	
+	$("#side a").on("leave", function(ev) {
+		$("#tooltip").addClass("hidden");
+		$(".bg").addClass("hidden");
+	});
+
 $("#side a").on("click", function() {
 	$("#side a").removeClass("selected");
 	$(this).addClass("selected");

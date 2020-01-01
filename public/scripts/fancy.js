@@ -17,12 +17,24 @@ function fancySize(bytes) {
 function fancyTime(seconds) {
     if (seconds < 60) {
         return Math.floor(seconds)+" secondes";
-    } else if (seconds < 3600) { // < 1 minute
+    } else if (seconds < 3600) { // < 1 heure
         return Math.floor(seconds / 60)+"min "+Math.floor(seconds%60)+"s";
-    } else if (seconds < 86400) { // < 1 heure
+    } else if (seconds < 86400) { // < 1 day
         return Math.floor(seconds / 3600)+" heures "+Math.floor(seconds%3600 / 60)+" minutes";
-    } else { // > 1 heure
+    } else { // > 1 day
         return Math.floor(seconds / 60)+" heures";
+    }
+}
+
+function fancyShortTime(seconds) {
+    if (seconds < 0 || typeof seconds != "number") {
+        return "fancy: bad string";
+    }
+
+    if (seconds < 60) { // if seconds are between 0 and 60
+        return Math.floor(seconds)+'"';
+    } else {
+        return Math.floor(seconds / 60)+"' "+Math.floor(seconds%60)+'"';
     }
 }
 

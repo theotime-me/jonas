@@ -167,6 +167,17 @@ function getExtName(ext) {
     }
 }
 
+$("#nav .icon").on("enter", function() {
+    $("path", this).removeClass("filled");
+
+    setTimeout(() => {
+        $(".path2", this).addClass("filled");
+        setTimeout(() => {
+            $(".path1", this).addClass("filled");
+        }, 70);
+    }, 30);
+});
+
 const search = {
 	files: [],
 	data: [
@@ -620,6 +631,20 @@ $(window).on("resize", () => {
 	$("#search").css("width", $("#nav .search").prop("offsetWidth")+"px").css("left", $("#nav .search").prop("offsetLeft")+"px");
 });
 
+$(window).on("scroll", () => {
+	if (window.scrollY > 0) {
+		$("#nav").addClass("shadow");
+	} else {
+		$("#nav").removeClass("shadow");
+	}
+});
+
+if (window.scrollY > 0) {
+	$("#nav").addClass("shadow");
+} else {
+	$("#nav").removeClass("shadow");
+}
+
 $("#nav .search").on("click", function() {
 	$("input", this).first().focus();
 });
@@ -753,6 +778,7 @@ $("#side a").on("enter", function(ev) {
 
 	if ($(this).hasClass("selected") || className == "settings") {
 		$("#tooltip").addClass("hidden");
+		$(".bg").addClass("hidden");
 
 		setTimeout(function() {
 			$("#tooltip").css("display", "none");
@@ -760,7 +786,13 @@ $("#side a").on("enter", function(ev) {
 		return false;
 	}
 
-	let title = $(this).data("title") || $("p", this).html();
+	$(".bg").css("top", this.offsetTop+"px").removeClass(["hidden", "soon"]);
+
+	if ($(this).hasClass("soon")) {
+		$(".bg").addClass("soon");
+	}
+
+	let title = $(this).data("title");
 	clearTimeout(sideTooltipTimeout);
 
 	$("#tooltip").css("display", "none");
@@ -807,6 +839,7 @@ $("#side a").on("enter", function(ev) {
 
 $("#side a").on("leave", function(ev) {
 	$("#tooltip").addClass("hidden");
+	$(".bg").addClass("hidden");
 });
 
 connect.callbacks.push(user => {
@@ -922,10 +955,15 @@ let system = {},
 socket.on("system.config", data => {
 	system = data;
 
-	$(".insert-device").html(data.device);
+	$(".insert-device").html(system.device);
 
 	if (!system.isSetup) {
 		location.href = "/setup";
+	} else if (system.update) {
+		$("#update").css("display", "");
+		setTimeout(() => {
+			$("#update").removeClass("hidden");
+		}, 50);
 	}
 });
 
@@ -1081,13 +1119,21 @@ $("#messages .dialog .input input").on("keydown", function(ev) {
 $("#messages-bg").on("click", messages.hide);
 
 $("#side a").on("click", function(ev) {
+	if ($(this).hasClass("selected")) {
+		return false;
+	}
+
+	$(".bg").addClass("selected");
+
 	$("#side a").removeClass("selected");
 	$(this).addClass("selected");
+
+	let href = this.className.replace(/ |selected|home/g, "");
 
 	ev.preventDefault();
 
 	setTimeout(() => {
-		location.href = this.href;
+		location.href = "../"+href;
 	}, 250);
 });
 
@@ -1114,4 +1160,78 @@ $("#nav .more").on("contextmenu", ev => {
 	ev.preventDefault();
 
 	menu.show();
+});
+
+const users = {
+	show() {
+		$("#users").css("display", "");
+
+		setTimeout(() => {
+			$("#users input").first().focus();
+			$("#users").removeClass("hidden");
+		}, 50);
+	},
+
+	hide() {
+		$("#users").addClass("hidden");
+
+		setTimeout(() => {
+			$("#users").css("display", "none");
+		}, 200);
+	},
+
+	getChecked() {
+		let checked = [];
+		$("#users > div .list > div").each(el => {
+			if ($(el).hasClass("checked")) {
+				checked.push($(el).data("id"));
+			}
+		});
+
+		return checked;
+	}
+};
+
+$("#users .cancel").on("click", users.hide);
+
+$("#users").on("click", function() {
+	if (!$("#users > div").is(":hover")) {
+		users.hide();
+	}
+});
+
+$("#users input").on("keydown", function() {
+
+	setTimeout(() => {
+		let val = search.clean(this.value);
+
+		$("#users .list > div").each(el => {
+			let name = $(el).data("name").split(" "),
+				id = $(el).data("id"),
+				first = search.clean(name[0]),
+				last = search.clean(name[1]);
+
+			if (!first.startsWith(val) && !last.startsWith(val)) {
+				$(el).addClass("hidden");
+			} else {
+				$(el).removeClass("hidden");
+			}
+		});
+	}, 50);
+});
+
+$("#users > div .next").on("click", function() {
+	if ($(this).hasClass("invalid")) return false;
+
+	connect.socket.emit("messages.newDialog", users.getChecked());
+});
+
+connect.socket.on("messages.dialogReady", dialogID => {
+	users.hide();
+	messages.dialog(dialogID);
+});
+
+$("#messages .header > .new").on("click", function() {
+	messages.hide();
+	users.show();
 });

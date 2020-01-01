@@ -1,4 +1,3 @@
-
 var socket = io();
 const connect = {
     id: $.getCookie("deviceID"),
@@ -41,13 +40,13 @@ const connect = {
 		
 				$("#account .avatar .takeQR img").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+encodeURIComponent("http://"+location.host+"/take-avatar/?id="+user.id));
 				$("#account .avatar .takeQR a").attr("href", "http://"+location.host+"/take-avatar/?id="+user.id);
-			}
 
-			$("#nav, #wrapper").css("display", "");
-			setTimeout(() => {
-				$("#nav, #wrapper").removeClass("loading");
-				$("#search").css("width", $("#nav .search").prop("offsetWidth")+"px").css("left", $("#nav .search").prop("offsetLeft")+"px");
-			}, 50);
+				$("#nav, #wrapper").css("display", "");
+				setTimeout(() => {
+					$("#nav, #wrapper").removeClass("loading");
+					$("#search").css("width", $("#nav .search").prop("offsetWidth")+"px").css("left", $("#nav .search").prop("offsetLeft")+"px");
+				}, 50);
+			}
     	});
 	},
 	
@@ -74,6 +73,7 @@ socket.on("avatar.change", (url, uid) => {
 });
 
 connect.socket.on("messages.dialogs", dialogs => {
+	console.log(dialogs);
 	$("#messages .header .list").html("");
 
 	dialogs.forEach(dialog => {
@@ -108,7 +108,7 @@ connect.socket.on("messages.dialog", (msgs, contributors) => {
 		$("#messages .dialog .user img").attr("src", user.avatar);
 		$("#messages .dialog .send input").attr("placeholder", "Envoyer à "+user.name.split(" ")[0]);
 	} else {
-		$("#messages .dialog .user").attr("status", offline);
+		$("#messages .dialog .user").attr("status", "offline");
 		$("#messages .dialog .user h4").html("Groupe");
 		$("#messages .dialog .user p span").html("état inconnu");
 		$("#messages .dialog .user img").attr("src", "");
@@ -192,6 +192,41 @@ connect.socket.on("drive.converting", data => {
 				}
 			});
 		}
+	}
+});
+
+connect.socket.on("users", allUsers => {
+	if (!["login", "signup"].includes(location.pathname.replace(/\//g, ""))) {
+		$("#users > div .list").html("");
+
+		allUsers.forEach(user => {
+			if (user.id == connect.user.id) return false;
+
+			$("#users > div .list").append(`<div data-name="${user.name.toLowerCase()}" data-id="${user.id}">
+				<div class="img" style="background-image: url('${user.avatar}');"></div>
+				<h4>${user.name.split(" ")[0]}<span>${user.name.split(" ")[1]}</span></h4>
+			</div>`);
+		});
+
+		$("#users .list > div").on("click", function() {
+			$(this).toggleClass("checked");
+
+			let checked = 0;
+
+			$("#users .list > div").each(el => {
+				if ($(el).hasClass("checked")) {
+					checked++;
+				}
+			});
+
+			$("#users .buttons .next span").html("("+checked+")");
+
+			if (checked <= 0) {
+				$("#users .buttons .next").addClass("invalid");
+			} else {
+				$("#users .buttons .next").removeClass("invalid");
+			}
+		});
 	}
 });
 

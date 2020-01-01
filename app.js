@@ -83,6 +83,7 @@ io.sockets.on("connection", function(socket) {
 	});
 
 	socket.emit("system.config", {
+		updated: !lastVersion ? true : lastVersion == package.version,
 		device: config.system.device,
 		lang: config.system.lang,
 		isSetup: config.system.isSetup
@@ -163,9 +164,7 @@ function getWeather() {
 			value: JSON.parse(weather).main.temp
 		});
 
-		if (lastVersion == package.version) {
-			console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
-		}
+		console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
 
 		fs.writeFileSync("./weather.json", JSON.stringify(weatherAnalyticsFile, null, 4));
 	});
@@ -236,7 +235,7 @@ function addToDownloadQueue(link) {
 if (downloadQueue.length > 0) {
 	download(downloadQueue[0]);
 }
-
+/*
 const rss = {
 	get(urls, cb) {		
 		for (let i = 0; i<urls.length; i++) {
@@ -317,11 +316,11 @@ const rss = {
 		});
 	}
 };
-
+*/
 setInterval(function() {
 	getWeather();
-	rss.get();
-}, 3600000);
+	//rss.get();
+}, 300000);
 
 getWeather();
 //rss.get();
@@ -625,6 +624,14 @@ io.of("/connect").on("connection", socket => {
 					connectSocketsID[user.id].push(socket.id);
 				}
 
+				let usersToSend = [];
+
+				users.users.forEach(el => {
+					usersToSend.push(getUserFromId(el.id));
+				});
+
+				socket.emit("users", usersToSend);
+
 				users.users[i].lastConnection = new Date().toISOString();
 				users.users[i].status = "online";
 				emitNewStatus(socket.user.id, socket);
@@ -632,6 +639,7 @@ io.of("/connect").on("connection", socket => {
 				break;
 			}
 		}
+
 		if (!found) {
 			socket.emit("device.ok", 403, false);
 		}
@@ -694,41 +702,49 @@ io.of("/connect").on("connection", socket => {
 	});
 
 	socket.on("messages.dialogs", () => {
-		if (!socket.user || (socket.user && socket.user.dialogs.length == 0)) {
+		if (!socket.user) {
 			return false;
 		}
 
 		let list = [];
 
 		// get all users's ids who are talking the first.
-		socket.user.dialogs.forEach(uid => {
-			// user talking with the first user
-			users.users.forEach(user => {
-				if (user.id == uid) {
-					let lastMessage = "",
-						dialogID,
-						contribs = [];
-					messages.dialogs.forEach(dialog => {
-						if (dialog.users.includes(user.id) && user.id != socket.user.id) {
+		messages.dialogs.forEach(dialog => {
+			let found = false;
+			dialog.users.forEach(uid => {
+				if (uid == socket.user.id) found = true;
+			});
+
+			if (!found) return false;
+			
+			if (dialog.users.length <= 2) { 
+				// user talking with the first user
+				users.users.forEach(user => {
+					if (user.id != socket.user.id) {
+						let lastMessage = "",
+							dialogID,
+							contribs = [];
+
 							lastMessage = dialog.messages.length > 0 ? dialog.messages[dialog.messages.length -1] : false;
 							dialogID = dialog.id;
 							viewed = dialog.viewedBy.includes(socket.user.id);
-							contribs.push({
-								name: user.name,
-								avatar: user.avatar != "adorable" ? "/medias/avatars/"+user.avatar : "https://api.adorable.io/avatars/100/"+md5(user.name)+"@adorable.io.png",
-								status: user.status,
-								lastMessage: lastMessage,
-								id: user.id
-							});
-						}
-					});
-					list.push({
-						id: dialogID,
-						viewed: viewed,
-						contributors: contribs
-					});
-				}
-			});
+
+						contribs.push({
+							name: user.name,
+							avatar: user.avatar != "adorable" ? "/medias/avatars/"+user.avatar : "https://api.adorable.io/avatars/100/"+md5(user.name)+"@adorable.io.png",
+							status: user.status,
+							lastMessage: lastMessage,
+							id: user.id
+						});
+
+						list.push({
+							id: dialogID,
+							viewed: viewed,
+							contributors: contribs
+						});
+					}
+				});
+			}
 		});
 		
 		socket.emit("messages.dialogs", list);
@@ -810,6 +826,55 @@ io.of("/connect").on("connection", socket => {
 				break;
 			}
 		}
+	});
+
+	socket.on("messages.newDialog", contributors => {
+		if (!Array.isArray(contributors)) return false;
+
+		contributors = contributors.concat([socket.user.id]);
+				
+		// check if all IDs exists
+		let error = false;
+
+		contributors.forEach(_userID => {
+			let found = false;
+			users.users.forEach(user => {
+				if (user.id == _userID) found = true;
+			});
+
+			if (!found) error = true;
+		});
+
+
+		if (error) return false;
+
+		contributors.sort();
+
+		// check if dialog already exists
+		let alreadyExists = false;
+
+		messages.dialogs.forEach(dialog => {
+			if (dialog.users.join("/") == contributors.join("/")) {
+				socket.emit("messages.dialogReady", dialog.id);
+				alreadyExists = true;
+			}
+		});
+
+		if (alreadyExists) return false;
+
+		// if all is okay, let's create the dialog !
+		let dialogID = superID(48);
+		
+		messages.dialogs.push({
+			id: dialogID,
+			users: contributors,
+			viewedBy: [socket.user.id],
+			messages: []
+		});
+
+		socket.emit("messages.dialogReady", dialogID);
+
+		fs.writeFileSync("./messages.json", JSON.stringify(messages, null, 4));
 	});
 
 	socket.on("logout", id => {
