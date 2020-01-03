@@ -161,6 +161,8 @@ function displayDriveFiles(files, factor, reverse, auto) {
 	currentDrivesortType = factor;
 	$("#wrapper .files .list").html("");
 
+	let convertingFileNames = [];
+
 	sortDrive(files, factor, reverse).forEach(el => {
 		let fileName, extension = "", extName = "";
 
@@ -172,6 +174,10 @@ function displayDriveFiles(files, factor, reverse, auto) {
 			fileName = fileName.join(".");
 		} else {
 			fileName = el.name;
+		}
+
+		if (convertingFileNames.includes(fileName)) {
+			return false;
 		}
 
 		let path = (currentDrivePanel.path+"/"+fileName+extension).replace(/\/{2,}/g, "/"),
@@ -187,10 +193,22 @@ function displayDriveFiles(files, factor, reverse, auto) {
 		$("#wrapper .files .list").append(`
 		<a class="${converting}" data-ext="extension" data-href="/drive/file/${connect.user.id}/${encodeURIComponent(path)}" data-path="${path}">
 		${icon}
+		${converting ? '<svg class="ring" viewbox="0 0 24 24"><circle r="10" cx="12" cy="12"/></svg>' : ""}
 		<input onmousedown="return false;" class="name" value="${fileNameToDisplay}">
 		<p class="size" data-size="${el.size}">${fancySize(el.size)}</p>
 		<p class="mtime">${fancyDate(el.mtime)}</p>
 		<p class="ext">${converting ? translation.converting : (getNameFromExt(extension)+" "+extensionToDisplay.toLowerCase().trim().replace(".", ""))}</p></a>`);
+
+		if (converting) {
+			convertingFileNames.push(fileName);
+			
+			let circle = $("#wrapper .files .list a .ring circle").last(),
+				radius = circle.r.baseVal.value,
+				circumference = radius * 2 * Math.PI;
+
+			circle.style.strokeDasharray = circumference+" "+circumference;
+			circle.style.strokeDashoffset = circumference.toString();
+		}
 	});
 
 	$("#wrapper .files .list a").on("click", function() {

@@ -1182,6 +1182,7 @@ app.route("/drive/upload/:uid/:path").post((req, res, next) => {
 							io.of("/connect").in(user.id).emit("drive.converting", {
 								state: "progress",
 								percent: progress.percentComplete,
+								eta: progress.eta,
 								path: (decodeURIComponent(req.params.path)+"/"+filename).replace(/\/\//g, "/")
 							});
 						}).on("complete", () => {
@@ -1534,6 +1535,29 @@ io.of("/update").on("connection", socket => {
 
 console.log("Access "+chalk[config.interface.color]("Nitro")+" at http://"+os.hostname()+".local or http://"+ip+"\n---");
 console.log(chalk[config.interface.color]("Nitro: ")+" The wireless interface is "+chalk.black.bgGreen(" "+wlIface+" "));
+
+fs.readdirSync("./drive").forEach(disk => {
+	fs.readdirSync("./drive/"+disk).forEach(fileName => {
+		let ext = fileName.split(".")[fileName.split(".").length -1].toLowerCase(),
+			noExt = fileName.split(".");
+			noExt.pop();
+			noExt = noExt.join(".");
+
+		if (fs.existsSync("./drive/"+disk+"/"+fileName) && ["mov", "flv", "mkv", "avi", "mpeg"].includes(ext)) {
+			fs.unlinkSync("./drive/"+disk+"/"+fileName);
+
+			fs.readdirSync("./drive/"+disk).forEach(fileName => {
+				let _noExt = fileName.split(".");
+				_noExt.pop();
+				_noExt = _noExt.join(".");
+
+				if (_noExt == noExt) {
+					fs.unlinkSync("./drive/"+disk+"/"+fileName);
+				}
+			});
+		}
+	});
+});
 
 function exitHandler(options) {
 	fs.readdirSync("./").forEach(fileName => {

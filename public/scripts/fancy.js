@@ -6,9 +6,9 @@ function fancySize(bytes) {
     if (bytes < 1024) {
         return bytes+" Bytes";
     } else if (bytes < 1024*1024) {
-        return Math.floor(bytes/1024*10)/10+" KB";
+        return Math.floor(bytes/1024)+" KB";
     } else if (bytes < 1024*1024*1024) {
-        return Math.floor(bytes/1024/1024*10)/10+" MB";
+        return Math.floor(bytes/1024/1024)+" MB";
     } else if (bytes < 1024*1024*1024*1024) {
         return Math.floor(bytes/1024/1024/1024*10)/10+" GB";
     }

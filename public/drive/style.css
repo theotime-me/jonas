@@ -433,8 +433,33 @@ html {
     cursor: default;
 }
 
-#wrapper .files .list a.converting {
+#wrapper .files .list a.converting p, #wrapper .files .list a.converting input {
+    opacity: .6;
+}
+
+#wrapper .files .list a.converting svg:not(.ring) {
+    transform: scale(.6);
+    -webkit-transform: scale(.6);
+    -moz-transform: scale(.6);
+    -ms-transform: scale(.6);
+    -o-transform: scale(.6);
     opacity: .5;
+}
+
+#wrapper .files .list a.converting svg.ring {
+	stroke: rgba(0, 0, 0, .35);
+	stroke-width: 2px;
+	fill: transparent;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    margin-top: -3px;
+    margin-left: -32px;
+}
+
+#wrapper .files .list a.converting svg.ring circle {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 #wrapper .files .list a.selected {
@@ -474,7 +499,7 @@ html {
     text-decoration: underline rgba(0, 0, 0, .8);
 }
 
-#wrapper .files .list a svg {
+#wrapper .files .list a svg:not(.ring) {
     width: 30px;
     float: left;
 }

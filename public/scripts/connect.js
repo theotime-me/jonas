@@ -177,7 +177,6 @@ connect.socket.on("drive.reload", () => {
 
 connect.socket.on("drive.converting", data => {
 	if (location.pathname.startsWith("/drive")) {
-		console.log("#wrapper .files .list a.converting[data-path='"+data.path+"'] .size");
 		if (data.state == "progress") {
 			let noExt = data.path.split("."),
 				ext = noExt[noExt.length -1].toLowerCase(),
@@ -186,9 +185,22 @@ connect.socket.on("drive.converting", data => {
 				noExt = noExt.join(".");
 				filename = noExt+"."+ext;
 
+			let etaSplit = data.eta.split(/h|m|s/),
+				etaH = parseInt(etaSplit[0]),
+				etaM = parseInt(etaSplit[1]),
+				etaS = parseInt(etaSplit[2]),
+				etaTime = etaS + etaM*60 + etaH*60*60;
+
 			$("#wrapper .files .list a.converting").each(el => {
 				if ($(el).data("path") == filename) {
+					let circle = $(".ring circle", el).first(),
+						radius = circle.r.baseVal.value,
+						circumference = radius * 2 * Math.PI,
+						offset = circumference - Math.floor(data.percent/10)*10 / 100 * circumference;
+  						circle.style.strokeDashoffset = offset;
+
 					$(".size", el).html(Math.floor(data.percent)+" %");
+					$(".mtime", el).html("il reste "+fancyTime(etaTime));
 				}
 			});
 		}
