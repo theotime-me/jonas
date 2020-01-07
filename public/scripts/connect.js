@@ -20,32 +20,45 @@ const connect = {
     	this.socket.on("device.ok", (isLogin, user) => {
 			this.user = user;
 
-    	    if (isLogin != 200 && !["login", "signup"].includes(location.pathname.replace(/\//g, ""))) {
+			let path = location.pathname.replace(/\//g, "") || "home";
+
+    	    if (isLogin != 200 && !["login", "signup"].includes(path)) {
     	        location.href = "/login";
-    	    } else if (isLogin == 200 && ["login", "signup"].includes(location.pathname.replace(/\//g, ""))) {
+    	    } else if (isLogin == 200 && ["login", "signup"].includes(path)) {
     	        location.href = "/";
     	    }
 
-    	    if (this.callbacks.length > 0) {
-				this.callbacks.forEach(fn => {
-					fn(user);
-				});
-			}
-
-			this.socket.emit("messages.dialogs");
-
-			if (!["login", "signup"].includes(location.pathname.replace(/\//g, ""))) {
+			if (!["login", "signup"].includes(path)) {
 				$("#nav .avatar").attr("src", user.avatar);
-				$("#account .header > img").attr("src", user.avatar);
-		
-				$("#account .avatar .takeQR img").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+encodeURIComponent("http://"+location.host+"/take-avatar/?id="+user.id));
-				$("#account .avatar .takeQR a").attr("href", "http://"+location.host+"/take-avatar/?id="+user.id);
 
 				$("#nav, #wrapper").css("display", "");
 				setTimeout(() => {
 					$("#nav, #wrapper").removeClass("loading");
 					$("#search").css("width", $("#nav .search").prop("offsetWidth")+"px").css("left", $("#nav .search").prop("offsetLeft")+"px");
 				}, 50);
+
+				$.ajax({
+					url: "/scripts/base.html",
+					async: true,
+					success(data) {
+						let e = document.createElement("div");
+							e.innerHTML = data;
+							e.id = "base";
+							document.body.appendChild(e);
+
+						connect.socket.emit("messages.dialogs");
+
+						if ($("#side > a."+path).first()) {
+							$("#side > a."+path).addClass("selected");
+						}
+
+						connect.callbacks.forEach(fn => {
+							fn(user);
+						});
+
+						connect.socket.emit("users");
+					}
+				});
 			}
     	});
 	},
@@ -73,7 +86,6 @@ socket.on("avatar.change", (url, uid) => {
 });
 
 connect.socket.on("messages.dialogs", dialogs => {
-	console.log(dialogs);
 	$("#messages .header .list").html("");
 
 	dialogs.forEach(dialog => {
@@ -95,6 +107,41 @@ connect.socket.on("messages.dialogs", dialogs => {
 		</a>`);
 		}
 	});
+});
+
+connect.socket.on("users", allUsers => {
+	if (!["login", "signup"].includes(location.pathname.replace(/\//g, ""))) {
+		$("#users > div .list").html("");
+
+		allUsers.forEach(user => {
+			if (user.id == connect.user.id) return false;
+
+			$("#users > div .list").append(`<div data-name="${user.name.toLowerCase()}" data-id="${user.id}">
+				<div class="img" style="background-image: url('${user.avatar}');"></div>
+				<h4>${user.name.split(" ")[0]}<span>${user.name.split(" ")[1]}</span></h4>
+			</div>`);
+		});
+
+		$("#users .list > div").on("click", function() {
+			$(this).toggleClass("checked");
+
+			let checked = 0;
+
+			$("#users .list > div").each(el => {
+				if ($(el).hasClass("checked")) {
+					checked++;
+				}
+			});
+
+			$("#users .buttons .next span").html("("+checked+")");
+
+			if (checked <= 0) {
+				$("#users .buttons .next").addClass("invalid");
+			} else {
+				$("#users .buttons .next").removeClass("invalid");
+			}
+		});
+	}
 });
 
 connect.socket.on("messages.dialog", (msgs, contributors) => {
@@ -204,41 +251,6 @@ connect.socket.on("drive.converting", data => {
 				}
 			});
 		}
-	}
-});
-
-connect.socket.on("users", allUsers => {
-	if (!["login", "signup"].includes(location.pathname.replace(/\//g, ""))) {
-		$("#users > div .list").html("");
-
-		allUsers.forEach(user => {
-			if (user.id == connect.user.id) return false;
-
-			$("#users > div .list").append(`<div data-name="${user.name.toLowerCase()}" data-id="${user.id}">
-				<div class="img" style="background-image: url('${user.avatar}');"></div>
-				<h4>${user.name.split(" ")[0]}<span>${user.name.split(" ")[1]}</span></h4>
-			</div>`);
-		});
-
-		$("#users .list > div").on("click", function() {
-			$(this).toggleClass("checked");
-
-			let checked = 0;
-
-			$("#users .list > div").each(el => {
-				if ($(el).hasClass("checked")) {
-					checked++;
-				}
-			});
-
-			$("#users .buttons .next span").html("("+checked+")");
-
-			if (checked <= 0) {
-				$("#users .buttons .next").addClass("invalid");
-			} else {
-				$("#users .buttons .next").removeClass("invalid");
-			}
-		});
 	}
 });
 

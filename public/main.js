@@ -169,10 +169,6 @@ $(window).on("click", function() {
 	if (!$("#modal div, #menu, #side, #ctx, #weather .graph, #notif").is(":hover")) {
 		modal.hide();
 	}
-
-	if (!$("#menu, #nav .more").is(":hover")) {
-		menu.hide();
-	}
 });
 
 $("#panel .download").on("hover", function() {

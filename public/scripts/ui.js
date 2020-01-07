@@ -189,14 +189,16 @@ const search = {
 			hidden: true,
 
 			fn(url) {
-				socket.emit("feeds.add", url);
+				if (typeof url == "string") {
+					connect.socket.emit("feeds.add", url);
+				}
 			}
 		},
 
 		{
 			id: "update",
 			name: "Mettre à jour Nitro",
-			desc: "à votre bibliothèque NITRO",
+			desc: "vers la dernière version",
 			icon: 'M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79 2.73 2.71 7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58 3.51-3.47 9.14-3.47 12.65 0L21 3v7.12zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8h1.5z',
 			keywords: [
 				["update", "en"],
@@ -773,76 +775,100 @@ const notif = {
 
 let sideTooltipTimeout = null;
 
-$("#side a").on("enter", function(ev) {
-	let className = this.className.split(" ")[0];
-
-	if ($(this).hasClass("selected") || className == "settings") {
+connect.callbacks.push(user => {
+	$("#side a").on("leave", function(ev) {
 		$("#tooltip").addClass("hidden");
 		$(".bg").addClass("hidden");
+	});
 
-		setTimeout(function() {
-			$("#tooltip").css("display", "none");
-		}, 1000);
-		return false;
-	}
-
-	$(".bg").css("top", this.offsetTop+"px").removeClass(["hidden", "soon"]);
-
-	if ($(this).hasClass("soon")) {
-		$(".bg").addClass("soon");
-	}
-
-	let title = $(this).data("title");
-	clearTimeout(sideTooltipTimeout);
-
-	$("#tooltip").css("display", "none");
-
-	setTimeout(() => {
-		$("#tooltip").addClass("changing").removeClass("hidden").css("top", this.offsetTop+"px");
-	}, 50);
-	
-	sideTooltipTimeout = setTimeout(function() {
-		$("#tooltip h4").html(title);
-
-		let message = "Erreur";
-
-		switch (className) {
-			case "home":
-				message = "Tout va bien";
-			break;
-
-			case "drive":
-				message = "Aucun nouveau fichier";
-			break;
-
-			case "messages":
-				message = "Aucun nouveau message";
-			break;
-
-			case "agenda":
-				message = "Rien à venir pour la semaine";
-			break;
-
-			case "fitness":
-				message = "Exercices quotidiens pas encore effectués";
-			break;
-
-			case "downloads":
-				message = "Aucun téléchargement en cours";
-			break;
+	$("#side a").on("click", function(ev) {
+		if ($(this).hasClass("selected")) {
+			return false;
 		}
 
-		$("#tooltip p").css("width", message.length*8+"px").html(message);
-		$("#tooltip").removeClass("changing");
-	}, 200);
-});
+		if ($(this).hasClass("soon")) {
+			alert("c'est pour bientôt, no stress ! (il y a point S)");
+			return false;
+		}
 
-$("#side a").on("leave", function(ev) {
-	$("#tooltip").addClass("hidden");
-	$(".bg").addClass("hidden");
-});
+		$(".bg").addClass("selected");
 
-connect.callbacks.push(user => {
+		$("#side a").removeClass("selected");
+		$(this).addClass("selected");
+
+		let href = this.className.replace(/ |selected|home/g, "");
+
+		ev.preventDefault();
+
+		setTimeout(() => {
+			location.href = "../"+href;
+		}, 250);
+	});
+
+	$("#side a").on("enter", function(ev) {
+		let className = this.className.split(" ")[0];
+	
+		if ($(this).hasClass("selected") || className == "settings") {
+			$("#tooltip").addClass("hidden");
+			$(".bg").addClass("hidden");
+	
+			setTimeout(function() {
+				$("#tooltip").css("display", "none");
+			}, 1000);
+			return false;
+		}
+	
+		$(".bg").css("top", this.offsetTop+"px").removeClass(["hidden", "soon"]);
+	
+		if ($(this).hasClass("soon")) {
+			$(".bg").addClass("soon");
+		}
+	
+		let title = $(this).data("title");
+		clearTimeout(sideTooltipTimeout);
+	
+		$("#tooltip").css("display", "none");
+	
+		setTimeout(() => {
+			$("#tooltip").addClass("changing").removeClass("hidden").css("top", this.offsetTop+"px");
+		}, 50);
+		
+		sideTooltipTimeout = setTimeout(function() {
+			$("#tooltip h4").html(title);
+	
+			let message = "Erreur";
+	
+			switch (className) {
+				case "home":
+					message = "Tout va bien";
+				break;
+	
+				case "drive":
+					message = "Aucun nouveau fichier";
+				break;
+	
+				case "messages":
+					message = "Aucun nouveau message";
+				break;
+	
+				case "agenda":
+					message = "Rien à venir pour la semaine";
+				break;
+	
+				case "fitness":
+					message = "Exercices quotidiens pas encore effectués";
+				break;
+	
+				case "downloads":
+					message = "Aucun téléchargement en cours";
+				break;
+			}
+	
+			$("#tooltip p").css("width", message.length*8+"px").html(message);
+			$("#tooltip").removeClass("changing");
+		}, 200);
+	});
+
 	if (!$("#account").first()) {
 		return false;
 	}
@@ -884,25 +910,37 @@ $(window).on("click", function() {
 	if (!$("#search, #nav .search").is(":hover")) {
 		search.hide();
 	}
+
+	if (!$("#menu, #nav .more").is(":hover")) {
+		menu.hide();
+	}
 });
 
-$("#account .logout").on("click", () => {
-	connect.logout();
+connect.callbacks.push(user => {
+	$("#account .header > img").attr("src", user.avatar);
+	
+	$("#account .avatar .takeQR img").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+encodeURIComponent("http://"+location.host+"/take-avatar/?id="+user.id));
+	$("#account .avatar .takeQR a").attr("href", "http://"+location.host+"/take-avatar/?id="+user.id);
+
+	$("#account .logout").on("click", () => {
+		connect.logout();
+	});
+	
+	$("#account .change-avatar").on("click", function() {
+		$("#account .header").addClass("hidden");
+		$("#account .avatar").removeClass("hidden");
+	});
+	
+	$("#account .avatar .back").on("click", function() {
+		$("#account .header").removeClass("hidden");
+		$("#account .avatar").addClass("hidden");
+	});
+	
+	$("#account .avatar .take").on("click", function() {
+		$("#account .avatar .takeQR").toggleClass("hidden");
+	});
 });
 
-$("#account .change-avatar").on("click", function() {
-	$("#account .header").addClass("hidden");
-	$("#account .avatar").removeClass("hidden");
-});
-
-$("#account .avatar .back").on("click", function() {
-	$("#account .header").removeClass("hidden");
-	$("#account .avatar").addClass("hidden");
-});
-
-$("#account .avatar .take").on("click", function() {
-	$("#account .avatar .takeQR").toggleClass("hidden");
-});
 
 // latency
 
@@ -982,7 +1020,7 @@ let icons = {
 defaultTitle = document.title;
 
 function isValidURL(str) {
-	var urlregex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+	var urlregex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.%]+$/;
 
 	return urlregex.test(str);
 }
@@ -1106,36 +1144,18 @@ const messages = {
 	}
 };
 
-$("#messages .dialog .input input").on("keydown", function(ev) {
-	setTimeout(() => {
-		if (ev.keyCode == 13) {
-			if (this.value != "") {
-				messages.send(this.value, "msg");
+connect.callbacks.push(user => {
+	$("#messages .dialog .input input").on("keydown", function(ev) {
+		setTimeout(() => {
+			if (ev.keyCode == 13) {
+				if (this.value != "") {
+					messages.send(this.value, "msg");
+				}
 			}
-		}
-	}, 50);
+		}, 50);
+	});
 });
 
-$("#messages-bg").on("click", messages.hide);
-
-$("#side a").on("click", function(ev) {
-	if ($(this).hasClass("selected")) {
-		return false;
-	}
-
-	$(".bg").addClass("selected");
-
-	$("#side a").removeClass("selected");
-	$(this).addClass("selected");
-
-	let href = this.className.replace(/ |selected|home/g, "");
-
-	ev.preventDefault();
-
-	setTimeout(() => {
-		location.href = "../"+href;
-	}, 250);
-});
 
 const menu = {
 	show() {
@@ -1192,46 +1212,42 @@ const users = {
 	}
 };
 
-$("#users .cancel").on("click", users.hide);
+connect.callbacks.push(user => {
+	$("#users .cancel").on("click", users.hide);
 
-$("#users").on("click", function() {
-	if (!$("#users > div").is(":hover")) {
-		users.hide();
-	}
-});
+	$("#users").on("click", function() {
+		if (!$("#users > div").is(":hover")) {
+			users.hide();
+		}
+	});
 
-$("#users input").on("keydown", function() {
+	$("#users input").on("keydown", function() {
+		setTimeout(() => {
+			let val = search.clean(this.value);
 
-	setTimeout(() => {
-		let val = search.clean(this.value);
+			$("#users .list > div").each(el => {
+				let name = $(el).data("name").split(" "),
+					id = $(el).data("id"),
+					first = search.clean(name[0]),
+					last = search.clean(name[1]);
 
-		$("#users .list > div").each(el => {
-			let name = $(el).data("name").split(" "),
-				id = $(el).data("id"),
-				first = search.clean(name[0]),
-				last = search.clean(name[1]);
+				if (!first.startsWith(val) && !last.startsWith(val)) {
+					$(el).addClass("hidden");
+				} else {
+					$(el).removeClass("hidden");
+				}
+			});
+		}, 50);
+	});
 
-			if (!first.startsWith(val) && !last.startsWith(val)) {
-				$(el).addClass("hidden");
-			} else {
-				$(el).removeClass("hidden");
-			}
-		});
-	}, 50);
-});
-
-$("#users > div .next").on("click", function() {
-	if ($(this).hasClass("invalid")) return false;
-
-	connect.socket.emit("messages.newDialog", users.getChecked());
+	$("#users > div .next").on("click", function() {
+		if ($(this).hasClass("invalid")) return false;
+	
+		connect.socket.emit("messages.newDialog", users.getChecked());
+	});
 });
 
 connect.socket.on("messages.dialogReady", dialogID => {
 	users.hide();
 	messages.dialog(dialogID);
-});
-
-$("#messages .header > .new").on("click", function() {
-	messages.hide();
-	users.show();
 });

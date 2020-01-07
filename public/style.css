@@ -6,7 +6,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    width: calc(100% - 800px);
+    width: 560px;
     height: 350px;
     margin-left: calc(96px + 48px);
     box-sizing: border-box;
@@ -126,7 +126,7 @@
 
 #panel {
     font-family: "Roboto", sans-serif;
-    width: calc(100% - 50% - 300px);
+    width: 350px;
     margin-top: 15px;
     margin-left: 48px;
     float: left;

@@ -158,7 +158,7 @@ const configDB = {
 	}
 };
 
-function getWeather() {
+function getWeather(ctx) {
 	request("https://api.openweathermap.org/data/2.5/weather?q="+config.weather.city+"&appid="+config.weather.token+"&units=metric", function(err, response, body) {
 		if (err) throw err;
 	
@@ -170,7 +170,9 @@ function getWeather() {
 			value: JSON.parse(weather).main.temp
 		});
 
-		console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
+		if (ctx != "loop") {
+			console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
+		}
 
 		fs.writeFileSync("./weather.json", JSON.stringify(weatherAnalyticsFile, null, 4));
 	});
@@ -241,30 +243,108 @@ function addToDownloadQueue(link) {
 if (downloadQueue.length > 0) {
 	download(downloadQueue[0]);
 }
-/*
+
 const rss = {
+	fetchDate: false,
+	cache: require("./feeds.json"),
+	getAll(ctx) {
+		this.fetchDate = new Date().toISOString();
+		let nb = 0;
+
+		users.users.forEach((user, i) => {
+			this.get(user.feeds, (feeds, j) => {
+				// finished all feeds of the user
+			});
+		});
+
+		// io.sockets.emit("feeds.update", feeds, rss.fetchDate);
+	},
+
+	log(nb, ctx) {
+		if(ctx == "starting") {
+			console.log(chalk[config.interface.color]("Nitro:  ")+nb+" feed"+(nb > 1 ? "s were" : " was")+" updated "+chalk.dim("in the Nitro's cache."));
+		}
+	},
+
+	add(url, socket) {
+		if (!url.startsWith("http://") && !url.startsWith("https://")) {
+			url = "http://"+url;
+		}
+		
+		if (!url.endsWith("/")) {
+			url += "/";
+		}
+
+		if (socket.user.feeds.includes(url)) {
+			socket.emit("feeds.add", 403);
+			return false;
+		}
+
+		rss.feed(url, 15, feed => {
+			if (feed != false) {
+				users.users.forEach(user => {
+					if (user.id == socket.user.id) {
+						user.feeds.push(url);
+
+						socket.emit("feed", feed);
+						socket.emit("feeds.display");
+
+						fs.writeFileSync("./users.json", JSON.stringify(users, null, 4));
+					}
+				});
+			} else {
+				socket.emit("feeds.add", 404);
+			}
+		});
+	},
+
 	get(urls, cb) {		
+		if (urls.length <= 0) {
+			cb([]);
+			return false;
+		}
+
 		for (let i = 0; i<urls.length; i++) {
 			let url = urls[i];
 
 			feeds = [];
-			this.feed(url, feed => {
-				if (feed == false) {
+			this.feed(url, 15, (feed, err) => {
+				if (!feed || err) {
+					console.error(err);
 					return false;
 				}
 
 				feeds.push(feed);
 
 				if (feeds.length == urls.length) {
-					rssLastFetch = new Date().toISOString();
+					cb(feeds);
 				}
-
-				io.sockets.emit("feeds.update", feeds, rssLastFetch);
 			});
 		}
 	},
 
-	feed(url, cb) {
+	isCacheOld(url) {
+		if (!this.cache[url]) {
+			return true;
+		} else {
+			let fetchDate = new Date(this.cache[url].fetchDate).getTime(),
+				now =new Date().getTime(),
+				diff = now - fetchDate;
+
+			return diff >= 300000;
+		}
+	},
+
+	getFromCache(url) {
+		return this.cache[url] || false;
+	},
+
+	feed(url, length, cb) {
+		if (!this.isCacheOld(url)) {
+			cb(this.getFromCache(url));
+			return false;
+		}
+
 		request(url, function(err, rep, body) {
 			if (err) throw err;
 
@@ -285,7 +365,7 @@ const rss = {
 				let channel = result.rss.channel[0],
 					elements = [];
 
-				for (let i = 0; i<(20/rss.urls.length); i++) {
+				for (let i = 0; i<length; i++) {
 					if (i >= channel.item.length) {
 						return false;
 					}
@@ -311,25 +391,54 @@ const rss = {
 					image = channel["itunes:image"][0].$.href;
 				}
 
-				cb({
+				let feed = {
 					title: channel.title[0],
+					url: url,
+					fetchDate: new Date().toISOString(),
 					link: channel.link[0],
 					image: image,
 					description: channel.description[0],
 					items: elements
-				});
+				};
+
+				cb(feed);
+				rss.cache[feed.url] = feed;
+
+				fs.writeFileSync("./feeds.json", JSON.stringify(rss.cache, null, 4));
 			});
 		});
 	}
 };
-*/
+
 setInterval(function() {
-	getWeather();
-	//rss.get();
+	getWeather("loop");
+	rss.getAll("loop");
 }, 300000);
 
-getWeather();
-//rss.get();
+getWeather("starting");
+rss.getAll("starting");
+
+io.of("/feeds").on("connection", socket => {
+	let sendFeeds = function() {
+		if (!socket.user) return false;
+
+		socket.user.feeds.forEach((url) => {
+			socket.emit("feed", rss.getFromCache(url));
+		});
+
+		socket.emit("feeds.display");
+	};
+
+	socket.on("login", (uid, deviceID) => {
+		users.users.forEach(user => {
+			if (deviceID && uid && user.id == uid && user.devices.includes(deviceID)) {
+				socket.user = user;
+
+				sendFeeds();
+			}
+		});
+	});
+});
 
 let piWifi = require('pi-wifi'),
 	WiFiControl = require('wifi-control'),
@@ -517,7 +626,7 @@ io.of("/signup").on("connection", socket => {
 				id: superID(24),
 				status: "online",
 				lastConnection: new Date().toISOString(),
-				dialogs: []
+				feeds: []
 			};
 
 		users.users.push(newUser);
@@ -600,8 +709,7 @@ function getUserFromId(userID) {
 	}
 }
 
-let connectSocketsID = {},
-	rssLastFetch;
+let connectSocketsID = {};
 
 io.of("/connect").on("connection", socket => {
 	socket.on("device.id", id => {
@@ -630,14 +738,6 @@ io.of("/connect").on("connection", socket => {
 					connectSocketsID[user.id].push(socket.id);
 				}
 
-				let usersToSend = [];
-
-				users.users.forEach(el => {
-					usersToSend.push(getUserFromId(el.id));
-				});
-
-				socket.emit("users", usersToSend);
-
 				users.users[i].lastConnection = new Date().toISOString();
 				users.users[i].status = "online";
 				emitNewStatus(socket.user.id, socket);
@@ -651,8 +751,18 @@ io.of("/connect").on("connection", socket => {
 		}
 	});
 
+		socket.on("users", () => {
+			let usersToSend = [];
+
+			users.users.forEach(el => {
+				usersToSend.push(getUserFromId(el.id));
+			});
+
+			socket.emit("users", usersToSend);
+		});
+
 		// Feeds
-		socket.emit("feeds.update", feeds, rssLastFetch);
+		socket.emit("feeds.update", feeds, rss.fetchDate);
 
 		socket.on("feeds.delete", index => {
 			feeds.splice(index, 1);
@@ -664,29 +774,7 @@ io.of("/connect").on("connection", socket => {
 		});
 	
 		socket.on("feeds.add", url => {
-			if (!url.startsWith("http://") && !url.startsWith("https://")) {
-				url = "http://"+url;
-			}
-	
-			if (config.feeds.list.includes("http://"+url.replace(/http(s|):\/\//, "")) || config.feeds.list.includes("https://"+url.replace(/http(s|):\/\//, ""))) {
-				socket.emit("feeds.add", 403);
-				return false;
-			}
-	
-			rss.feed(url, feed => {
-				if (feed != false) {
-					feeds.push(feed);
-	
-					rss.urls.push(url);
-	
-					io.sockets.emit("feeds.update", feeds, rss.lastFetch);
-	
-					config.feeds.list.push(url);
-					configDB.save();
-				} else {
-					socket.emit("feeds.add", 404);
-				}
-			});
+			rss.add(url, socket);
 		});
 
 	socket.on("drive.files", () => {

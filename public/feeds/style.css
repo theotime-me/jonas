@@ -1,0 +1,81 @@
+#nav .logo {
+    width: 200px;
+}
+
+#wrapper {
+    font-family: "Roboto", sans-serif;
+    margin-left: 148px;
+    margin-top: 96px;
+}
+
+#wrapper > .feeds > h1 {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+#wrapper .feeds .list {
+    min-height: 234px;
+}
+
+#wrapper .feeds .list > div {
+    display: inline-block;
+    padding: 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer;
+}
+
+#wrapper .feeds .list > div:hover {
+    background-color: rgba(0, 0, 0, .08);
+}
+
+#wrapper .feeds .list div .img {
+    background-color: rgba(0, 0, 0, .2);
+    background-size: cover;
+    background-position: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#wrapper .feeds .list div h4 {
+    font-size: 18px;
+    width: 150px;
+    color: #111;
+}
+
+#wrapper .feeds .list div p {
+    font-size: 15px;
+    color: #222;
+}
+
+#wrapper .episodes .list div {
+    height: 48px;
+    padding: 15px 0;
+}
+
+#wrapper .episodes .list div .img {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, .2);
+    margin-right: 15px;
+    padding: 0;
+    float: left;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
