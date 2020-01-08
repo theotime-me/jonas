@@ -375,6 +375,7 @@ const rss = {
 					elements.push({
 						title: item.title[0],
 						link: item.link[0],
+						url: url,
 						content: item.enclosure ? item.enclosure[0].$.url : null,
 						contentType: item.enclosure && item.enclosure[0].$.type ? item.enclosure[0].$.type : null,
 						contentLength: item.enclosure && item.enclosure[0].$.length ? item.enclosure[0].$.length : null,
@@ -1541,6 +1542,7 @@ const update = {
 			"weather.json",
 			"messages.json",
 			"devices.json",
+			"feeds.json",
 			"config.json"
 		];
 

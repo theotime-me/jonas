@@ -437,15 +437,36 @@
     "https://radiofrance-podcast.net/podcast09/rss_14312.xml/": {
         "title": "La méthode scientifique",
         "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-        "fetchDate": "2020-01-05T19:41:20.589Z",
+        "fetchDate": "2020-01-08T19:14:36.618Z",
         "link": "http://www.radiofrance.fr/",
         "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2019/08/6b34161f-00ab-455c-9ef9-612e6752d09c/1400x1400_rf_omm_0000017836_ite.jpg",
         "description": "Une heure de savoir autour des sciences, toutes les sciences, et sur les problématiques éthiques, politiques, économiques et sociales qui font l'actualité de la recherche. Du lundi au vendredi de 16h à 17h.",
         "items": [
             {
+                "title": "Missions solaires, la bataille pour la couronne",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mardi-07-janvier-2020",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1658169443387187200/14312-07.01.2020-ITEMA_22248088-1.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "56624680",
+                "description": "durée : 00:58:57 - La Méthode scientifique - par : Nicolas Martin - Pourquoi les chercheurs s’intéressent-ils à l’étude du Soleil ? Quels sont les mystères encore à l’oeuvre ? Comment l'atmosphère solaire, posée sur la photosphère à 6.000 kelvins, peut-elle atteindre des températures 200 fois supérieures ? - réalisation : Olivier Bétard - invités : Tahar Amari Astrophysicien, directeur de recherche CNRS au Centre de Physique Théorique, Ecole Polytechnique; Miho Janvier Astrophysicienne, chercheuse à l'Institut d'astrophysique spatiale (IAS, Université Paris-Sud) ",
+                "date": "Tue, 07 Jan 2020 16:58:45 +0100"
+            },
+            {
+                "title": "Un virus inconnu touche 59 personnes en Chine",
+                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-mardi-07-janvier-2020",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1658140159947841537/14312-07.01.2020-ITEMA_22248088-0.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "4693982",
+                "description": "durée : 00:04:51 - Le Journal des sciences - par : Antoine Beauchamp - Dans la ville de Wuhan en Chine, 59 personnes, dont 7 sont toujours dans un état critique, souffrent d'une épidémie de pneumonie. On ignore toujours la cause de cette épidémie mystérieuse. ",
+                "date": "Tue, 07 Jan 2020 16:07:00 +0100"
+            },
+            {
                 "title": "Extraterrestre, il est Fermi d’en douter",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/extraterrestre-il-est-fermi-den-douter",
-                "content": "http://rf.proxycast.org/1656649372902891520/14312-03.01.2020-ITEMA_22245069-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1656649372902891520/14312-03.01.2020-ITEMA_22245069-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "56814140",
                 "description": "durée : 00:59:09 - La Méthode scientifique - par : Nicolas Martin - Se peut-il vraiment que la “vie” soit localisée ailleurs que sur Terre ? Quelles sont les solutions proposées pour tenter d’expliquer le paradoxe de Fermi ? Se pourrait-il que le voyage interstellaire soit tout simplement impossible pour des raisons que nous découvrirons un jour ?\r\n - réalisation : Elisabeth Miro - invités : Gabriel Chardin physicien, président du comité des Très grandes infrastructures de recherche (TGIR); Jean Duprat Physicien. Directeur de Recherches au CNRS, travaille au Centre de Sciences Nucléaires et de Sciences de la Matière à Orsay. ",
@@ -454,7 +475,8 @@
             {
                 "title": "Frédérique Vidal, entretien à mi-mandat",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/frederique-vidal-entretien-a-mi-mandat",
-                "content": "http://rf.proxycast.org/1656278277267922944/14312-02.01.2020-ITEMA_22244246-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1656278277267922944/14312-02.01.2020-ITEMA_22244246-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "57116636",
                 "description": "durée : 00:59:28 - La Méthode scientifique - par : Nicolas Martin - Quel bilan de l’état de la recherche française à mi-mandat ? Des objectifs énoncés au début du quinquennat, quelles en sont les applications concrètes ? Sur le nombre de postes, l’allongement des budgets, l’autonomie des labos... ? - réalisation : Olivier Bétard - invités : Frédérique Vidal ministre de l'Enseignement supérieur, de la Recherche et de l'Innovation; Sylvestre Huet Journaliste scientifique de Science2, plateforme Le Monde.; Dominique Leglu directrice de la rédaction de Sciences et Avenir et de La Recherche. Docteur en physique nucléaire ",
@@ -463,7 +485,8 @@
             {
                 "title": "Boston Dynamics : les robots prennent le pouvoir",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/boston-dynamics-les-robots-prennent-le-pouvoir-0",
-                "content": "http://rf.proxycast.org/1655907226126131200/14312-01.01.2020-ITEMA_22243500-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1655907226126131200/14312-01.01.2020-ITEMA_22243500-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "57347291",
                 "description": "durée : 00:59:42 - La Méthode scientifique - par : Nicolas Martin - Boston Dynamics a-t-elle révolutionné la fabrication des robots ? Les robots sont-ils vraiment notre futur ?\r\nLa guerre de demain sera-t-elle robotisée ? Les robots peuvent-ils tout apprendre ou tout nous apprendre ?\r\n - réalisation : Elisabeth Miro - invités : Jean-Paul Laumond roboticien, directeur de recherche au LAAS-CNRS à Toulouse; Rodolphe Gelin directeur de la Recherche de la société française Aldebaran Robotics; Morgane Tual Journaliste au Monde ",
@@ -472,7 +495,8 @@
             {
                 "title": "Fusion nucléaire : l’énergie à profusion",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/fusion-nucleaire-lenergie-a-profusion",
-                "content": "http://rf.proxycast.org/1655536101718237185/14312-31.12.2019-ITEMA_22242762-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1655536101718237185/14312-31.12.2019-ITEMA_22242762-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "57764965",
                 "description": "durée : 01:00:08 - La Méthode scientifique - par : Nicolas Martin - Produire une énergie abondante et pérenne sans émissions de CO2 et sans déchets toxiques ? Telles sont les promesses de la fusion nucléaire. Mais qu'en est-il aujourd'hui ? Avons-nous les ressources nécessaires pour pouvoir produire de l’énergie par fusion nucléaire? - réalisation : Olivier Bétard - invités : Alain Bécoulet Directeur de recherche au CEA, directeur de l'Institut de recherche sur la fusion par confinement magnétique; Jean-Marcel Rax Professeur à l'École polytechnique et à la faculté des sciences de l'université Paris XI ",
@@ -481,7 +505,8 @@
             {
                 "title": "Utérus artificiel : allô maman robot",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/uterus-artificiel-allo-maman-robot-0",
-                "content": "http://rf.proxycast.org/1655164973753573377/14312-30.12.2019-ITEMA_22241926-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1655164973753573377/14312-30.12.2019-ITEMA_22241926-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "57270779",
                 "description": "durée : 00:59:37 - La Méthode scientifique - par : Nicolas Martin - L’utérus artificiel : de quoi parle-t-on ? Que sait-on faire (et ne pas faire) aujourd’hui ? Quels sont les obstacles qui nous empêche aujourd’hui d’externaliser complètement une grossesse ?\r\n - réalisation : Elisabeth Miro - invités : Olivier Sandra biologiste, spécialiste de la reproduction animale, directeur de recherche de l’unité biologie du développement et reproduction à l'INRA.; Henri Atlan intellectuel, médecin biologiste, philosophe et écrivain français, professeur émérite de biophysique et directeur du centre de recherche en biologie humaine de l'hôpital universitaire d'Hadassah, à Jérusalem, et directeur d'études à l'École des ",
@@ -490,7 +515,8 @@
             {
                 "title": "Actualité des sciences en 2019 : ce qui s’est passé et ce qu’on n’a pas vu passer",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-vendredi-27-decembre-2019",
-                "content": "http://rf.proxycast.org/1654063602451095552/14312-27.12.2019-ITEMA_22240164-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1654063602451095552/14312-27.12.2019-ITEMA_22240164-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "56156886",
                 "description": "durée : 00:58:28 - La Méthode scientifique - par : Antoine Beauchamp - L'actualité des sciences vue par Muriel Valin de Science et Vie, Olivier Lascar de Sciences et Avenir et Sylvie Burnouf d'APM News. - réalisation : Emily Vallat - invités : Muriel Valin Journaliste au magazine Science et vie; Olivier Lascar Rédacteur en chef du pôle numérique de \"Sciences & Avenir\"; Sylvie Burnouf Journaliste scientifique à l'Agence de presse médicale APM News et contributrice régulière aux pages « Planète » du journal Le Monde ",
@@ -499,7 +525,8 @@
             {
                 "title": "L'électronique à la vitesse de la lumière / L’étoile 49 Ceti interroge la théorie de la formation des planètes ",
                 "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-vendredi-27-decembre-2019",
-                "content": "http://rf.proxycast.org/1654056080726040576/14312-27.12.2019-ITEMA_22240164-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1654056080726040576/14312-27.12.2019-ITEMA_22240164-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "8577050",
                 "description": "durée : 00:08:54 - Le Journal des sciences - par : Natacha Triou - Des physiciens viennent de déplacer des électrons à des vitesses proches de la vitesse de la lumière / Le disque de gaz qui entoure l’étoile 49 Ceti déroute les astrophysiciens / Autres actualités scientifiques.  ",
@@ -508,7 +535,8 @@
             {
                 "title": "Pratiques funéraires : les débuts de la fin",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-jeudi-26-decembre-2019",
-                "content": "http://rf.proxycast.org/1653684672430874625/14312-26.12.2019-ITEMA_22239406-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1653684672430874625/14312-26.12.2019-ITEMA_22239406-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "56806900",
                 "description": "durée : 00:59:08 - La Méthode scientifique - par : Antoine Beauchamp - Comment définir un rite funéraire ? Quelles précautions de fouilles archéologiques les sites funéraires impliquent-ils ? Que nous apprennent ces traces anciennes de pratiques funéraires sur les cultures du passé ? - réalisation : Emily Vallat - invités : Sophie Archambault de Beaune professeur à l’université Jean Moulin Lyon 3 et chercheur au laboratoire Archéologie et Sciences de l’Antiquité, à Nanterre; Eric Crubézy Professeur d’anthropobiologie à l’Université Paul Sabatier et directeur de la mission archéologique française en Sibérie Orientale ",
@@ -517,7 +545,8 @@
             {
                 "title": "Une carte du striatum, la zone cérébrale de la prise de décision",
                 "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-jeudi-26-decembre-2019",
-                "content": "http://rf.proxycast.org/1653685056213884929/14312-26.12.2019-ITEMA_22239406-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1653685056213884929/14312-26.12.2019-ITEMA_22239406-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "4330695",
                 "description": "durée : 00:04:29 - Le Journal des sciences - par : Natacha Triou - Une avancée pour la compréhension du système de récompense du cerveau et autres actualités scientifiques. ",
@@ -526,7 +555,8 @@
             {
                 "title": "Francis Hallé, l’homme qui rêvait des arbres",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mercredi-25-decembre-2019",
-                "content": "http://rf.proxycast.org/1653308329734184960/14312-25.12.2019-ITEMA_22238660-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1653308329734184960/14312-25.12.2019-ITEMA_22238660-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "56620853",
                 "description": "durée : 00:58:57 - La Méthode scientifique - par : Antoine Beauchamp - Retour sur le parcours et la carrière du botaniste Francis Hallé. Comment en est-il venu à se passionner pour les forêts tropicales humides ? Quelles ont été ses sources d’inspiration ? - réalisation : Emily Vallat - invités : Francis Hallé Botaniste, spécialiste des forêts tropicales, initiateur du “radeau des cimes” et auteur de nombreux ouvrages. ",
@@ -535,7 +565,8 @@
             {
                 "title": "Le réchauffement climatique : une menace de plus pour les abeilles",
                 "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-rechauffement-climatique-une-menace-de-plus-pour-les-abeilles",
-                "content": "http://rf.proxycast.org/1653645618301640704/14312-25.12.2019-ITEMA_22238660-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1653645618301640704/14312-25.12.2019-ITEMA_22238660-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "4880741",
                 "description": "durée : 00:05:03 - Le Journal des sciences - par : Natacha Triou -  Les effets de la hausse des températures sur les insectes pollinisateurs et autres actualités scientifiques. ",
@@ -544,7 +575,8 @@
             {
                 "title": "Filaments galactiques, un univers en dentelle",
                 "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mardi-24-decembre-2019",
-                "content": "http://rf.proxycast.org/1652937244547227649/14312-24.12.2019-ITEMA_22237912-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1652937244547227649/14312-24.12.2019-ITEMA_22237912-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "56699965",
                 "description": "durée : 00:59:02 - La Méthode scientifique - par : Antoine Beauchamp - Comment l’univers est-il structuré à très grande échelle ? Des étoiles aux superamas de galaxies, comment la matière et l’énergie se sont-elles organisées depuis le Big Bang ? Comment les interactions fondamentales ont-elles façonné ces grandes structures cosmiques ? - réalisation : Emily Vallat - invités : Françoise Combes Astrophysicienne à l'Observatoire de Paris, professeur au Collège de France et membre de l'Académie des sciences; Sandrine Codis Chargée de recherche à l'Institut d'Astrophysique de Paris ",
@@ -553,36 +585,19 @@
             {
                 "title": "L’Hyper-Kamiokande : le plus grand détecteur de neutrinos au monde",
                 "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/lhyper-kamiokande-le-plus-grand-detecteur-de-neutrinos-au-monde",
-                "content": "http://rf.proxycast.org/1653685319125442560/14312-24.12.2019-ITEMA_22237912-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
+                "content": "https://rf.proxycast.org/1653685319125442560/14312-24.12.2019-ITEMA_22237912-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "4890762",
                 "description": "durée : 00:05:04 - Le Journal des sciences - par : Natacha Triou - Le Japon va construire le plus grand détecteur de neutrinos au monde et autres actualités scientifiques. ",
                 "date": "Tue, 24 Dec 2019 16:07:00 +0100"
-            },
-            {
-                "title": "Trisomie 21, génétique d’un syndrome",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-lundi-23-decembre-2019",
-                "content": "http://rf.proxycast.org/1652581578519355393/14312-23.12.2019-ITEMA_22237101-1.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "55859121",
-                "description": "durée : 00:58:09 - La Méthode scientifique - par : Antoine Beauchamp - Qu’est-ce que la trisomie 21 ? Quelles sont les manifestations cognitives et physiques de personnes atteintes du syndrome de Down ? Comment sont réalisés les tests de dépistage ? Comment expliquer la plus forte prévalence de la maladie d'Alzheimer chez les individus atteints du syndrome de Down ? - réalisation : Emily Vallat - invités : Jacqueline London Professeure émérite à l'université de Paris UFR des sciences de la vie et fondatrice et vice-présidente de l’association française pour la recherche sur la trisomie 21; Yann Hérault Directeur de recherche CNRS à l’Institut de génétique et de biologie moléculaire et cellulaire (IGBMC) de Strasbourg ",
-                "date": "Mon, 23 Dec 2019 16:58:45 +0100"
-            },
-            {
-                "title": "Homo erectus s’est éteint plus tard qu’on ne le pensait",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-lundi-23-decembre-2019",
-                "content": "http://rf.proxycast.org/1652904680272961536/14312-23.12.2019-ITEMA_22237101-0.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "4880388",
-                "description": "durée : 00:05:03 - Le Journal des sciences - par : Natacha Triou - De nouvelles datations sur l’extinction d’Homo erectus confirment l'aspect buissonnant de l’évolution de l’humain et autres actualités scientifiques. \r\n ",
-                "date": "Mon, 23 Dec 2019 16:07:00 +0100"
             }
         ]
     },
     "https://radiofrance-podcast.net/podcast09/rss_19488.xml/": {
         "title": "Les Bonnes choses",
         "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-        "fetchDate": "2020-01-05T19:41:20.742Z",
+        "fetchDate": "2020-01-08T19:14:36.035Z",
         "link": "http://www.radiofrance.fr/",
         "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2019/07/73284527-7bb5-435d-b843-98d11cda18cf/1400x1400_rf_omm_0000019896_ite.jpg",
         "description": "La nourriture est un enjeu global : affectif, intime, social, culturel, anthropologique, économique, écologique.",
@@ -590,7 +605,8 @@
             {
                 "title": "Sustainable bioproducts / produits bio durables ",
                 "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/sustainable-bioproducts-produits-bio-durables",
-                "content": "http://rf.proxycast.org/1657321917465501696/19488-05.01.2020-ITEMA_22246310-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1657321917465501696/19488-05.01.2020-ITEMA_22246310-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3029757",
                 "description": "durée : 00:03:08 - La Cerise sur le gâteau - par : Pierre Hivernat - Et bien cette semaine, j’ai voulu d’une certaine manière prolonger l’exposition \"Je mange donc je suis\" que l’on vient de visiter, en y ajoutant une pièce qui n’y est pas, du moins pas encore... ",
@@ -599,7 +615,8 @@
             {
                 "title": "\"Je mange donc je suis\": l'expo",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/je-mange-donc-je-suis",
-                "content": "http://rf.proxycast.org/1657321934196580352/19488-05.01.2020-ITEMA_22246310-2.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1657321934196580352/19488-05.01.2020-ITEMA_22246310-2.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "27722605",
                 "description": "durée : 00:28:51 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Déambulation au sein de l’exposition \"Je mange donc je suis\" au Musée de l’Homme à Paris en compagnie du commissaire scientifique Christophe Lavelle. Une exposition transversale qui interroge l’évolution des pratiques alimentaires à travers l’art, l’histoire, la science et l’anthropologie. - réalisation : Jean-Christophe Francis - invités : Christophe Lavelle biophysicien, professeur et chercheur au CNRS ",
@@ -608,7 +625,8 @@
             {
                 "title": "La \"macaronade\" de Jeanne Cherhal ",
                 "link": "https://www.franceculture.fr/emissions/la-madeleine-de/la-macaronade-de-jeanne-cherhal",
-                "content": "http://rf.proxycast.org/1657318043413389312/19488-05.01.2020-ITEMA_22246310-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1657318043413389312/19488-05.01.2020-ITEMA_22246310-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "2607788",
                 "description": "durée : 00:02:41 - La Madeleine de... - par : Mattéo Caranta - La macaronade de Jeanne Cherhal, à manger uniquement en cas de gros appétit... ",
@@ -617,7 +635,8 @@
             {
                 "title": "Champagne !",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/champagne",
-                "content": "http://rf.proxycast.org/1654724360138661888/19488-29.12.2019-ITEMA_22241287-2.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1654724360138661888/19488-29.12.2019-ITEMA_22241287-2.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "28673736",
                 "description": "durée : 00:29:50 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - En cette période de fête, il est temps de se demander pourquoi, pour de nombreux Français, le même rituel revient irrémédiablement chaque 31 décembre : celui de sabler le champagne avant que l'année ne s'achève.  - réalisation : Jean-Christophe Francis - invités : Delphine Brulez Vigneronne, membre de l'association les Fa'bulleuses; Yves Tesson Histoire et spécialiste du champagne ",
@@ -626,7 +645,8 @@
             {
                 "title": "ABALOBI, au secours des poissons et des petits pêcheurs",
                 "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/abalobi-au-secours-des-poissons-et-des-petits-pecheurs",
-                "content": "http://rf.proxycast.org/1654724336373735425/19488-29.12.2019-ITEMA_22241287-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1654724336373735425/19488-29.12.2019-ITEMA_22241287-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3122385",
                 "description": "durée : 00:03:13 - La Cerise sur le gâteau - par : Camille Labro - En Afrique du Sud, la majorité des petits pêcheurs n’ont pas de permis de pêche pour pouvoir travailler légalement et nourrir leurs familles. Quant aux restaurants, c’est bien souvent du cabillaud ou du saumon de Norvège que l’on trouve dans les assiettes.Mais ça, c’était avant Abalobi....  - réalisation : Anne Fleury ",
@@ -635,7 +655,8 @@
             {
                 "title": "Ludivine Sagnier :\"Je ne mangerai plus jamais d'escargots\"",
                 "link": "https://www.franceculture.fr/emissions/la-madeleine-de/ludivine-sagnier-je-ne-mangerai-plus-jamais-descargots",
-                "content": "http://rf.proxycast.org/1654720451923943424/19488-29.12.2019-ITEMA_22241287-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1654720451923943424/19488-29.12.2019-ITEMA_22241287-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3550298",
                 "description": "durée : 00:03:40 - La Madeleine de... - par : Mattéo Caranta - Ludivine Sagnier aimait jouer avec les escargots avant de les dévorer!  - réalisation : Anne Fleury ",
@@ -644,7 +665,8 @@
             {
                 "title": "Pierre Gagnaire : \"La cuisine, ce n’est pas que de la bouffe\"",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/la-cuisine-ce-nest-pas-que-de-la-bouffe",
-                "content": "http://rf.proxycast.org/1652125426450964480/19488-22.12.2019-ITEMA_22236493-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1652125426450964480/19488-22.12.2019-ITEMA_22236493-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "27971438",
                 "description": "durée : 00:29:06 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Reportage et entretien dans les cuisines du restaurant de Pierre Gagnaire, considéré par ses pairs comme \"le meilleur cuisinier du monde\".  - réalisation : Anne Fleury - invités : Pierre Gagnaire Grand chef cuisinier ",
@@ -653,7 +675,8 @@
             {
                 "title": "Alexandre Tharaud : \"Le beurre salé, c'est obligatoire, et dans la crêpe, pas au-dessus\"",
                 "link": "https://www.franceculture.fr/emissions/la-madeleine-de/alexandre-tharaud-le-beurre-sale-cest-obligatoire-et-dans-la-crepe-pas-au-dessus",
-                "content": "http://rf.proxycast.org/1652121579057848320/19488-22.12.2019-ITEMA_22236493-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1652121579057848320/19488-22.12.2019-ITEMA_22236493-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "2387694",
                 "description": "durée : 00:02:27 - La Madeleine de... - par : Mattéo Caranta - Le pianiste Alexandre Tharaud peut manger des crêpes par dizaines, quelle que soit la saison. ",
@@ -662,7 +685,8 @@
             {
                 "title": "Auguste Escoffier, une légende nous est contée",
                 "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/auguste-escoffier-une-legende-nous-est-contee",
-                "content": "http://rf.proxycast.org/1649527971121209344/19488-15.12.2019-ITEMA_22230316-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1649527971121209344/19488-15.12.2019-ITEMA_22230316-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3215328",
                 "description": "durée : 00:03:19 - La Cerise sur le gâteau - par : Pierre Hivernat - Avec \"Auguste Escoffier, la vie savoureuse du roi des cuisiniers\", Elodie Polo Ackermann nous livre un récit captivant, et un regard inédit, sur la vie du chef mythique. - réalisation : Jean-Christophe Francis - invités : Pierre Hivernat Directeur de la publication d’Alimentation Générale ",
@@ -671,16 +695,18 @@
             {
                 "title": "Les cinquante ans du Gault & Millau",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/les-cinquante-ans-du-gault-millau",
-                "content": "http://rf.proxycast.org/1649528001177591809/19488-15.12.2019-ITEMA_22230316-2.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1649528001177591809/19488-15.12.2019-ITEMA_22230316-2.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "28058045",
-                "description": "durée : 00:29:12 - Les Bonnes choses - par : Caroline Broué, Jean-Christophe Francis, Mattéo Caranta, Stéphanie Villeneuve - Le Gault & Millau fête cette année ses cinquante ans. L'occasion de revenir dans cette émission sur l'histoire et l'évolution du guide devenu, un demi-siècle après sa création, une boussole incontournable du monde gastronomique.  - invités : Marc Esquerré Directeur du Gault & Millau; Jean-Bernard Magescas chroniqueur « Saveurs » de l’Opinion; Arnaud Donckele Chef du restaurant La Vague d'Or à Saint-Tropez ",
+                "description": "durée : 00:29:12 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Le Gault & Millau fête cette année ses cinquante ans. L'occasion de revenir dans cette émission sur l'histoire et l'évolution du guide devenu, un demi-siècle après sa création, une boussole incontournable du monde gastronomique.  - réalisation : Jean-Christophe Francis - invités : Marc Esquerré Directeur du Gault & Millau; Jean-Bernard Magescas chroniqueur « Saveurs » de l’Opinion; Arnaud Donckele Chef du restaurant La Vague d'Or à Saint-Tropez ",
                 "date": "Sun, 15 Dec 2019 12:28:45 +0100"
             },
             {
                 "title": "Mathilde Laurent :\"Mon île flottante, c'est le contraste entre le blanc iodé et la douceur de la vanille\"",
                 "link": "https://www.franceculture.fr/emissions/la-madeleine-de/mathilde-laurent-mon-ile-flottante-cest-le-contraste-entre-le-blanc-iode-et-la-douceur-de-la-vanille",
-                "content": "http://rf.proxycast.org/1649523986251390976/19488-15.12.2019-ITEMA_22230316-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1649523986251390976/19488-15.12.2019-ITEMA_22230316-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3119301",
                 "description": "durée : 00:03:13 - La Madeleine de... - par : Mattéo Caranta - Le nez de Cartier utilise sa mémoire pour  penser et fabriquer ses parfums. Et il y en a un après lequel elle court depuis l'enfance, c'est celui de la vanille... - réalisation : Jean-Christophe Francis ",
@@ -689,7 +715,8 @@
             {
                 "title": "David Toutain, que du bon",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/david-toutain-que-du-bon",
-                "content": "http://rf.proxycast.org/1646930261994119168/19488-08.12.2019-ITEMA_22224043-2.mp3?public",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1646930261994119168/19488-08.12.2019-ITEMA_22224043-2.mp3?public",
                 "contentType": "audio/mpeg",
                 "contentLength": "27832373",
                 "description": "durée : 00:28:58 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Nous recevons David Toutain, chef du restaurant éponyme situé rue Surcouf à Paris. Il a reçu cette année une deuxième étoile au Guide Michelin et il vient de publier un très beau livre sur son parcours et sa cuisine aux éditions La Martinière. - réalisation : Jean-Christophe Francis ",
@@ -698,7 +725,8 @@
             {
                 "title": "Des villes qui mangent",
                 "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/des-villes-qui-mangent",
-                "content": "http://rf.proxycast.org/1646930231748993024/19488-08.12.2019-ITEMA_22224043-1.mp3?public",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1646930231748993024/19488-08.12.2019-ITEMA_22224043-1.mp3?public",
                 "contentType": "audio/mpeg",
                 "contentLength": "3258984",
                 "description": "durée : 00:03:22 - La Cerise sur le gâteau - par : Pierre Hivernat - Direction Lyon, grande capitale de la gastronomie s’il en est, à la découverte de l'exposition \"Des villes qui mangent\". La question de départ de ce projet paraît assez simple au fond : comment, dans un horizon pas si lointain allons-nous organiser les relations entre zones urbaines et zone rurales? - réalisation : Jean-Christophe Francis ",
@@ -707,7 +735,8 @@
             {
                 "title": "Arianne Ascaride : \"L'orgueil de ma vie, c'est que je fais la sauce tomate exactement comme ma grand-mère\"",
                 "link": "https://www.franceculture.fr/emissions/la-madeleine-de/arianne-ascaride-lorgueil-de-ma-vie-cest-que-je-fais-la-sauce-tomate-exactement-comme-ma-grand-mere",
-                "content": "http://rf.proxycast.org/1646926375438786560/19488-08.12.2019-ITEMA_22224043-0.mp3?public",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1646926375438786560/19488-08.12.2019-ITEMA_22224043-0.mp3?public",
                 "contentType": "audio/mpeg",
                 "contentLength": "3343715",
                 "description": "durée : 00:03:27 - La Madeleine de... - par : Mattéo Caranta - Arianne Ascaride remonte à ses origines napolitaines : des lasagnes aux boulettes de viande et à la ricotta, avec quelques raisins de corinthe...  ",
@@ -716,7 +745,8 @@
             {
                 "title": "La cuisine a-t-elle un \"sexe\" ?",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/la-cuisine-a-t-elle-un-sexe",
-                "content": "http://rf.proxycast.org/1644332716432302080/19488-01.12.2019-ITEMA_22217837-2.mp3?public",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/1644332716432302080/19488-01.12.2019-ITEMA_22217837-2.mp3?public",
                 "contentType": "audio/mpeg",
                 "contentLength": "27768963",
                 "description": "durée : 00:28:54 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Nous allons essayer de comprendre pourquoi les stéréotypes de genre ont la peau aussi dure en cuisine. Pourquoi l'homme aux fourneaux des grands restaurants et la femme à la préparation du repas quotidien sont souvent encore des réalités et pas seulement des caricatures.  - réalisation : Jean-Christophe Francis - invités : Kilien Stengel professeur à l’Université de Tours au sein de l'Institut d'histoire et des cultures de l'alimentation; Estérelle Payany journaliste culinaire ",
@@ -727,7 +757,7 @@
     "https://radiofrance-podcast.net/podcast09/rss_16740.xml/": {
         "title": "Les Matins du samedi",
         "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-        "fetchDate": "2020-01-05T19:41:20.403Z",
+        "fetchDate": "2020-01-08T19:14:36.828Z",
         "link": "http://www.radiofrance.fr/",
         "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2019/08/5ef66caa-e03e-4c5e-8779-8d937b6b2e31/1400x1400_rf_omm_0000017968_ite.jpg",
         "description": "Information, culture et idées pour commencer le week-end en direct.",
@@ -735,7 +765,8 @@
             {
                 "title": "Quand la vie rit au lait",
                 "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/les-mitonnages-de-jacky-du-samedi-04-janvier-2020",
-                "content": "http://rf.proxycast.org/1656916129399971840/16740-04.01.2020-ITEMA_22245834-6.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656916129399971840/16740-04.01.2020-ITEMA_22245834-6.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3861567",
                 "description": "durée : 00:03:59 - Les Mitonnages de Jacky - par : Jacky Durand - Hommage à un dessert aussi humble que noble. ",
@@ -744,7 +775,8 @@
             {
                 "title": "Alain Mabanckou :\"Danton nous rappelle que la révolution est permanente, et que nous devons la saluer\"",
                 "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-04-janvier-2020",
-                "content": "http://rf.proxycast.org/1656916110378803201/16740-04.01.2020-ITEMA_22245834-5.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656916110378803201/16740-04.01.2020-ITEMA_22245834-5.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "4740301",
                 "description": "durée : 00:04:54 - L'Idée culture - par : Mattéo Caranta - Statue de Danton, Paris (Ve), 1891. ",
@@ -753,7 +785,8 @@
             {
                 "title": "Philippe Moreau-Defarges : \"Nous vivons le risque d'un engrenage\"",
                 "link": "https://www.franceculture.fr/emissions/linvite-actu/philippe-moreau-defarges",
-                "content": "http://rf.proxycast.org/1656918529858871296/16740-04.01.2020-ITEMA_22245834-4.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656918529858871296/16740-04.01.2020-ITEMA_22245834-4.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "24548600",
                 "description": "durée : 00:25:32 - L'Invité actu - par : Caroline Broué - L'ancien diplomate et spécialiste des questions internationales, chercheur à l'IFRI Philippe Moreau Defarges analyse les causes et les conséquences de l'assassinat du général iranien Soleimani par les Etats-Unis avant de s'interroger sur les conditions d'une paix mondiale - réalisation : Jean-Christophe Francis - invités : Philippe Moreau Defarges ancien diplomate, spécialiste des questions internationales et de géopolitique ",
@@ -762,7 +795,8 @@
             {
                 "title": "La Chine, les cartes anciennes, et la langue de bœuf",
                 "link": "https://www.franceculture.fr/emissions/a-propos-dailleurs/a-propos-dailleurs-chronique-du-samedi-04-janvier-2020",
-                "content": "http://rf.proxycast.org/1656911118116855808/16740-04.01.2020-ITEMA_22245834-3.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656911118116855808/16740-04.01.2020-ITEMA_22245834-3.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3908470",
                 "description": "durée : 00:04:02 - A propos d'ailleurs - par : Mattéo Caranta - A Hong-Kong, l'exposition \"Le monde en papier\" explore avec plus de quatre-vingt cartes et atlas anciens l'histoire de la navigation chinoise. Des cartes qui font la lumière sur la géopolitique actuelle de la région. ",
@@ -771,7 +805,8 @@
             {
                 "title": "Affaire Matzneff : les médias sont-ils autre chose que le reflet de leur époque ? ",
                 "link": "https://www.franceculture.fr/emissions/la-fabrique-mediatique/affaire-matzneff-les-medias-sont-ils-autre-chose-que-le-reflet-de-leur-epoque",
-                "content": "http://rf.proxycast.org/1656899777150853121/16740-04.01.2020-ITEMA_22245834-2.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656899777150853121/16740-04.01.2020-ITEMA_22245834-2.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "18583854",
                 "description": "durée : 00:19:19 - La Fabrique médiatique - par : Caroline Broué, Stéphanie Villeneuve - La sortie du livre de Vanessa Springora, \"Le Consentement\", aux éditions Grasset le 2 janvier dernier, nous interroge sur les médias et leur époque : sont-ils toujours le reflet de l'air du temps ?  - réalisation : Jean-Christophe Francis - invités : Jean-Claude Guillebaud journaliste et écrivain; Laurent Joffrin journaliste et directeur de Libération ",
@@ -780,7 +815,8 @@
             {
                 "title": "Pomme : \"Le bleu, c'est la couleur de ma voix\"",
                 "link": "https://www.franceculture.fr/emissions/linvite-culture/pomme",
-                "content": "http://rf.proxycast.org/1656918633529483264/16740-04.01.2020-ITEMA_22245834-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656918633529483264/16740-04.01.2020-ITEMA_22245834-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "24396287",
                 "description": "durée : 00:25:23 - L'Invité culture - par : Caroline Broué, Stéphanie Villeneuve - Rencontre avec la jeune chanteuse Pomme qui nous reçoit dans son studio d’enregistrement entre deux répétitions à quelques jours de sa tournée française autour de son nouvel album \"Les Failles\". - réalisation : Jean-Christophe Francis - invités :  Pomme artiste, autrice,compositrice, interprète et musicienne ",
@@ -789,7 +825,8 @@
             {
                 "title": "Ben Mazué et la série \"Years and Years\"",
                 "link": "https://www.franceculture.fr/emissions/les-envies-du-week-end/les-envies-du-week-end-du-samedi-04-janvier-2020",
-                "content": "http://rf.proxycast.org/1656877326694096896/16740-04.01.2020-ITEMA_22245834-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1656877326694096896/16740-04.01.2020-ITEMA_22245834-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3375061",
                 "description": "durée : 00:03:29 - Les Envies du week-end - par : Caroline Broué - Le chanteur français Ben Mazué et la série dystopique \"Years and Years\" - réalisation : Doria Zénine ",
@@ -798,7 +835,8 @@
             {
                 "title": "Patrick Deville : \"Werner Herzog est de ces artistes dont la vie détermine l'oeuvre, et l'oeuvre la vie\"",
                 "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-28-decembre-2019",
-                "content": "http://rf.proxycast.org/1654319734335741952/16740-28.12.2019-ITEMA_22240812-5.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1654319734335741952/16740-28.12.2019-ITEMA_22240812-5.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "4916950",
                 "description": "durée : 00:05:05 - L'Idée culture - par : Mattéo Caranta - Aguirre, la colère de Dieu, 1972, Werner Herzog \r\nFitzcarraldo, 1982, Werner Herzog - réalisation : Anne Fleury - invités : Patrick Deville ",
@@ -807,7 +845,8 @@
             {
                 "title": "David Djaïz : \"L'Etat fort est d'abord celui qui assume sa vocation redistributive\"",
                 "link": "https://www.franceculture.fr/emissions/linvite-actu/invite-actu-des-matins-du-samedi-suite-du-samedi-28-decembre-2019",
-                "content": "http://rf.proxycast.org/1654317730146295808/16740-28.12.2019-ITEMA_22240812-4.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1654317730146295808/16740-28.12.2019-ITEMA_22240812-4.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "27638576",
                 "description": "durée : 00:28:45 - L'Invité actu - par : Benoît Bouscarel - David Djaïz, haut fonctionnaire, auteur et enseignant à Sciences Po vient nous présenter son essai \"Slow Democracie\" (2019) aux éditions Allary. Comment expliquer la crise de la démocratie et comment y remédier ? Quelle place pour l'Etat-providence aujourd'hui ? - réalisation : Jean-Christophe Francis - invités : David Djaiz Haut fonctionnaire, essayiste et enseignant à Sciences Po Paris ",
@@ -816,7 +855,8 @@
             {
                 "title": "Le whipala, symbole des révoltes latino-américaines",
                 "link": "https://www.franceculture.fr/emissions/a-propos-dailleurs/a-propos-dailleurs-chronique-du-samedi-28-decembre-2019",
-                "content": "http://rf.proxycast.org/1654316051657138177/16740-28.12.2019-ITEMA_22240812-3.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1654316051657138177/16740-28.12.2019-ITEMA_22240812-3.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "2940472",
                 "description": "durée : 00:03:02 - A propos d'ailleurs - par : Mattéo Caranta - Le drapeau d'origine Aymara a cristallisé la crise politique bolivienne. - réalisation : Anne Fleury ",
@@ -825,7 +865,8 @@
             {
                 "title": "Grèves contre la réforme des retraites : comment les médias abordent-ils le sujet ?",
                 "link": "https://www.franceculture.fr/emissions/la-fabrique-mediatique/la-fabrique-mediatique-du-samedi-28-decembre-2019",
-                "content": "http://rf.proxycast.org/1654310383231442945/16740-28.12.2019-ITEMA_22240812-2.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1654310383231442945/16740-28.12.2019-ITEMA_22240812-2.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "16019215",
                 "description": "durée : 00:16:39 - La Fabrique médiatique - par : Caroline Broué, Stéphanie Villeneuve - Alors que la durée du mouvement de grève vient de dépasser celle de 1995, retour sur la façon dont ces mobilisations sont aujourd'hui abordées dans les médias. - réalisation : Jean-Christophe Francis ",
@@ -834,7 +875,8 @@
             {
                 "title": "Alex Beaupain : \"Je me vis plus comme un chroniqueur que comme un chanteur engagé\"",
                 "link": "https://www.franceculture.fr/emissions/linvite-culture/invite-culture-des-matins-du-samedi-2-du-samedi-28-decembre-2019",
-                "content": "http://rf.proxycast.org/1654300115730440193/16740-28.12.2019-ITEMA_22240812-1.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1654300115730440193/16740-28.12.2019-ITEMA_22240812-1.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "27888289",
                 "description": "durée : 00:29:01 - L'Invité culture - par : Benoît Bouscarel, Stéphanie Villeneuve - Alex Beaupain, auteur-compositeur et musicien vient nous présenter son sixième album \"Pas plus le jour que la nuit\" (Polydor). - réalisation : Jean-Christophe Francis - invités : Alex Beaupain Auteur, compositeur, interprète ",
@@ -843,7 +885,8 @@
             {
                 "title": "Les envies du week-end du samedi 28 décembre 2019",
                 "link": "https://www.franceculture.fr/emissions/les-envies-du-week-end/les-envies-du-week-end-du-samedi-28-decembre-2019",
-                "content": "http://rf.proxycast.org/1654283482664280064/16740-28.12.2019-ITEMA_22240812-0.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1654283482664280064/16740-28.12.2019-ITEMA_22240812-0.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "3132280",
                 "description": "durée : 00:03:14 - Les Envies du week-end - par : Caroline Broué - réalisation : Doria Zénine ",
@@ -852,7 +895,8 @@
             {
                 "title": " Eloge d’un poisson magnifique avec recette de brandade",
                 "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/eloge-dun-poisson-magnifique-avec-recette-de-brandade",
-                "content": "http://rf.proxycast.org/1649191758786994176/16740-14.12.2019-ITEMA_22229811-6.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1649191758786994176/16740-14.12.2019-ITEMA_22229811-6.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "2608696",
                 "description": "durée : 00:02:41 - Les Mitonnages de Jacky - par : Jacky Durand - Hommage à ce poisson qui fait causer toute l'année.  - invités : Jacky Durand Journaliste culinaire à Libération et chroniqueur le samedi sur les Matins de France Culture ",
@@ -861,7 +905,8 @@
             {
                 "title": "Bernard Werber : \"Le Radeau de la Méduse est une ode à ceux qui gardent espoir\"",
                 "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-14-decembre-2019",
-                "content": "http://rf.proxycast.org/1649190157766631424/16740-14.12.2019-ITEMA_22229811-5.mp3",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "content": "https://rf.proxycast.org/1649190157766631424/16740-14.12.2019-ITEMA_22229811-5.mp3",
                 "contentType": "audio/mpeg",
                 "contentLength": "4581833",
                 "description": "durée : 00:04:44 - L'Idée culture - par : Mattéo Caranta - Bernard Werber propose dans son dernier roman de reconsidérer notre rapport aux autres vivants et rendre le monde meilleur. Pour son idée culture, il a choisi un tableau majeur qui eut lui aussi la même ambition... ",
