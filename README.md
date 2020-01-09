@@ -1,7 +1,7 @@
 # Nitro assistant
 Imagine Internet at home, instantly available.
 
-Hi guy ! Welcome on the Github page of the Nitro assistant project ! Here you could find the source code of this one. Obviously you can modify this code into your configuration. However, you may not publish this code without contact us (theotimef.pro@gmail.com)
+Hi guy ! Welcome on the Github page of the Nitro assistant project ! Here you could find the source code of this one. Obviously you can modify this code into your configuration. However, you may not publish this code without contact us (theotimef.pro@gmail.com) to add your change(s) to the official Nitro version if it's of interest. If you're here just to see how works your favourite, free, fast and awesome home assistant: you can explore the code which is fully commented to help you understand !
 
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
   <img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" style="float: left;">  
