@@ -11,8 +11,12 @@ Hi guy ! Welcome on the Github page of the Nitro assistant project ! Here you co
   <img src="https://img.shields.io/website?down_message=down&label=nitro.rf.gd&up_message=online&url=https%3A%2F%2Fnitroapp.netlify.com" style="float: left;">  
 </a>
 
-## What's Nitro;.
-Nitro is a open-source home-assistant including a lot of usefull [features](#Features).
+## What's Nitro ?
+Nitro is a open-source home-assistant including a lot of usefull [features](#Features). It's easy to install: you just have to follow our "recipe"/guide [here](https://nitroapp.netlify.com/install) or go to the associated [section](#installation).
 
 ## Features
-LOL
+- 
+
+## Installation 
+
+
