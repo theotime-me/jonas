@@ -15,8 +15,8 @@ Hi guy ! Welcome on the Github page of the Nitro assistant project ! Here you co
 Nitro is a open-source home-assistant including a lot of usefull [features](#Features). It's easy to install: you just have to follow our "recipe"/guide [here](https://nitroapp.netlify.com/install) or go to the associated [section](#installation).
 
 ## Features
-Feature | Description | url
-----------------------------
-Drive | ok | f
+|Feature | Description | url
+|--------|-------------|-----
+|Drive | ok | f
 
 ## Installation 
