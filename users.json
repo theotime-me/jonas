@@ -12,12 +12,15 @@
             ],
             "drive": "WdWghzU9oC9ZWiwPCGUKqY1M-VDBlwv5Bimkt_tUR28VRqk2",
             "id": "eM2mOFs39lD_SHW6nGbpHnab",
-            "status": "offline",
-            "lastConnection": "2020-01-05T18:24:04.755Z",
+            "status": "online",
+            "lastConnection": "2020-01-09T09:58:55.770Z",
             "feeds": [
                 "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
                 "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "https://radiofrance-podcast.net/podcast09/rss_16740.xml/"
+                "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
+                "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
+                "https://www.apple.com/podcasts/apple_keynotes/apple_keynotes.xml",
+                "https://www.lemonde.fr/climat/rss_full.xml"
             ]
         },
         {

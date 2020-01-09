@@ -271,8 +271,8 @@ const rss = {
 			url = "http://"+url;
 		}
 		
-		if (!url.endsWith("/")) {
-			url += "/";
+		if (url.endsWith("/")) {
+			url = url.substring(0, url.length - 1);
 		}
 
 		if (socket.user.feeds.includes(url)) {
@@ -293,6 +293,7 @@ const rss = {
 					}
 				});
 			} else {
+				console.log("fetch error");
 				socket.emit("feeds.add", 404);
 			}
 		});
@@ -374,12 +375,12 @@ const rss = {
 
 					elements.push({
 						title: item.title[0],
-						link: item.link[0],
+						link: item.link && item.link[0],
 						url: url,
 						content: item.enclosure ? item.enclosure[0].$.url : null,
 						contentType: item.enclosure && item.enclosure[0].$.type ? item.enclosure[0].$.type : null,
 						contentLength: item.enclosure && item.enclosure[0].$.length ? item.enclosure[0].$.length : null,
-						description: item.description[0],
+						description: (item.description && item.description[0]) || (item["itunes:summary"] && item["itunes:summary"][0]),
 						date: item.pubDate[0]
 					});
 				}

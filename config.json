@@ -1,7 +1,7 @@
 {
     "weather": {
         "token": "40851d82ca62134ba8b5ba60d426fc78",
-        "city": "blaisy-bas,fr"
+        "city": "dijon,fr"
     },
     "system": {
         "device": "Raspberry-Pi",
