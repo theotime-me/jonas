@@ -18,5 +18,6 @@ Nitro is a open-source home-assistant including a lot of usefull [features](#Fea
 |Feature | Description | Link
 |--------|-------------|-----
 |Drive|Host your files into your Nitro Device to access them through your network| http://nitro.local/drive
+|Feeds|Subscribe to RSS-Feeds to see (and listen to !) the latest episodes| http://nitro.local/feeds
 
 ## Installation 
