@@ -12,7 +12,7 @@ Hi guy ! Welcome on the Github page of the Nitro assistant project ! Here you co
 </a>
 
 ## What's Nitro;.
-Nitro is a open-source home-assistant including a lot of usefull [features](##Features).
+Nitro is a open-source home-assistant including a lot of usefull [features](#Features).
 
 ## Features
 LOL
