@@ -18,7 +18,7 @@ Nitro is a open-source home-assistant including a lot of usefull [features](#Fea
 |Feature | Description | Link
 |--------|-------------|-----
 |Drive|Host your files into your Nitro Device to access them through your network|[nitro.local/drive](http://nitro.local/drive)
-|Feeds|Subscribe to RSS-Feeds to see (and listen to !) the latest episodes|/[nitro.local/feeds](http://nitro.local/feeds)
+|Feeds|Subscribe to RSS-Feeds to see (and listen to !) the latest episodes|[nitro.local/feeds](http://nitro.local/feeds)
 |Messages|Send messages to the others users connected to Nitro|[nitro.local/messages](http://nitro.local/messages)
 |Fitness|Be fit with Nitro ! A usefull help to work out and do sport !|[nitro.local/fitness](http://nitro.local/fitness)
 |Music|Listen the music which is in your Nitro Drive everywhere in the Nitro's interface|[nitro.local/music](http://nitro.local/music)
