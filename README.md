@@ -24,9 +24,10 @@ Nitro is a open-source home-assistant including a lot of usefull [features](#Fea
 |Music|Listen the music which is in your Nitro Drive everywhere in the Nitro's interface|[nitro.local/music](http://nitro.local/music)
 
 ## Installation 
-*How to install Nitro in your Device ?*
+*How to install Nitro on your Device ?*
 
 Before download Nitro, there are few things you will need:
 - 1 Ethernet cable
 - 1 USB - Micro USB cable
 - 1 Raspberry Pi
+- 3 Coffees
