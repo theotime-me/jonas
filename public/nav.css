@@ -1301,6 +1301,22 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
 	padding: 5px 20px;
 }
 
+#messages .dialog .messages > [data-type="img"] > a > img {
+    width: 100%;
+    margin-bottom: -5px;
+    height: 150px;
+}
+
+#messages .dialog .messages > [data-type="img"] > a {
+    outline: none;
+}
+
+#messages .dialog .messages > [data-type="img"] > p {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    max-width: 300px;
+}
+
 #messages .dialog .messages > div > iframe {
     width: 100%;
     height: 200px;
@@ -1331,7 +1347,7 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     -o-border-radius: 0px 0px 0px 10px;
     max-width: 100%;
     box-sizing: border-box;
-    width: 300px;
+    width: 100%;
 }
 
 #messages .dialog .messages > .other > iframe + p {
@@ -1350,9 +1366,22 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     color: rgba(0, 0, 0, .8);
 }
 
+#messages .dialog .messages > .other > p a {
+    color: #fff;
+}
+
 #messages .dialog .messages > div > p a:hover b {
     color: rgba(0, 0, 0, .6);
     border-bottom: 2px solid rgba(0, 0, 0, .8);
+}
+
+#messages .dialog .messages > .other > p a:hover b {
+    color: rgba(255, 255, 255, .9);
+    border-bottom: 2px solid rgba(255, 255, 255, .8);
+}
+
+#messages .dialog .messages > .other > p a {
+    color: rgba(255, 255, 255, .7);
 }
 
 #messages .dialog .messages > div > p a:hover span {
@@ -1361,6 +1390,10 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
 
 #messages .dialog .messages > div > p a b {
     border-bottom: 2px solid rgba(0, 0, 0, .4);
+}
+
+#messages .dialog .messages > .other > p a b {
+    border-bottom: 2px solid rgba(255, 255, 255, .4);
 }
 
 #messages .dialog .messages > div > p a span {
@@ -1393,15 +1426,18 @@ html, body, a, b, p, div, span, h1, h2, h3, h4, h5, h6, code, svg {
     background-color: #f3f3f3;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, .1);
     float: right;
-    
 }
 
 #messages .dialog .messages > div.other > p {
 	text-align: left;
 	border-bottom-left-radius: 0px;
 	background-color: var(--accent);
-    color: var(--accent-dark);
+    color: #fff;
     float: left;
+}
+
+#messages .dialog .messages > div.other > a {
+    color: #fff;
 }
 
 #messages .dialog .send {

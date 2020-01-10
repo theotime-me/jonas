@@ -56,6 +56,7 @@ function displayFeeds() {
         <div class="img" style="background-image: url('${img}');"></div>
         <svg viewBox="0 0 24 24"><path d="${icon}"/></svg>
         <h4 title='${episode.title.replace(/'/g, "&#39;")}'>${episode.title.length > 80 ? episode.title.substring(0, 77)+"..." : episode.title}</h4>
+        <p>${fancyDate(episode.date)} ·</p>
         <a href="${feedLink}" target="blank">${feedTitle}</a>
     </div>`);
     });

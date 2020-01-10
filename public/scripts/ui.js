@@ -1107,7 +1107,8 @@ const messages = {
 
 		let lastDate = lastMessage ? new Date($(lastMessage).data("date")).getTime() : new Date().getTime(),
 			newDate = new Date(msg.date).getTime(),
-			diff = newDate - lastDate;
+			diff = newDate - lastDate,
+			type, code = superID(15);
 
 		if (diff >= 600000) {
 			let sp = document.createElement("div");
@@ -1118,28 +1119,67 @@ const messages = {
 		}
 
 		if (isValidURL(msg.content) && (msg.content.startsWith("http://") || msg.content.startsWith("https://"))) {
-			let url = new URL(msg.content);
+			let url = new URL(msg.content),
+				path = url.pathname,
+				page = path.split("/")[1],
+				fancyText = false;
 
 			switch (url.host.replace("www.", "")) {
 				case "youtube.com":
-					if (url.pathname == "/watch") {
+					if (page == "watch") {
 						let params = url.href.split("?")[1],
 						video = params.split("&")[0].replace("v=", "");
+						type = "video";
 
 						iframe = '<iframe src="https://www.youtube-nocookie.com/embed/'+video+'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 					}
 				break;
+
+				case "google.com":
+					switch (page) {
+						case "maps":
+							if (url.pathname.includes("@")) {
+							let address = url.href.split("@")[1].split(",");
+							 
+							var	lat = address[0],
+								lng = address[1],
+								zoom = 16;
+							}
+
+							if (path.startsWith("/maps/place/")) {
+								fancyText = decodeURIComponent(path.split("/place/")[1].split("/")[0].replace(/\+/g, " "));
+							}
+
+							type = "img";
+							iframe = '<a target="blank" href="'+url.href+'"></a>';
+
+							fetch('https://www.mapquestapi.com/staticmap/v5/map?key=A1BCPkvb46j87eDP5aowtsoDKeEN7Qmm&center='+(lat && lng ? lat+","+lng : place)+'&size=300,150&zoom='+zoom)
+							.then(function(response) {
+								return response.blob();
+							}).then(function(blob) {
+								if (blob.type.startsWith("image")) {
+									$("#messages [data-code='"+code+"'] > a").html("<img src='"+URL.createObjectURL(blob)+"'/>");
+
+									$("#messages .dialog .messages").prop("scrollTop", $("#messages .dialog .messages").prop("scrollHeight"));
+								} else {
+									$("#messages [data-code='"+code+"']").removeAttr("data-type");
+								}
+							});
+						break;
+					}
+				break;
 			}
 
-			text = "<a noquickhover target='blank' style='color: "+textColor+"' href='"+url+"'><b>"+(url.host)+"</b><span>"+(url.href.length > 40 ? url.href.substring(0, 37)+"..." : url.href)+"</span></a>";			
+			text = "<a noquickhover target='blank' style='color: "+textColor+"' href='"+url+"'><b>"+(fancyText || url.host)+"</b><span>"+(url.href.length > 40 ? url.href.substring(0, 37)+"..." : url.href)+"</span></a>";			
 		}
 
 		let newElement = document.createElement("div");
 			newElement.setAttribute("data-date", msg.date);
 			newElement.setAttribute("data-id", msg.author.id);
+			newElement.setAttribute("data-type", type);
+			newElement.setAttribute("data-code", code);
 			newElement.className = author;
 			newElement.innerHTML = (iframe ? iframe : "")+`<p${color || textColor ? " style='background-color: "+color+";'": ""}>${text}</p>`;
-
 
 		$("#messages .dialog .messages").first().appendChild(newElement);
 		$("#messages .dialog .messages").prop("scrollTop", $("#messages .dialog .messages").prop("scrollHeight"));

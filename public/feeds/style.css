@@ -155,7 +155,7 @@
 
 #wrapper .episodes .list div a {
     margin-top: 5px;
-    display: block;
+    display: inline-block;
     text-decoration: none;
     color: #444;
 }
@@ -163,6 +163,11 @@
 #wrapper .episodes .list div a:hover {
     text-decoration: underline;
 }
+
+#wrapper .episodes .list div p {
+    display: inline-block;
+}
+
 /* 42 / Player / @player
 ============================ */
 #player {
@@ -194,8 +199,8 @@
 #player > svg {
     width: 35px;
     position: absolute;
-    bottom: 8px;
-    right: 5px;
+    bottom: 5px;
+    right: -5px;
     padding: 3px;
     float: right;
     border-radius: 10px;
