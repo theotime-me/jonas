@@ -1,5 +1,5 @@
-<!-- 01 / Messages
-====================== -->
+<!-- 01 / Messages / @messages
+================================== -->
 <div id="messages-bg" class="hidden" style="display: none;" onclick="messages.hide()"></div>
 <div id="messages" class="hidden" style="display: none;">
     <div class="header">
@@ -29,8 +29,8 @@
     </div>
 </div>
 
-<!-- 02 / Notifications
-=========================== -->
+<!-- 02 / Notifications / @notifications
+============================================ -->
 <div id="notif" class="hidden" onmousedown="return false;">
     <img>
     <svg viewBox="0 0 24 24"><path></path></svg>
@@ -38,8 +38,8 @@
     <p></p>
 </div>
 
-<!-- 03 / Side Bar
-====================== -->
+<!-- 03 / Side Bar / @side
+============================== -->
 
 <div class="bg hidden"></div>
 <div class="side-wrapper"><div id="side">
@@ -71,8 +71,8 @@
     <p>17 nouveaux messages</p>
 </div>
 
-<!-- 04 / Account
-===================== -->
+<!-- 04 / Account / @account
+================================ -->
 <div id="account" style="display: none;" class="hidden">
     <div class="header">
         <img src="/blank.png">
@@ -120,8 +120,8 @@
     </div>
 </div>
 
-<!-- 05 / Rebooting
-======================= -->
+<!-- 05 / Rebooting / @reboot
+================================= -->
 <div id="reboot" style="display: none;">
     <div class="hidden">
         <img src="medias/loading.webp" alt="loading">
@@ -132,8 +132,8 @@
     </div>
 </div>
 
-<!-- 06 / menu
-================== -->
+<!-- 06 / menu / @menu
+========================== -->
 <div id="menu" onmousedown="return false" class="hidden" style="display: none;">
     <h4>Nitro sur <span class="insert-device">votre appareil</span></h4>
 
@@ -156,8 +156,8 @@
 	</a>
 </div>
 
-<!-- 07 / users selector
-============================ -->
+<!-- 07 / users selector / @users
+===================================== -->
 <div id="users" style="display: none;" class="hidden">
     <div>
         <div class="input">
@@ -171,5 +171,21 @@
             <a class="next invalid">Continuer <span>(0)</span> <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg></a>
             <a class="cancel">Annuler</a>
         </div>
+    </div>
+</div>
+
+<!-- 08 / Music / @music
+============================ -->
+<div id="music" class="hidden">
+    <div class="title" onmousedown="return false;">
+        <svg viewBox="0 0 24 24"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+        <h4>Ma musique<span></span></h4>
+        <svg class="close" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+    </div>
+
+    <div class="list" onmousedown="return false;"></div>
+
+    <div class="player">
+        <audio src=""></audio>
     </div>
 </div>

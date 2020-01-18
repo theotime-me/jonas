@@ -166,21 +166,15 @@ function displayDriveFiles(files, factor, reverse, auto) {
 	sortDrive(files, factor, reverse).forEach(el => {
 		let fileName, extension = "", extName = "";
 
-		if (el.name.includes(".")) {
-			fileName = el.name.split(".");
-			extension = "."+fileName[fileName.length -1].toLowerCase();
-			extName = getExtName(extension);
-			fileName.pop();
-			fileName = fileName.join(".");
-		} else {
 			fileName = el.name;
-		}
+			extension = el.ext;
+			extName = getExtName(extension);
 
 		if (convertingFileNames.includes(fileName)) {
 			return false;
 		}
 
-		let path = (currentDrivePanel.path+"/"+fileName+extension).replace(/\/{2,}/g, "/"),
+		let path = (currentDrivePanel.path+"/"+el.fileName).replace(/\/{2,}/g, "/"),
 			icon = `<svg viewbox="0 0 24 24" fill="${getColorFromExt(extension)}"><path d="${getIconFromExt(extension)}"></svg>`,
 			fileNameToDisplay = fileName.length >= 35 ? fileName.substring(0, 32)+"..." : fileName,
 			extensionToDisplay = extName.length > 10 ? extName.substring(0, 7)+"..." : extName,

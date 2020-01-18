@@ -25,13 +25,25 @@ html {
     border-bottom: 5px solid #fc1b75;
 }
 
-#wrapper .intro svg {
+#wrapper .intro .heart {
     width: 38px;
     margin-right: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
+    padding: 8px;
     float: left;
     animation: beat .8s ease infinite;
     -webkit-animation: beat .8s ease infinite;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+#wrapper .intro .heart:hover {
+    background-color: rgba(0, 0, 0, .1);
+    animation: none;
+    -webkit-animation: none;
 }
 
 @keyframes beat {
@@ -654,4 +666,154 @@ html {
 
 #run .alternated h4 {
     margin-bottom: 10px;
+}
+
+#heart {
+    font-family: "Roboto", sans-serif;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#heart.hidden {
+    opacity: 0;
+}
+
+#heart > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 800px;
+    -webkit-border-radius: 800px;
+    -moz-border-radius: 800px;
+    -ms-border-radius: 800px;
+    -o-border-radius: 800px;
+    z-index: -1;
+    transition: .25s ease;
+    -webkit-transition: .25s ease;
+    -moz-transition: .25s ease;
+    -ms-transition: .25s ease;
+    -o-transition: .25s ease;
+}
+
+#heart > div.hidden {
+    opacity: 0;
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -ms-transform: scale(.9);
+    -o-transform: scale(.9);
+}
+
+#heart svg {
+    height: 435px;
+    width: 435px;
+    fill: none;
+    position: absolute;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    z-index: -1;
+}
+
+#heart circle {
+    stroke: #dd1d6a;
+    stroke-width: 10px;
+    stroke-dasharray: 1229px;
+    stroke-dashoffset: 614px;
+    stroke-linecap: round;
+}
+
+#heart svg.waiting {
+    animation: 1s linear heart-waiting infinite;
+    -webkit-animation: 1s linear heart-waiting infinite;
+}
+
+#heart svg.waiting circle {
+    stroke: rgba(221, 29, 106, .7);
+}
+
+@keyframes heart-waiting {
+    0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
+
+#heart svg.finished {
+    animation: 1s linear heart-waiting infinite;
+    -webkit-animation: 1s linear heart-waiting infinite;
+}
+
+#heart svg.finished circle {
+    stroke: #ffc1da;
+}
+
+#heart h4 {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#heart p span {
+    font-size: 15px;
+    border: 2px solid rgba(0, 0, 0, .3);
+    border-bottom: 3px solid rgba(0, 0, 0, .5);
+    padding: 0 4px;
+    margin-left: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#heart input {
+    font-family: "Roboto Mono", sans-serif;
+    text-align: center;
+    border: none;
+    padding: 0;
+    font-size: 50px;
+    width: 120px;
+    max-height: 0px;
+    margin-top: 15px;
+    transition: .2s ease;
+    background: transparent;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#heart input.visible {
+    max-height: 70px;
 }

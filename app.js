@@ -32,6 +32,7 @@ var app = require("express")(),
 	messages = require("./messages.json"),
 	translations = require("./translations.json"),
 	hbjs = require("handbrake-js"),
+	mm = require('musicmetadata'),
 
 	weather = {},
 	feeds = [];
@@ -992,6 +993,27 @@ io.of("/connect").on("connection", socket => {
 		}
 	});
 
+	/* XX / Music / @music
+	========================== */
+	socket.on("music", () => {
+		drive.get(socket.user.drive, file => {
+			if (["mp3", "webm", "wav", "ogg"].includes(file.ext)) {
+
+				// create a new parser from a node ReadStream
+				mm(fs.createReadStream(file.path), {duration: true}, function (err, metadata) {
+					if (err) throw err;
+					
+					file.path = "/drive/file/"+socket.user.id+"/"+encodeURIComponent(file.path.split(socket.user.drive)[1]);
+					file.metadata = metadata;
+					socket.emit("music", file);
+				});
+			}
+		});
+	});
+
+	/* User leaving
+	=================== */
+
 	socket.on('disconnect', () => {
 		for (let i = 0; i<users.users.length; i++) {
 			if (socket.user && users.users[i].id == socket.user.id) {
@@ -1045,7 +1067,7 @@ io.of("/take-avatar").on("connection", socket => {
 
 	delivery.on('receive.success',function(file){
 		let randomName = superID(45),
-			fileName = randomName+"."+file.name.split(".")[file.name.split(".").length -1],
+			fileName = randomName+"."+file.ext,
 			path = "./public/medias/avatars/"+fileName,
 			user = {};
 
@@ -1078,11 +1100,11 @@ io.of("/take-avatar").on("connection", socket => {
 const folderSize = require("get-folder-size"),
       drive = {
 
-	get(disk) { // get drive from the user's disk
-		return this.getFolderContent("./drive/"+disk);
+	get(disk, cb) { // get drive from the user's disk
+		return this.getFolderContent("./drive/"+disk, cb);
 	},
 
-	getFolderContent(path) { // get folder's content
+	getFolderContent(path, cb) { // get folder's content
 		let folders = [],
 			files = [],
 			array = fs.readdirSync(path);
@@ -1092,18 +1114,25 @@ const folderSize = require("get-folder-size"),
 				info = fs.statSync(path_);
 
 			if (info.isDirectory()) {
-				folders.push({
-					name: el,
-					mtime: info.mtime,
-					size: info.size,
-					length: this.getFolderRecursively(path_)
-				});
+				files = files.concat(this.getFolderRecursively(path_, true, cb));
 			} else {
-				files.push({
-					name: el,
-					mtime: info.mtime,
-					size: info.size
-				});
+				let ext = "unknown",
+					name = el.split(".");
+					ext = name[name.length -1].toLowerCase();
+					name.pop();
+					name = name.join(".");
+
+				let file = {
+					fileName: el,
+					name: name,
+					ext: ext,
+					mtime: info.mtimeMs,
+					size: info.size,
+					path: path+"/"+el
+				};
+
+				files.push(file);
+				if (cb) cb(file);
 			}
 		});
 
@@ -1113,7 +1142,7 @@ const folderSize = require("get-folder-size"),
 		};
 	},
 	
-	getFolderRecursively(path, details) { // count number of files from a path
+	getFolderRecursively(path, details, cb) { // count number of files from a path
 		let fsed = fs.readdirSync(path),
 			files = [];
 
@@ -1123,17 +1152,22 @@ const folderSize = require("get-folder-size"),
 			if (!stats.isDirectory()) {
 				let ext = "unknown",
 					name = el.split(".");
-					ext = name[name.length -1];
+					ext = name[name.length -1].toLowerCase();
 					name.pop();
 					name = name.join(".");
 
-				files.push({
+				let file = {
+					fileName: el,
 					name: name,
 					ext: ext,
 					modify: stats.mtimeMs,
 					size: stats.size,
 					path: path
-				});
+				};
+
+				files.push(file);
+
+				if (cb) cb(file);
 			} else {
 				files = files.concat(this.getFolderRecursively(path+"/"+el, true));
 			}

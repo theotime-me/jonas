@@ -156,7 +156,9 @@ const extNames = {
 function getExtName(ext) {
 	if (ext.startsWith(".")) {
         ext = ext.replace(".", "");
-    }
+	}
+	
+	console.log(ext);
 
     ext = ext.trim().toLowerCase();
 
@@ -365,13 +367,29 @@ const search = {
 		return keywords;
 	},
 
+	phTimeout: null,
+
 	placeholder(erase) {
-		let keywords = this.getAllKeywords(system.lang),
+		if (typeof erase == "string") {
+			clearTimeout(this.phTimeout);
+			$("#nav .search input").attr("placeholder", erase);
+
+			this.phTimeout = setTimeout(() => {
+				$("#nav .search input").addClass("hide");
+
+				setTimeout(() => {
+					this.placeholder();
+					$("#nav .search input").removeClass("hide");
+				}, 400);
+			}, 2000);
+		} else {
+			let keywords = this.getAllKeywords(system.lang),
 			searchWord = upCase(translation.try);
 
-		$("#nav .search input").attr("placeholder", searchWord+' "'+keywords[Math.floor(Math.random() * keywords.length)]+'"');
+			$("#nav .search input").attr("placeholder", searchWord+' "'+keywords[Math.floor(Math.random() * keywords.length)]+'"');
 
-		if (erase) $("#nav .search input").val("");
+			if (erase) $("#nav .search input").val("");
+		}
 	},
 
 	launch(id, query, isUrl) { // option's id
@@ -471,7 +489,7 @@ const search = {
 			forceURL = true;
 		} else {
 			this.files.forEach(file => {
-				if ((file.name+"."+file.ext).startsWith(str)) {
+				if (file.name.toLowerCase().includes(str)) {
 					file.type = "file";
 					output.push(file);
 				}
@@ -1198,6 +1216,173 @@ connect.callbacks.push(user => {
 	});
 });
 
+/* XX / Music / @music
+========================== */
+let music = {
+	list: [],
+	player: false,
+
+	play(path) {
+		if (!path && !this.player.paused) {
+			this.pause();
+			return false;
+		}
+
+		if (!path && !$(music.player.media).attr("src") && $("#music .list > div").first()) {
+			let src = $($("#music .list > div").first()).data("path");
+
+			path = src;
+		}
+
+		if (path) {
+			$("#music audio").prop("src", path);
+			$("#music .list div").removeClass("playing");
+
+			this.findElement(path, el => {
+				$(el).addClass("playing");
+
+				search.placeholder(translation.playingMusicLong.replace("$0", $("h4", el).html()))
+			});
+		}
+
+		this.player.play();
+
+
+		this.navIconEffect(true);
+	},
+
+	pause() {
+		if (this.player.paused) {
+			this.play();
+		} else {
+			this.player.pause();
+			this.navIconEffect(false);
+			search.placeholder(translation.trackPaused);
+		}
+	},
+
+	move(forward) {
+		let current = this.player.media.currentTime,
+			duration = this.player.media.duration,
+			newTime = current + forward;
+
+		if (newTime < 0) newTime = 0;
+		if (newTime > duration) newTime = duration;
+
+		this.player.media.currentTime = newTime;
+
+		search.placeholder(translation[forward > 0 ? "movedForward" : "movedBackward"].replace("$0", Math.abs(forward)).replace("$1", fancyMediaTime(newTime)+"/"+fancyMediaTime(duration)));
+	},
+
+	navIconEffect(add) {
+		if (add) {
+			$("#nav .music").addClass("playing");
+		} else {
+			$("#nav .music").removeClass("playing");
+		}
+	},
+
+	findElement(path, cb) {
+		$("#music .list div").each(el => {
+			if ($(el).data("path") == path) {
+				if (cb) cb (el);
+			}
+		});
+	},
+
+	displayMusic(file) {
+		let title = file.metadata.title || file.name,
+			artist = file.metadata.artist.length == 1 ? file.metadata.artist[0] : "Unknown",
+			picture = file.metadata.picture[0],
+			pictureBlob = picture ? new Blob([picture.data]) : false,
+			pictureURL = picture ? URL.createObjectURL(pictureBlob) : false;
+
+		if (title.length > 23) title = title.substring(0, 20)+"...";
+		if (artist.length > 15) artist = artist.substring(0, 12)+"...";
+
+		if (file.metadata.artist.length > 1) {
+			artist = "feat.";
+		}
+
+		$("#music .list").append(`<div data-path="${file.path}" onclick="music.play($(this).data('path'))">
+		<div class="img" style="background-image: url('${picture ? pictureURL : "placeholder"}')"></div>
+		<h4>${title}</h4>
+		<p>
+			<span class="time">${fancyMediaTime(file.metadata.duration, true)}</span>·
+			<span class="author">${artist}</span>
+		</p></div>`);
+
+		$("#music h4 span").html('('+this.list.length+' titre'+(this.list.length > 1 ? "s" : "")+')');
+	},
+
+	show() {
+		$("#music").css("display", "");
+
+		setTimeout(() => {
+			$("#music").removeClass("hidden");
+		}, 50);
+	},
+
+	hide() {
+		$("#music").addClass("hidden");
+
+		setTimeout(() => {
+			$("#music").css("display", "none");
+		}, 200);
+	},
+
+	toggle() {
+		if ($("#music").hasClass("hidden")) {
+			music.show();
+		} else {
+			music.hide();
+		}
+	},
+
+	next() {
+		if ($("#music .list .playing").first()) {
+			let src = $($("#music .list .playing").first().nextSibling).data("path");
+			music.play(src);
+		} else {
+			music.play();
+		}
+	}
+};
+
+connect.socket.on("music", file => {
+	music.list.push(file);
+
+	music.displayMusic(file);
+});
+
+connect.callbacks.push(() => {
+	connect.socket.emit("music");
+
+	$("#nav .music").on("click", music.toggle);
+	$("#music .close").on("click", music.hide);
+
+	music.player = new Plyr("#music audio");
+
+	$(window).on("keydown", ev => {
+		switch (ev.keyCode) {
+			case 74: music.move(-8); break;
+			case 75: music.pause(); break;
+			case 76: music.move(13); break;
+		}
+	});
+
+	music.player.on("ended", () => {
+		music.next();
+	});
+
+	music.player.on("play", () => {
+		music.navIconEffect(true);
+	});
+
+	music.player.on("pause", () => {
+		music.navIconEffect(false);
+	});
+});
 
 const menu = {
 	show() {

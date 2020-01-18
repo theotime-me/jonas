@@ -38,6 +38,22 @@ function fancyShortTime(seconds) {
     }
 }
 
+function fancyMediaTime(seconds) {
+    if (typeof seconds != "number") {
+        return "fancy: bad string";
+    }
+
+    seconds = Math.abs(seconds);
+
+    let mins = Math.floor(seconds / 60),
+        secs = Math.floor(seconds % 60);
+
+    if (mins < 10) mins = "0"+mins;
+    if (secs < 10) secs = "0"+secs;
+
+    return mins+":"+secs;
+}
+
 function fancyDate(date, notExact) {
     if (!date) {
         return false;
