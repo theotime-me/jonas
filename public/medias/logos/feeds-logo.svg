@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158 158">
+  <defs>
+    <style>
+      .a {
+        fill: #f57c15;
+      }
+
+      .b, .c {
+        fill: none;
+        stroke: #f57c15;
+        stroke-width: 30px;
+      }
+
+      .b {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .c {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>logo</title>
+  <circle class="a" cx="19" cy="139" r="19"/>
+  <path class="b" d="M271,315v-4a64,64,0,0,0-64-64h-4" transform="translate(-188 -172)"/>
+  <path class="c" d="M146.53,356.87" transform="translate(-188 -172)"/>
+  <path class="c" d="M157.16,222" transform="translate(-188 -172)"/>
+  <path class="c" d="M157.16,222" transform="translate(-188 -172)"/>
+  <path class="b" d="M331,315v-4A124,124,0,0,0,207,187h-4" transform="translate(-188 -172)"/>
+</svg>
