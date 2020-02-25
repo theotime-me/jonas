@@ -7,13 +7,13 @@
             "devices": [
                 "8EC2629981",
                 "_kEuNlG8hn",
-                "B6556A8BBB",
+                "gPdEJvyDOl",
                 "PxLpi9juoY"
             ],
             "drive": "WdWghzU9oC9ZWiwPCGUKqY1M-VDBlwv5Bimkt_tUR28VRqk2",
             "id": "eM2mOFs39lD_SHW6nGbpHnab",
             "status": "online",
-            "lastConnection": "2020-01-09T09:58:55.770Z",
+            "lastConnection": "2020-02-25T14:46:06.892Z",
             "feeds": [
                 "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
                 "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
@@ -27,11 +27,13 @@
             "name": "Noémie FUMEX",
             "avatar": "adorable",
             "password": "c9fe2ec9de33806b3899ca13531ebdefd6fb351c08b797a4405b6aa1c6a5b7061b21fb0437349874a3b70039bf230b8c6c4f324281d87fa65376b0c94341ec06",
-            "devices": [],
+            "devices": [
+                "B6556A8BBB"
+            ],
             "drive": "MHBRws6yKT65AvLjp1iCWsq30XaA7sMtcaoBICAJPFRqofhg",
             "id": "JfaGVZFSg-5-oza8tRzclJ6E",
             "status": "offline",
-            "lastConnection": "2020-01-04T13:21:32.845Z",
+            "lastConnection": "2020-02-07T18:51:10.689Z",
             "feeds": []
         }
     ]

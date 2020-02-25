@@ -15,7 +15,7 @@ var app = require("express")(),
 	md5 = require("md5"),
 	fs = require("fs"),
 	Path = require("path"),
-	serve = require("serve-static"),
+	serve = require("serve-static")("./public"),
 	request = require("request"),
 	progress = require("request-progress"),
 	xml2js = require("xml2js"),
@@ -33,21 +33,18 @@ var app = require("express")(),
 	translations = require("./translations.json"),
 	hbjs = require("handbrake-js"),
 	mm = require('musicmetadata'),
+	files = require("./files.json"),
+	folders = require("./folders.json"),
+	crypto = require('crypto'),
 
 	weather = {},
 	feeds = [];
 	
-app.use(serve("./public"));
+app.use(serve);
 
 app.use(busboy({ // Insert the busboy middle-ware
     highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
 }));
-
-users.users.forEach(user => {
-	if (!fs.existsSync("./drive/"+user.drive)) {
-		fs.mkdirSync("./drive/"+user.drive);
-	}
-});
 
 function validURL(str) {
 	let validsChars = "-A-z0-9\\d%_.~+éàèïëöôî;ê\!$#=ù:";
@@ -161,7 +158,10 @@ const configDB = {
 
 function getWeather(ctx) {
 	request("https://api.openweathermap.org/data/2.5/weather?q="+config.weather.city+"&appid="+config.weather.token+"&units=metric", function(err, response, body) {
-		if (err) throw err;
+		if (err) {
+			getWeather(ctx);
+			return false;
+		}
 	
 		weather = body;
 		io.sockets.emit("weather", weather);
@@ -172,7 +172,7 @@ function getWeather(ctx) {
 		});
 
 		if (ctx != "loop") {
-			console.log(chalk[config.interface.color]("Nitro: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
+			console.log(chalk[config.interface.color]("Jonas: ")+" Now at "+config.weather.city.split(",")[0]+": "+chalk.underline(JSON.parse(weather).main.temp+"°C")+", "+chalk.dim(JSON.parse(weather).weather[0].description));
 		}
 
 		fs.writeFileSync("./weather.json", JSON.stringify(weatherAnalyticsFile, null, 4));
@@ -263,7 +263,7 @@ const rss = {
 
 	log(nb, ctx) {
 		if(ctx == "starting") {
-			console.log(chalk[config.interface.color]("Nitro:  ")+nb+" feed"+(nb > 1 ? "s were" : " was")+" updated "+chalk.dim("in the Nitro's cache."));
+			console.log(chalk[config.interface.color]("Jonas:  ")+nb+" feed"+(nb > 1 ? "s were" : " was")+" updated "+chalk.dim("in the Jonas' cache."));
 		}
 	},
 
@@ -781,21 +781,12 @@ io.of("/connect").on("connection", socket => {
 		});
 
 	socket.on("drive.files", () => {
-		if (!fs.existsSync("./drive/"+socket.user.drive)) {
-			fs.mkdirSync("./drive/"+socket.user.drive);
-		}
-
-		let files = drive.getFolderRecursively("./drive/"+socket.user.drive, true);
-
-		files.forEach(file => {
-			let delimitator = "drive/"+socket.user.drive,
-				split = file.path.split(delimitator);
-				split.shift();
-
-			file.path = "/"+split.join(delimitator);
+		let list = [];
+		drive.getRecursively(socket.user, file => {
+			list.push(file);
 		});
 
-		socket.emit("drive.files", files);
+		socket.emit("drive.files", list);
 	});
 
 	socket.on("messages.dialogs", () => {
@@ -996,11 +987,11 @@ io.of("/connect").on("connection", socket => {
 	/* XX / Music / @music
 	========================== */
 	socket.on("music", () => {
-		drive.get(socket.user.drive, file => {
+		drive.get(socket.user, file => {
 			if (["mp3", "webm", "wav", "ogg"].includes(file.ext)) {
 
 				// create a new parser from a node ReadStream
-				mm(fs.createReadStream(file.path), {duration: true}, function (err, metadata) {
+				mm(fs.createReadStream(drive.path(file)), {duration: true}, function (err, metadata) {
 					if (err) throw err;
 					
 					file.path = "/drive/file/"+socket.user.id+"/"+encodeURIComponent(file.path.split(socket.user.drive)[1]);
@@ -1088,7 +1079,7 @@ io.of("/take-avatar").on("connection", socket => {
 	});
 });
 
-/* NITRO drive
+/* JONAS drive
 =======================
 
   v0.0.2 alpha
@@ -1100,81 +1091,228 @@ io.of("/take-avatar").on("connection", socket => {
 const folderSize = require("get-folder-size"),
       drive = {
 
-	get(disk, cb) { // get drive from the user's disk
-		return this.getFolderContent("./drive/"+disk, cb);
+	get(user, cb, recursively) { // get drive from the user's disk
+		if (recursively) {
+			return this.getRecursively(user, cb);
+		} else {
+			return this.getFolderContent(user, "root", true, cb);
+		}
 	},
 
-	getFolderContent(path, cb) { // get folder's content
-		let folders = [],
-			files = [],
-			array = fs.readdirSync(path);
+	checkName(str) {
+		if (["root", "", ".", "..", "../"].includes(str)) {
+			return false;
+		} else if (/[A-z0-9_]/g.test(str)) {
+			return true;
+		} else {
+			return false;
+		}
+	},
 
-		array.forEach(el => {
-			let path_ = Path.resolve(path, el),
-				info = fs.statSync(path_);
+	deleteFolderContent(user, folderID) {
+		folders[user.id].forEach((folder, index) => {
+			if (folder.id == folderID) {
+				folders[user.id].splice(index, 1);
+				fs.writeFileSync("./folders.json", JSON.stringify(folders, null, 4));
+			}
+		});
 
-			if (info.isDirectory()) {
-				files = files.concat(this.getFolderRecursively(path_, true, cb));
-			} else {
-				let ext = "unknown",
-					name = el.split(".");
-					ext = name[name.length -1].toLowerCase();
-					name.pop();
-					name = name.join(".");
+		this.get(user, false, true).forEach(file => {
+			if (file.parent == folderID) {
+				if (file.type == "folder") {
+					this.deleteFolderContent(user, file.id);
+				} else {
+					delete files[file.id];
 
-				let file = {
-					fileName: el,
-					name: name,
-					ext: ext,
-					mtime: info.mtimeMs,
-					size: info.size,
-					path: path+"/"+el
-				};
+					fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+					fs.unlinkSync("./files/"+file.id+"."+file.ext);
+				}
+			}
+		});
+	},
 
-				files.push(file);
+	findParent(user, folderID) {
+		let parent = "root";
+		if (folders[user.id]) {
+			folders[user.id].forEach(folder => {
+				if (folder.id == folderID) {
+					parent = folder.parent;
+				}
+			});
+		}
+
+		return parent;
+	},
+
+	findPath(user, folderID) {
+		let path = [];
+
+		let getParentName = folderID => {
+			folders[user.id].forEach(folder => {
+				if (folder.id == folderID) {
+					path.unshift(folder);
+					if (folder.parent != "") {
+						getParentName(folder.parent);
+					}
+				}
+			});
+		};
+
+		if (folders[user.id]) {
+			getParentName(folderID);
+		}
+
+		return path;
+	},
+
+	getShared(user, cb) {
+		if(!user) return false;
+
+		let list = [];
+
+		Object.keys(files).forEach(id => {
+			let file = {};
+
+				Object.assign(file, files[id]);
+
+				file.id = id;
+
+			let stat = fs.statSync(this.path(file));
+
+				file.modify = stat.mtime;
+				file.size = stat.size;
+
+				users.users.forEach(ownerUser => {
+					if (ownerUser.id == file.owner) {
+						file.owner = {
+							name: ownerUser.name,
+							avatar: ownerUser.avatar != "adorable" ? "/medias/avatars/"+ownerUser.avatar : "https://api.adorable.io/avatars/100/"+md5(ownerUser.name)+"@adorable.io.png",
+							id: ownerUser.id,
+							status: ownerUser.status,
+						};
+					}
+				});
+
+			if (file.sharedWith.includes(user.id)) {
+				list.push(file);
 				if (cb) cb(file);
 			}
 		});
 
-		return {
-			folders: folders,
-			files: files
-		};
+		return list;
 	},
+
+	getRecursively(user, cb) {
+		if(!user) return false;
+
+		let list = [];
+
+		if (folders[user.id]) {
+			folders[user.id].forEach(_folder => {
+				let	folder = {};
+
+					Object.assign(folder, _folder);
+
+					folder.type = "folder";
+					folder.length = this.getFolderContent(user, folder.id, false).length;
 	
-	getFolderRecursively(path, details, cb) { // count number of files from a path
-		let fsed = fs.readdirSync(path),
-			files = [];
+					list.push(folder);
+			});
+		}
 
-		fsed.forEach(el => {
-			let stats = fs.statSync(Path.resolve(path, el));
+		Object.keys(files).forEach(id => {
+			let file = {};
 
-			if (!stats.isDirectory()) {
-				let ext = "unknown",
-					name = el.split(".");
-					ext = name[name.length -1].toLowerCase();
-					name.pop();
-					name = name.join(".");
+				Object.assign(file, files[id]);
 
-				let file = {
-					fileName: el,
-					name: name,
-					ext: ext,
-					modify: stats.mtimeMs,
-					size: stats.size,
-					path: path
-				};
+				file.id = id;
 
-				files.push(file);
+			let stat = fs.statSync(this.path(file));
+
+				file.modify = stat.mtime;
+				file.size = stat.size;
+
+			if (file.owner == user.id) {
+				list.push(file);
+				if (cb) cb(file);
+			}
+		});
+
+		return list;
+	},
+
+	path(file, ext) {
+		if (typeof file === "object") {
+			return "./files/"+file.id+"."+file.ext;
+		} else if (typeof file === "string") {
+			return "./files/"+file+(ext ? "."+ext : "");
+		}
+	},
+
+	getFolderContent(user, folderID, countFolders, cb) { // get folder's content
+		if(!user) return false;
+
+		let list = [];
+			countFolders = countFolders == undefined ? true : countFolders;
+
+		if (folders[user.id] && countFolders) {
+			folders[user.id].forEach(_folder => {
+				let	folder = {};
+
+				Object.assign(folder, _folder);
+
+				if (folder.parent == folderID) {
+
+					folder.type = "folder";
+					folder.length = this.getFolderContent(user, folder.id, false).length;
+	
+					list.push(folder);
+				}
+			});
+		}
+
+		Object.keys(files).forEach(id => {
+			let file = {};
+
+			Object.assign(file, files[id]);
+
+			file.id = id;
+
+			if (file.owner == user.id && file.parent == folderID) {
+				let stat = fs.statSync(this.path(file));
+
+				file.modify = stat.mtime;
+				file.size = stat.size;
+				list.push(file);
 
 				if (cb) cb(file);
-			} else {
-				files = files.concat(this.getFolderRecursively(path+"/"+el, true));
+			}
+		});
+
+		return list;
+	},
+	
+	getFolderRecursively(user, folderID, details, cb) { // count number of files from a path
+		let files = [];
+
+		Object.keys(files).forEach(id => {
+			let file = {};
+
+			Object.assign(file, files[id]);
+
+			let stat = fs.statSync(this.path(file));
+
+			file.id = id;
+			file.modify = stat.mtimeMS;
+			file.size = stat.size;
+
+			if (file.owner == user.id && file.parent == folderID) {
+				files.push(file);
 			}
 		});
 
 		return (details == true ? files : files.length);
-	}
+	},
 };
 
 app.get("/check", (req, res) => {
@@ -1197,19 +1335,20 @@ app.get("/update", (req, res) => {
 	}));
 });
 
-/* 01 / Reading File
-======================== */
-app.get("/drive/file/:uid/:path", (req, res) => {
-	let userFound = false,
-		thePath = decodeURIComponent(req.params.path),
-		deviceID = "";
-
+/* 01 / Reading File / @read
+================================ */
+app.get("/file/:fileID", (req, res) => {
+	let fileID = req.params.fileID,
+		deviceID = "",
+		found = false,
+		sent = false;
+		
 		if (!req.headers.cookie) {
 			res.setHeader("Content-Type", "text/html; charset=utf-8");
 			res.end("500, t pas connecté à ce compte");
 			return false;
 		}
-		
+
 		req.headers.cookie.split(";").forEach(line => {
 			let clean = line.trim(),
 				key = clean.split("=")[0],
@@ -1220,34 +1359,38 @@ app.get("/drive/file/:uid/:path", (req, res) => {
 			}
 		});
 
-	users.users.forEach(user => {
-		if (user.id == req.params.uid) {
-			if (!user.devices.includes(deviceID)) {
-				res.setHeader("Content-Type", "text/html; charset=utf-8");
-				res.end("500, t pas connecté à ce compte");
-			}
+	Object.keys(files).forEach(id => {
+		let file = files[id];
 
-			if (fs.existsSync(__dirname+"/drive/"+user.drive+thePath)) {
-				res.sendFile(__dirname+"/drive/"+user.drive+thePath);
-			} else {
-				res.setHeader("Content-Type", "text/html; charset=utf-8");
-				res.end("404, déso fréro");
-			}
-		
-			userFound = true;
+		if (id == fileID) {
+			users.users.forEach(user => {
+				if (file.owner == user.id && user.devices.includes(deviceID)) {
+					res.sendFile(__dirname+"/files/"+id+"."+file.ext);
+					sent = true;
+				} else if (file.sharedWith.includes(user.id)) {
+					res.sendFile(__dirname+"/files/"+id+"."+file.ext);
+					sent = true;
+				}
+			});
+
+			found = true;
 		}
 	});
 
-	if (!userFound) {
+	if (!found && !sent) {
 		res.setHeader("Content-Type", "text/html; charset=utf-8");
-		res.end("Déso, on a pas trouvé l'utilisateur à qui appartient le fichier...");
+		res.end("404, déso fréro");
+	} else if (found && !sent) {
+		res.setHeader("Content-Type", "text/html; charset=utf-8");
+		res.end("500, t pas connecté à ce compte");
 	}
 });
 
-/* 02 / Upload File
-======================== */
-app.route("/drive/upload/:uid/:path").post((req, res, next) => {
-	let deviceID = false;
+/* XX / Upload File / @upload
+================================= */
+app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
+	let deviceID = false,
+		folderID = req.params.folderID;
 
 	req.headers.cookie.split(";").forEach(line => {
 		let clean = line.trim(),
@@ -1282,16 +1425,63 @@ app.route("/drive/upload/:uid/:path").post((req, res, next) => {
 					return false;
 				}
 
-				let path = __dirname+"/drive/"+user.drive+decodeURIComponent(req.params.path+"/").replace(/\/\//g, "/")+filename, // defines the path
-					fstream = fs.createWriteStream(path), // Create a write stream of the new file
-					ext = filename.split("."), // find the extension
-					pathNoExt = path.split("."); // Find the path without the extension
-
-					pathNoExt.pop();
-					pathNoExt = pathNoExt.join(".");
+				let ext = filename.split("."); // find the extension
 					ext = ext[ext.length -1].toLowerCase();
+				let nameNoExt = filename.split(".");
+					nameNoExt.pop();
+					nameNoExt = nameNoExt.join(".");
 
-				file.pipe(fstream); // Pipe the file through
+				let	fileOut = {
+						name: nameNoExt,
+						type: mime.contentType(ext),
+						ext: ext,
+						modify: new Date().toISOString(),
+						parent: folderID,
+						owner: user.id,
+						sharedWith: []
+					},
+					fileID = superID(64),
+					hash = crypto.createHash('sha256'),
+					path = drive.path(fileID, ext), // defines the path
+					fstream = fs.createWriteStream(path), // Create a write stream of the new file
+					pathNoExt = drive.path(fileID, false); // Find the path without the extension
+
+				// Avoid files without any extension
+				if (!fileOut.type || ext == filename.toLowerCase) {
+					return false;
+				}
+
+				file.pipe(hash); // Pipe to the stream verification
+				file.pipe(fstream); // Pipe the file through the storage
+
+				hash.on("readable", () => {
+					let data = hash.read(),
+						exists = false;
+
+						if (data) {
+							data = data.toString('hex');
+							fileOut.hash = data;
+
+						// Check if any file is the same that the file which will be uploaded
+						drive.get(user, false, true).forEach(testFile => {
+							if (data == testFile.hash) {
+								exists = true; // File found !
+							}
+						});
+
+						if (!exists) { // if the file isn't already upload,
+							files[fileID] = fileOut;
+						} else {
+							delete files[fileID];
+
+							fs.unlinkSync(path);
+
+							io.of("/connect").in(user.id).emit("drive.existing", fileOut);
+						}
+
+						fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+					}
+				});
 
 				fstream.on('close', () => {
 					// Upload finished
@@ -1307,13 +1497,21 @@ app.route("/drive/upload/:uid/:path").post((req, res, next) => {
 								state: "progress",
 								percent: progress.percentComplete,
 								eta: progress.eta,
-								path: (decodeURIComponent(req.params.path)+"/"+filename).replace(/\/\//g, "/")
+								id: fileID
 							});
 						}).on("complete", () => {
 							fs.unlink(path, err => {
 								if (err) console.error(err);
+								files[fileID].type = "video/mp4";
+								files[fileID].ext = "mp4";
 
-								io.of("/connect").in(user.id).emit("drive.reload");
+								fs.writeFile("./files.json", JSON.stringify(files, null, 4), err => {
+									if (err) throw err;
+
+									setTimeout(() => {
+										io.of("/connect").in(user.id).emit("drive.reload");
+									}, 100);
+								});
 							});
 						});
 					}
@@ -1323,26 +1521,38 @@ app.route("/drive/upload/:uid/:path").post((req, res, next) => {
     });
 });
 
+/* XX / Drive / @drive
+========================== */
 io.of("/drive").on("connection", socket => {
 
     // send the content to the user's socket
-	let sendContent = (path) => {
-		path = path || ""; // anti-crash
+	let sendContent = (folderID) => {
+		folderID = folderID || "root"; // anti-crash
+
+		let list = [];
+
+		drive.get(socket.user, false, true).forEach(file => {
+			if (file.parent == folderID) {
+				list.push(file);
+			}
+		});
 
         // emit the socket
 		socket.emit("drive.content", {
-			path: "/"+path,
-			content: drive.getFolderContent("./drive/"+socket.user.drive+path),
-			totalFiles: drive.getFolderRecursively("./drive/"+socket.user.drive+path)
+			content: list,
+			parent: drive.findParent(socket.user, folderID),
+			folderID: folderID,
+			path: drive.findPath(socket.user, folderID),
+			totalFiles: drive.getFolderContent(socket.user, folderID).length
 		});
     };
-    
+
     let sendDisk = function() {
         let driveDisks = [],
         totalSize = false;
 
         users.users.forEach(testUser => {
-            folderSize("./drive/"+testUser.drive, (err, size) => {
+            folderSize("./files/", (err, size) => {
                 if (err) throw err;
 
                 driveDisks.push({
@@ -1373,80 +1583,131 @@ io.of("/drive").on("connection", socket => {
 				socket.user = user;
 
 				sendContent(); // send his/her drive
-                sendDisk(); // send disk usage
+				sendDisk(); // send disk usage
+				
+				socket.emit("drive.usblist", usb.list);
 			}
 		});
 	});
 
-	socket.on("drive.content", path => {
-		if (!path) {
+	socket.on("drive.shared", () => {
+		socket.emit("drive.shared", drive.getShared(socket.user));
+	});
+
+	socket.on("drive.content", folderID => {
+		if (folderID == undefined) {
 			logError("drive.content", "path");
 			return false;
 		}
 
-		if (path.startsWith("/")) {
-			path = path.replace("/", "");
-		}
-
-		if (path.endsWith("/")) {
-			path = path.substring(0, path.length - 1);
-		}
-
-		if (!fs.existsSync("./drive/"+socket.user.drive+path)) {
-			logError("drive.content", "path");
-			return false;
-		}
-
-		sendContent(path); // send his/her drive
+		sendContent(folderID); // send his/her drive
 		sendDisk();// send disk usage
 	});
 
 	socket.on("drive.disk", sendDisk);
 
-	socket.on("drive.delete", path => {
-		if (!socket.user) {
+	socket.on("drive.delete", id => {
+		if (!socket.user) return false;
+
+		drive.get(socket.user, false, true).forEach(file => {
+			if (file.id == id && file.owner == socket.user.id) {
+				delete files[id];
+
+				fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+
+				fs.unlink("./files/"+file.id+"."+file.ext, err => {
+					if (err) throw err;
+
+					sendDisk(); // send disk usage
+
+					socket.emit("drive.delete", true, file.id);
+				});
+			}
+		});
+	});
+
+	socket.on("drive.rename", (id, name) => {
+		if (!socket.user) return false;
+
+		drive.get(socket.user).forEach(file => {
+			if (file.id == id && file.owner == socket.user.id) {
+				files[file.id].name = name;
+			}
+		});
+
+		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+		socket.emit("drive.rename", true);
+	});
+
+	socket.on("drive.share", (id, uid) => {
+		if (!socket.user) return false;
+		let _file = {};
+
+		drive.get(socket.user).forEach(file => {
+			if (file.id == id && file.owner == socket.user.id) {
+				if (!files[file.id].sharedWith.includes(uid)) {
+					files[file.id].sharedWith.push(uid);
+				}
+
+				Object.assign(_file, file);
+			}
+		});
+
+		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+
+		socket.emit("drive.share", true, _file);
+	});
+
+	socket.on("drive.newFolder", (name, parent) => {
+		if (!drive.checkName(name)) {
+			socket.emit("drive.folderError");
+			return false;
+		} 
+
+		let id = superID(32);
+
+		if (!Array.isArray(folders[socket.user.id])) {
+			folders[socket.user.id] = [];
+		}
+
+		folders[socket.user.id].push({
+			id: id,
+			name: name,
+			parent: parent
+		});
+
+		fs.writeFileSync("./folders.json", JSON.stringify(folders, null, 4));
+		sendContent(parent);
+	});
+
+	socket.on("drive.renameFolder", (id, name, goIntoFolder) => {
+		if (!drive.checkName(name)) {
+			socket.emit("drive.folderError");
 			return false;
 		}
 
-		path = decodeURIComponent(path);
+		folders[socket.user.id].forEach(folder => {
+			if (folder.id == id) {
+				folder.name = name;
 
-		while (path.startsWith("/")) {
-			path = path.replace("/", "");
-		}
-
-		path = "/"+path;
-
-		if (fs.existsSync("./drive/"+socket.user.drive+path)) {
-			fs.unlink("./drive/"+socket.user.drive+path, err => {
-                if (err) throw err;
-
-                sendDisk();// send disk usage
-
-                socket.emit("drive.delete", true);
-            });
-		}
+				fs.writeFileSync("./folders.json", JSON.stringify(folders, null, 4));
+				sendContent(goIntoFolder ? folder.id : folder.parent);
+			}
+		});
 	});
 
-	socket.on("drive.rename", (oldPath, name) => {
-		if (fs.existsSync("./drive/"+socket.user.drive+oldPath)) {
-			name = name.replace("/", "");
-			
-			let path = oldPath.split("/");
-				path.pop();
-				path = path.join("/");
+	socket.on("drive.deleteFolder", folderID => {
+		folders[socket.user.id].forEach((folder, index) => {
+			if (folder.id == folderID) {
+				folders[socket.user.id].splice(index, 1);
 
-			let ext = oldPath.split(".");
-				ext = ext[ext.length -1];
+				fs.writeFileSync("./folders.json", JSON.stringify(folders, null, 4));
+				sendContent(folder.parent);
 
-			magic.detectFile("./drive/"+socket.user.drive+oldPath, function (err, result) {
-				if (err) throw err;
-
-                // Rename the file
-				fs.renameSync("./drive/"+socket.user.drive+oldPath, "./drive/"+socket.user.drive+path+"/"+name+"."+ext);
-
-				socket.emit("drive.rename", "/drive/file/"+socket.user.id+"/"+encodeURIComponent(path+"/"+name+"."+ext));
-			});
-		}
+				// delete all content
+				drive.deleteFolderContent(socket.user, folderID);
+			}
+		});
 	});
 });
 
@@ -1464,27 +1725,13 @@ function unlinkFolder(path) {
 	}
   }
 
-fs.readdirSync("./drive").forEach(folder => {
-	let exists = false;
-
-	users.users.forEach(user => {
-		if (user.drive == folder) {
-			exists = true;
-		}
-	});
-
-	if (!exists) {
-		unlinkFolder("./drive/"+folder);
-	}
-});
-
 function logError(socketName, param) {
-	console.log(chalk.bgRed.white(" Nitro: ")+" Error, invalid "+chalk.keyword("orange")(param)+" param"+" at socket "+chalk.underline(socketName));
+	console.log(chalk.bgRed.white(" Jonas: ")+" Error, invalid "+chalk.keyword("orange")(param)+" param"+" at socket "+chalk.underline(socketName));
 }
 
 const update = {
 	check(ctx, socket) {
-		request("https://raw.githubusercontent.com/theotime-me/nitro/master/package.json", (err, response, body) => {
+		request("https://raw.githubusercontent.com/theotime-me/jonas/master/package.json", (err, response, body) => {
 			if (err) console.error(err);
 
 		let json = JSON.parse(body);
@@ -1495,7 +1742,7 @@ const update = {
 				if (ctx == "starting") { // is launched in starting
 					console.log(
 						chalk.dim("===================================================================\n\n")+
-						chalk.blue("Nitro update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" is available\n               "+
+						chalk.blue("Jonas update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" is available\n               "+
 						"visit "+chalk.underline.blue("http://"+os.hostname()+".local/update")+" to follow progressing"+
 						chalk.dim("\n\n===================================================================\n")
 					);
@@ -1658,36 +1905,187 @@ io.of("/update").on("connection", socket => {
 	});
 });
 
-console.log("Access "+chalk[config.interface.color]("Nitro")+" at http://"+os.hostname()+".local or http://"+ip+"\n---");
-console.log(chalk[config.interface.color]("Nitro: ")+" The wireless interface is "+chalk.black.bgGreen(" "+wlIface+" "));
+app.get("/placeholder/:type", (req, res) => {
+	let type = req.params.type;
 
-fs.readdirSync("./drive").forEach(disk => {
-	fs.readdirSync("./drive/"+disk).forEach(fileName => {
-		let ext = fileName.split(".")[fileName.split(".").length -1].toLowerCase(),
-			noExt = fileName.split(".");
-			noExt.pop();
-			noExt = noExt.join(".");
+	out = `<svg xmlns="http://www.w3.org/2000/svg" width="500px" height="500px" viewBox="0 0 502.64 500"><defs><style>
+	.a,.e,.f{fill:#f5b515}
+	.b{fill:#ff4d4d}
+	.c{fill:#ff3e0f}
+	.d{fill:#ff8c12; opacity:${Math.floor(Math.random()*10)/10}}
+	.e{opacity:${Math.floor(Math.random()*10)/10}}
+	.f{opacity:${Math.floor(Math.random()*10)/10}}
+	.g,.k{fill:#fff}
+	.h,.i,.j{fill:none;stroke:#fff;stroke-miterlimit:10}
+	.h{stroke-width:20px}
+	.h{opacity:0.8}
+	.i{stroke-width:15px;opacity:0.6}
+	.j{stroke-width:10px;opacity:0.4}
+	.k{opacity:0.5}
+	.l{opacity:0.2}
+	.m{opacity:0.1}
+	.n{opacity:0.05}</style></defs>`,
 
-		if (fs.existsSync("./drive/"+disk+"/"+fileName) && ["mov", "flv", "mkv", "avi", "mpeg"].includes(ext)) {
-			fs.unlinkSync("./drive/"+disk+"/"+fileName);
+		types = {
+			podcast: `<circle class="g" cx="250.5" cy="243" r="24"/>
+			<rect class="g" x="240.5" y="243" width="20" height="189" rx="10"/>
+			<circle class="h" cx="251.5" cy="243" r="56"/>
+			<circle class="i" cx="251.5" cy="243" r="93.5"/>
+			<circle class="j" cx="250.5" cy="243" r="131"/>`,
 
-			fs.readdirSync("./drive/"+disk).forEach(fileName => {
-				let _noExt = fileName.split(".");
-				_noExt.pop();
-				_noExt = _noExt.join(".");
+			music: `<ellipse class="g" cx="132.33" cy="334.29" rx="42.29" ry="35.47" transform="translate(-190.52 177.12) rotate(-42.48)"/>
+			<polygon class="g" points="204.02 147.59 175.15 147.59 142.34 333.67 171.21 333.67 204.02 147.59"/>
+			<ellipse class="g" cx="293.08" cy="334.07" rx="42.29" ry="35.47" transform="translate(-148.18 285.62) rotate(-42.48)"/>
+			<polygon class="g" points="364.76 147.38 335.89 147.38 303.08 333.45 331.95 333.45 364.76 147.38"/>
+			<polygon class="g" points="364.43 147.59 175.15 147.59 164.96 205.34 354.25 205.34 364.43 147.59"/>`,
 
-				if (_noExt == noExt) {
-					fs.unlinkSync("./drive/"+disk+"/"+fileName);
+			news: `<rect class="g" x="137.5" y="126" width="217" height="260"/>
+			<path class="k" d="M108,152h29V389.29a9.71,9.71,0,0,1-11.67,9.53c-6.91-1.45-14.33-6-14.33-18.82C111,356,108,152,108,152Z" transform="translate(0.5 0)"/>
+			<path class="g" d="M137,386s-1,13-13,13H341s13-1,13-13Z" transform="translate(0.5 0)"/>
+			<rect class="l" x="158.5" y="147" width="136" height="28"/>
+			<rect class="m" x="158.5" y="186" width="103" height="103"/>
+			<rect class="m" x="271.5" y="186" width="103" height="103"/>
+			<rect class="m" x="385.5" y="186" width="103" height="103"/>
+			<rect class="l" x="158.5" y="383" width="71" height="5"/>
+			<rect class="l" x="307.5" y="147" width="41" height="5"/>
+			<rect class="n" x="83.5" y="312" width="178" height="17"/>
+			<rect class="m" x="158.5" y="337" width="79" height="5"/>`
+		},
+
+		curves = [
+			'',
+			'M-.5,289.5s66,194,146,210H-.5Z',
+			'M499.5,126.5s-126,8-142,91-71,68-123,50-78,7-67,85,115,147,115,147h217Z',
+			'M237.5.5c-189,35-206,88-238,147V.5Z',
+			'M365.5,29.5s-139,34-100,118S72.5,500,72.5,500l259.75-.5s95.25-124,33.25-152-49-64,55-127,79-57.15,79-57.15V.5Z',
+			'M55,.5S393,433,499.5,313V96.89S331,148,195,1Z',
+			'M-.5,334s379.5,167.07,500,54L499,500l-98.29-.5S88,381.84,0,409.42Z'
+		];
+
+	if (Object.keys(types).includes(type)) {
+		out += '<rect class="a" x="0.5" width="500" height="500"/>';
+
+		// curves
+		let curvesIndexes = [];
+
+		for (let i = 0; i<curves.length-1; i++) {
+			let index, className = ["a", "b", "c", "d", "e", "f"][i];
+
+			while (curvesIndexes.includes(index) || !index) {
+				index = Math.floor(Math.random() * curves.length);
+			}
+
+			curvesIndexes.push(index);
+
+			// add one curve
+			out += '<path class="'+className+'" d="'+curves[index]+'" transform="translate(0.5 0)"/>';
+		}
+
+		out += types[type]; // add icon
+
+		out += '</svg>'; // tag's end
+		
+		// Send
+		res.setHeader('Content-Type', 'image/svg+xml');
+		
+		// anti-cache
+		res.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+		res.setHeader('Expires', '-1');
+		res.setHeader('Pragma', 'no-cache');
+
+		res.status(200).end(out);
+	} else {
+		res.status(404).end("error 404");
+	}
+});
+
+/* 08 / USB Storages / @usb
+===============================*/
+let usb = {
+	list: [],
+	sizes: {},
+	mediaPath: process.env.HOME.replace("home", "media")+"/",
+	devices() {
+		return fs.readdirSync(this.mediaPath);
+	},
+
+	getSize(name, cb) {
+		let path = this.mediaPath+name;
+
+		exec("lsblk", (err, stdout, stderr) => {
+			if (err) console.error(err);
+			if (stderr) console.error(stderr);
+
+			let lines = stdout.split("\n"),
+				found = false;
+
+			lines.forEach(line => {
+				let columns = line.replace(/ {1,}/g, " ").split(" "),
+					size = columns[3],
+					testPath = columns[6];
+
+				if (testPath == path) {
+					let sizeLetter = size.replace(/\d|\./g, ""),
+						sizeValue = parseFloat(size.replace(/[A-z]/g, ""));
+
+					switch (sizeLetter) {
+						case "G": size = sizeValue*1000000000; break;
+						case "M": size = sizeValue*1000000; break;
+						case "K": size = sizeValue*1000; break;
+					}
+
+					this.sizes[name] = size;
+
+					if (cb) cb(size);
 				}
 			});
-		}
-	});
-});
+		});
+	},
+
+	check() {
+		let	added = this.devices().filter(x => !this.list.includes(x)),
+			removed = this.list.filter(x => !this.devices().includes(x));
+
+			this.list = this.devices();
+
+		added.forEach(device => {
+			this.getSize(device);
+			io.sockets.emit("drive.usb", device, true);
+		});
+
+		removed.forEach(device => {
+			delete this.sizes[device];
+			io.sockets.emit("drive.usb", device, false);
+		});
+	},
+
+	loop() {
+		setInterval(() => {
+			this.check();
+		}, 1000);
+	},
+
+	init() {
+		this.loop();
+	}
+};
+
+usb.init();
+
+console.log("Access "+chalk[config.interface.color]("Jonas")+" at http://"+os.hostname()+".local or http://"+ip+"\n---");
+console.log(chalk[config.interface.color]("Jonas: ")+" The wireless interface is "+chalk.black.bgGreen(" "+wlIface+" "));
+
+//TODO: DELETE .mov, avi, etc. files
+//-------------------------------------
+//-------------------------------------
+//-------------------------------------
+//-------------------------------------
+//-------------------------------------
 
 function exitHandler(options) {
 	fs.readdirSync("./").forEach(fileName => {
 		if (fileName.startsWith("update")) {
-			console.log("\n\n"+chalk.blue("Nitro update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" was canceled");
+			console.log("\n\n"+chalk.blue("Jonas update: ")+" The "+chalk.dim(lastVersion+" ")+chalk.black.bgBlue(" update ")+" was canceled");
 
 			fs.unlinkSync("./"+fileName);
 		}
