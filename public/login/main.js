@@ -102,10 +102,10 @@ $(".box .username input").on("keydown", function(ev) {
 			return false;
 		}
 
-		testLogin.name = this.value;
-		loginSocket.emit("username.check", this.value);
+		testLogin.name = this.val();
+		loginSocket.emit("username.check", this.val());
 		$(".input.username").removeClass("incorrect");
-		$(".box a span").html('en tant que "<b>'+this.value.split(" ")[0]+'</b>"');
+		$(".box a span").html('en tant que "<b>'+this.val().split(" ")[0]+'</b>"');
 	}, 50);
 });
 
