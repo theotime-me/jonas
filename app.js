@@ -994,12 +994,12 @@ io.of("/connect").on("connection", socket => {
 				mm(fs.createReadStream(drive.path(file)), {duration: true}, function (err, metadata) {
 					if (err) throw err;
 					
-					file.path = "/drive/file/"+socket.user.id+"/"+encodeURIComponent(file.path.split(socket.user.drive)[1]);
+					file.path = "/drive/file/"+file.id;
 					file.metadata = metadata;
 					socket.emit("music", file);
 				});
 			}
-		});
+		}, true);
 	});
 
 	/* User leaving
@@ -1227,6 +1227,8 @@ const folderSize = require("get-folder-size"),
 
 				file.id = id;
 
+			if (!fs.existsSync(this.path(file))) return false;
+
 			let stat = fs.statSync(this.path(file));
 
 				file.modify = stat.mtime;
@@ -1279,6 +1281,7 @@ const folderSize = require("get-folder-size"),
 			file.id = id;
 
 			if (file.owner == user.id && file.parent == folderID) {
+				if (!fs.existsSync(this.path(file))) return false;
 				let stat = fs.statSync(this.path(file));
 
 				file.modify = stat.mtime;
@@ -1463,22 +1466,17 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 							fileOut.hash = data;
 
 						// Check if any file is the same that the file which will be uploaded
-						drive.get(user, false, true).forEach(testFile => {
+						drive.get(user, testFile => {
 							if (data == testFile.hash) {
 								exists = true; // File found !
 							}
-						});
+						}, true);
 
-						if (!exists) { // if the file isn't already upload,
-							files[fileID] = fileOut;
-						} else {
-							delete files[fileID];
-
-							fs.unlinkSync(path);
-
+						if (exists) { // if the file has already been uploaded,
 							io.of("/connect").in(user.id).emit("drive.existing", fileOut);
 						}
 
+						files[fileID] = fileOut;
 						fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
 					}
 				});
@@ -1486,7 +1484,7 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 				fstream.on('close', () => {
 					// Upload finished
 
-					if (["avi", "mkv", "mov", "flv", "dvd", "mpeg"].includes(ext)) {
+					if (["avi", "mkv", "mov", "flv", "dvd", "mpeg"].includes(ext) && fs.existsSync(path) && !fs.existsSync(pathNoExt+".mp4")) {
 						hbjs.spawn({
 							input: path,
 							output: pathNoExt+".mp4"
@@ -1500,6 +1498,8 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 								id: fileID
 							});
 						}).on("complete", () => {
+							if (!fs.existsSync(path)) return false;
+
 							fs.unlink(path, err => {
 								if (err) console.error(err);
 								files[fileID].type = "video/mp4";
@@ -1529,13 +1529,7 @@ io.of("/drive").on("connection", socket => {
 	let sendContent = (folderID) => {
 		folderID = folderID || "root"; // anti-crash
 
-		let list = [];
-
-		drive.get(socket.user, false, true).forEach(file => {
-			if (file.parent == folderID) {
-				list.push(file);
-			}
-		});
+		let list = drive.getFolderContent(socket.user, folderID);
 
         // emit the socket
 		socket.emit("drive.content", {
@@ -1543,7 +1537,7 @@ io.of("/drive").on("connection", socket => {
 			parent: drive.findParent(socket.user, folderID),
 			folderID: folderID,
 			path: drive.findPath(socket.user, folderID),
-			totalFiles: drive.getFolderContent(socket.user, folderID).length
+			totalFiles: list.length
 		});
     };
 
@@ -1629,11 +1623,11 @@ io.of("/drive").on("connection", socket => {
 	socket.on("drive.rename", (id, name) => {
 		if (!socket.user) return false;
 
-		drive.get(socket.user).forEach(file => {
+		drive.get(socket.user, file => {
 			if (file.id == id && file.owner == socket.user.id) {
 				files[file.id].name = name;
 			}
-		});
+		}, true);
 
 		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
 		socket.emit("drive.rename", true);
@@ -1641,21 +1635,43 @@ io.of("/drive").on("connection", socket => {
 
 	socket.on("drive.share", (id, uid) => {
 		if (!socket.user) return false;
-		let _file = {};
 
-		drive.get(socket.user).forEach(file => {
+		drive.get(socket.user, file => { // get all files of an user
 			if (file.id == id && file.owner == socket.user.id) {
-				if (!files[file.id].sharedWith.includes(uid)) {
-					files[file.id].sharedWith.push(uid);
+				if (!files[file.id].sharedWith.includes(uid)) { // if the file isn't already shared
+					files[file.id].sharedWith.push(uid); // share it with the other user
+					socket.emit("drive.share", true, files[file.id]); // say to the owner that the file was shared
 				}
-
-				Object.assign(_file, file);
 			}
-		});
+		}, true); // recursive search
 
 		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+});
 
-		socket.emit("drive.share", true, _file);
+	socket.on("drive.clearSharings", id => {
+		if (!socket.user) return false;
+
+		drive.get(socket.user, file => {
+			if (file.id == id && file.owner == socket.user.id) {
+				files[file.id].sharedWith = [];
+			}
+		}, true);
+
+		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+		socket.emit("drive.share", true);
+	});
+
+	socket.on("drive.rename", (id, name) => {
+		if (!socket.user) return false;
+
+		drive.get(socket.user, file => {
+			if (file.id == id && file.owner == socket.user.id) {
+				files[file.id].name = name;
+			}
+		}, true);
+
+		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
+		socket.emit("drive.rename", true);
 	});
 
 	socket.on("drive.newFolder", (name, parent) => {

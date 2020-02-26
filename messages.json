@@ -7,7 +7,6 @@
                 "eM2mOFs39lD_SHW6nGbpHnab"
             ],
             "viewedBy": [
-                "eM2mOFs39lD_SHW6nGbpHnab",
                 "JfaGVZFSg-5-oza8tRzclJ6E"
             ],
             "messages": [
@@ -190,6 +189,30 @@
                     "type": "msg",
                     "content": "https://www.google.com/maps/place/Propulse,+agence+cr%C3%A9ative/@47.3255408,5.0453131,17z/data=!3m1!4b1!4m5!3m4!1s0x47f29de453499e79:0x8395621d0e3ad52d!8m2!3d47.3255372!4d5.0475018",
                     "author": "eM2mOFs39lD_SHW6nGbpHnab"
+                },
+                {
+                    "date": "2020-02-26T11:31:36.180Z",
+                    "type": "msg",
+                    "content": "yo",
+                    "author": "JfaGVZFSg-5-oza8tRzclJ6E"
+                },
+                {
+                    "date": "2020-02-26T11:31:42.353Z",
+                    "type": "msg",
+                    "content": "cv ou quoi ?",
+                    "author": "eM2mOFs39lD_SHW6nGbpHnab"
+                },
+                {
+                    "date": "2020-02-26T11:31:47.752Z",
+                    "type": "msg",
+                    "content": "moi c pépère",
+                    "author": "JfaGVZFSg-5-oza8tRzclJ6E"
+                },
+                {
+                    "date": "2020-02-26T11:35:28.195Z",
+                    "type": "msg",
+                    "content": "https://fr.wikipedia.org/wiki/Chien",
+                    "author": "JfaGVZFSg-5-oza8tRzclJ6E"
                 }
             ]
         }
