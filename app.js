@@ -46,6 +46,10 @@ app.use(busboy({ // Insert the busboy middle-ware
     highWaterMark: 2 * 1024 * 1024, // Set 2MiB buffer
 }));
 
+function getTranslation(key) {
+	return translations[config.system.lang][key];
+}
+
 function validURL(str) {
 	let validsChars = "-A-z0-9\\d%_.~+éàèïëöôî;ê\!$#=ù:";
 
@@ -348,7 +352,10 @@ const rss = {
 		}
 
 		request(url, function(err, rep, body) {
-			if (err) throw err;
+			if (err) {
+				console.error(err);
+				return false;
+			}
 
 			try {
 				parser.parseString(body);
@@ -993,7 +1000,7 @@ io.of("/connect").on("connection", socket => {
 				// create a new parser from a node ReadStream
 				mm(fs.createReadStream(drive.path(file)), {duration: true}, function (err, metadata) {
 					if (err) throw err;
-					
+	
 					file.path = "/drive/file/"+file.id;
 					file.metadata = metadata;
 					socket.emit("music", file);
@@ -1107,6 +1114,17 @@ const folderSize = require("get-folder-size"),
 		} else {
 			return false;
 		}
+	},
+
+	cleanName(name) {
+		name = name.replace(/^\s+|\s+$/g, "");
+		name = name.replace(/\//g, "_");
+		name = name.replace(/"/g, "'");
+		name = name.replace(/@/g, "[at]");
+		name = name.replace(/&/g, " "+getTranslation("and")+" ");
+		name = name.replace(/	| {2,}/g, " ");
+
+		return name;
 	},
 
 	deleteFolderContent(user, folderID) {
@@ -1389,11 +1407,23 @@ app.get("/file/:fileID", (req, res) => {
 	}
 });
 
+app.get("/file/usb/:device/:path", (req, res) => {
+	let path = req.params.path,
+		usbDevice = req.params.device,
+		pathOut = usb.mediaPath + usbDevice + decodeURIComponent(path);
+
+		if (!fs.existsSync(pathOut)) return false;
+
+		res.sendFile(pathOut);
+});
+
 /* XX / Upload File / @upload
 ================================= */
-app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
+app.route("/drive/upload/:uid/:folderID/:usbDevice").post((req, res, next) => {
 	let deviceID = false,
-		folderID = req.params.folderID;
+		folderID = req.params.folderID,
+		usbDevice = req.params.usbDevice,
+		isUSB = !!usbDevice;
 
 	req.headers.cookie.split(";").forEach(line => {
 		let clean = line.trim(),
@@ -1434,6 +1464,17 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 					nameNoExt.pop();
 					nameNoExt = nameNoExt.join(".");
 
+				let renamingIndex = 1,
+					renamingTag = "";
+
+				while (isUSB && fs.existsSync(usb.mediaPath + usbDevice + folderID + "/" + nameNoExt+renamingTag + "." + ext)) {
+					renamingIndex++;
+
+					renamingTag = " #"+renamingIndex;
+				}
+
+				nameNoExt += renamingTag;
+
 				let	fileOut = {
 						name: nameNoExt,
 						type: mime.contentType(ext),
@@ -1445,16 +1486,17 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 					},
 					fileID = superID(64),
 					hash = crypto.createHash('sha256'),
-					path = drive.path(fileID, ext), // defines the path
+					path = isUSB ? usb.mediaPath + usbDevice + folderID + "/" + nameNoExt + "." + ext : drive.path(fileID, ext), // defines the path
 					fstream = fs.createWriteStream(path), // Create a write stream of the new file
 					pathNoExt = drive.path(fileID, false); // Find the path without the extension
 
 				// Avoid files without any extension
-				if (!fileOut.type || ext == filename.toLowerCase) {
+				if (!fileOut.type || ext == filename.toLowerCase()) {
 					return false;
 				}
 
-				file.pipe(hash); // Pipe to the stream verification
+				if (!isUSB) file.pipe(hash); // Pipe to the stream verification
+
 				file.pipe(fstream); // Pipe the file through the storage
 
 				hash.on("readable", () => {
@@ -1484,7 +1526,7 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 				fstream.on('close', () => {
 					// Upload finished
 
-					if (["avi", "mkv", "mov", "flv", "dvd", "mpeg"].includes(ext) && fs.existsSync(path) && !fs.existsSync(pathNoExt+".mp4")) {
+					if (!isUSB && ["avi", "mkv", "mov", "flv", "dvd", "mpeg"].includes(ext) && fs.existsSync(path) && !fs.existsSync(pathNoExt+".mp4")) {
 						hbjs.spawn({
 							input: path,
 							output: pathNoExt+".mp4"
@@ -1520,6 +1562,17 @@ app.route("/drive/upload/:uid/:folderID").post((req, res, next) => {
 		});
     });
 });
+
+function logDate() {
+	let d = new Date(),
+		day = d.getDate() < 10 ? "0"+d.getDate() : d.getDate(),
+		month = d.getMonth()+1 < 10 ? "0"+(d.getMonth()+1) : d.getMonth()+1,
+		year = d.getFullYear(),
+		hours = d.getHours() < 10 ? "0"+d.getHours() : d.getHours(),
+		minutes = d.getMinutes() < 10 ? "0"+d.getMinutes() : d.getMinutes();
+
+	return "At "+hours+":"+minutes+" the "+day+"/"+month+"/"+year+", ";
+}
 
 /* XX / Drive / @drive
 ========================== */
@@ -1579,8 +1632,156 @@ io.of("/drive").on("connection", socket => {
 				sendContent(); // send his/her drive
 				sendDisk(); // send disk usage
 				
-				socket.emit("drive.usblist", usb.list);
+				socket.emit("drive.usb.devices", usb.list);
 			}
+		});
+	});
+
+	socket.on("drive.usb.device.content", (name, relativePath) => {
+		let path = usb.mediaPath + name + relativePath + "/";
+			relativePath = (relativePath + "/").replace(/\/{2,}/g, "/");
+
+		if (!fs.existsSync(path)) return false;
+
+		let	list = fs.readdirSync(path),
+			listOut = [];
+
+		list.forEach(fileName => {
+			let stats = fs.statSync(path + fileName);
+
+			if (stats.isDirectory()) {
+				listOut.push({
+					name: fileName,
+					type: "folder",
+					path: relativePath + fileName,
+					length: fs.readdirSync(path + fileName).length
+				});
+			} else {
+				let name = fileName.split("."),
+					ext = fileName.split(".");
+
+				name.pop();
+				name = name.join(".");
+				ext = ext[ext.length -1];
+
+				listOut.push({
+					name: fileName,
+					type: mime.contentType(ext),
+					path: relativePath + fileName,
+					ext: ext,
+					modify: stats.mtime,
+					size: stats.size
+				});
+			}
+		});
+
+		let pathArr = relativePath.split("/"),
+			pathDone = "/",
+			pathOut = [];
+
+		pathArr.shift();
+		pathArr.pop();
+
+		pathArr.forEach(el => {
+			pathOut.push({
+				name: el,
+				id: "usb",
+				path: pathDone + el,
+				parent: "usb"
+			});
+
+			pathDone += el+"/";
+		});
+
+		socket.emit("drive.usb.device.content", {
+			usbDevice: name,
+			path: pathOut,
+			content: listOut,
+			folderID: "usb",
+			parent: "usb"
+		});
+	});
+
+	socket.on("drive.usb.delete", (usbDevice, path) => {
+		let fullPath = usb.mediaPath + usbDevice + path;
+
+		if (!fs.existsSync(fullPath)) return false;
+
+		let isDirectory = fs.statSync(fullPath).isDirectory();
+
+		if (isDirectory) {
+			unlinkFolder(fullPath);
+		} else {
+			fs.unlinkSync(fullPath);
+		}
+
+		if (config.system.logs) {
+			console.log(chalk[config.interface.color]("Jonas DRIVE: ")+logDate()+chalk.italic(socket.user.name)+' deleted '+chalk.underline(path)+' in '+chalk.black.bgWhite(" "+usbDevice+" ")+".");
+		}
+
+		socket.emit("drive.usb.delete", true, usbDevice, path);
+	});
+
+	socket.on("drive.usb.rename", (usbDevice, path, name, goIntoFolder) => {
+		// Name control
+		name = drive.cleanName(name);
+
+		// Renaming
+		let oldPathRelative = path.replace(/\/{2,}/g, "/"),
+			newPathRelative = oldPathRelative.split("/"),
+			oldPath = usb.mediaPath + usbDevice + oldPathRelative;
+
+			newPathRelative.pop();
+			newPathRelative.push(name);
+			newPathRelative = newPathRelative.join("/").replace(/\/{2,}/g, "/");
+
+		let newPath = usb.mediaPath + usbDevice + newPathRelative;
+
+		if (config.system.logs) {
+			console.log(chalk[config.interface.color]("Jonas DRIVE: ")+logDate()+chalk.italic(socket.user.name)+' renamed '+chalk.underline(oldPathRelative)+' in '+chalk.black.bgWhite(" "+usbDevice+" ")+" to "+chalk.underline(newPathRelative)+".");
+		}
+
+		if (!fs.existsSync(oldPath)) return false;
+
+		if (fs.existsSync(newPath)) {
+			socket.emit("drive.usb.rename", false, usbDevice, oldPathRelative, newPathRelative, name, goIntoFolder);
+			return false;
+		}
+
+		fs.renameSync(oldPath, newPath);
+
+		socket.emit("drive.usb.rename", true, usbDevice, oldPathRelative, newPathRelative, name, goIntoFolder);
+	});
+
+	socket.on("drive.usb.newFolder", (usbDevice, name, path) => {
+		name = drive.cleanName(name);
+
+		let fullPath = usb.mediaPath + usbDevice + path + "/",
+			relFolderPath = path + "/" + name;
+			fullPath = fullPath.replace(/\/{2,}/g, "/");
+
+		if (!drive.checkName(name)) {
+			socket.emit("drive.folderError");
+			return false;
+		}
+
+		if (!fs.existsSync(fullPath)) return false;
+
+		if (fs.existsSync(fullPath + "/" + name)) {
+			socket.emit("drive.usb.rename", false, usbDevice, false, path, name, false);
+			return false;
+		}
+
+		fs.mkdirSync(fullPath + "/" + name);
+
+		if (config.system.logs) {
+			console.log(chalk[config.interface.color]("Jonas DRIVE: ")+logDate()+chalk.italic(socket.user.name)+' created the folder '+chalk.underline(name)+' in '+chalk.black.bgWhite(" "+usbDevice+" ")+".");
+		}
+
+		socket.emit("drive.usb.newFolder", true, usbDevice, {
+			name: name,
+			length: 0,
+			path: relFolderPath
 		});
 	});
 
@@ -1589,6 +1790,8 @@ io.of("/drive").on("connection", socket => {
 	});
 
 	socket.on("drive.content", folderID => {
+		if (!socket.user) return false;
+		
 		if (folderID == undefined) {
 			logError("drive.content", "path");
 			return false;
@@ -1646,7 +1849,7 @@ io.of("/drive").on("connection", socket => {
 		}, true); // recursive search
 
 		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
-});
+	});
 
 	socket.on("drive.clearSharings", id => {
 		if (!socket.user) return false;
@@ -1659,19 +1862,6 @@ io.of("/drive").on("connection", socket => {
 
 		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
 		socket.emit("drive.share", true);
-	});
-
-	socket.on("drive.rename", (id, name) => {
-		if (!socket.user) return false;
-
-		drive.get(socket.user, file => {
-			if (file.id == id && file.owner == socket.user.id) {
-				files[file.id].name = name;
-			}
-		}, true);
-
-		fs.writeFileSync("./files.json", JSON.stringify(files, null, 4));
-		socket.emit("drive.rename", true);
 	});
 
 	socket.on("drive.newFolder", (name, parent) => {
@@ -1718,7 +1908,8 @@ io.of("/drive").on("connection", socket => {
 				folders[socket.user.id].splice(index, 1);
 
 				fs.writeFileSync("./folders.json", JSON.stringify(folders, null, 4));
-				sendContent(folder.parent);
+
+				socket.emit("drive.delete", true, folderID);
 
 				// delete all content
 				drive.deleteFolderContent(socket.user, folderID);
@@ -1729,17 +1920,19 @@ io.of("/drive").on("connection", socket => {
 
 function unlinkFolder(path) {
 	if (fs.existsSync(path)) {
-	  fs.readdirSync(path).forEach((file, index) => {
-		const curPath = Path.join(path, file);
-		if (fs.lstatSync(curPath).isDirectory()) { // recurse
-			unlinkFolder(curPath);
-		} else { // delete file
-		  fs.unlinkSync(curPath);
-		}
-	  });
-	  fs.rmdirSync(path);
+	  	fs.readdirSync(path).forEach((file, index) => {
+			const curPath = Path.join(path, file);
+
+			if (fs.lstatSync(curPath).isDirectory()) { // recurse
+				unlinkFolder(curPath);
+			} else { // delete file
+				fs.unlinkSync(curPath);
+			}
+		});
+
+	  	fs.rmdirSync(path);
 	}
-  }
+}
 
 function logError(socketName, param) {
 	console.log(chalk.bgRed.white(" Jonas: ")+" Error, invalid "+chalk.keyword("orange")(param)+" param"+" at socket "+chalk.underline(socketName));
@@ -1748,7 +1941,15 @@ function logError(socketName, param) {
 const update = {
 	check(ctx, socket) {
 		request("https://raw.githubusercontent.com/theotime-me/jonas/master/package.json", (err, response, body) => {
-			if (err) console.error(err);
+			if (err) {
+				console.error(err);
+
+				setTimeout(() => {
+					update.check("retry", socket);
+				}, 1000);
+
+				return false;
+			};
 
 		let json = JSON.parse(body);
 			lastVersion = json.version;
@@ -2066,12 +2267,14 @@ let usb = {
 
 		added.forEach(device => {
 			this.getSize(device);
-			io.sockets.emit("drive.usb", device, true);
+			io.of("/drive").emit("drive.usb.device.change", device, true);
+			io.of("/connect").emit("drive.usb", device, true, this.sizes[device]);
 		});
 
 		removed.forEach(device => {
+			io.of("/drive").emit("drive.usb.device.change", device, false);
+			io.of("/connect").emit("drive.usb", device, false, this.sizes[device]);
 			delete this.sizes[device];
-			io.sockets.emit("drive.usb", device, false);
 		});
 	},
 
