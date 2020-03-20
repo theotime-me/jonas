@@ -1,32 +1,32 @@
-# __Nitro__ assistant
+# __Jonas__ assistant
 *Imagine Internet at home, instantly available.*
 
-Hi guy ! Welcome on the Github page of the Nitro assistant project ! Here you could find the source code of this one. Obviously you can modify this code into your configuration. However, you may not publish this code without contact us (theotimef.pro@gmail.com) to add your change(s) to the official Nitro version if it's of interest. If you're here just to see how works your favourite, free, fast and awesome home assistant: you can explore the code which is fully commented to help you understand !
+Hi guys ! Welcome on the Github page of the Nitro assistant project ! Here you could find the source code of this one. Obviously you can modify this code into your configuration. However, you may not publish this code without contact us (theotimef.pro@gmail.com) to add your change(s) to the official Nitro version if it's of interest. If you're here just to see how works your favourite, free, fast and awesome home assistant: you can explore the code which is fully commented to help you understand !
 
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
   <img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" style="float: left;">  
 </a>
 
-<a href="https://nitroapp.netlify.com/">
-  <img src="https://img.shields.io/website?down_message=down&label=nitro.rf.gd&up_message=online&url=https%3A%2F%2Fnitroapp.netlify.com" style="float: left;">  
+<a href="https://jonas-assistant.netlify.com/">
+  <img src="https://img.shields.io/website?down_message=down&label=joans.rf.gd&up_message=online&url=https%3A%2F%2Fjonas-assistant.netlify.com" style="float: left;">  
 </a>
 
-## What's Nitro ?
-Nitro is a open-source home-assistant including a lot of usefull [features](#Features). It's easy to install: you just have to follow our "recipe"/guide [here](https://nitroapp.netlify.com/install) or go to the associated [section](#installation).
+## What's Jonas ?
+Jonas is a open-source home-assistant including a lot of usefull [features](#Features). It's easy to install: you just have to follow our "recipe"/guide [here](https://jonas-assistant.netlify.com/install) or go to the associated [section](#installation).
 
 ## Features
 |Feature | Description | Link
 |--------|-------------|-----
-|Drive|Host your files into your Nitro Device to access them through your network|[nitro.local/drive](http://nitro.local/drive)
-|Feeds|Subscribe to RSS-Feeds to see (and listen to !) the latest episodes|[nitro.local/feeds](http://nitro.local/feeds)
-|Messages|Send messages to the others users connected to Nitro|[nitro.local/messages](http://nitro.local/messages)
-|Fitness|Be fit with Nitro ! A usefull help to work out and do sport !|[nitro.local/fitness](http://nitro.local/fitness)
-|Music|Listen the music which is in your Nitro Drive everywhere in the Nitro's interface|[nitro.local/music](http://nitro.local/music)
+|Drive|Host your files into your Jonas Device to access them through your network|[jonas.local/drive](http://jonas.local/drive)
+|Feeds|Subscribe to RSS-Feeds to see (and listen to !) the latest episodes|[jonas.local/feeds](http://jonas.local/feeds)
+|Messages|Send messages to the others users connected to Jonas|[jonas.local/messages](http://jonas.local/messages)
+|Fitness|Be fit with Jonas ! A usefull help to work out and do sport !|[jonas.local/fitness](http://jonas.local/fitness)
+|Music|Listen the music which is in your Jonas Drive everywhere in the Jonas's interface|[jonas.local/music](http://jonas.local/music)
 
 ## Installation 
-*How to install Nitro on your Device ?*
+*How to install Jonas on your Device ?*
 
-Before download Nitro, there are few things you will need:
+Before download Jonas, there are few things you will need:
 
 Ingredients:
 - 1 Ethernet cable
