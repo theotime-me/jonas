@@ -2,11 +2,101 @@
     "https://radiofrance-podcast.net/podcast09/rss_19488.xml/": {
         "title": "Les Bonnes choses",
         "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-        "fetchDate": "2020-02-26T11:37:49.521Z",
+        "fetchDate": "2020-03-20T17:35:03.200Z",
         "link": "http://www.radiofrance.fr/",
         "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2019/07/73284527-7bb5-435d-b843-98d11cda18cf/1400x1400_rf_omm_0000019896_ite.jpg",
         "description": "La nourriture est un enjeu global : affectif, intime, social, culturel, anthropologique, économique, écologique.",
         "items": [
+            {
+                "title": "Le retour des villes jumelées",
+                "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/le-retour-des-villes-jumelees",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/5bb7f393-6e8f-414b-baa0-b29a912ec2e5/19488-15.03.2020-ITEMA_22308084-2.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "3258190",
+                "description": "durée : 00:03:22 - La Cerise sur le gâteau - par : Pierre Hivernat - Quand un agriculture bio s'engage et faire vivre les liens unissant la ville à la campagne.  - réalisation : Jean-Christophe Francis ",
+                "date": "Sun, 15 Mar 2020 12:28:45 +0100"
+            },
+            {
+                "title": "Les magasins ont-ils un avenir ?",
+                "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/les-magasins-ont-ils-un-avenir",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/4786ff09-9a44-4788-87fa-a537072874ad/19488-15.03.2020-ITEMA_22308084-1.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "27600924",
+                "description": "durée : 00:28:43 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Face à l'hypermarché ou au commerce en ligne, la boutique du coin de la rue présente l'avantage, le plus souvent, de faire vivre le lien social. Alors que les centres-villes se vident de leurs commerces, le magasin, sous l'impulsion de nouvelles initiatives, fait malgré tout de la résistance. - réalisation : Jean-Christophe Francis ",
+                "date": "Sun, 15 Mar 2020 12:28:43 +0100"
+            },
+            {
+                "title": "Macha Méril :\"L'odeur du Kissel est le crochet qui me rattache à mes origines russes\"",
+                "link": "https://www.franceculture.fr/emissions/la-madeleine-de/macha-meril-lodeur-du-kissel-est-le-crochet-qui-me-rattache-a-mes-origines-russes",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/29f520e7-8f03-415d-9812-8a749a12a206/19488-15.03.2020-ITEMA_22308084-0.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "2841983",
+                "description": "durée : 00:02:56 - La Madeleine de... - par : Mattéo Caranta - La madeleine de Macha Méril la renvoie instantanément à ses origines russes. ",
+                "date": "Sun, 15 Mar 2020 12:15:00 +0100"
+            },
+            {
+                "title": "Top Vaches !",
+                "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/top-vaches",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/d449c3b7-1028-4373-bb7f-5820ab44e52e/19488-08.03.2020-ITEMA_22301897-2.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "3347923",
+                "description": "durée : 00:03:27 - La Cerise sur le gâteau - par : Pierre Hivernat - Au Salon de l'Agriculture se déroule chaque année un concours de beauté d'un genre un peu particulier : Top Vaches, qui sélectionne la championne de l'événement, celle qui en deviendra l'égérie et qui aura la noble tâche d'accueil le Président de la République. - réalisation : Jean-Christophe Francis ",
+                "date": "Sun, 08 Mar 2020 12:28:45 +0100"
+            },
+            {
+                "title": "Top chef, une révolution en cuisine ?",
+                "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/top-chef-une-revolution-en-cuisine",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/b276e7cf-9906-4114-8a55-e53a8b4be409/19488-08.03.2020-ITEMA_22301897-1.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "27715042",
+                "description": "durée : 00:28:50 - Les Bonnes choses - par : Caroline Broué, Roxane Poulain, Stéphanie Villeneuve - Zoom sur Top chef, le concours culinaire qu'on ne présente plus et qui fait les beaux jours de M6. Alors que le premier épisode de la 11e saison a rassemblé plus de trois millions de téléspectateurs, comment cette émission a-t-elle changé la vie des chefs, mais aussi la nôtre ? - réalisation : Jean-Christophe Francis - invités : Stéphane Méjanès journaliste culinaire; Hélène Darroze ",
+                "date": "Sun, 08 Mar 2020 12:28:45 +0100"
+            },
+            {
+                "title": "Fabrice Luchini :\"Je suis dingue des boules de coco mais rien ! Rien ne remplacera le serpent en guimauve\"",
+                "link": "https://www.franceculture.fr/emissions/la-madeleine-de/fabrice-luchini-je-suis-dingue-des-boules-de-coco-mais-rien-rien-ne-remplacera-le-serpent-en",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/2e7cdedb-75da-470f-9f7a-59c08fc7e77c/19488-08.03.2020-ITEMA_22301897-0.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "3326708",
+                "description": "durée : 00:03:26 - La Madeleine de... - par : Mattéo Caranta - Fabrice Luchini aime manger. Mais il adore aussi les digressions. Alors pour sa madeleine, il partage son amour des deux. ",
+                "date": "Sun, 08 Mar 2020 12:15:00 +0100"
+            },
+            {
+                "title": "Le goût du bon pain",
+                "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/le-gout-du-bon-pain",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/e7ab5427-6438-487f-9c16-707f2f1742cc/19488-01.03.2020-ITEMA_22295846-2.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "27797787",
+                "description": "durée : 00:28:56 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Rien de tel que d'entamer sa baguette encore chaude au sortir de la boulangerie : sentir sa croûte croustillante, goûter sa mie tendre et pleine d’arômes. Aliment indispensable, sujet inépuisable, le pain a pris place dans nos vies il y a des siècles pour ne plus jamais en sortir.  - réalisation : Jean-Christophe Francis - invités : Steven Kaplan; Mehdi Courgey Boulanger ",
+                "date": "Sun, 01 Mar 2020 12:28:56 +0100"
+            },
+            {
+                "title": "A la recherche du pain quotidien",
+                "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/a-la-recherche-du-bon-pain",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/85a98f68-7953-4c76-bcb9-48cf8f0160b9/19488-01.03.2020-ITEMA_22295846-1.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "3203977",
+                "description": "durée : 00:03:18 - La Cerise sur le gâteau - par : Pierre Groppo - Remercions ces boulangeries à Lyon, Lille, Bordeaux, dans des villages du Perche ou du Cantal, qui restent ouvertes le dimanche pour nous donner notre pain quotidien.  - réalisation : Jean-Christophe Francis ",
+                "date": "Sun, 01 Mar 2020 12:28:45 +0100"
+            },
+            {
+                "title": "Elsa Dreisig : \"Quand je croque dans un \"drømmecake\", je suis au Danemark\" ",
+                "link": "https://www.franceculture.fr/emissions/la-madeleine-de/elsa-dreisig-quand-je-croque-dans-un-drommecake-je-suis-au-danemark",
+                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
+                "content": "https://rf.proxycast.org/a5529be7-93ca-44a9-8aa1-cc788ee2a56e/19488-01.03.2020-ITEMA_22295846-0.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "3291701",
+                "description": "durée : 00:03:24 - La Madeleine de... - par : Mattéo Caranta - La madeleine d'Elsa Dreisig est sucrée et se mange dans le froid de l'hiver danois. ",
+                "date": "Sun, 01 Mar 2020 12:15:00 +0100"
+            },
             {
                 "title": "Qu'attend-on de nos agriculteurs ?",
                 "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/quattend-de-nos-agriculteurs",
@@ -66,427 +156,377 @@
                 "contentLength": "3170231",
                 "description": "durée : 00:03:16 - La Madeleine de... - par : Mattéo Caranta - Ernest Pignon-Ernest a grandi à Nice. Et sa chambre était juste au dessus d'une cuisine de restaurant d'où il pouvait sentir, dès le matin, le parfum de la pissaladière...  ",
                 "date": "Sun, 16 Feb 2020 12:15:00 +0100"
-            },
-            {
-                "title": "Baguettes et traditions",
-                "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/la-bataille-du-pain",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/3fa3e585-06eb-419e-ab7e-e1c5c036b8ab/19488-09.02.2020-ITEMA_22277635-2.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "3101124",
-                "description": "durée : 00:03:12 - La Cerise sur le gâteau - par : Pierre Hivernat - Tous les quatre ans se tient la Coupe du Monde de la boulangerie. Et, contre toute attente, la France peine régulièrement à gravir les marches du podium.  - réalisation : Jean-Christophe Francis ",
-                "date": "Sun, 09 Feb 2020 12:28:45 +0100"
-            },
-            {
-                "title": "Non, le gingembre n'est pas un aphrodisiaque !",
-                "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/les-bonnes-choses-emission-du-dimanche-09-fevrier-2020",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/4d4c5706-270f-4143-bbf1-02f7c4f4f8a4/19488-09.02.2020-ITEMA_22277635-1.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "27508163",
-                "description": "durée : 00:28:37 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Epice magique au goût légèrement citronné, le gingembre se consomme un peu partout dans le monde, bien que longtemps éclipsé par le poivre. On lui prête mille vertus, mais c'est son usage gourmand qui nous intéresse, à l'occasion de la diffusion d'un documentaire sur France 5 qui lui est consacré.  - réalisation : Jean-Christophe Francis - invités : Hélène Eckmann Journaliste, cp-réalisatrice du documentaire \"Le gingembre, une épice magique\"; Mathilde Roellinger Co-gérante de l’entreprise familiale Roellinger- Maison de Bricourt à Cancale; Liza Fanjeaux Journaliste, co-réalisatrice du documentaire \"Gingembre, la racine du goût\" ",
-                "date": "Sun, 09 Feb 2020 12:28:37 +0100"
-            },
-            {
-                "title": "Alain Damasio : \"Chaque bouchée libérait la puissance solaire de la pêche\"",
-                "link": "https://www.franceculture.fr/emissions/la-madeleine-de/ernest-pignon-ernest-la-pissaladiere-cest-lodeur-de-nice",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/82ab054f-a705-4cb8-b656-4e168999b94c/19488-09.02.2020-ITEMA_22277635-0.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "3006391",
-                "description": "durée : 00:03:06 - La Madeleine de... - par : Mattéo Caranta - Les pêches épluchées, fondantes et tièdes, de sa grand mère.  ",
-                "date": "Sun, 09 Feb 2020 12:15:00 +0100"
-            },
-            {
-                "title": "Guide Michelin : la bataille des Anciens et des Modernes",
-                "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/guide-michel-la-bataille-des-anciens-et-des-modernes",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/9ad61903-9daa-4a8b-99a1-dd98a71b6478/19488-02.02.2020-ITEMA_22271351-2.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "27842533",
-                "description": "durée : 00:28:58 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - La rétrogradation de la maison Paul Bocuse a mis le monde de la gastronomie en émoi. Avec d'un côté, des chefs reconnus, rompus aux honneurs et aux distinctions et de l'autre, une volonté du guide rouge de rompre avec des traditions pour faire place aux jeunes, le Michelin vit-il sa révolution? - réalisation : Jean-Christophe Francis - invités : Périco Légasse Journaliste et critique gastronomique.; Franck Pinay-Rabaroust Journaliste gastronomique, fondateur du site spécialisé Atabula et ancien rédacteur au guide Michelin ",
-                "date": "Sun, 02 Feb 2020 12:28:57 +0100"
-            },
-            {
-                "title": "L'étoile du sud retrouvée",
-                "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/letoile-du-sud-retrouvee",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/cb3f5a89-f8ab-4526-8f76-0befcc2b3fd9/19488-02.02.2020-ITEMA_22271351-1.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "3139576",
-                "description": "durée : 00:03:14 - La Cerise sur le gâteau - par : Camille Labro - Trente ans après l'avoir perdue, L'Oustau de Baumanière a récupéré sa troisième étoile. Une belle histoire, de transmission et d'humilité.  - réalisation : Jean-Christophe Francis ",
-                "date": "Sun, 02 Feb 2020 12:28:45 +0100"
-            },
-            {
-                "title": "Bastien Vivès : \"Le goût du lait, c'est la fraîcheur pure\"",
-                "link": "https://www.franceculture.fr/emissions/la-madeleine-de/bastien-vives-le-gout-du-lait-cest-la-fraicheur-pure",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/e6428892-b9c2-4f1c-bda5-cdd84f21ac24/19488-02.02.2020-ITEMA_22271351-0.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "2991576",
-                "description": "durée : 00:03:05 - La Madeleine de... - par : Mattéo Caranta - Bastien Vivès n'a juré une grande partie de sa vie que par un seul aliment : le lait. ",
-                "date": "Sun, 02 Feb 2020 12:15:00 +0100"
-            },
-            {
-                "title": "La revanche du pois chiche",
-                "link": "https://www.franceculture.fr/emissions/les-bonnes-choses/la-revanche-du-pois-chiche",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/dc54e22e-385d-46f3-a34a-011ccfb2b6ed/19488-26.01.2020-ITEMA_22265088-2.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "27837883",
-                "description": "durée : 00:28:58 - Les Bonnes choses - par : Caroline Broué, Stéphanie Villeneuve - Le pois chiche, ou cicer arietinum de son nom savant, a longtemps été négligé au profit de son cousin le haricot, perçu comme plus noble ou plus élégant. Mais c'est là une époque révolue pour la plus modeste des légumineuses, qui fait aujourd'hui son grand retour dans nos assiettes.  - réalisation : Jean-Christophe Francis - invités : Farouk Mardam-Bey directeur de la collection Sindbad aux éditions Actes Sud; Christophe Bacquié Chef étoilé ",
-                "date": "Sun, 26 Jan 2020 12:28:58 +0100"
-            },
-            {
-                "title": "La vengeance de la vieille graine",
-                "link": "https://www.franceculture.fr/emissions/la-cerise-sur-le-gateau/la-vengeance-de-la-vieille-graine",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/b2878a91-b763-4ef6-8718-ef3564e1b4f6/19488-26.01.2020-ITEMA_22265088-1.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "3347510",
-                "description": "durée : 00:03:27 - La Cerise sur le gâteau - par : Pierre Groppo - Eloge de ces lentilles, riz, semoule et pois-chiche et de la seconde vie de ces vieilles graines.  - réalisation : Jean-Christophe Francis ",
-                "date": "Sun, 26 Jan 2020 12:28:45 +0100"
-            },
-            {
-                "title": "Jayro Bustamante : \"La pain des morts n'a aucun autre gout que celui du souvenir\"",
-                "link": "https://www.franceculture.fr/emissions/la-madeleine-de/jayro-bustamante-la-pain-des-morts-na-aucun-autre-gout-que-celui-du-souvenir",
-                "url": "https://radiofrance-podcast.net/podcast09/rss_19488.xml/",
-                "content": "https://rf.proxycast.org/9721f72b-9002-4b87-bb89-6c5c863e0a36/19488-26.01.2020-ITEMA_22265088-0.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "3392049",
-                "description": "durée : 00:03:30 - La Madeleine de... - par : Mattéo Caranta - Le jour de la fête des morts au Guatemala, la grand mère de J.Bustamante faisait le pain des morts, qui s'échangeait ensuite entre voisin. - réalisation : Jean-Christophe Francis ",
-                "date": "Sun, 26 Jan 2020 12:15:00 +0100"
             }
         ]
     },
     "https://radiofrance-podcast.net/podcast09/rss_16740.xml/": {
         "title": "Les Matins du samedi",
         "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-        "fetchDate": "2020-02-26T11:37:50.036Z",
+        "fetchDate": "2020-03-20T17:35:03.967Z",
         "link": "http://www.radiofrance.fr/",
         "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2019/08/5ef66caa-e03e-4c5e-8779-8d937b6b2e31/1400x1400_rf_omm_0000017968_ite.jpg",
         "description": "Information, culture et idées pour commencer le week-end en direct.",
         "items": [
             {
-                "title": "La saucisse au chou, une fête d’hiver",
-                "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/la-saucisse-au-chou-une-fete-dhiver",
+                "title": "C’est la fête à la paupiette",
+                "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/cest-la-fete-a-la-paupiette",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/03a06556-936e-4f0a-8d1c-f6f4c7259ef8/16740-22.02.2020-ITEMA_22289370-6.mp3",
+                "content": "https://rf.proxycast.org/e04b0cf0-7956-414a-87a7-056dd3165bbb/16740-14.03.2020-ITEMA_22307574-6.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "3339332",
-                "description": "durée : 00:03:27 - Les Mitonnages de Jacky - par : Jacky Durand - Comment une charcuterie savoyarde conjugue sauvegarde du goût et lutte contre le gaspillage. ",
-                "date": "Sat, 22 Feb 2020 08:58:45 +0100"
+                "contentLength": "2026872",
+                "description": "durée : 00:02:05 - Les Mitonnages de Jacky - par : Jacky Durand - Eloge d’un mets enveloppant aussi bon sur le fond que sur la forme. ",
+                "date": "Sat, 14 Mar 2020 08:58:45 +0100"
             },
             {
-                "title": "Daniel Pennac : \"Fellini a trouvé naturel d’écrire à l’intérieur de ses rêves\" ",
-                "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-22-fevrier-2020",
+                "title": "Frederic Lenoir :\"La poésie nous nourrit, nous apaise, elle intériorise nos émotions\"",
+                "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-14-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/d2ae1473-600e-4c88-a64c-2f7323e23011/16740-22.02.2020-ITEMA_22289370-5.mp3",
+                "content": "https://rf.proxycast.org/d8e10d3d-254f-45d1-9f03-5a1802d26b30/16740-14.03.2020-ITEMA_22307574-5.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "5067832",
-                "description": "durée : 00:05:15 - L'Idée culture - par : Mattéo Caranta - \"Le livre de mes rêves\", Federico Fellini. ",
-                "date": "Sat, 22 Feb 2020 08:52:00 +0100"
+                "contentLength": "4781524",
+                "description": "durée : 00:04:57 - L'Idée culture - par : Mattéo Caranta - Les contemplations, Victor Hugo, 1856. ",
+                "date": "Sat, 14 Mar 2020 08:52:00 +0100"
             },
             {
-                "title": "Nonna Mayer : \"Les attentats sont un déni de l'humanité\"",
-                "link": "https://www.franceculture.fr/emissions/linvite-actu/invite-actu-des-matins-du-samedi-suite-du-samedi-22-fevrier-2020",
+                "title": "Le Covid-19 est-il un accélérateur des transitions ?",
+                "link": "https://www.franceculture.fr/emissions/linvite-actu/invite-actu-des-matins-du-samedi-suite-du-samedi-14-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/7caa3aef-8e6e-442c-a15e-422435e6102a/16740-22.02.2020-ITEMA_22289370-4.mp3",
+                "content": "https://rf.proxycast.org/cb8455c7-5716-466e-bc85-47366d55882f/16740-14.03.2020-ITEMA_22307574-4.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "25142613",
-                "description": "durée : 00:26:09 - L'Invité actu - par : Caroline Broué - Entretien avec la politiste, directrice émérite de recherche au CNRS et spécialiste de l'extrême-droite Nonna Mayer, après l’attentat perpétré à l’encontre de la communauté kurde cette semaine en Allemagne, et alors que l’extrême-droite continue de progresser outre-Rhin et ailleurs en Europe. - réalisation : Jean-Christophe Francis - invités : Nonna Mayer Politologue, directrice de recherche émérite au CNRS, rattachée au Centre d’études européennes de Sciences Po ",
-                "date": "Sat, 22 Feb 2020 08:45:00 +0100"
+                "contentLength": "24359803",
+                "description": "durée : 00:25:20 - L'Invité actu - par : Caroline Broué - Le coronvirus va-t-il nous acheminer vers un changement de modèle ? Nous posons la question à l’économiste Christian de Perthuis, fondateur de la Chaire économie du climat à l’Université Paris-Dauphine, auteur entre autre de \"Le Tic-Tac de l’horloge climatique\". - réalisation : Jean-Christophe Francis ",
+                "date": "Sat, 14 Mar 2020 08:45:00 +0100"
             },
             {
-                "title": "\"Make Federal Building Beautiful Again\"",
-                "link": "https://www.franceculture.fr/emissions/a-propos-dailleurs/a-propos-dailleurs-chronique-du-samedi-22-fevrier-2020",
+                "title": "Canada : Le Coastal Gaslink et la lutte Wet’suwet’en, au delà du tube",
+                "link": "https://www.franceculture.fr/emissions/a-propos-dailleurs/a-propos-dailleurs-chronique-du-samedi-14-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/006fa310-260c-4746-af8b-f9030a65727e/16740-22.02.2020-ITEMA_22289370-3.mp3",
+                "content": "https://rf.proxycast.org/6f4f17f6-ecbf-4f77-87ef-1175ee153474/16740-14.03.2020-ITEMA_22307574-3.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "3472027",
-                "description": "durée : 00:03:35 - A propos d'ailleurs - par : Mattéo Caranta - Etats-Unis : un projet de décret présidentiel, visant à faire du style néo-classique le style officiel et par défaut de l'architecture fédérale, inquiète les organisations d'architectes et les sites spécialisés.  ",
-                "date": "Sat, 22 Feb 2020 08:34:00 +0100"
+                "contentLength": "2835919",
+                "description": "durée : 00:02:55 - A propos d'ailleurs - par : Mattéo Caranta - Le conflit entre les chefs ancestraux canadiens et le gouvernement Canadien à propos du passage du  \"Coastal Gaslink\" sur leurs terres ancestrales devrait aboutir à un accord dans les jours à venir. Mais ce débat dépasse la simple question du pipeline désormais. ",
+                "date": "Sat, 14 Mar 2020 08:34:00 +0100"
             },
             {
-                "title": "Julian Assange : martyre de la liberté d'informer ? ",
-                "link": "https://www.franceculture.fr/emissions/la-fabrique-mediatique/julian-assange-martyre-de-la-liberte-dinformer",
+                "title": "Ce que le coronavirus fait à l’info",
+                "link": "https://www.franceculture.fr/emissions/la-fabrique-mediatique/ce-que-le-coronavirus-fait-a-linfo",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/0b1a339e-1139-4fae-9c02-9d7aa815ae29/16740-22.02.2020-ITEMA_22289370-2.mp3",
+                "content": "https://rf.proxycast.org/bf079d94-35e4-4df7-963e-e8a86e9a2805/16740-14.03.2020-ITEMA_22307574-2.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "18722186",
-                "description": "durée : 00:19:28 - La Fabrique médiatique - par : Caroline Broué, Stéphanie Villeneuve - Lundi prochain débutera le procès de Julian Assange, fondateur du média d’information Wikileaks, pour décider de son extradition vers les Etats-Unis. Ce procès va-t-il ouvrir la voie à une atteinte au droit d’informer ?  - réalisation : Jean-Christophe Francis - invités : Paul Moreira Grand reporter, réalisateur, fondateur de Premières Lignes Production et membre du bureau exécutif de RSF.; Guillaume Ledit Journaliste et co-auteur de \"Dans la tête de Julian Assange\", chez Actes Sud ",
-                "date": "Sat, 22 Feb 2020 07:58:30 +0100"
+                "contentLength": "17856646",
+                "description": "durée : 00:18:34 - La Fabrique médiatique - par : Hervé Gardette, Stéphanie Villeneuve - Alors que le coronavirus est au centre de l’actualité, comment les rédactions se sont organisées pour traiter l’information ? En quoi la pratique du terrain a-t-elle été affectée par la propagation du virus ? Comment faire exister les autres sujets d’actualité ?  - réalisation : Jean-Christophe Francis - invités : Eléonore Gay directrice adjointe de la rédaction de France Télévisions; Guillaume Goubert directeur du journal La Croix ",
+                "date": "Sat, 14 Mar 2020 07:58:30 +0100"
             },
             {
-                "title": "Benjamin Bernheim, ténor de l'année",
-                "link": "https://www.franceculture.fr/emissions/linvite-culture/invite-culture-des-matins-du-samedi-2-du-samedi-22-fevrier-2020",
+                "title": "Emmanuelle Laborit : \"La langue des signes est la langue de tous\"",
+                "link": "https://www.franceculture.fr/emissions/linvite-culture/invite-culture-des-matins-du-samedi-2-du-samedi-14-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/ab631daa-8b07-470b-a2b9-da729e372d1a/16740-22.02.2020-ITEMA_22289370-1.mp3",
+                "content": "https://rf.proxycast.org/c4f3cda3-68b5-4a9d-ba60-ffcd3c5aa621/16740-14.03.2020-ITEMA_22307574-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "25208536",
-                "description": "durée : 00:26:14 - L'Invité culture - par : Caroline Broué, Stéphanie Villeneuve - Le ténor Benjamin Bernheim, sacré hier meilleur soliste lyrique aux Victoires de la musique classique sera le chevalier Des Grieux dans \"Manon\" de Massenet à l’Opéra de Paris à partir du 29 février, et vient de faire paraître son premier disque à l'automne. - réalisation : Jean-Christophe Francis - invités : Benjamin Bernheim Ténor ",
-                "date": "Sat, 22 Feb 2020 07:40:00 +0100"
+                "contentLength": "26762496",
+                "description": "durée : 00:27:51 - L'Invité culture - par : Hervé Gardette, Stéphanie Villeneuve - L'actrice Emmanuelle Laborit, Molière de la révélation théâtrale pour \"Les enfants du silence\" en 1993 et directrice de l'International Visual Theatre, à Paris, est la marraine de l'édition 2020 de la Semaine de la francophonie. - réalisation : Jean-Christophe Francis - invités : Emmanuelle Laborit ",
+                "date": "Sat, 14 Mar 2020 07:40:00 +0100"
             },
             {
-                "title": "Graeme Allwright et \"La carpe et le lapin\"",
-                "link": "https://www.franceculture.fr/emissions/les-envies-du-week-end/les-envies-du-week-end-du-samedi-22-fevrier-2020",
+                "title": "Les envies du week-end du samedi 14 mars 2020",
+                "link": "https://www.franceculture.fr/emissions/les-envies-du-week-end/les-envies-du-week-end-du-samedi-14-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/f4087d52-af03-4550-b0be-fabc825dabf0/16740-22.02.2020-ITEMA_22289370-0.mp3",
+                "content": "https://rf.proxycast.org/d0d668d2-ae0b-426c-9178-ea71b501eae2/16740-14.03.2020-ITEMA_22307574-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "2338574",
-                "description": "durée : 00:02:24 - Les Envies du week-end - par : Caroline Broué - Hommage au chanteur de folk qui est mort cette semaine à l'âge de 93 ans et qui laisse derrière lui quelques chansons fameuses, et coup de coeur pour un spectacle sans queue ni tête... ou quasi - réalisation : Doria Zénine ",
-                "date": "Sat, 22 Feb 2020 07:09:55 +0100"
+                "contentLength": "3080816",
+                "description": "durée : 00:03:11 - Les Envies du week-end - par : Caroline Broué - réalisation : Doria Zénine ",
+                "date": "Sat, 14 Mar 2020 07:09:55 +0100"
             },
             {
-                "title": "La vie, c’est souvent \"gratinée\"",
-                "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/la-vie-cest-souvent-gratinee",
+                "title": "Sachez faire la soupe sans sachet",
+                "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/sachez-faire-la-soupe-sans-sachet",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/0cbc65cb-3bd3-458b-8fa9-8f1278841d5f/16740-15.02.2020-ITEMA_22283318-6.mp3",
+                "content": "https://rf.proxycast.org/ae89dace-8ea5-400b-9f9e-2cc4a71a0e7c/16740-07.03.2020-ITEMA_22301388-6.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "2923820",
-                "description": "durée : 00:03:01 - Les Mitonnages de Jacky - par : Jacky Durand - Eloge du gratin à tout faire avec pommes de terre, céleri et haddock. ",
-                "date": "Sat, 15 Feb 2020 08:58:45 +0100"
+                "contentLength": "3382258",
+                "description": "durée : 00:03:29 - Les Mitonnages de Jacky - par : Jacky Durand - Aujourd’hui, crème de champignons et sa sauce verte. ",
+                "date": "Sat, 07 Mar 2020 08:58:45 +0100"
             },
             {
-                "title": "Anne-Marie Garat :\"Par son engagement physique dans l'espace, Georges Rousse produit des formes virtuelles\"",
-                "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-15-fevrier-2020",
+                "title": "Virginie Linhart :\"Agnès Varda filme l'infinie liberté des femmes\"",
+                "link": "https://www.franceculture.fr/emissions/lidee-culture/lidee-culture-du-samedi-07-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/ec0f2ed7-c383-40c4-98d0-c2e31ae57c1e/16740-15.02.2020-ITEMA_22283318-5.mp3",
+                "content": "https://rf.proxycast.org/afd31e0d-d8b5-47bd-b2e2-fcd83bbb4b12/16740-07.03.2020-ITEMA_22301388-5.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "4801203",
-                "description": "durée : 00:04:58 - L'Idée culture - par : Mattéo Caranta - Ivry 2018, Georges Rousse. ",
-                "date": "Sat, 15 Feb 2020 08:52:00 +0100"
+                "contentLength": "5605739",
+                "description": "durée : 00:05:48 - L'Idée culture - par : Mattéo Caranta, Jean-Christophe Francis - \"L'une chante, l'autre pas\", Agnès Varda, 1977. ",
+                "date": "Sat, 07 Mar 2020 08:52:00 +0100"
             },
             {
-                "title": "Martial Foucault : \"L'état de la démocratie se mesure à l'échelle locale\"",
-                "link": "https://www.franceculture.fr/emissions/linvite-actu/invite-actu-des-matins-du-samedi-suite-du-samedi-15-fevrier-2020",
+                "title": "Philippe Askenazy : \"Le 'business model' du futur, c'est le salariat\"",
+                "link": "https://www.franceculture.fr/emissions/linvite-actu/invite-actu-des-matins-du-samedi-suite-du-samedi-07-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/b4f984c4-4efa-4723-b1d0-7480e752bc6f/16740-15.02.2020-ITEMA_22283318-4.mp3",
+                "content": "https://rf.proxycast.org/11071cf0-b434-4e8e-830b-254f65e1f399/16740-07.03.2020-ITEMA_22301388-4.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "26721584",
-                "description": "durée : 00:27:48 - L'Invité actu - par : Caroline Broué, Roxane Poulain - Dans son nouvel ouvrage \"Maires au bord de la crise de nerfs\", le professeur de sciences politiques et président du Cevipof Martial Foucault se penche sur la figure du maire et interroge les conditions de survie de la démocratie locale.  - réalisation : Jean-Christophe Francis - invités : Martial Foucault professeur de science politique et directeur du Cevipof, le centre de recherches politiques de Sciences Po ",
-                "date": "Sat, 15 Feb 2020 08:45:00 +0100"
+                "contentLength": "24384847",
+                "description": "durée : 00:25:22 - L'Invité actu - par : Caroline Broué - Après la requalification en « contrat de travail » du lien unissant les chauffeurs Uber à leur employé, et alors que la communauté universitaire se mobilise contre le futur projet de loi sur la recherche, l’économiste du travail et directeur de recherche au CNRS Philippe Askenazy.   - réalisation : Jean-Christophe Francis - invités : Philippe Askenazy Economiste, chercheur au CNRS ",
+                "date": "Sat, 07 Mar 2020 08:45:00 +0100"
             },
             {
-                "title": "Lumière sur Robert Biedroń",
-                "link": "https://www.franceculture.fr/emissions/a-propos-dailleurs/a-propos-dailleurs-chronique-du-samedi-15-fevrier-2020",
+                "title": "Argentine : \"Que sea ley\"",
+                "link": "https://www.franceculture.fr/emissions/a-propos-dailleurs/a-propos-dailleurs-chronique-du-samedi-07-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/20ec2a09-c438-449b-a59f-2626d4d64892/16740-15.02.2020-ITEMA_22283318-3.mp3",
+                "content": "https://rf.proxycast.org/45ceb477-1d93-472e-8989-f54a4f2ad0a0/16740-07.03.2020-ITEMA_22301388-3.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "3172231",
-                "description": "durée : 00:03:16 - A propos d'ailleurs - par : Mattéo Caranta - En Pologne, la candidature de Robert Biedroń à la présidentielle tient à la fois de l’exploit et de l’anomalie politique. Explications. ",
-                "date": "Sat, 15 Feb 2020 08:34:00 +0100"
+                "contentLength": "3016477",
+                "description": "durée : 00:03:07 - A propos d'ailleurs - par : Mattéo Caranta - Le président argentin Alberto Fernandez a déclaré dimanche dernier qu’il présenterait sous dix jours un projet de loi pour légaliser sans condition l'avortement. Une grande première qui pourrait le chemin du droit à l'avortement en Amérique du Sud. - réalisation : Jean-Christophe Francis ",
+                "date": "Sat, 07 Mar 2020 08:34:00 +0100"
             },
             {
-                "title": "Turquie : où en est la liberté de la presse ?",
-                "link": "https://www.franceculture.fr/emissions/la-fabrique-mediatique/turquie-ou-en-est-la-liberte-de-la-presse",
+                "title": "Doit-on craindre les \"deepfakes\"  ?",
+                "link": "https://www.franceculture.fr/emissions/la-fabrique-mediatique/doit-craindre-les-deepfakes",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/9fba4f76-eba2-4ad2-969d-3de0862b827d/16740-15.02.2020-ITEMA_22283318-2.mp3",
+                "content": "https://rf.proxycast.org/86dce867-0b08-4a78-b3d4-61d2761cd639/16740-07.03.2020-ITEMA_22301388-2.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "18229346",
-                "description": "durée : 00:18:57 - La Fabrique médiatique - par : Caroline Broué, Stéphanie Villeneuve - Alors que la journaliste et écrivaine turque Asli Erdogan, accusée de propagande par les autorités, a été acquittée ce vendredi 14 février, état des lieux de la liberté de la presse en Turquie. - réalisation : Jean-Christophe Francis - invités : Ariane Bonzon journaliste spécialiste de la Turquie et du Proche-Orient; Aysegul Sert Journaliste turque. Actuellement entre Paris et Istanbul, elle collabore notamment aux périodiques New York Times et The New Yorker ",
-                "date": "Sat, 15 Feb 2020 07:58:30 +0100"
+                "contentLength": "18601673",
+                "description": "durée : 00:19:21 - La Fabrique médiatique - par : Caroline Broué, Stéphanie Villeneuve - Alors que Twitter a décidé d’étiqueter à partir de jeudi les « deepfakes », ces vidéos falsifiées par le biais de l’intelligence artificielle, doit-on craindre ces nouveaux contenus ?   - réalisation : Jean-Christophe Francis - invités : Arnaud Mercier professeur en sciences de l'information et de la communication à l'Institut Français de Presse - Université Paris II; Julien Le Bot journaliste spécialisé dans le numérique ",
+                "date": "Sat, 07 Mar 2020 07:58:30 +0100"
             },
             {
-                "title": "Shani Diluka : \"L'intérêt de Beethoven pour la culture indienne m'a surprise\"",
-                "link": "https://www.franceculture.fr/emissions/linvite-culture/invite-culture-des-matins-du-samedi-2-du-samedi-15-fevrier-2020",
+                "title": "Yasmina Reza : \"Le théâtre, c'est une partition\"",
+                "link": "https://www.franceculture.fr/emissions/linvite-culture/invite-culture-des-matins-du-samedi-2-du-samedi-07-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/be278acb-2764-4a19-8b07-d9b91e8f19d1/16740-15.02.2020-ITEMA_22283318-1.mp3",
+                "content": "https://rf.proxycast.org/4f87bcd5-5889-4b66-8993-651f306e7c27/16740-07.03.2020-ITEMA_22301388-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "25227602",
-                "description": "durée : 00:26:15 - L'Invité culture - par : Caroline Broué, Stéphanie Villeneuve - La pianiste Shani Diluka, dans son nouvel album \"Cosmos\", jette un pont entre la musique occidentale et orientale en faisant dialoguer les sonates de Beethoven \"Clair de lune\" et \"Appassionata\" avec des ragas d'Inde.  - réalisation : Jean-Christophe Francis - invités :  Shani Diluka Pianiste et poète ",
-                "date": "Sat, 15 Feb 2020 07:40:00 +0100"
+                "contentLength": "21927675",
+                "description": "durée : 00:22:48 - L'Invité culture - par : Caroline Broué, Stéphanie Villeneuve - Après avoir obtenu le prix Renaudot en 2016 pour \"Babylone\", Yasmina Reza, comptant parmi les dramaturges les plus jouées au monde pour avoir écrit des pièces à succès tel \"Art\" ou \"Le Dieu du carnage\" revient avec \"Anne-Marie La Beauté\", à voir à La Colline, à Paris, à partir du 5 mars.  - réalisation : Jean-Christophe Francis - invités : Yasmina Reza Auteur, Scénariste, Actrice ",
+                "date": "Sat, 07 Mar 2020 07:40:00 +0100"
             },
             {
-                "title": "Tim Dup et Jean Echenoz",
-                "link": "https://www.franceculture.fr/emissions/les-envies-du-week-end/les-envies-du-week-end-du-samedi-15-fevrier-2020",
+                "title": "Danyel Waro, le festival Atlantide, Le Printemps des poètes et Baron noir",
+                "link": "https://www.franceculture.fr/emissions/les-envies-du-week-end/les-envies-du-week-end-du-samedi-07-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/2aab64f3-db71-4636-afea-07b4efe6634c/16740-15.02.2020-ITEMA_22283318-0.mp3",
+                "content": "https://rf.proxycast.org/57fb9d63-d59e-41cb-a6af-183f3abc0494/16740-07.03.2020-ITEMA_22301388-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "3801891",
-                "description": "durée : 00:03:56 - Les Envies du week-end - par : Caroline Broué - \"Qu'en restera-t-il\" est le titre du deuxième album d'un jeune auteur compositeur interprète bourré de talent et de grâce, dont on a aimé les paroles et la musique // \"Vie de Gérard Fulmard\" est celui du nouveau roman loufoque et extrêmement jouissif de Jean Echenoz - réalisation : Doria Zénine ",
-                "date": "Sat, 15 Feb 2020 07:09:55 +0100"
+                "contentLength": "2213133",
+                "description": "durée : 00:02:16 - Les Envies du week-end - par : Caroline Broué - Une reprise de Brassens chantée par le prince du maloya, un festival littéraire à Nantes, le temps de la poésie, et la saison 3 de la série politique de Canal + - réalisation : Doria Zénine ",
+                "date": "Sat, 07 Mar 2020 07:09:55 +0100"
             },
             {
-                "title": "Saveurs mafieuses",
-                "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/saveurs-mafieuses",
+                "title": "Carotte, la bonne mine de l'hiver",
+                "link": "https://www.franceculture.fr/emissions/les-mitonnages-de-jacky/carotte-la-bonne-mine-de-lhiver",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_16740.xml/",
-                "content": "https://rf.proxycast.org/1e3c6c2d-e116-4621-a634-3edf0b10b1c2/16740-08.02.2020-ITEMA_22277131-6.mp3",
+                "content": "https://rf.proxycast.org/49813836-c9aa-4960-821a-60ef9cca0ef8/16740-29.02.2020-ITEMA_22295331-6.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "2663448",
-                "description": "durée : 00:02:44 - Les Mitonnages de Jacky - par : Jacky Durand - On cuisine des pâtes aux sardines comme Lucky Luciano, l’un des grands parrains du crime à New-York. ",
-                "date": "Sat, 08 Feb 2020 08:58:45 +0100"
+                "contentLength": "4246241",
+                "description": "durée : 00:04:23 - Les Mitonnages de Jacky - par : Jacky Durand - Portrait d’un légume à tout faire avec une recette pour ensoleiller les jours gris. ",
+                "date": "Sat, 29 Feb 2020 08:58:45 +0100"
             }
         ]
     },
     "https://radiofrance-podcast.net/podcast09/rss_14312.xml/": {
         "title": "La Méthode scientifique",
         "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-        "fetchDate": "2020-02-26T11:37:48.601Z",
+        "fetchDate": "2020-03-20T17:35:03.739Z",
         "link": "http://www.radiofrance.fr/",
         "image": "https://cdn.radiofrance.fr/s3/cruiser-production/2019/08/6b34161f-00ab-455c-9ef9-612e6752d09c/1400x1400_rf_omm_0000017836_ite.jpg",
         "description": "Une heure de savoir autour des sciences, toutes les sciences, et sur les problématiques éthiques, politiques, économiques et sociales qui font l'actualité de la recherche. Du lundi au vendredi de 16h à 17h.",
         "items": [
             {
-                "title": "Fin de l’univers : et après ?",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mardi-25-fevrier-2020",
+                "title": "Cryptozoologie : qu'est-ce que le monstre du Loch Ness peut apprendre à la science ?",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-vendredi-20-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/0d61d539-2e71-4af1-a58a-1594b02259b9/14312-25.02.2020-ITEMA_22291576-1.mp3",
+                "content": "https://rf.proxycast.org/bb4893f1-2c90-4955-894f-4cac04b9d75f/14312-20.03.2020-ITEMA_22312157-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "55844727",
-                "description": "durée : 00:58:08 - La Méthode scientifique - par : Nicolas Martin - Est-il possible d’évaluer la fin de l’univers ? Comment la cosmologie, qui décrit la nature et le fonctionnement de l’univers, peut-elle également prédire et calculer son avenir ? Sur quels paramètres se fonder ? - réalisation : Olivier Bétard - invités : Jean-Marc Bonnet-Bidaud Astrophysicien au CEA, spécialiste en astrophysique des hautes énergies, particulièrement les derniers stades de l’évolution des étoiles et les astres denses de l’Univers; François Hammer Astronome à l'Observatoire de Paris ",
-                "date": "Tue, 25 Feb 2020 16:58:45 +0100"
+                "contentLength": "55965700",
+                "description": "durée : 00:58:16 - La Méthode scientifique - par : Nicolas Martin - A la découverte des animaux mystérieux. - réalisation : Elisabeth Miro - invités : Benoît Grison Docteur en sciences cognitives, biologiste et sociologue des sciences; Eric Buffetaut Paléontologue, directeur de recherche au CNRS ",
+                "date": "Fri, 20 Mar 2020 16:58:16 +0100"
             },
             {
-                "title": "Chauves-souris, les ailes du virus",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-lundi-24-fevrier-2020",
+                "title": "La déraisonnable efficacité des mathématiques",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-deraisonnable-efficacite-des-mathematiques-0",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/5814e42f-480a-4af4-8f5d-083b302fa848/14312-24.02.2020-ITEMA_22290575-1.mp3",
+                "content": "https://rf.proxycast.org/355895fd-d1be-4fe7-9199-58e9a548ecbb/14312-19.03.2020-ITEMA_22311383-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "56548652",
-                "description": "durée : 00:58:52 - La Méthode scientifique - par : Nicolas Martin - Quelles sont les caractéristiques des chiroptères ces mammifères volants et quels rôles jouent-elles dans les écosystèmes ? Pourquoi les chauve-souris constituent-elles un foyer de virus privilégié ? Quelles sont les principales raisons du déclin des chiroptères ?\r\n - réalisation : Olivier Bétard - invités : Jean-François Julien chiroptérologue; Julie Marmet Chef de projet \"coordinateur des opérations de capture Chiroptères\" au sein de Vigie Nature ",
-                "date": "Mon, 24 Feb 2020 16:58:45 +0100"
+                "contentLength": "56078992",
+                "description": "durée : 00:58:23 - La Méthode scientifique - par : Nicolas Martin - Peut-on définir les mathématiques ? Depuis quand les utilise-t-on ? A quoi servent-elles ? D’où vient la déraisonnable efficacité des mathématiques ? Faut-il les voir comme un outil pour appréhender la réalité ou comme son essence même ? Pourquoi certains y voient une intention ou origine divine ?  - réalisation : Elisabeth Miro - invités : Jean-Michel Salanskis Professeur de philosophie à l'université de Paris X-Nanterre; Jean-Jacques Szczeciniarz philosophe mathématicien, Directeur du Département Histoire et Philosophie des Sciences de l'Université Paris DIDEROT Paris 7 ",
+                "date": "Thu, 19 Mar 2020 16:58:45 +0100"
             },
             {
-                "title": "La découverte du plus ancien métissage humain",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-lundi-24-fevrier-2020",
+                "title": "Banquise, et pourtant elle fond",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/banquise-et-pourtant-elle-fond",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/0f84ccbe-9597-44b5-8006-d31845fa1712/14312-24.02.2020-ITEMA_22290575-0.mp3",
+                "content": "https://rf.proxycast.org/021a0a97-fe38-43cf-afdb-cb5ffd9c70b1/14312-18.03.2020-ITEMA_22310562-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "4968917",
-                "description": "durée : 00:05:09 - Le Journal des sciences - par : Natacha Triou - Les premières espèces humaines se sont croisées beaucoup plus que nous ne le pensions ; et autres actualités scientifiques.  ",
-                "date": "Mon, 24 Feb 2020 16:07:00 +0100"
+                "contentLength": "55931131",
+                "description": "durée : 00:58:14 - La Méthode scientifique - par : Nicolas Martin, Zoé Sfez - Comment se forme la banquise ? Quel est son rôle ? Comment évolue-t-elle concrètement ? Quelles sont les mesures dédiées à la protection des zones polaires aujourd’hui ? - réalisation : Elisabeth Miro - invités : Jean-Claude Gascard Océanographe, directeur de recherche CNRS émérite; Jérôme Weiss Géophysicien, directeur de recherche au CNRS à l’Institut des Sciences de la Terre de Grenoble ",
+                "date": "Wed, 18 Mar 2020 16:58:14 +0100"
             },
             {
-                "title": "Histoire de la douleur / Émergence de la rougeole / Homo Sapiens",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-vendredi-21-fevrier-2020",
+                "title": "Un peu plus près des étoiles",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/un-peu-plus-pres-des-etoiles-1",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/d524ecb6-2739-4eb6-884d-8e194e85f715/14312-21.02.2020-ITEMA_22288585-1.mp3",
+                "content": "https://rf.proxycast.org/e2a579c3-4dac-4698-9178-221cd8df79a3/14312-17.03.2020-ITEMA_22309697-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "56650939",
-                "description": "durée : 00:58:59 - La Méthode scientifique - par : Nicolas Martin - L'actualité des sciences vue par Cécile Lestienne de Pour la science, Sylvian Guilbaud de La Recherche et Tania Louis de la chaîne YouTube Biologie Tout Compris. - réalisation : Olivier Bétard - invités : Cécile Lestienne Directrice de la rédaction du magazine \"Pour la Science\"; Sylvain Guilbaud Journaliste scientifique - La Recherche; Tania Louis Médiatrice scientifique et docteure en biologie ",
-                "date": "Fri, 21 Feb 2020 16:58:45 +0100"
+                "contentLength": "55919234",
+                "description": "durée : 00:58:13 - La Méthode scientifique - par : Nicolas Martin - Que nous reste-t-il à connaître de la physique stellaire ? - réalisation : Elisabeth Miro - invités : Danielle Briot Astronome à l'Observatoire de Paris; Michel Cassé Astrophysicien Chercheur à l'Institut d'Astrophysique de Paris et CEA ",
+                "date": "Tue, 17 Mar 2020 16:58:32 +0100"
             },
             {
-                "title": "La protéine clé du coronavirus identifiée",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-vendredi-21-fevrier-2020",
+                "title": "Malin comme un corbeau",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-lundi-16-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/5a7d2130-f45a-4360-8dc2-c56ebb852f25/14312-21.02.2020-ITEMA_22288585-0.mp3",
+                "content": "https://rf.proxycast.org/893480bd-a18a-402d-b53c-84fee5526022/14312-16.03.2020-ITEMA_22308794-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "9566640",
-                "description": "durée : 00:09:56 - Le Journal des sciences - par : Natacha Triou - La première cartographie 3D du Coronavirus Covid 19, la première mesure de la transition d'antiatomes d’hydrogène ; et autres actualités scientifiques de la semaine.  ",
-                "date": "Fri, 21 Feb 2020 16:07:00 +0100"
+                "contentLength": "56696508",
+                "description": "durée : 00:59:01 - La Méthode scientifique - par : Nicolas Martin, Zoé Sfez - Qui sont les corvidés ? Que sait-on de l’intelligence des corvidés ? L’intelligence des oiseaux est-elle un continent inexploré de la recherche ? Pourquoi le corbeau a-t-il au fil des âges acquis une image négative ?\r\n \r\n - réalisation : Elisabeth Miro - invités : Agatha Lievin-Bazin doctorante, éthologue; Valérie Dufour Ethologue et primatologue ",
+                "date": "Mon, 16 Mar 2020 16:59:01 +0100"
             },
             {
-                "title": "La naissance des idées scientifiques : “Eurêka, j’ai trouvé !”",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-jeudi-20-fevrier-2020",
+                "title": "SF : une littérature de genres ?",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-vendredi-13-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/29fa63b4-3ac4-4679-967f-995372850891/14312-20.02.2020-ITEMA_22287539-1.mp3",
+                "content": "https://rf.proxycast.org/ab497a6f-9c57-4b3f-a21b-4053e86bf3f2/14312-13.03.2020-ITEMA_22306741-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "56061460",
-                "description": "durée : 00:58:22 - La Méthode scientifique - par : Nicolas Martin - Comment naissent les idées scientifiques ? Comment se déroule le processus créatif ? Quelles sont les différentes phases créatrices ? Comment se caractérise l’insight, l’illumination d’une idée au niveau cérébral ? Comment les scientifiques, de différentes périodes, témoignent de cet insight ? - réalisation : Olivier Bétard - invités : Justine Barbier professeur agrégée de philosophie; Emmanuelle Volle Neurologiste et chercheure Inserm à l'Institut Brain and Spine (ICM) ",
-                "date": "Thu, 20 Feb 2020 16:58:45 +0100"
+                "contentLength": "56366940",
+                "description": "durée : 00:58:41 - La Méthode scientifique - par : Nicolas Martin - Comment les autrices.teurs se servent-iels de la SF pour dénoncer le patriarcat ? Qu’est-ce que le manifeste cyborg ? Comment la métaphore de la cyborg permet-elle la critique des catégorisations de nature et de genre et le développement du SF post-genre ? Quelle est la place des femmes dans la SF ? - réalisation : Olivier Bétard - invités : Jeanne-A Debats Ecrivain; Ïan Larue Universitaire spécialiste en littérature, essayiste, autrice et grand prix de l’imaginaire 2019; Catherine Dufour Romancière, auteure de science-fiction et ingénieure informatique ",
+                "date": "Fri, 13 Mar 2020 16:58:45 +0100"
             },
             {
-                "title": "La maturation in vitro, le futur de la FIV ? ",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-jeudi-20-fevrier-2020",
+                "title": "SARS-CoV-2 : le lancement d'un essai clinique // Quels risques pour les asthmatiques ? \\\\ Une découverte importante pour la création d’un vaccin",
+                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-vendredi-13-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/b07ce7ce-1f84-408d-8942-12404d31fb79/14312-20.02.2020-ITEMA_22287539-0.mp3",
+                "content": "https://rf.proxycast.org/8e19b6cc-5d2d-4c1b-9fde-85ac5cd14e93/14312-13.03.2020-ITEMA_22306741-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "5097984",
-                "description": "durée : 00:05:17 - Le Journal des sciences - par : Natacha Triou - La première naissance par FIV d’un enfant issu d’ovules non-matures ; et autres actualités scientifiques. ",
-                "date": "Thu, 20 Feb 2020 16:07:00 +0100"
+                "contentLength": "10925748",
+                "description": "durée : 00:11:21 - Le Journal des sciences - par : Natacha Triou - Tour d'horizon de l'état de la recherche autour de l'épidémie de Covid-19 ; et autres actualités scientifiques de la semaine. ",
+                "date": "Fri, 13 Mar 2020 16:07:00 +0100"
             },
             {
-                "title": "Systèmes complexes : un petit poisson, un petit oiseau",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mercredi-19-fevrier-2020",
+                "title": "La France et les maths, je t’aime moi non plus",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/semaine-des-mathematiques-le-compte-est-bon",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/2c77494e-5b87-40c4-8a49-b34cbe7d2bd2/14312-19.02.2020-ITEMA_22286516-1.mp3",
+                "content": "https://rf.proxycast.org/c78cfda7-6302-4fdd-8779-dce39d569938/14312-12.03.2020-ITEMA_22305711-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "56218135",
-                "description": "durée : 00:58:32 - La Méthode scientifique - par : Nicolas Martin - Qu’appelle-t-on “science des systèmes complexes” ? Comment définit-on la complexité d’un système ? Quelles sont les domaines d’application de cette méta-discipline ? Comment les notions d’émergence et d’organisation collective s’inscrivent-elles dans cette complexité ? \r\n - réalisation : Olivier Bétard - invités : José Halloy Professeur de physique. Physicien du Laboratoire interdisciplinaire des énergies de demain (LIED) à l’université de Paris.; Pablo Jensen Physicien. Chercheur CNRS au Laboratoire de physique de l’École normale supérieure de Lyon. ",
-                "date": "Wed, 19 Feb 2020 16:58:45 +0100"
+                "contentLength": "56363921",
+                "description": "durée : 00:58:41 - La Méthode scientifique - par : Nicolas Martin - Comment se réconcilier avec les mathématiques à l’école ? L’année 2020 a été proclamée par le Ministère de l’Education Nationale et le CNRS comme celle des mathématiques. Comment changer enfin la mauvaise réputation de cette discipline ?  - réalisation : Olivier Bétard - invités : Mickaël Launay Mathématicien et créateur de vidéos de vulgarisation mathématique sur internet.; Roger Mansuy Professeur de mathématiques et d’informatique au lycée Saint Louis; Ivan Kiriow Journaliste scientifique, docteur en histoire des sciences. ",
+                "date": "Thu, 12 Mar 2020 16:58:45 +0100"
             },
             {
-                "title": "Les microbiotes : une nouvelle arme contre le diabète ",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-mercredi-19-fevrier-2020",
+                "title": "Des robots qui imitent la physiologie des plantes ",
+                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-jeudi-12-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/5895e65f-1e53-4d43-b806-a809e04cebe9/14312-19.02.2020-ITEMA_22286516-0.mp3",
+                "content": "https://rf.proxycast.org/af1bb641-7f3d-49f8-9342-2ab2aac79b68/14312-12.03.2020-ITEMA_22305711-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "5229695",
-                "description": "durée : 00:05:25 - Le Journal des sciences - par : Natacha Triou - La découverte du rôle de la flore intestinale en diabétologie et autres actualités scientifiques.   ",
-                "date": "Wed, 19 Feb 2020 16:07:00 +0100"
+                "contentLength": "4984658",
+                "description": "durée : 00:05:10 - Le Journal des sciences - par : Natacha Triou - Des robots végétaux auto-régulateurs ; et autres actualités scientifiques.  ",
+                "date": "Thu, 12 Mar 2020 16:07:00 +0100"
             },
             {
-                "title": "Entropie : la théorie du chaos",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mardi-18-fevrier-2020",
+                "title": "Agriculture cellulaire : bienvenue au rayon in vitro",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-mercredi-11-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/e851df79-7374-456b-a1a4-4b15c3bdfb13/14312-18.02.2020-ITEMA_22285542-1.mp3",
+                "content": "https://rf.proxycast.org/4740fb60-77e4-4027-93fe-f2c98d16603b/14312-11.03.2020-ITEMA_22304684-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "55753286",
-                "description": "durée : 00:58:03 - La Méthode scientifique - par : Nicolas Martin - Qu’est ce que l’entropie ? Comment ce concept a-t-il émergé en thermodynamique ? Quelles contributions par des savants comme Carnot, Clausius, Boltzmann ? Pour décrire quels types de phénomènes ? Tous les processus naturels sont-ils soumis à l’entropie ? \r\n - réalisation : Olivier Bétard - invités : Pierre Uzan Chercheur associé au laboratoire SPHERE de l’Université de Paris, et Professeur Certifié Classe Exceptionnelle de Sciences Physiques à la Fondation Santé des Etudiants de France; Pierre De Buyl Chercheur FWO à l'Institut de Physique Théorique de l’université KU Leuven ",
-                "date": "Tue, 18 Feb 2020 16:58:45 +0100"
+                "contentLength": "56428671",
+                "description": "durée : 00:58:45 - La Méthode scientifique - par : Nicolas Martin - Qu’appelle-t-on “agriculture cellulaire” ? A quand remonte l’idée de trouver une alternative à l’élevage du bétail et pourquoi ? Que peut-on produire en laboratoire aujourd’hui via cette technique ? \r\nComment se fait concrètement la culture ?\r\n - réalisation : Olivier Bétard - invités : Marie-Pierre Ellies Ingénieur agronome, docteur en zootechnie, enseignante-chercheuse en “Productions animales” au sein du Département Nutrition-Santé et Filières agricoles de Bordeaux Sciences Agro; Jean-Francois Hocquette biologiste, directeur de recherches à l'Inra ",
+                "date": "Wed, 11 Mar 2020 16:58:45 +0100"
             },
             {
-                "title": "Comportement antisocial à long terme : des différences cérébrales",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-mardi-18-fevrier-2020",
+                "title": "Vers un vaccin universel contre la grippe ? ",
+                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-mercredi-11-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/51317a49-08b3-4b45-a8a0-8d60d8864707/14312-18.02.2020-ITEMA_22285542-0.mp3",
+                "content": "https://rf.proxycast.org/23c0aec4-e0ff-4919-a1b0-7ceb7704cd09/14312-11.03.2020-ITEMA_22304684-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "5280409",
-                "description": "durée : 00:05:28 - Le Journal des sciences - par : Natacha Triou - Il existe des différences anatomiques entre les personnes qui ont des comportements antisociaux et ceux qui n’en ont pas ; et autres actualités scientifiques.  ",
-                "date": "Tue, 18 Feb 2020 16:07:00 +0100"
+                "contentLength": "5778421",
+                "description": "durée : 00:05:59 - Le Journal des sciences - par : Natacha Triou - Les résultats encourageants des essais cliniques d'un nouveau vaccin et autres actualités scientifiques.  ",
+                "date": "Wed, 11 Mar 2020 16:07:00 +0100"
             },
             {
-                "title": "L'oncologie abat ses Car-T",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-lundi-17-fevrier-2020",
+                "title": "Bételgeuse, ça s’en va et ça revient",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/betelgeuse-ca-sen-va-et-ca-revient",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/ee1e5669-431f-48e1-8ee2-5ec93c8b7f1e/14312-17.02.2020-ITEMA_22284556-1.mp3",
+                "content": "https://rf.proxycast.org/6aadcf86-a08d-473a-9ce5-581770623586/14312-10.03.2020-ITEMA_22303670-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "56063789",
-                "description": "durée : 00:58:22 - La Méthode scientifique - par : Nicolas Martin - Comment le corps se défend-il contre le cancer ? Comment l’aider dans cette action grâce aux cellules Car-T ? Avec quelles réussites ? Depuis quand cette solution est-elle appliquée ? Quels sont les effets secondaires des cellules Car-T et comment les réd - réalisation : Olivier Bétard - invités : Sebastian Amigorena Chercheur en immunologie et directeur du Centre d'immunothérapie de l'Institut Curie à Paris; Catherine Thieblemont Chef du service d’hémato-oncologie à l'hôpital Saint Louis de Paris, et professeur d’hématologie à la faculté Paris Diderot. ",
-                "date": "Mon, 17 Feb 2020 16:58:45 +0100"
+                "contentLength": "56143758",
+                "description": "durée : 00:58:27 - La Méthode scientifique - par : Nicolas Martin - Que sait-on de l’étoile Bételgeuse et de son évolution ? A quand remonte la dernière supernova visible depuis la Terre ? Que nous révèle la nouvelle image publiée le 14 février 2020 ? Quelle est la structure de la convection à la surface de Bételgeuse et en quoi diffère-t-elle de celle du Soleil ?  - réalisation : Olivier Bétard - invités : Pierre Kervella Astronome au Laboratoire d'Etudes Spatiales et d'Instrumentation en Astrophysique (LESIA) de l’Observatoire de Paris; Eric Lagadec Astronome adjoint, chercheur au laboratoire Lagrange de l’Observatoire de la côte d’Azur ",
+                "date": "Tue, 10 Mar 2020 16:58:45 +0100"
             },
             {
-                "title": "Les dinosaures, des animaux à sang chaud",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-lundi-17-fevrier-2020",
+                "title": "SARS-CoV-2 : ses mutations génétiques peuvent révéler comment il se déplace dans le monde",
+                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-mardi-10-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/0de20e83-3a02-4145-b5ed-7702f9164bef/14312-17.02.2020-ITEMA_22284556-0.mp3",
+                "content": "https://rf.proxycast.org/0e1af7f0-93e7-40d5-9f14-a9fb99625d63/14312-10.03.2020-ITEMA_22303670-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "3190504",
-                "description": "durée : 00:03:17 - Le Journal des sciences - par : Natacha Triou - L'analyse de coquilles d’œufs révèle que les dinosaures étaient des créature endothermiques ; et autres actualités scientifiques. ",
-                "date": "Mon, 17 Feb 2020 16:07:00 +0100"
+                "contentLength": "5178812",
+                "description": "durée : 00:05:22 - Le Journal des sciences - par : Natacha Triou - Des arbres phylogénétiques pour mieux comprendre la rapidité d'évolution du virus et autres actualités scientifiques.  ",
+                "date": "Tue, 10 Mar 2020 16:07:00 +0100"
             },
             {
-                "title": "Les villes de SF, prochain arrêt Metropolis",
-                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/les-villes-de-sf-prochain-arret-metropolis",
+                "title": "Burn out : le travail c'est plus la santé",
+                "link": "https://www.franceculture.fr/emissions/la-methode-scientifique/la-methode-scientifique-emission-du-lundi-09-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/7a6ecb0d-18c6-4986-944e-df2a831ee544/14312-14.02.2020-ITEMA_22282467-1.mp3",
+                "content": "https://rf.proxycast.org/b85a3c6a-a2e9-44a4-a289-6e8a6429f20f/14312-09.03.2020-ITEMA_22302634-1.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "57899515",
-                "description": "durée : 01:00:17 - La Méthode scientifique - par : Nicolas Martin - L’importance de l’imaginaire et des œuvres de fiction dans la construction de l’image de la ville. Comment sont représentées les villes dans les dystopies ? Sur quel schéma ces villes sont-elles bâties ? D’où vient cette idéologie anti-urbaine ? \r\n - réalisation : Olivier Bétard - invités : Alain Musset Géographe, directeur d’études à l’EHESS; Natacha Vas-Deyres Chercheuse associée de l’université Bordeaux Montaigne, spécialiste de la littérature d’anticipation ",
-                "date": "Fri, 14 Feb 2020 16:58:45 +0100"
+                "contentLength": "56500091",
+                "description": "durée : 00:58:49 - La Méthode scientifique - par : Nicolas Martin - Quelle définition donne-t-on aujourd’hui au burn out ? Pourquoi le burn out met-il la science à rude épreuve ? Quelles sont les pistes de recherches pour mieux comprendre les mécanismes du burn out ?\r\n - réalisation : Olivier Bétard - invités : François Marchand Responsable du Centre d'investigation et de traitements des insomnies, à l'hôpital de jour du Service de psychiatrie adulte à l'Hôpital de la Pitié-Salpêtrière.; Mathias Pessiglione Directeur de Recherches Inserm. Co-directeur de l’équipe \"Motivation, Cerveau et Comportement\" à l’ICM - Institut du Cerveau et de la Moelle épinière ",
+                "date": "Mon, 09 Mar 2020 16:58:45 +0100"
             },
             {
-                "title": "Le premier test de déviation d'astéroïde en conditions réelles",
-                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-premier-test-de-deviation-dasteroide-en-conditions-reelles",
+                "title": "Une avancée majeure en informatique quantique",
+                "link": "https://www.franceculture.fr/emissions/le-journal-des-sciences/le-journal-des-sciences-du-lundi-09-mars-2020",
                 "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml/",
-                "content": "https://rf.proxycast.org/9c2a264b-cf26-4f15-8609-c01a669f53cb/14312-14.02.2020-ITEMA_22282467-0.mp3",
+                "content": "https://rf.proxycast.org/69a77c8c-752f-4747-b4ed-64db7756cb0f/14312-09.03.2020-ITEMA_22302634-0.mp3",
                 "contentType": "audio/mpeg",
-                "contentLength": "9244591",
-                "description": "durée : 00:09:36 - Le Journal des sciences - par : Natacha Triou - La mission DART- HERA de la Nasa et de l'ESA; et autres actualités scientifiques. ",
-                "date": "Fri, 14 Feb 2020 16:07:00 +0100"
+                "contentLength": "5236487",
+                "description": "durée : 00:05:25 - Le Journal des sciences - par : Natacha Triou - Des chercheurs sont parvenus à mesurer plusieurs fois le spin d'un electron dans une boite quantique de silicium et autres actualités scientifiques.  - invités : Anaïs Dréau physicienne, spécialiste de physique quantique ",
+                "date": "Mon, 09 Mar 2020 16:07:00 +0100"
             }
         ]
     },
     "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/": {
         "title": "Dépêche !/",
         "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
-        "fetchDate": "2020-02-26T11:37:47.790Z",
+        "fetchDate": "2020-03-20T17:35:04.010Z",
         "link": "https://www.arteradio.com/taxonomy/term/",
         "image": "https://www.arteradio.com/sites/default/files/pictures/Bonbons.jpg",
         "description": "",
         "items": [
+            {
+                "title": "C'est la guerre à la maison",
+                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61663627/c_est_la_guerre_la_maison",
+                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
+                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61663627.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "436",
+                "description": "Des jours d'avant au grand confinement \n\nJusqu'à nouvel ordre, ça peut durer mille ans\n\nCette semaine, Livo est encore dans le déni. Il fait un reportage auprès de Cyril Borron, roi lyonnais du compost à lombrics, qui s'est mis en grève de la faim. Mais notre roi du scoop est rappelé à la réalité par le grand confinement. Il enregistre plein de dernières fois : dernière sortie d'école, dernière élection, dernier jour avec sa fille en garde alternée, dernier micro trottoir... Toujours pret à affronter l'adversité, Livo fait la guerre à la maison, fidèle au poste : son podcast Dépêche continue dans les semaines à venir. Chaque mercredi, Dépêche découpe l'actu avec un micro. Abonnez-vous à ce podcast sur notre site, Apple Podcasts, SoundCloud ou Deezer. \n\nEnregistrements : 12, 13, 14, 15, 16, 17 mars 20 - Mix : Charlie Marcelet - Texte, voix, prises de son et réalisation : Olivier Minot ",
+                "date": "Wed, 18 Mar 2020 13:23:45 +0100"
+            },
+            {
+                "title": "Campagne à la campagne",
+                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61663498/campagne_la_campagne",
+                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
+                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61663498.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "412",
+                "description": "Un bulletin de vote dans la mâchoire \n\nPour que les élèves de CM2 viennent servir l'apéro\n\nCette semaine Livo ne comprend pas pourquoi Lyon doit voter deux fois. Du coup il couvre les municipales dans le village de Saint-Julien-Molin-Molette où s'affrontent deux listes : une \"citoyenne, participative et écolo\", et l'autre avec \"des gars qui ont toujours habité au village\". De retour à Lyon, il croise les cortèges féministes du 8 Mars et rencontre Noé, un jeune lycéen qui a prit une balle de LBD dans la mâchoire.Chaque mercredi, Dépêche découpe l'actu avec un micro. Abonnez-vous à ce podcast sur notre site, Apple Podcasts, SoundCloud ou Deezer. \n\nEnregistrements : 7, 8, 9, 10 mars 20 - Mix : Charlie Marcelet et Antoine Larcher - Texte, voix, réalisation : Olivier Minot - Production : ARTE Radio",
+                "date": "Wed, 11 Mar 2020 14:57:31 +0100"
+            },
+            {
+                "title": "Virginie Potter contre tu-sais-qui",
+                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61663479/virginie_potter_contre_tu_sais_qui",
+                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
+                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61663479.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "439",
+                "description": "Virus Polanskus Cadaverus \n\nMoins de viande mais mieux de viande\n\nCette semaine Livo va faire de l'agribashing dans un élevage de poulets sympas. Quand il rentre, il a tous les symptômes du Coronavirus : il tousse devant les débats à l'Assemblée et se mouche sur les César. Finalement, il décide d'appeler Virginie Potter pour vaincre tu-sais-qui.Dépêche, le podcast qui découpe l'actu avec un micro chaque mercredi. Abonnez-vous à \"Dépêche\" sur notre site, Apple Podcasts, SoundCloud ou Deezer.\n\nEnregistrements : 27-29 février, 2-3 mars 20 - Mix : Charlie Marcelet - Texte, prises de son, réalisation : Olivier Minot - Production : ARTE Radio",
+                "date": "Wed, 04 Mar 2020 12:07:19 +0100"
+            },
+            {
+                "title": "Corona fait du ski",
+                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61663431/corona_fait_du_ski",
+                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
+                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61663431.mp3",
+                "contentType": "audio/mpeg",
+                "contentLength": "461",
+                "description": "Le virus peut-il sauver nos montagnes du canon à neige ? \n\nOn tousse ensemble avec le corona\n\nCette semaine Livo tousse en revenant d'un séjour à la frontière italienne. Le coronavirus sera-til la solution au dérèglement climatique ? En attendant, Livo teste le ski 2.0 et enregistre les canons à neige, les vacancier.e.s et le directeur de la station de ski Les Saisies. Dépêche, le podcast hebdo qui découpe l'actu avec un micro.\n\n​Enregistrements : 21-22-24-25 févier 20 - Texte, voix, réalisation : Olivier Minot - Mix : Charlie Marcelet - Production : ARTE Radio",
+                "date": "Wed, 26 Feb 2020 11:33:29 +0100"
+            },
             {
                 "title": "Erections, piège à cons",
                 "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61663386/erections_piege_cons",
@@ -596,46 +636,6 @@
                 "contentLength": "469",
                 "description": "Actions de nuit contre les violences sexistes\n\nL'amour ne fait pas de bleus\n\nCette semaine, Livo sort la nuit aux coté des colleuses de rue contre les violences sexistes et les féminicides. Ce groupe lyonnais opère d'habitude en mixité choisie \"sans mec cis\", du coup Livo a très peur. Il se rassure auprès de Patrick Guillot, qui se déclare \"hoministe\" en enfilant les perles. Enfin, il traîne son micro à la sortie du film de Polanski et enregistre les réactions devant les collages.Merci à Collages Féminicides Lyon pour la photographie et merci à Abad pour le  « chant des femmes ».Chaque mercredi Livo décolle l'actu avec son micro. Abonnez-vous au podcast \"Dépêche\" sur notre site, Apple Podcasts, SoundCloud ou Deezer.\n\nEnregistrements : 30 octobre, 26 novembre 19 - Mix : Charlie Marcelet - Voix & réalisation : Olivier Minot ",
                 "date": "Wed, 27 Nov 2019 10:02:27 +0100"
-            },
-            {
-                "title": "Joyeux Jauniversaire ",
-                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61662740/joyeux_jauniversaire",
-                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
-                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61662740.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "474",
-                "description": "Grenades, écoles et karaoké\n\nRefuse ce monde égoïste\n\nCette semaine, Livo prend un coup de vieux avec les 25 ans de \"La cité de la peur\". Du coup il divague sur les anniversaires : celui de sa fille, celui des Droits de l'enfant, et le premier des Gilets Jaunes. Entre une école occupée pour mettre à l'abri des écoliers sans abri et des tirs de lacrymo, il trouve le temps d'un karaoké. Avec Guy Corazzol, adjoint à l'éducation de la mairie de Lyon, le collectif \"Jamais sans toit\", Alain le gilet jaune officiel de Dépêche et France Gall.Chaque mercredi, Livo découpe l'info avec son micro. Abonnez-vous au podcast \"Dépêche\" sur notre site, Apple Podcasts, SoundCloud ou Deezer.\n\nEnregistrements : 16, 18, 19 novembre 19 - Mix : Charlie Marcelet - Voix & réalisation : Olivier Minot ",
-                "date": "Wed, 20 Nov 2019 12:28:25 +0100"
-            },
-            {
-                "title": "L'étincelle",
-                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61662659/l_etincelle",
-                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
-                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61662659.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "451",
-                "description": "Un étudiant brûle et les médias regardent ailleurs\n\nNo souçaï pour Balkanaille \n\nCette semaine Livo se rend au rassemblement en mémoire de l'étudiant qui s'est immolé par le feu devant le CROUS à Lyon, après avoir laissé un message posant son geste comme un acte politique. Il décide de récolter les commentaires de quelques éditorialistes incriminés par ce message comme Franz-Olivier Giesbert (Le Point) et Christope Barbier (L'Express, BFM TV).  Chaque mercredi, Livo découpe l'info avec son micro. Abonnez-vous au podcast \"Dépêche\" sur notre site, Apple Podcasts, SoundCloud ou Deezer.\n\nEnregistrements : 12 novembre 19 - Mix : Charlie Marcelet - Texte, voix, réalisation : Olivier Minot",
-                "date": "Wed, 13 Nov 2019 07:00:29 +0100"
-            },
-            {
-                "title": "Droit dans le Mur",
-                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61662623/droit_dans_le_mur",
-                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
-                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61662623.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "443",
-                "description": "30 ans de murs de Berlin à Pékin\n\nJust another brick in the wall\n\nCette semaine, Livo commémore les 30 ans de la chute du Mur de Berlin en mangeant des Würste trempées dans ses souvenirs d'échange linguistique. Gerlinda, Ouest-Allemande exilée à Lyon, nous raconte ce qu'on a perdu avec la RDA, notamment en terme de droits des femmes. Pendant ce temps, Macron essaie d'assouplir la dictature chinoise en présentant Guillaume Canet à Xi Jinping.Chaque mercredi, Livo découpe l'info avec son micro. Abonnez-vous au podcast \"Dépêche\" sur notre site, Apple Podcasts, SoundCloud ou Deezer.\n\nEnregistrements : 2-4-5 novembre 19 - Mix : Charlie Marcelet - Texte, voix, réalisation : Olivier Minot",
-                "date": "Wed, 06 Nov 2019 12:24:46 +0100"
-            },
-            {
-                "title": "Novembre no futur",
-                "link": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/son/61662456/novembre_no_futur",
-                "url": "https://www.arteradio.com/xml_sound_emission?emissionname=%22d%c3%89p%c3%8ache%20!%22/",
-                "content": "https://dts.podtrac.com/redirect.mp3/www.arteradio.com/podcast_sound/61662456.mp3",
-                "contentType": "audio/mpeg",
-                "contentLength": "465",
-                "description": "Livo combat l'automne et les 4x4\n\nNe tirez pas ! Humain !\n\nAtteint par la lose depuis le changement d'heure et la voix de Manuel Valls au lendemain de l'attaque de la mosquée de Bayonne, Livo déprime. Il met l'actualité entre parenthèses et s'égare dans ses pensées automnales avec Anne Brugnera, une députée LREM fan de 4x4 polluants, et Guy, un bon vieux du quartier. Heureusement, la fête foraine de la Croix-Rousse (à Lyon on dit \"la vogue des marrons\") le réveille : le voilà prêt à renverser l'automne en chantant avec les Chiliens \"El pueblo unido jamas sera vencido\".Chaque mercredi, Livo découpe l'info avec son micro. Abonnez-vous au podcast \"Dépêche\" sur notre site, Apple Podcasts, SoundCloud ou Deezer.\n\nEnregistrements : 27, 28, 29 octobre 19  - Mix : Charlie Marcelet - Texte, voix, réalisation : Olivier Minot",
-                "date": "Wed, 30 Oct 2019 11:46:42 +0100"
             }
         ]
     },
@@ -801,7 +801,7 @@
     "https://www.apple.com/podcasts/apple_keynotes/apple_keynotes.xml": {
         "title": "Apple Keynotes",
         "url": "https://www.apple.com/podcasts/apple_keynotes/apple_keynotes.xml",
-        "fetchDate": "2020-02-26T11:37:47.086Z",
+        "fetchDate": "2020-03-20T17:35:03.432Z",
         "link": "http://www.apple.com/",
         "image": "/podcasts/apple_keynotes/images/apple_keynotes.jpg",
         "description": "The Apple Keynotes podcast offers video of the company's most important announcements, including presentations by Apple CEO Tim Cook.",
@@ -946,159 +946,159 @@
     "https://www.lemonde.fr/climat/rss_full.xml": {
         "title": "Climat : Toute l’actualité sur Le Monde.fr.",
         "url": "https://www.lemonde.fr/climat/rss_full.xml",
-        "fetchDate": "2020-02-26T11:37:47.040Z",
+        "fetchDate": "2020-03-20T17:35:03.693Z",
         "link": "https://www.lemonde.fr/climat/rss_full.xml",
         "description": "Climat - Découvrez gratuitement tous les articles, les vidéos et les infographies de la rubrique Climat sur Le Monde.fr.",
         "items": [
             {
-                "title": "Plan B : Pourquoi on se chauffe si mal (et comment se chauffer mieux)",
-                "link": "https://www.lemonde.fr/videos/video/2020/02/24/plan-b-pourquoi-on-se-chauffe-si-mal-et-comment-se-chauffer-mieux_6030653_1669088.html",
+                "title": "Les militants pour le climat dressent « le bilan » de Macron à la veille des municipales",
+                "link": "https://www.lemonde.fr/climat/article/2020/03/13/les-militants-pour-le-climat-dressent-le-bilan-de-macron-a-la-veille-des-municipales_6033006_1652612.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "En France, 5% seulement de la chaleur que nous utilisons est produite dans des réseaux de chaleur. Pourtant, ils permettent d’émettre moins de gaz à effet de serre.",
-                "date": "Mon, 24 Feb 2020 16:15:15 +0100"
+                "description": "A plusieurs reprises, vendredi, dans le quartier de l’Elysée, des activistes d’ANV-COP21, accompagnés de personnalités, ont critiqué la politique sociale et environnementale du gouvernement.",
+                "date": "Fri, 13 Mar 2020 18:47:39 +0100"
             },
             {
-                "title": "Climat, malbouffe, tabac… : l’ONU inquiète pour la santé des enfants",
-                "link": "https://www.lemonde.fr/sante/article/2020/02/19/climat-malbouffe-tabac-l-onu-inquiete-pour-la-sante-des-enfants_6030012_1651302.html",
+                "title": "Les trois limites du Green Deal",
+                "link": "https://www.lemonde.fr/idees/article/2020/03/13/les-trois-limites-du-green-deal_6032946_3232.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Un rapport pointe une « menace immédiate » sur la santé des générations futures en évoquant en premier lieu la pollution de l’air et le réchauffement climatique.",
-                "date": "Wed, 19 Feb 2020 01:31:17 +0100"
+                "description": "Dans sa chronique, la sociologue Dominique Méda souligne les insufissances du « pacte vert » pour les économies américaine et européenne. Selon elle, ce projet ne remet pas suffisamment en cause la nécessaire rupture que les sociétés occidentales doivent absolument opérer avec le consumérisme et le productivisme.",
+                "date": "Fri, 13 Mar 2020 14:00:13 +0100"
             },
             {
-                "title": "« Fin de chantiers » : Extinction Rebellion à l’assaut des cimenteries",
-                "link": "https://www.lemonde.fr/planete/article/2020/02/18/fin-de-chantiers-extinction-rebellion-a-l-assaut-des-cimenteries_6029904_3244.html",
+                "title": "Coronavirus : la Marche pour le climat, prévue samedi, annulée à Paris",
+                "link": "https://www.lemonde.fr/planete/article/2020/03/13/la-marche-pour-le-climat-annulee-a-paris_6032856_3244.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Quelques centaines de militants du mouvement écologiste ont investi et bloqué, lundi, deux sites parisiens des cimentiers Lafarge et Cemex pour dénoncer l’impact de l’industrie du bâtiment sur l’environnement.",
-                "date": "Tue, 18 Feb 2020 02:08:37 +0100"
+                "description": "Les organisateurs souhaitent toutefois mobiliser et promettent d’annoncer vendredi « un dispositif alternatif » pour ceux qui le souhaitent.",
+                "date": "Fri, 13 Mar 2020 01:01:32 +0100"
             },
             {
-                "title": "Livraison de neige par hélicoptère dans les Pyrénées : « Ce n’est pas une voie possible », critique Elisabeth Borne",
-                "link": "https://www.lemonde.fr/planete/article/2020/02/16/enneiger-des-stations-de-ski-par-helicoptere-n-est-pas-une-voie-possible-assure-elisabeth-borne_6029768_3244.html",
+                "title": "L’Europe doit doubler ses efforts pour remplir ses objectifs climatiques",
+                "link": "https://www.lemonde.fr/planete/article/2020/03/11/l-europe-doit-doubler-ses-efforts-pour-remplir-ses-objectifs-climatiques_6032614_3244.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "La ministre de la transition écologique souhaite mettre un coup d’arrêt à cette pratique utilisée dans une station de ski des Pyrénées ce week-end.",
-                "date": "Sun, 16 Feb 2020 15:44:41 +0100"
+                "description": "Les secteurs des transports et de l’agriculture ne baissent pas suffisamment rapidement leurs émissions, selon un rapport de l’Agence européenne pour l’environnement.",
+                "date": "Wed, 11 Mar 2020 12:43:28 +0100"
             },
             {
-                "title": "Un mégaprojet de station de ski déchire l’Autriche",
-                "link": "https://www.lemonde.fr/planete/article/2020/02/15/un-megaprojet-de-station-de-ski-dechire-l-autriche_6029650_3244.html",
+                "title": "Histoire d’une notion : les communs, renouveau de la démocratie locale",
+                "link": "https://www.lemonde.fr/idees/article/2020/03/11/les-communs-renouveau-de-la-democratie-locale_6032562_3232.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Des glaciers en recul mais encore préservés sont menacés par un nouveau domaine skiable de 64 hectares en gestation dans les vallées du Tyrol.",
-                "date": "Sat, 15 Feb 2020 01:52:36 +0100"
+                "description": "Employés jusqu’à la fin du Moyen Age dans les campagnes, où ils organisaient le partage des biens naturels tels que pâturages et étangs, ces usages ont investi les villes où ils ouvrent de nouvelles approches économique et politique pour redonner du souffle à l’action collective.",
+                "date": "Wed, 11 Mar 2020 06:00:11 +0100"
             },
             {
-                "title": "« L’ambition écologique de BP est considérable, démesurée »",
-                "link": "https://www.lemonde.fr/economie/article/2020/02/13/l-ambition-ecologique-de-bp-est-considerable-demesuree_6029438_3234.html",
+                "title": "Savants ou militants ? Le dilemme des chercheurs face à la crise écologique",
+                "link": "https://www.lemonde.fr/sciences/article/2020/03/09/savants-ou-militants-le-dilemme-des-chercheurs-face-a-la-crise-ecologique_6032394_1650684.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Le nouveau patron du grand groupe pétrolier a promis la « neutralité carbone » d’ici à 2050, mais ne précisera les moyens d’y parvenir que dans quelques mois, et sans trop épouvanter ses propres actionnaires.",
-                "date": "Thu, 13 Feb 2020 11:12:53 +0100"
+                "description": "Ils signent pétitions et tribunes pour alerter sur le réchauffement climatique et la dégradation de la biodiversité, pourtant, leur incursion dans le débat public n’a rien d’évident. A l’heure des « fake news », la communauté scientifique questionne le bien-fondé de son engagement.",
+                "date": "Mon, 09 Mar 2020 19:00:16 +0100"
             },
             {
-                "title": "Comment protéger le mont Blanc et son écosystème ?",
-                "link": "https://www.lemonde.fr/climat/article/2020/02/13/emmanuel-macron-visite-la-mer-de-glace-pour-parler-climat_6029390_1652612.html",
+                "title": "Les scientifiques cherchent à réduire leur empreinte carbone",
+                "link": "https://www.lemonde.fr/sciences/article/2020/03/09/les-scientifiques-cherchent-a-reduire-leur-empreinte-carbone_6032392_1650684.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Emmanuel Macron doit présenter, jeudi, des mesures en ce sens, après avoir visité la mer de Glace, dont la fonte est l’illustration spectaculaire de l’impact du réchauffement en France.",
-                "date": "Thu, 13 Feb 2020 05:57:42 +0100"
+                "description": "Entre les congrès internationaux, les missions de terrain et les calculs informatiques, les chercheurs, souvent entre deux avions, ne sont pas exemplaires en termes d’émission de CO2. Certains d’entre eux prennent le problème à bras-le-corps.",
+                "date": "Mon, 09 Mar 2020 19:00:14 +0100"
             },
             {
-                "title": "Confinement levé et vent en baisse dans une Corse en proie aux incendies",
-                "link": "https://www.lemonde.fr/planete/article/2020/02/12/incendies-en-corse-les-renforts-aeriens-attendus-confinement-leve_6029303_3244.html",
+                "title": "Les citoyens de la convention pour le climat engagés dans un sprint final",
+                "link": "https://www.lemonde.fr/planete/article/2020/03/09/les-citoyens-de-la-convention-pour-le-climat-engages-dans-un-sprint-final_6032332_3244.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Des feux ont ravagé des milliers d’hectares de végétation depuis plusieurs jours, sans faire de victime.",
-                "date": "Wed, 12 Feb 2020 11:14:22 +0100"
+                "description": "Lors de leur avant-dernière session de travail, les Français tirés au sort ont débattu de leurs cent cinquante propositions destinées à « changer en profondeur la société ».",
+                "date": "Mon, 09 Mar 2020 11:24:33 +0100"
             },
             {
-                "title": "« Chers professeurs, pourquoi ne faites-vous pas massivement grève pour le climat ? »",
-                "link": "https://www.lemonde.fr/idees/article/2020/02/12/chers-professeurs-pourquoi-ne-faites-vous-pas-massivement-greve-pour-le-climat_6029257_3232.html",
+                "title": "Glenn Albrecht, gentleman « fermosophe »",
+                "link": "https://www.lemonde.fr/idees/article/2020/03/09/glenn-albrecht-gentleman-fermosophe_6032283_3232.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Un collectif d’étudiants et de lycéens presse « désespérément » les enseignants, mobilisés contre la réforme des retraites, de s’engager avec la même force contre la crise climatique.",
-                "date": "Wed, 12 Feb 2020 06:00:10 +0100"
+                "description": "Installé dans l’est de l’Australie, ce « fermier philosophe », qui vient de publier « Les Emotions de la Terre », est aussi un forgeur de néologismes, dont le fameux « solastalgie ».",
+                "date": "Mon, 09 Mar 2020 01:41:54 +0100"
             },
             {
-                "title": "Après le passage de la tempête Ciara sur le nord et l’est de la France, les « vents violents » attisent des incendies en Corse",
-                "link": "https://www.lemonde.fr/climat/article/2020/02/11/apres-le-passage-de-ciara-sur-le-nord-et-l-est-de-la-france-la-tempete-s-abat-sur-la-corse_6029151_1652612.html",
+                "title": "Les émissions mondiales de CO2 liées à l’électricité ont baissé de 2 % en 2019, une première en trente ans",
+                "link": "https://www.lemonde.fr/planete/article/2020/03/09/les-emissions-mondiales-de-co2-liees-a-l-electricite-ont-baisse-de-2-en-2019-une-premiere-en-trente-ans_6032279_3244.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Cinq départements restent en vigilance orange aux vents violents, vague-submersion ou inondations. En Corse, les vents, en cours de décroissance, ont attisé des incendies.",
-                "date": "Tue, 11 Feb 2020 08:15:43 +0100"
+                "description": "Le recul s’explique par une baisse record des rejets liés au charbon dans l’UE et aux Etats-Unis. La Chine est responsable de la moitié des émissions globales liées à cette énergie.",
+                "date": "Mon, 09 Mar 2020 01:00:10 +0100"
             },
             {
-                "title": "« La Convention citoyenne pour le climat pourrait préfigurer une nouvelle forme de démocratie »",
-                "link": "https://www.lemonde.fr/idees/article/2020/02/10/la-convention-citoyenne-pour-le-climat-pourrait-prefigurer-une-nouvelle-forme-de-democratie_6029098_3232.html",
+                "title": "Pierre Calame : « Contre le réchauffement climatique, il faut instaurer une obligation de résultat »",
+                "link": "https://www.lemonde.fr/idees/article/2020/03/06/pierre-calame-contre-le-rechauffement-climatique-il-faut-instaurer-une-obligation-de-resultat_6032103_3232.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "La Convention citoyenne pour le climat fait la démonstration qu’impliquer des citoyens ordinaires sur des enjeux politiques complexes au niveau national est possible, observe la politiste Hélène Landemore dans une tribune au « Monde »",
-                "date": "Mon, 10 Feb 2020 17:07:27 +0100"
+                "description": "Sceptique sur la capacité de la Convention citoyenne pour le climat à imposer des mesures à la hauteur de la situation, Pierre Calame, président honoraire de la Fondation Charles Léopold Mayer, dans une tribune au « Monde » prône un changement radical d’approche.",
+                "date": "Fri, 06 Mar 2020 16:15:30 +0100"
             },
             {
-                "title": "Les 150 citoyens de la convention pour le climat esquissent leur vision de la France en 2030",
-                "link": "https://www.lemonde.fr/planete/article/2020/02/10/les-150-citoyens-de-la-convention-climat-esquissent-leur-vision-de-la-france-en-2030_6029079_3244.html",
+                "title": "Stations de ski : en dessous de 1 300 mètres, pas de salut",
+                "link": "https://www.lemonde.fr/economie/article/2020/03/06/stations-de-ski-en-dessous-de-1-300-metres-pas-de-salut_6031997_3234.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Les propositions devront être amendées, débattues et votées, avant leur remise à l’exécutif, le 4 avril.",
-                "date": "Mon, 10 Feb 2020 14:02:27 +0100"
+                "description": "Céüze a fermé définitivement, le Mont-Dore est placé en redressement judiciaire. Le manque d’enneigement oblige les domaines de basse et moyenne montagne à changer leur modèle économique.",
+                "date": "Fri, 06 Mar 2020 00:53:42 +0100"
             },
             {
-                "title": "Environnement, santé, géopolitique... Le monde fait face à de nouveaux risques",
-                "link": "https://www.lemonde.fr/economie/article/2020/02/10/environnement-sante-geopolitique-le-monde-fait-face-a-de-nouveaux-risques_6029038_3234.html",
+                "title": "Jour du dérèglement : à compter de jeudi 5 mars, la France a une dette climatique",
+                "link": "https://www.lemonde.fr/planete/article/2020/03/04/jour-du-dereglement-a-compter-du-jeudi-5-mars-la-france-a-une-dette-climatique_6031769_3244.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Aujourd’hui, la menace pour l’économie planétaire n’est plus seulement financière, comme cela a été le cas en 2008.",
-                "date": "Mon, 10 Feb 2020 10:21:57 +0100"
+                "description": "Une étude du cabinet de conseil Carbone 4 évalue les émissions françaises à quelque 450 millions de tonnes équivalent dioxyde de carbone pour 2020, alors que le pays s’est fixé un plafond annuel de 80 millions d’ici à 2050.",
+                "date": "Wed, 04 Mar 2020 10:22:06 +0100"
             },
             {
-                "title": "Tempête Ciara : alerte aux « vagues submersion » dans l’Ouest et aux vents violents dans le sud-est de la France",
-                "link": "https://www.lemonde.fr/planete/article/2020/02/10/la-tempete-ciara-poursuit-sa-progression-vers-l-est-de-la-france_6029026_3244.html",
+                "title": "Les ambiguïtés de la loi climat présentée par la Commission européenne",
+                "link": "https://www.lemonde.fr/climat/article/2020/03/04/les-ambiguites-de-la-loi-climat-presentee-par-la-commission-europeenne_6031733_1652612.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "La tempête faiblit dans le Nord, mais se renforce sur les Alpes ainsi qu’en Corse, avec des vents violents jusqu’à mardi matin. Treize départements restent en alerte orange.",
-                "date": "Mon, 10 Feb 2020 07:41:17 +0100"
+                "description": "Le projet de loi porté par Ursula von der Leyen annonce un objectif de neutralité carbone d’ici à 2050 pour l’Union européenne, et non pas pays par pays.",
+                "date": "Wed, 04 Mar 2020 04:22:17 +0100"
             },
             {
-                "title": "Coronavirus, tempête Ciara, attaque en Thaïlande… les infos à retenir du week-end",
-                "link": "https://www.lemonde.fr/les-decodeurs/article/2020/02/09/coronavirus-tempete-ciara-attaque-en-thailande-les-infos-a-retenir-du-week-end_6028985_4355770.html",
+                "title": "Une campagne de Greenpeace sur l’urgence climatique refusée dans le métro parisien",
+                "link": "https://www.lemonde.fr/planete/article/2020/03/03/une-campagne-de-greenpeace-sur-l-urgence-climatique-refusee-dans-le-metro-parisien_6031650_3244.html",
                 "url": "https://www.lemonde.fr/climat/rss_full.xml",
                 "content": null,
                 "contentType": null,
                 "contentLength": null,
-                "description": "Vous n’avez pas suivi l’actualité pendant le week-end ? Voici les principaux titres à retenir des samedi 8 et dimanche 9 février.",
-                "date": "Sun, 09 Feb 2020 19:04:52 +0100"
+                "description": "La nouvelle campagne de communication de l’ONG vise à dénoncer l’inaction des décideurs politiques. La régie publicitaire des transports parisiens l’a jugée trop politique.",
+                "date": "Tue, 03 Mar 2020 11:27:56 +0100"
             }
         ]
     }

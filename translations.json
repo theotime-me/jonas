@@ -1,5 +1,6 @@
 {
     "fr": {
+        "and": "et",
         "owner": "Propriétaire",
         "size": "Taille",
         "usbPlugTitle": "Connexions USB",
@@ -44,6 +45,7 @@
     },
 
     "en": {
+        "and": "and",
         "owner": "Owner",
         "size": "Size",
         "usbPlugTitle": "USB Connections",
