@@ -1,3 +1,6 @@
+(function() {
+	let page = "fitness";
+
 const loaders = [
 	`<svg viewBox="0 0 128 128">
 	<path d="M128 63.5L64.5 0H128V41V63.5Z" fill="white"/>
@@ -230,15 +233,15 @@ const daily = {
 };
 
 $("#editing .alternated .input svg").on("click", function() {
-	let firstEl = $("svg", this.parentNode).first(),
-		isFirst = firstEl.isEqualNode(this),
-		oldVal = parseInt($("span", this.parentNode).html());
+	let firstEl = $("svg", this.parent())[0],
+		isFirst = firstEl.isEqualNode(this[0]),
+		oldVal = parseInt($("span", this.parent()).html());
 
 		if ((oldVal <= 1 && isFirst) || (oldVal > 120 && !isFirst)) {
 			return false;
 		}
 
-		$("span", this.parentNode).html(oldVal + (isFirst ? -1 : 1));
+		$("span", this.parent()).html(oldVal + (isFirst ? -1 : 1));
 
 		displayAlternatedProgressBar();
 });
@@ -280,10 +283,10 @@ $("#editing .alternated .start").on("click", () => {
 
 		$("#wait .icon").html(loader);
 		$("#wait").removeClass("hidden");
-		nbToChange = $("#wait .icon svg").first().querySelectorAll("*:not(.selected)").length /3;
+		nbToChange = $("#wait .icon svg")[0].querySelectorAll("*:not(.selected)").length /3;
 		
 		x = setInterval(() => {
-			let shapes = $("#wait .icon svg").first().querySelectorAll("*:not(.selected)");
+			let shapes = $("#wait .icon svg")[0].querySelectorAll("*:not(.selected)");
 
 			if (i == 1) {
 				editing.hide();
@@ -349,7 +352,7 @@ $("#editing div .input svg").on("mousedown", ev => {
 				x = setInterval(() => { // set x to an interval
 				let p = (1 - i / waitingTimeMS) * 1229;
 	
-				$("#heart div svg circle").first().style = `stroke-dashoffset: ${p};`;
+				$("#heart div svg circle")[0].style = `stroke-dashoffset: ${p};`;
 	
 				if (i == waitingTimeMS) {
 					clearInterval(x); // clear the "x" interval
@@ -359,7 +362,7 @@ $("#editing div .input svg").on("mousedown", ev => {
 					$("#heart > div > p").html("avez vous compté ?");
 
 					// clear the input / add the "visible" class / focus the input
-					$("#heart > div > input").val("").addClass("visible").first().focus();
+					$("#heart > div > input").val("").addClass("visible").focus();
 				}
 	
 				i += 30;
@@ -418,3 +421,10 @@ connect.callbacks.push(() => {
 });
  
 connect.login();
+
+setTimeout(() => {
+editing.alternated();
+
+}, 1000);
+
+})();
