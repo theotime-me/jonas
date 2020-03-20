@@ -1,6 +1,6 @@
 {
 	"name": "jonas-assistant",
-	"version": "0.0.8",
+	"version": "0.1.0",
 	"description": "Jonas assistant, the fastest daily help",
 	"main": "app.js",
 	"author": "theotimefumex@gmail.com",
