@@ -1,7 +1,7 @@
 # __Jonas__ assistant
 *Imagine Internet at home, instantly available.*
 
-Hi guys ! Welcome on the Github page of the Nitro assistant project ! Here you could find the source code of this one. Obviously you can modify this code into your configuration. However, you may not publish this code without contact us (theotimef.pro@gmail.com) to add your change(s) to the official Nitro version if it's of interest. If you're here just to see how works your favourite, free, fast and awesome home assistant: you can explore the code which is fully commented to help you understand !
+Hi guys ! Welcome on the Github page of the Nitro assistant project ! Here you could find the source code of this one. Obviously you can modify this code into your configuration. However, you may not publish this code without contact me (theotimef.pro@gmail.com) to add your change(s) to the official Nitro version if it's of interest. If you're here just to see how works your favourite, free, fast and awesome home assistant: you can explore the code which is fully commented to help you understand !
 
 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
   <img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" style="float: left;">  
@@ -17,7 +17,7 @@ Jonas is a open-source home-assistant including a lot of usefull [features](#Fea
 ## Features
 |Feature | Description | Link
 |--------|-------------|-----
-|Drive|Host your files into your Jonas Device to access them through your network|[jonas.local/drive](http://jonas.local/drive)
+|Drive|Host your files into your Jonas Device, into a USB stick and even a hard drive to access them through your network|[jonas.local/drive](http://jonas.local/drive)
 |Feeds|Subscribe to RSS-Feeds to see (and listen to !) the latest episodes|[jonas.local/feeds](http://jonas.local/feeds)
 |Messages|Send messages to the others users connected to Jonas|[jonas.local/messages](http://jonas.local/messages)
 |Fitness|Be fit with Jonas ! A usefull help to work out and do sport !|[jonas.local/fitness](http://jonas.local/fitness)
