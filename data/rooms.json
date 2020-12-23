@@ -1,0 +1,43 @@
+{
+    "rooms": {
+        "entrance": {
+            "temp": [17, 19, 23],
+            "humidity": [35, 75]
+        },
+
+        "bedroom": {
+            "temp": [18, 19, 20],
+            "humidity": [40, 65]
+        },
+
+        "bedroom_baby": {
+            "temp": [19, 20, 21],
+            "humidity": [45, 60]
+        },
+
+        "office": {
+            "temp": [18, 19, 22],
+            "humidity": [35, 50]
+        },
+
+        "open_space": {
+            "temp": [18, 19, 22],
+            "humidity": [35, 50]
+        },
+
+        "living": {
+            "temp": [19, 21, 23],
+            "humidity": [45, 55]
+        },
+
+        "kitchen": {
+            "temp": [19, 21, 24],
+            "humidity": [40, 75]
+        },
+
+        "bathroom": {
+            "temp": [19, 22, 24],
+            "humidity": [40, 75]
+        }
+    }
+}

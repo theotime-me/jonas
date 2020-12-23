@@ -1,0 +1,6 @@
+{
+    "type": "house",
+    "heating": "gas",
+    "area": 140,
+    "device_room": "bedroom"
+}

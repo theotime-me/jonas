@@ -1,0 +1,39 @@
+{
+  "name": "jonas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "df": "^1.1.1",
+    "express": "^4.17.1",
+    "fast-csv": "^4.3.6",
+    "ffmpeg": "0.0.4",
+    "ffprobe": "^1.1.2",
+    "ffprobe-static": "^3.0.0",
+    "firstline": "^2.0.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "get-video-duration": "^3.0.2",
+    "linebyline": "^1.3.0",
+    "node-disk-info": "^1.1.0",
+    "node-os-utils": "^1.3.2",
+    "readline": "^1.3.0",
+    "request-progress": "^3.0.0",
+    "serve": "^11.3.2",
+    "socket.io": "^3.0.0",
+    "socket.io-client": "^3.0.0",
+    "stream-transcoder": "0.0.5",
+    "thumbsupply": "^0.4.0",
+    "transcode-stream": "^1.0.0",
+    "usb": "^1.6.3",
+    "username": "^5.1.0",
+    "vid-streamer": "^1.0.0"
+  }
+}

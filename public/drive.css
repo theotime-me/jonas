@@ -1,0 +1,784 @@
+#drive {
+    position: fixed;
+    top: 0;
+    left: 80px;
+    height: 100%;
+    width: calc(100% - 380px);
+    background: #fff;
+    z-index: 20;
+}
+
+#drive .top {
+    width: 100%;
+    height: 55px;
+    overflow: hidden;
+}
+
+#drive .top .input {
+    background: #f1f1f1;
+    height: 42px;
+    width: calc(100% - 500px);
+    margin-left: 200px;
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+#drive .top .input svg {
+    height: 24px;
+    width: 24px;
+    margin-left: 12px;
+    fill: #535353;
+}
+
+#drive .top .input input {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    text-indent: 12px;
+    height: 100%;
+    width: calc(100% - 30px);
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+}
+
+#drive-selector {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(61, 100, 189, 0.239);
+    background-color: rgba(61, 137, 224, .18);
+    box-shadow: 0 5px 10px rgba(61, 137, 224, .15);
+    z-index: 30;
+}
+
+#drive .hero {
+    box-sizing: border-box;
+    padding-left: 64px;
+    margin-top: 50px;
+    margin-bottom: 16px;
+}
+
+#drive .hero .new {
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    float: left;
+    cursor: pointer;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#drive .hero .new:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+    background-color: #f3fff8;
+}
+
+#drive .hero .new svg {
+    width: 40px;
+    fill: #3D9970;
+}
+
+#drive .hero .new h4 {
+    font-family: "Poppins";
+}
+
+#drive .hero .path {
+    margin-top: 24px;
+}
+
+#drive .hero .path .device {
+    height: 64px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .01);
+    border: 1px solid rgba(0, 0, 0, .08);
+    box-sizing: border-box;
+    overflow: hidden;
+    min-width: 200px;
+    margin-left: 16px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    margin-top: 7px;
+    float: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#drive .hero .path .device:hover {
+    background-color: rgba(0, 0, 0, .025);
+}
+
+#drive .hero .path .device img {
+    width: 48px;
+    overflow: hidden;
+    height: 48px;
+    margin: 14px 8px 0 8px;
+    border: none;
+    outline: none;
+    float: left;
+}
+
+#drive .hero .path .device h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #39393f;
+    margin-top: 6px;
+    margin-right: 16px;
+}
+
+#drive .hero .path .device p {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #535353;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+#drive .hero .path .device p .size {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+
+#drive .hero .path .device p .size span {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+}
+
+#drive .hero .path .device svg {
+    width: 24px;
+    margin: 0 8px;
+    fill: #9e9e9e;
+    float: left;
+    transition: .1s ease;
+    -webkit-transition: .1s ease;
+    -moz-transition: .1s ease;
+    -ms-transition: .1s ease;
+    -o-transition: .1s ease;
+}
+
+#drive .hero .path .device svg.hidden {
+    opacity: 0;
+}
+
+
+
+
+#drive .hero .path .device-select {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    position: fixed;
+    margin-top: 75px;
+    margin-left: 95px;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    z-index: 999;
+    transition: .15s ease;
+    -webkit-transition: .15s ease;
+    -moz-transition: .15s ease;
+    -ms-transition: .15s ease;
+    -o-transition: .15s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#drive .hero .path .device-select.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+}
+
+#drive .hero .path .device-select div {
+    display: block;
+    padding: 12px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#drive .hero .path .device-select div:hover {
+    background: rgba(0, 0, 0, .03);
+}
+
+#drive .hero .path .device-select div:last-of-type {
+    border-bottom: 0px;
+}
+
+#drive .hero .path .device-select div svg {
+    width: 18px;
+    margin-right: 8px;
+    margin-bottom: 15px;
+    opacity: 0;
+    opacity: 0;
+    transition: .1s ease;
+    -webkit-transition: .1s ease;
+    -moz-transition: .1s ease;
+    -ms-transition: .1s ease;
+    -o-transition: .1s ease;
+    float: left;
+}
+
+#drive .hero .path .device-select div.checked svg {
+    opacity: 1;
+}
+
+#drive .hero .path .device-select div h4 {
+    font-family: "Inter";
+    font-size: 15px;
+    font-weight: 500;
+    color: #111;
+}
+
+#drive .hero .path .device-select div p {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    margin-top: 3px;
+    color: #818181;
+}
+
+
+
+
+
+#drive .hero .path .folders {
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 8px;
+}
+
+#drive .hero .path .folders > svg {
+    margin: 0 4px;
+    display: inline-block;
+    fill: #818181;
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+#drive .hero .path .folders > span {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, .025);
+    padding: 5px 7px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    cursor: pointer;
+}
+
+#drive .hero .path .folders > span:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+#drive .finder {
+    margin-left: 48px;
+}
+
+#drive .finder .titles {
+    margin-left: 72px;
+}
+
+#drive .finder .titles h4 {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6d6d6d;
+    display: inline-block;
+    text-align: left;
+}
+
+#drive .finder .titles h4.file {
+    width: calc(100% - 400px);
+}
+
+#drive .finder .titles h4.file span {
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#drive .finder .titles h4.modify {
+    width: 250px;
+}
+
+#drive .finder .titles h4.size {
+    width: 100px;
+}
+
+#drive .finder {
+    width: calc(100% - 60px);
+}
+
+#drive .finder .elements {
+    padding: 12px 0;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+}
+
+#drive .finder .elements div {
+    font-family: "Roboto", sans-serif;
+    color: #1d1d1d;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    margin: 0 16px;
+    border-top: 1px solid rgba(0, 0, 0, .08);
+    overflow: hidden;
+    cursor: default;
+}
+
+#drive .finder .elements div.active {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+#drive .finder .elements div.selected {
+    color: royalblue;
+    background: rgba(115, 148, 247, 0.2);
+    border-top: 1px solid transparent;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+#drive .finder .elements div > svg {
+    width: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+#drive .finder .elements div > h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: #4b4b4b;
+    width: calc(100% - 435px);
+}
+
+#drive .finder .elements div.selected > h4 {
+    color: royalblue;
+}
+
+#drive .finder .elements div > p {
+    font-size: 13px;
+}
+
+#drive .finder .elements div > .modify {
+    width: 255px;
+}
+
+#drive .finder .elements div > .size {
+    width: 100px;
+}
+
+#drive .finder .elements div > .size span {
+    opacity: .75;
+}
+
+#drive .finder .elements div .strike {
+    width: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+}
+
+#drive .finder .elements div .strike.modify {
+    margin-right: 247px;
+}
+
+#drive .finder .elements div.skeleton h4 > span,
+#drive .finder .elements div.skeleton p > span {
+    color: transparent !important;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#drive .finder .elements div.skeleton svg {
+    fill: transparent !important;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+#drive .finder .elements div.skeleton.one h4 > span,
+#drive .finder .elements div.skeleton.one svg,
+#drive .finder .elements div.skeleton.one p > span {
+    background-color: #e9e9e9;
+}
+
+#drive .finder .elements div.skeleton.two h4 > span,
+#drive .finder .elements div.skeleton.two svg,
+#drive .finder .elements div.skeleton.two p > span {
+    background-color: #f3f3f3;
+}
+
+#drive .finder .elements div.skeleton.three h4 > span,
+#drive .finder .elements div.skeleton.three svg,
+#drive .finder .elements div.skeleton.three p > span {
+    background-color: #f8f8f8;
+}
+
+#drive .nothing {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#drive .nothing img {
+    width: 512px;
+}
+
+#drive .nothing .explain{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#drive .nothing h4 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: #3e6acf;
+}
+
+#drive .nothing p {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: #3D88E0;
+    line-height: 22px;
+    width: 450px;
+    text-align: center;
+}
+
+h1.load, h2.load, h3.load, h4.load, h5.load, h6.load, p.load, span.load {
+    color: transparent !important;
+    background-image: linear-gradient(to right, #dadada 0, #dadada 25%, #f5f5f5 50%, #dadada 75%, #dadada 100%);
+    background-position-x: -300px;
+    background-size: 100%;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    animation: skeleton 120s linear infinite;
+    -webkit-animation: skeleton 120s linear infinite;
+}
+
+@keyframes skeleton {
+    0% {
+        background-position-x: -300px;
+    }
+
+    50% {
+        background-position-x: 3000px;
+    }
+
+    100% {
+        background-position-x: -300px;
+    }
+}
+
+#drive-side {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    background-color: #f7f7f7;
+    transition: .25s ease;
+    -webkit-transition: .25s ease;
+    -moz-transition: .25s ease;
+    -ms-transition: .25s ease;
+    -o-transition: .25s ease;
+}
+
+#drive-side.hidden {
+    right: -350px;
+}
+
+#drive-side > .icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+}
+
+#drive-side > .icons svg {
+    width: 24px;
+    padding: 5px 20px;
+}
+
+#drive-side > .icons .bg {
+    background: rgba(0, 0, 0, .08);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    position: absolute;
+    z-index: -1;
+    transition: .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -webkit-transition: .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -moz-transition: .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -ms-transition: .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -o-transition: .2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#drive-side > .icons .bg.hidden {
+    opacity: 0;
+}
+
+#drive-side .tooltip {
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .15);
+    width: 250px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+}
+
+#drive-side .storage {
+    margin-top: 48px;
+    padding: 0 10px;
+}
+
+#drive-side .storage .progress {
+    height: 70px;
+}
+
+#drive-side .storage .progress h4 {
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #4b4b4b;
+    float: left;
+}
+
+#drive-side .storage .progress p {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    color: #474747;
+    float: right;
+}
+
+#drive-side .storage .progress .bar {
+    background: #ebebeb;
+    width: 100%;
+    height: 24px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    transform: translateY(3px);
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+}
+
+#drive-side .storage .progress .bar > div {
+    height: 100%;
+    box-sizing: border-box;
+    border-right: 2px solid #f7f7f7;
+    float: left;
+}
+
+#drive-side .storage .progress .bar .video {background-color: #ff7675;}
+#drive-side .storage .progress .bar .pdf {background-color: #FF4136;}
+#drive-side .storage .progress .bar .music {background-color: #d63031;}
+#drive-side .storage .progress .bar .image {background-color: #FF4136;}
+#drive-side .storage .progress .bar .document {background-color: #0074D9;}
+#drive-side .storage .progress .bar .data {background-color: #a29bfe;}
+#drive-side .storage .progress .bar .work {background-color: #00b894;}
+#drive-side .storage .progress .bar .sheet {background-color: #55efc4;}
+#drive-side .storage .progress .bar .slide {background-color: #fdcb6e;}
+#drive-side .storage .progress .bar .trash {background-color: #111111;}
+#drive-side .storage .progress .bar .settings {background-color: #FF851B;}
+#drive-side .storage .progress .bar ._unknown {background-color: #d1d1d1;}
+
+#drive-side .info {
+    padding: 10px;
+}
+
+#drive-side .info h4 {
+    font-family: "Inter", sans-serif;
+    margin-bottom: 16px;
+}
+
+#drive-side .info .preview {
+    width: 100%;
+    height: 116px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: .1s ease;
+    -webkit-transition: .1s ease;
+    -moz-transition: .1s ease;
+    -ms-transition: .1s ease;
+    -o-transition: .1s ease;
+}
+
+#drive-side .info .preview.small {
+    height: 64px;
+}
+
+#drive-side .info .preview .img {
+    width: 100%;
+    height: 100%;
+    background-color: #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#drive-side .info .preview .img img {
+    width: 100%;
+}
+
+#drive-side .info .preview .icons {
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    overflow: hidden;
+}
+
+#drive-side .info .preview .icons svg {
+    width: 18px;
+    padding: 0 2px;
+}
+
+#drive-side .info .icon {
+    width: 24px;
+    margin-right: 8px;
+    margin-left: 6px;
+    float: left;
+}
+
+#drive-side .info > h4 {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #39393f;
+    transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    -moz-transform: translateY(4px);
+    -ms-transform: translateY(4px);
+    -o-transform: translateY(4px);
+}
+
+#drive-side .info .stats {
+    margin-top: 24px;
+    margin-left: 10px;
+}
+
+#drive-side .info .stats p {
+    font-family: "Roboto", sans-serif;
+    color: #969696;
+    font-size: 15px;
+    margin-bottom: 6px;
+    max-height: 50px;
+    overflow: hidden;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+#drive-side .info .stats p b {
+    width: 120px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+#drive-side .info .stats p.hidden {
+    max-height: 0;
+    margin-bottom: 0;
+}
+
+#drive-side .info .stats p span {
+    color: #000;
+    font-weight: 400;
+    display: inline-block;
+}
