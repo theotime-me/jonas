@@ -26,7 +26,7 @@
     "node-os-utils": "^1.3.2",
     "readline": "^1.3.0",
     "request-progress": "^3.0.0",
-    "serve": "^11.3.2",
+    "serve": "^14.1.1",
     "socket.io": "^3.0.0",
     "socket.io-client": "^3.0.0",
     "stream-transcoder": "0.0.5",
